@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Sonuto</string>
+    <string name="action_settings">Settings</string>
+    
+    <!-- Member registration step 1 -->
+    <string name="member_reg_Title"><u>Whats your name?</u></string>
+    <string name="reg_Title">We will show this name everywhere within this app,so use your real name</string>
+    <string name="reg_first_name">First Name</string>
+    <string name="reg_last_name">Last Name</string>
+    <string name="button_text_member_reg">Continue</string>
+    <string name="sign_in_text"><u>Sign in</u></string>
+    
+    <!-- Member registration step 2 -->
+    <string name="member_reg_Title_for_password"><u>Create a password</u></string>
+    <string name="reg_pass_text">To create a strong password,use combinations of letters, digit, punctuations and atleast 8 characters</string>
+    <string name="reg_password">Password</string>
+    
+    <!-- Member registration step 2 -->
+    <string name="member_reg_Title_for_email"><u>Enter a e-mail address</u></string>
+    <string name="reg_email_text">Use this email address through this app as username</string>
+    <string name="reg_email">Email</string>
+    
+    
+    <!-- Initial member setting related text -->
+    <string name="member_setting_birthday_title">
+        <u>When your birthday?</u>
+    </string>
+    
+    <string name="member_setting_upload_pic_title">
+        <u>Upload photo</u>
+    </string>
+    
+    <!-- Initial account for business profile related text -->
+    <string name="bp_registration_title"><u>Registration</u></string>
+    <string name="business_profile_label">Business profile type : </string>
+    <string name="business_name_label">Business name: </string>
+    <string name="street_label">Street name:</string>
+    <string name="address_label">Address:</string>
+    <string name="city_label">City/Town: </string>
+    <string name="country_label">Country:</string>
+    <string name="zip_label">Postal/Zip code:</string>
+    <string name="business_telephone_label">Business telephone:</string>
+    <string name="business_email_label">Business email:</string>
+    <string name="business_registered_com_no_label">Registred company number:</string>
+	<string name="business_web_add_label">Business web address:</string>
+	<string name="business_hour_label">Business hour:</string>
+	<string name="bp_description_title"><u>Description</u></string>
+	<string name="bp_description_label">Add your business description :</string>
+	
+    <string-array name="business_profile_type_arrays">
+        <item>SIngle</item>
+        <item>Multiple</item>
+        <item>Group of com</item>
+    </string-array>
+    
+    <string-array name="countries_list">
+        <item>Afghanistan</item>
+        <item>Albania</item>
+        <item>Australia</item>
+        <item>Bangladesh</item>
+        <item>Bhutan</item>
+        <item>England</item>
+        <item>Finland</item>
+        <item>India</item>
+        <item>Saudi Arabia</item>
+        <item>Nepal</item>
+    </string-array>
+    
+    
+    <!-- seettings account -->
+    
+    <string name="seettings_account_title"><u>General Information</u></string>
+    <string name="settings_account_gender_label">Gender: </string> 
+    <string name="settings_account_dob_label">Date Of Birth: </string>
+    <string name="settings_account_Country_label">Country: </string>
+    <string name="settings_account_tome_town_label">Home Town: </string>
+    <string name="settings_account_store_address_label">Store Address: </string>
+    <string name="settings_account_clg_uni_label">College/University: </string>
+    <string name="settings_account_emp_label">Employer: </string>
+    <string name="settings_account_occupation_label">Occupation: </string>
+    <string name="settings_account_aboutme_label">About me: </string>
+    
+     <string name="seettings_account_information_title"><u>Account Information</u></string>
+     
+    
+    <string name="settings_account_ok_btn">OK</string>
+    
+</resources>
