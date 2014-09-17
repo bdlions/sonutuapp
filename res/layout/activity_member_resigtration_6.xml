@@ -1,0 +1,98 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="." >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="0dp" >
+
+        <!-- <include layout="@layout/partial_layout_header"/> -->
+
+        <LinearLayout
+            android:id="@+id/member_reg_box3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dip" >
+
+            <!-- Restration Email Label -->
+
+            <TextView
+                android:id="@+id/txtViewRegStep3H1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="25dip"
+                android:layout_marginTop="30dip"
+                android:gravity="center"
+                android:text="@string/member_reg_profile_info"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <!-- Country Label -->
+
+            <EditText
+                android:id="@+id/regeduationInputEdtTxt"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dip"
+                android:background="@drawable/backwithborder"
+                android:hint="@string/reg_country"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textColorHint="#0a000a" />
+
+            <EditText
+                android:id="@+id/regemployeInputEdtTxt"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/backwithborder"
+                android:hint="@string/reg_education"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textColorHint="#0a000a" />
+
+            <!-- Last Name Label -->
+
+            <EditText
+                android:id="@+id/regOccupationInputEdtTxt"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/backwithborder"
+                android:hint="@string/reg_employe"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textColorHint="#0a000a" />
+            
+            <EditText
+                android:id="@+id/regCountyInputEdtTxt"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dip"
+                android:background="@drawable/backwithborder"
+                android:hint="@string/reg_occupation"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textColorHint="#0a000a" />
+
+            <!-- SIgn up button -->
+
+            <Button
+                android:id="@+id/btnRegContinue6"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dip"
+                android:layout_marginTop="60dip"
+                android:background="@drawable/button"
+                android:text="@string/save_and_continue"
+                android:textColor="#fff1ff" />
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

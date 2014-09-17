@@ -28,20 +28,26 @@
             <!-- Email Label -->
 
             <EditText
+                android:id="@+id/loginEmailInputEditText"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dip"
-                android:layout_marginTop="5dip"
+                android:padding="10dp"
+                android:layout_marginBottom="15dip"
+                android:layout_marginTop="15dip"
+                android:background="@drawable/backwithborder"
                 android:hint="@string/label_email"
                 android:singleLine="true" />
             <!-- Password Label -->
 
             <EditText
+                android:id="@+id/loginPasswordInputEditText"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dip"
-                android:hint="@string/label_password"
+                android:padding="10dp"
+                android:layout_marginTop="15dip"
                 android:layout_marginBottom="15dip"
+                android:background="@drawable/backwithborder"
+                android:hint="@string/label_password"
                 android:inputType="textPassword"
                 android:singleLine="true" />
             <!-- Login button -->

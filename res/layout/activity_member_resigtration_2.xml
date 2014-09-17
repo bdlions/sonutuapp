@@ -26,6 +26,7 @@
 
             <!-- Restration Password Label -->
             <TextView
+                android:id="@+id/txtViewRegStep2H1"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dip"
@@ -36,31 +37,36 @@
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <TextView
-                android:id="@+id/textView1"
+                android:id="@+id/txtViewRegStep2H2"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dip"
-                android:layout_marginBottom="10dip"
+                android:layout_marginTop="20dip"
+                android:layout_marginBottom="20dip"
                 android:gravity="center"
                 android:text="@string/reg_pass_text"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="?android:attr/textAppearanceSmall" />
 
             <EditText
+                android:id="@+id/regPasswordInputEdtTxt"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dip"
-                android:layout_marginTop="5dip"
+                android:layout_marginBottom="60dip"
+                android:layout_marginTop="15dip"
+                android:padding="10dp"
+                android:textColorHint="#0a000a"
+                android:background="@drawable/backwithborder"
                 android:hint="@string/reg_password"
                 android:singleLine="true" />
 
             
 			<!-- Registration continue button -->
             <Button
-                android:id="@+id/btnLogin"
+                android:id="@+id/btnRegContinue2"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dip"
+                android:layout_marginTop="40dip"
                 android:layout_marginBottom="10dip"
+                android:textColor="#fff1ff"
                 android:background="@drawable/button"
                 android:text="@string/button_text_member_reg" />
  
@@ -75,7 +81,7 @@
                 android:layout_marginTop="20dip"
                 android:gravity="center"
                 android:text="@string/sign_in_text"
-                android:textColor="#00acea"
+                android:textColor="#7f7f7f"
                 android:textSize="20sp" />
         </LinearLayout>
     </LinearLayout>

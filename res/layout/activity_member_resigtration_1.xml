@@ -26,6 +26,7 @@
 
             <!-- First Name Label -->
             <TextView
+                android:id="@+id/txtViewRegStep1H1"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dip"
@@ -37,38 +38,48 @@
 			
             <!-- First Name Label -->
             <TextView
-                android:id="@+id/textView1"
+                android:id="@+id/txtViewRegStep1H2"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dip"
-                android:layout_marginBottom="10dip"
+                android:layout_marginBottom="20dip"
                 android:gravity="center"
+                android:textColor="#000000"
                 android:text="@string/reg_Title"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="?android:attr/textAppearanceSmall" />
 
             <EditText
+                android:id="@+id/regFnameInputEdtTxt"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dip"
                 android:layout_marginTop="5dip"
+                android:layout_marginBottom="20dip"
+                android:padding="10dp"
+                android:textColorHint="#0a000a"
+                android:background="@drawable/backwithborder"
                 android:hint="@string/reg_first_name"
                 android:singleLine="true" />
             
             <!-- Last Name Label -->
             <EditText
+                android:id="@+id/regLnameInputEdtTxt"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dip"
+                android:padding="10dp"
+                android:textColorHint="#0a000a"
+                android:background="@drawable/backwithborder"
                 android:hint="@string/reg_last_name"
                 android:singleLine="true" />
             
             <!-- Registration continue button -->
             <Button
-                android:id="@+id/btnLogin"
+                android:id="@+id/btnRegContinue1"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dip"
                 android:layout_marginBottom="10dip"
+                android:textColor="#fff1ff"
                 android:background="@drawable/button"
                 android:text="@string/button_text_member_reg" />
 
@@ -82,7 +93,7 @@
                 android:layout_marginTop="20dip"
                 android:gravity="center"
                 android:text="@string/sign_in_text"
-                android:textColor="#00acea"
+                android:textColor="#7f7f7f"
                 android:textSize="20sp" />
         </LinearLayout>
     </LinearLayout>

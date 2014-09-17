@@ -4,8 +4,8 @@
     <string name="action_settings">Settings</string>
     
     <!-- Member registration step 1 -->
-    <string name="member_reg_Title"><u>Whats your name?</u></string>
-    <string name="reg_Title">We will show this name everywhere within this app,so use your real name</string>
+    <string name="member_reg_Title"><u>"What's your name?"</u></string>
+    <string name="reg_Title">Using your real name allows friends to connect and provides a better experience</string>
     <string name="reg_first_name">First Name</string>
     <string name="reg_last_name">Last Name</string>
     <string name="button_text_member_reg">Continue</string>
@@ -13,18 +13,35 @@
     
     <!-- Member registration step 2 -->
     <string name="member_reg_Title_for_password"><u>Create a password</u></string>
-    <string name="reg_pass_text">To create a strong password,use combinations of letters, digit, punctuations and atleast 8 characters</string>
+    <string name="reg_pass_text">Enter a combinations of al least 8 characters.Use letters, digit, punctuations to create a strong password</string>
     <string name="reg_password">Password</string>
     
-    <!-- Member registration step 2 -->
+    <!-- Member registration step 3 -->
     <string name="member_reg_Title_for_email"><u>Enter a e-mail address</u></string>
-    <string name="reg_email_text">Use this email address through this app as username</string>
+    <string name="reg_email_text">"You'll use your email address to login"</string>
     <string name="reg_email">Email</string>
     
+     <!-- Member registration step 4 -->
+    <string name="member_profile_setting_interest"><u>"Select your interests from the chart"</u></string>
+    
+    <!-- Member registration step 5 -->
+    <string name="member_reg_Title_for_gender"><u>"What's your gender?"</u></string>
+    <string name="save_and_continue">Save and Continue</string>
+    
+    <!-- Member registration step 6 -->
+    <string name="member_reg_profile_info"><u>"Enter your profile information"</u></string>
+    <string name="reg_country">Country</string>
+    <string name="reg_education">School/Collage/University</string>
+    <string name="reg_employe">Employe</string>
+    <string name="reg_occupation">Occupation</string>
+    
+    <!-- Member registration step 8 -->
+    <string name="member_reg_profile_pic"><u>"Add a profile picture"</u></string>
+    <string name="member_profile_setting_skip"><u>"Skip this step"</u></string>
     
     <!-- Initial member setting related text -->
     <string name="member_setting_birthday_title">
-        <u>When your birthday?</u>
+        <u><b>When your birthday?</b></u>
     </string>
     
     <string name="member_setting_upload_pic_title">
@@ -66,7 +83,6 @@
         <item>Saudi Arabia</item>
         <item>Nepal</item>
     </string-array>
-    
     
     <!-- seettings account -->
     
