@@ -4,7 +4,7 @@
     <string name="action_settings">Settings</string>
     
     <!-- Member registration step 1 -->
-    <string name="member_reg_Title"><u>"What's your name?"</u></string>
+    <string name="member_reg_Title"><u><b>"What's your name?"</b></u></string>
     <string name="reg_Title">Using your real name allows friends to connect and provides a better experience</string>
     <string name="reg_first_name">First Name</string>
     <string name="reg_last_name">Last Name</string>
@@ -17,7 +17,7 @@
     <string name="reg_password">Password</string>
     
     <!-- Member registration step 3 -->
-    <string name="member_reg_Title_for_email"><u>Enter a e-mail address</u></string>
+    <string name="member_reg_Title_for_email"><u>Enter your e-mail address</u></string>
     <string name="reg_email_text">"You'll use your email address to login"</string>
     <string name="reg_email">Email</string>
     
@@ -101,5 +101,10 @@
      
     
     <string name="settings_account_ok_btn">OK</string>
+    
+    
+    <string name="sample_upload_img">This is sample image for img upload</string>
+    <string name="gender_male_img">Male</string>
+    <string name="gender_female_img">Female</string>
     
 </resources>

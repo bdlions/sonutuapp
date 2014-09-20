@@ -14,7 +14,7 @@
         android:orientation="vertical"
         android:paddingTop="0dp" >
 
-        <!-- <include layout="@layout/partial_layout_header"/> -->
+         <include layout="@layout/partial_layout_header"/> 
 
         <LinearLayout
             android:id="@+id/member_reg_box3"
@@ -45,6 +45,7 @@
                 android:background="@drawable/backwithborder"
                 android:hint="@string/reg_country"
                 android:padding="10dp"
+                android:textSize="15sp"
                 android:singleLine="true"
                 android:textColorHint="#0a000a" />
 
@@ -55,6 +56,7 @@
                 android:background="@drawable/backwithborder"
                 android:hint="@string/reg_education"
                 android:padding="10dp"
+                android:textSize="15sp"
                 android:singleLine="true"
                 android:textColorHint="#0a000a" />
 
@@ -67,6 +69,7 @@
                 android:background="@drawable/backwithborder"
                 android:hint="@string/reg_employe"
                 android:padding="10dp"
+                android:textSize="15sp"
                 android:singleLine="true"
                 android:textColorHint="#0a000a" />
             
@@ -78,6 +81,7 @@
                 android:background="@drawable/backwithborder"
                 android:hint="@string/reg_occupation"
                 android:padding="10dp"
+                android:textSize="15sp"
                 android:singleLine="true"
                 android:textColorHint="#0a000a" />
 
@@ -90,6 +94,7 @@
                 android:layout_marginBottom="10dip"
                 android:layout_marginTop="60dip"
                 android:background="@drawable/button"
+                android:textSize="15sp"
                 android:text="@string/save_and_continue"
                 android:textColor="#fff1ff" />
         </LinearLayout>

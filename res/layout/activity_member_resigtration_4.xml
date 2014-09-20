@@ -40,8 +40,9 @@
 
             <ImageView
                 android:id="@+id/imageView1"
+                android:contentDescription="@string/gender_female_img"
                 android:layout_width="144dp"
-                android:layout_height="130dp"
+                android:layout_height="0dp"
                 android:layout_gravity="center"
                 android:layout_weight="0.08"
             	android:background="@drawable/image_border"
@@ -50,9 +51,10 @@
             <Button
                 android:id="@+id/btnRegContinue4"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="34dp"
                 android:layout_marginBottom="10dip"
                 android:layout_marginTop="60dip"
+                android:textSize="15sp"
                 android:background="@drawable/button"
                 android:text="@string/save_and_continue"
                 android:textColor="#fff1ff" />
@@ -66,7 +68,7 @@
                 android:gravity="center"
                 android:text="@string/member_profile_setting_skip"
                 android:textColor="#7f7f7f"
-                android:textSize="20sp" />
+                android:textSize="15sp" />
         </LinearLayout>
 
     </LinearLayout>

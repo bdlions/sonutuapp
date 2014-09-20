@@ -8,13 +8,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="." >
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="0dp"
-        android:orientation="vertical">
-        
-        <!-- <include layout="@layout/partial_layout_header"/> -->
 
         <LinearLayout
             android:id="@+id/member_reg_box3"
@@ -49,27 +42,28 @@
             <EditText
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dip"
+                android:layout_marginBottom="40dip"
                 android:layout_marginTop="5dip"
                 android:hint="@string/reg_email"
                 android:padding="10dp"
                 android:textColorHint="#0a000a"
+                android:textSize="15sp"
                 android:background="@drawable/backwithborder"
                 android:singleLine="true" />
 
             
             <!-- SIgn up button -->
+
             <Button
                 android:id="@+id/btnRegContinue3"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="60dip"
+                android:layout_height="34dp"
                 android:layout_marginBottom="10dip"
-                android:textColor="#fff1ff"
+                android:layout_marginTop="60dip"
                 android:background="@drawable/button"
-                android:text="@string/button_text_member_reg" />
- 
-
+                android:text="@string/button_text_member_reg"
+                android:textColor="#fff1ff"
+                android:textSize="15sp" />
            
             <!-- Link to Login Screen -->
             <TextView
@@ -81,8 +75,7 @@
                 android:gravity="center"
                 android:text="@string/sign_in_text"
                 android:textColor="#7f7f7f"
-                android:textSize="20sp" />
+                android:textSize="15sp" />
         </LinearLayout>
-    </LinearLayout>
 
 </ScrollView>

@@ -47,16 +47,18 @@
 
                 <ImageButton
                     android:id="@+id/login_button"
+                    android:contentDescription="@string/gender_male_img"
+                    android:layout_width="0dp"
+                    android:layout_height="131dp"
+                    android:layout_weight="1.00"
+                    android:src="@drawable/user_male" />
+				
+                <ImageButton
+                    android:id="@+id/comapre_now_button"
+                    android:contentDescription="@string/gender_female_img"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1.00"
-                    android:src="@drawable/user_male" />
-
-                <ImageButton
-                    android:id="@+id/comapre_now_button"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:src="@drawable/user_female" />
 
                 
@@ -65,12 +67,14 @@
             <Button
                 android:id="@+id/btnRegContinue5"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="34dp"
                 android:layout_marginBottom="10dip"
                 android:layout_marginTop="60dip"
                 android:background="@drawable/button"
                 android:text="@string/save_and_continue"
-                android:textColor="#fff1ff" />
+                android:textColor="#fff1ff"
+                android:textSize="15sp" />
+
         </LinearLayout>
     </LinearLayout>
 

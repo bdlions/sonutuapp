@@ -8,13 +8,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="." >
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="0dp"
-        android:orientation="vertical">
-        
-        <!-- <include layout="@layout/partial_layout_header"/> -->
 
         <LinearLayout
             android:id="@+id/member_reg_box2"
@@ -47,12 +40,13 @@
                 android:textAppearance="?android:attr/textAppearanceSmall" />
 
             <EditText
-                android:id="@+id/regPasswordInputEdtTxt"
+                android:id="@+id/regPassInputEdtTxt"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="60dip"
                 android:layout_marginTop="15dip"
                 android:padding="10dp"
+                android:textSize="15sp"
                 android:textColorHint="#0a000a"
                 android:background="@drawable/backwithborder"
                 android:hint="@string/reg_password"
@@ -60,17 +54,17 @@
 
             
 			<!-- Registration continue button -->
+
             <Button
                 android:id="@+id/btnRegContinue2"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="40dip"
+                android:layout_height="33dp"
                 android:layout_marginBottom="10dip"
-                android:textColor="#fff1ff"
+                android:layout_marginTop="40dip"
                 android:background="@drawable/button"
-                android:text="@string/button_text_member_reg" />
- 
-
+                android:text="@string/button_text_member_reg"
+                android:textColor="#fff1ff"
+                android:textSize="15sp" />
            
             <!-- Link to Login Screen -->
             <TextView
@@ -82,8 +76,7 @@
                 android:gravity="center"
                 android:text="@string/sign_in_text"
                 android:textColor="#7f7f7f"
-                android:textSize="20sp" />
+                android:textSize="15sp" />
         </LinearLayout>
-    </LinearLayout>
 
 </ScrollView>
