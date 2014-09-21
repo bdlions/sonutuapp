@@ -1,8 +1,16 @@
 package com.sportzweb;
 
+
+import com.sampanit.sonutoapp.utils.AlertDialogManager;
+import com.sampanit.sonutoapp.utils.PersistentUser;
+import com.sampanit.sonutoapp.utils.UserSessionManager;
+import com.sampanit.sonutoapp.utils.WebUtil;
+
 import android.opengl.Visibility;
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.view.Gravity;
 import android.view.Menu;
@@ -10,107 +18,93 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextSwitcher;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
 public class LoginActivity extends Activity {
-
-	//TextSwitcher textswitcher_app_name;
 	
 	// Animation
     Animation animFadein;
     Animation animMove;
     TextView textview_app_name;
+    private Context mContext;
+	private EditText mEmail, mPassword;
+	TextView modelTextview;
+	// login button
+	Button btnLogin;
+	// Alert Dialog Manager
+	AlertDialogManager alert = new AlertDialogManager();
+	// Session Manager Class
+	UserSessionManager session;
     
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
 		
-//		textswitcher_app_name = (TextSwitcher) findViewById(R.id.textswitcher_app_name);
-//		
-//		// Set the ViewFactory of the TextSwitcher that will create TextView object when asked
-//		textswitcher_app_name.setFactory(new ViewSwitcher.ViewFactory() {
-//			
-//			@Override
-//			public View makeView() {
-//				 // TODO Auto-generated method stub
-//                // create new textView and set the properties like clolr, size etc
-//                TextView myText = new TextView(LoginActivity.this);
-//                myText.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL);
-//                myText.setTextSize(36);
-//                myText.setTextColor(Color.BLUE);
-//                return myText;
-//			}
-//		});
-//		textswitcher_app_name.setText("sdfsdfdsf");
-//        
-//		// Declare the in and out animations and initialize them 
-//        Animation in = AnimationUtils.loadAnimation(this,android.R.anim.slide_in_left);
-//        Animation out = AnimationUtils.loadAnimation(this,android.R.anim.slide_out_right);
-//       
-//        // set the animation type of textSwitcher
-//        textswitcher_app_name.setInAnimation(in);
-//        textswitcher_app_name.setOutAnimation(out);
-		
-		
-		// load the animation
-		animMove = AnimationUtils.loadAnimation(getApplicationContext(),
-                R.anim.move); 
+		// Session Manager
+        session = new UserSessionManager(getApplicationContext());                
         
-		animMove.setAnimationListener(new AnimationListener() {
+        // Email, Password input text
+        mEmail = (EditText) findViewById(R.id.txtInpEmail);
+        mPassword = (EditText) findViewById(R.id.txtInpPassword); 
+        modelTextview = (TextView)findViewById(R.id.link_to_register);
+        
+        Toast.makeText(getApplicationContext(), "User Login Status: " + session.isLoggedIn(), Toast.LENGTH_LONG).show();
+        
+        
+        // Login button
+        btnLogin = (Button) findViewById(R.id.btnLogin);
+        
+        // Login button click event
+        btnLogin.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
-			public void onAnimationStart(Animation arg0) {
-				// TODO Auto-generated method stub
+			public void onClick(View arg0) {
+				// Get username, password from EditText
+				String username = mEmail.getText().toString();
+				String password = mPassword.getText().toString();
 				
-			}
-			
-			@Override
-			public void onAnimationRepeat(Animation arg0) {
-				// TODO Auto-generated method stub
+				// Check if username, password is filled				
+				if(username.trim().length() > 0 && password.trim().length() > 0){
+					// For testing puspose username, password is checked with sample data
+					// username = test
+					// password = test
+					if(username.equals("test") && password.equals("test")){
+						// Creating user login session
+						// For testing i am stroing name, email as follow
+						// Use user real data
+						session.createLoginSession("test@gmail.com", "test");
+						
+						// Staring MainActivity
+						Intent i = new Intent(getApplicationContext(), MainActivity.class);
+						startActivity(i);
+						finish();
+						
+					}else{
+						// username / password doesn't match
+						alert.showAlertDialog(LoginActivity.this, "Login failed..", "Username/Password is incorrect", false);
+					}				
+				}else{
+					// user didn't entered username or password
+					// Show alert asking him to enter the details
+					alert.showAlertDialog(LoginActivity.this, "Login failed..", "Please enter username and password", false);
+				}
 				
-			}
-			
-			@Override
-			public void onAnimationEnd(Animation arg0) {
-				// TODO Auto-generated method stub
-				LinearLayout loginbox = (LinearLayout)findViewById(R.id.loginbox);
-				loginbox.setVisibility(View.VISIBLE);
-				
-				// load the animation
-				animFadein = AnimationUtils.loadAnimation(getApplicationContext(),
-		                R.anim.fade_in); 
-		        
-				animFadein.setAnimationListener(new AnimationListener() {
-					
-					@Override
-					public void onAnimationStart(Animation arg0) {
-						// TODO Auto-generated method stub
-						
-					}
-					
-					@Override
-					public void onAnimationRepeat(Animation arg0) {
-						// TODO Auto-generated method stub
-						
-					}
-					
-					@Override
-					public void onAnimationEnd(Animation arg0) {
-						// TODO Auto-generated method stub
-						
-					}
-				});
-		        
-				loginbox.startAnimation(animFadein);
 			}
 		});
         
-        textview_app_name = (TextView) findViewById(R.id.textview_app_name);
-        textview_app_name.startAnimation(animMove);
+
+		
+		
+		//mContext = this;
+        // Initialize UI method 
+        //initUi();
 	}
 
 	@Override
@@ -118,6 +112,72 @@ public class LoginActivity extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.login, menu);
 		return true;
+	}
+	
+	
+	/*
+	 *  Initialize UI
+	 */
+	/*private void initUi() {
+		
+		mEmail = (EditText) findViewById(R.id.txtInpEmail);
+		mPassword = (EditText) findViewById(R.id.txtInpPassword);
+		
+		if(PersistentUser.isLogged(mContext)) {
+			LoginActivity.this.finish();
+			
+			//Intent intent = new Intent(mContext, MainActivity.class);
+			//startActivity(intent);
+		}
+		
+	}*/
+	
+	
+	/*
+	 * 	Submit button click action
+	 */
+	public void loginSubmit(View view) {
+		if(isVerified()) {
+			doLogin();
+		}
+	}
+	
+	
+	/*
+	 * 	Request Server for login
+	 */
+	private void doLogin() {
+		
+	}
+	
+	
+	/*
+	 * 	Verification Login Screen Data
+	 */
+	private boolean isVerified() {
+		if(mEmail.getText().toString().trim().length() == 0) {
+			Toast.makeText(mContext, getString(R.string.emailRequired), Toast.LENGTH_SHORT).show();
+			return false;
+		} else if(!WebUtil.isValidEmailAddress(mEmail.getText().toString().trim())) {
+			Toast.makeText(mContext, getString(R.string.validEmail), Toast.LENGTH_SHORT).show();
+			return false;
+		}else if(mPassword.getText().toString().trim().length() == 0) {
+			Toast.makeText(mContext, getString(R.string.passwordRequired), Toast.LENGTH_SHORT).show();
+			return false;
+		} else {
+			return true;
+		}
+		
+	}
+	
+	
+	/*
+	 * 	Create new account click action
+	 */
+	public void newAccount(View view) {
+		//Toast.makeText(getApplicationContext(), "msg msg", Toast.LENGTH_SHORT).show();
+		Intent intent = new Intent(mContext, Registration1Activity.class);
+		startActivity(intent);
 	}
 
 	

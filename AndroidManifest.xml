@@ -22,6 +22,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
+        <activity
+            android:name="com.sportzweb.MainActivity"
+            android:label="@string/title_activity_main" >
+        </activity>
+        <activity
+            android:name="com.sportzweb.Registration1Activity"
+            android:label="@string/title_activity_registration1" >
+        </activity>
     </application>
 
 </manifest>

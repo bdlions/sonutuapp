@@ -19,20 +19,20 @@
         <LinearLayout
             android:id="@+id/loginbox"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical"
+            android:layout_gravity="center_vertical"
             android:padding="10dip"
-            android:visibility="invisible"
              >
 
             <!-- Email Label -->
 
             <EditText
-                android:id="@+id/textEmail"
+                android:id="@+id/txtInpEmail"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
-                android:layout_marginBottom="15dip"
+                android:layout_marginBottom="10dip"
                 android:layout_marginTop="15dip"
                 android:background="@drawable/backwithborder"
                 android:hint="@string/label_email"
@@ -40,7 +40,7 @@
             <!-- Password Label -->
 
             <EditText
-                android:id="@+id/loginPasswordInputEditText"
+                android:id="@+id/txtInpPassword"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
@@ -58,7 +58,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dip"
                 android:background="@drawable/button"
-                android:text="@string/button_text_login" />
+                android:text="@string/button_text_login" 
+                />
             <!-- Link to Registration Screen -->
 
             <TextView
@@ -74,7 +75,7 @@
                 android:textSize="20sp" />
             <!-- Link to Registration Screen -->
 
-            <TextView
+            <Button
                 android:id="@+id/link_to_register"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -83,6 +84,8 @@
                 android:gravity="center"
                 android:text="@string/register_account_text"
                 android:textColor="#00acea"
+                android:background="#ffffff"
+                android:onClick="newAccount"
                 android:textSize="20sp" />
         </LinearLayout>
     </LinearLayout>
