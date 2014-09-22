@@ -1,30 +1,22 @@
 package com.sportzweb;
 
 
+
 import com.sampanit.sonutoapp.utils.AlertDialogManager;
-import com.sampanit.sonutoapp.utils.PersistentUser;
 import com.sampanit.sonutoapp.utils.UserSessionManager;
 import com.sampanit.sonutoapp.utils.WebUtil;
 
-import android.opengl.Visibility;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.View;
 import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextSwitcher;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.ViewSwitcher;
 
 public class LoginActivity extends Activity {
 	
@@ -46,7 +38,7 @@ public class LoginActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
-		
+		mContext = this;
 		// Session Manager
         session = new UserSessionManager(getApplicationContext());                
         
@@ -105,13 +97,6 @@ public class LoginActivity extends Activity {
 		//mContext = this;
         // Initialize UI method 
         //initUi();
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.login, menu);
-		return true;
 	}
 	
 	
@@ -175,11 +160,9 @@ public class LoginActivity extends Activity {
 	 * 	Create new account click action
 	 */
 	public void newAccount(View view) {
-		//Toast.makeText(getApplicationContext(), "msg msg", Toast.LENGTH_SHORT).show();
-		Intent intent = new Intent(mContext, Registration1Activity.class);
+		LoginActivity.this.finish();
+		
+		Intent intent = new Intent(mContext, RegistrationActivity.class);
 		startActivity(intent);
 	}
-
-	
-
 }

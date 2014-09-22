@@ -62,7 +62,7 @@
                 />
             <!-- Link to Registration Screen -->
 
-            <TextView
+            <Button
                 android:id="@+id/link_to_forgot_password"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -72,6 +72,7 @@
                 android:gravity="center"
                 android:text="@string/forgot_password_text"
                 android:textColor="#00acea"
+                android:background="#ffffff"
                 android:textSize="20sp" />
             <!-- Link to Registration Screen -->
 
