@@ -5,6 +5,8 @@ package com.sportzweb;
 import com.sampanit.sonutoapp.utils.AlertDialogManager;
 import com.sampanit.sonutoapp.utils.UserSessionManager;
 import com.sampanit.sonutoapp.utils.WebUtil;
+import com.sonuto.session.ISessionManager;
+import com.sonuto.session.SessionManager;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -32,7 +34,7 @@ public class LoginActivity extends Activity {
 	// Alert Dialog Manager
 	AlertDialogManager alert = new AlertDialogManager();
 	// Session Manager Class
-	UserSessionManager session;
+	ISessionManager session;
     
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -40,14 +42,20 @@ public class LoginActivity extends Activity {
 		setContentView(R.layout.activity_login);
 		mContext = this;
 		// Session Manager
-        session = new UserSessionManager(getApplicationContext());                
+        session = new SessionManager(getApplicationContext());   
+        if(session.isLoggedIn()){
+        	// Staring MainActivity
+			Intent i = new Intent(getApplicationContext(), MainActivity.class);
+			startActivity(i);
+			finish();
+        }
         
         // Email, Password input text
         mEmail = (EditText) findViewById(R.id.txtInpEmail);
         mPassword = (EditText) findViewById(R.id.txtInpPassword); 
         modelTextview = (TextView)findViewById(R.id.link_to_register);
         
-        Toast.makeText(getApplicationContext(), "User Login Status: " + session.isLoggedIn(), Toast.LENGTH_LONG).show();
+        //Toast.makeText(getApplicationContext(), "User Login Status: " + session.isLoggedIn(), Toast.LENGTH_LONG).show();
         
         
         // Login button
@@ -71,12 +79,24 @@ public class LoginActivity extends Activity {
 						// Creating user login session
 						// For testing i am stroing name, email as follow
 						// Use user real data
-						session.createLoginSession("test@gmail.com", "test");
+						if(session.logInUser("abc@yahoo.com", "password")){
+							/**
+							 * Login succesfull 
+							 * */
+							
+							// Staring MainActivity
+							Intent i = new Intent(getApplicationContext(), MainActivity.class);
+							startActivity(i);
+							finish();
+						}
+						else{
+							/**
+							 * Login unsuccessful
+							 * */
+							alert.showAlertDialog(LoginActivity.this, "Login failed..", "Username/Password is incorrect", false);
+						}
 						
-						// Staring MainActivity
-						Intent i = new Intent(getApplicationContext(), MainActivity.class);
-						startActivity(i);
-						finish();
+						
 						
 					}else{
 						// username / password doesn't match

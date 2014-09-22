@@ -2,7 +2,6 @@ package com.sportzweb;
 
 
 import com.sampanit.sonutoapp.utils.AlertDialogManager;
-import com.sampanit.sonutoapp.utils.PersistentUser;
 import com.sampanit.sonutoapp.utils.UserSessionManager;
 import com.sampanit.sonutoapp.utils.WebUtil;
 

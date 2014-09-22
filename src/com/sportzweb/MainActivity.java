@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.LayoutInflater;
@@ -15,6 +16,9 @@ import android.widget.Toast;
 
 import com.sampanit.sonutoapp.utils.AlertDialogManager;
 import com.sampanit.sonutoapp.utils.UserSessionManager;
+import com.sonuto.session.ISessionManager;
+import com.sonuto.session.SessionManager;
+import com.sonuto.users.UserInfo;
 
 public class MainActivity extends Activity {
 	
@@ -22,7 +26,7 @@ public class MainActivity extends Activity {
 		AlertDialogManager alert = new AlertDialogManager();
 		
 		// Session Manager Class
-		UserSessionManager session;
+		ISessionManager session;
 		
 		// Button Logout
 		Button btnLogout;
@@ -33,7 +37,7 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		
 		// Session class instance
-        session = new UserSessionManager(getApplicationContext());
+        session = new SessionManager(getApplicationContext());
         
         TextView lblName = (TextView) findViewById(R.id.lblName);
         TextView lblEmail = (TextView) findViewById(R.id.lblEmail);
@@ -49,20 +53,13 @@ public class MainActivity extends Activity {
          * This will redirect user to LoginActivity is he is not
          * logged in
          * */
-        session.checkLogin();
+        if(session.isLoggedIn()){
         
-        // get user data from session
-        HashMap<String, String> user = session.getUserDetails();
-        
-        // name
-        String password = user.get(UserSessionManager.KEY_PASSWORD);
-        
-        // email
-        String email = user.get(UserSessionManager.KEY_EMAIL);
-        
-        // displaying user data
-        lblEmail.setText(Html.fromHtml("Email: <b>" + email + "</b>"));
-        lblName.setText(Html.fromHtml("Name: <b>" + password + "</b>"));
+	        // get user data from session
+	        
+	        lblEmail.setText(Html.fromHtml("Email: <b>" + session.getUserName() + "</b>"));
+	        lblName.setText(Html.fromHtml("Name: <b>" + session.getDisplayName() + "</b>"));
+        }
         
         
         /**
@@ -75,7 +72,23 @@ public class MainActivity extends Activity {
 				// Clear the session data
 				// This will clear all session data and 
 				// redirect user to LoginActivity
-				session.logoutUser();
+				if(session.logoutUser()){
+					// After logout redirect user to Loing Activity
+					Intent i = new Intent(getApplicationContext(), LoginActivity.class);
+					// Closing all the Activities
+					i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+					
+					// Add new Flag to start new Activity
+					i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+					
+					// Staring Login Activity
+					startActivity(i);
+				}
+				else{
+					/**
+					 * Logging out is impossible now
+					 * */
+				}
 			}
 		});
 		
