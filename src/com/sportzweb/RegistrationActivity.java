@@ -12,6 +12,8 @@ import com.sampanit.sonutoapp.utils.AlertDialogManager;
 import com.sampanit.sonutoapp.utils.AssetsPropertyReader;
 import com.sampanit.sonutoapp.utils.UserSessionManager;
 import com.sampanit.sonutoapp.utils.WebUtil;
+import com.sonuto.rpc.ICallBack;
+import com.sonuto.rpc.register.User;
 
 
 
@@ -99,60 +101,92 @@ public class RegistrationActivity extends Activity {
 	 */
 	public void regStep3(View view) {
 		userValue();
-		if(isVerifiedStep3()) {
-			//reg_step_1_layout.setVisibility(View.VISIBLE);
-			//reg_step_3_layout.setVisibility(View.GONE);
-			
-			//Here we are reading server url from properties file
-			AssetsPropertyReader asserproperties = new AssetsPropertyReader(RegistrationActivity.this);
-			Properties project_properties = asserproperties.getProperties("project_config.properties");
-			
-			JSONHandler task = new JSONHandler();
-			String ss = project_properties.getProperty("server_url") + "user_registration_login/";
-		    task.execute(new String[] {ss});
-			
-//			RegistrationActivity.this.finish();
-//			Intent intent = new Intent(mContext, MemberSettingActivity.class);
-//			startActivity(intent);
-			
+		if (isVerifiedStep3()) {
+			User user = new User();
+			try {
+					JSONObject jsonUser = new JSONObject();
+					jsonUser.put("first_name", fname);
+					jsonUser.put("last_name", lname);
+					jsonUser.put("email", email);
+					jsonUser.put("password", password);
+	
+					user.regiserUser(new ICallBack() {
+						@Override
+						public void callBackResultHandler(Object object) {
+							// TODO Auto-generated method stub
+							System.out.println(object);
+						}
+	
+						@Override
+						public void callBackErrorHandler(Object object) {
+							// TODO Auto-generated method stub
+							System.out.println(object);
+						}
+					}, jsonUser.toString());
+				
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			// reg_step_1_layout.setVisibility(View.VISIBLE);
+			// reg_step_3_layout.setVisibility(View.GONE);
+
+			// Here we are reading server url from properties file
+			// AssetsPropertyReader asserproperties = new
+			// AssetsPropertyReader(RegistrationActivity.this);
+			// Properties project_properties =
+			// asserproperties.getProperties("project_config.properties");
+			//
+			// JSONHandler task = new JSONHandler();
+			// String ss = project_properties.getProperty("server_url") +
+			// "user_registration_login/";
+			// task.execute(new String[] {ss});
+
+			// RegistrationActivity.this.finish();
+			// Intent intent = new Intent(mContext,
+			// MemberSettingActivity.class);
+			// startActivity(intent);
+
 		}
-		
+
 	}
 	
-	private class JSONHandler extends AsyncTask<String, Void, String> {
-
-	    @Override
-	    protected String doInBackground(String... urls) {
-	        for (String url : urls) {
-	            JSONRPCClient client = JSONRPCClient.create(url, Versions.VERSION_2);
-	            client.setConnectionTimeout(2000);
-	            client.setSoTimeout(2000);
-	            
-	            JSONObject user = new JSONObject();
-	            try {
-	            	//String all_urses = client.callString("getAllUsers");
-
-	        		try {
-	        			user.put("first_name", fname);
-	        			user.put("last_name", lname);
-	        			user.put("email", email);
-	        			user.put("password", password);
-
-	        		} catch (JSONException e) {
-	        		    // TODO Auto-generated catch block
-	        		    e.printStackTrace();
-	        		}
-	            	
-	            	String flag = client.callString("userRegistration", user.toString());
-	            	System.out.println(flag);
-	        		
-	            } catch (JSONRPCException e) {
-	                e.printStackTrace(); //Invalid JSON Response caught here
-	            }
-	        }
-	        return null;
-	    }
-	}
+//	private class JSONHandler extends AsyncTask<String, Void, String> {
+//
+//		
+//	    @Override
+//	    protected String doInBackground(String... urls) {
+//	        for (String url : urls) {
+//	            JSONRPCClient client = JSONRPCClient.create(url, Versions.VERSION_2);
+//	            client.setConnectionTimeout(2000);
+//	            client.setSoTimeout(2000);
+//	            
+//	            JSONObject user = new JSONObject();
+//	            try {
+//	            	//String all_urses = client.callString("getAllUsers");
+//
+//	        		try {
+//	        			user.put("first_name", fname);
+//	        			user.put("last_name", lname);
+//	        			user.put("email", email);
+//	        			user.put("password", password);
+//
+//	        		} catch (JSONException e) {
+//	        		    // TODO Auto-generated catch block
+//	        		    e.printStackTrace();
+//	        		}
+//	            	
+//	            	String flag = client.callString("userRegistration", user.toString());
+//	            	System.out.println(flag);
+//	        		
+//	            } catch (JSONRPCException e) {
+//	                e.printStackTrace(); //Invalid JSON Response caught here
+//	            }
+//	        }
+//	        return null;
+//	    }
+//	}
 	
 	/**
 	 * 

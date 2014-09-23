@@ -1,12 +1,13 @@
 #################
 ## Eclipse
 #################
-
+project.properties
 *.pydevproject
 .project
 .metadata
 bin/
 tmp/
+gen/
 *.tmp
 *.bak
 *.swp

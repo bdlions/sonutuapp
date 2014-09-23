@@ -5,8 +5,6 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 
 import com.google.gson.Gson;
-import com.sonuto.users.BusinessMan;
-import com.sonuto.users.IBusinessMan;
 import com.sonuto.users.UserInfo;
 
 public class SessionManager implements ISessionManager {

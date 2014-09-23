@@ -5,6 +5,8 @@ package com.sportzweb;
 import com.sampanit.sonutoapp.utils.AlertDialogManager;
 import com.sampanit.sonutoapp.utils.UserSessionManager;
 import com.sampanit.sonutoapp.utils.WebUtil;
+import com.sonuto.rpc.ICallBack;
+import com.sonuto.rpc.register.User;
 import com.sonuto.session.ISessionManager;
 import com.sonuto.session.SessionManager;
 
@@ -42,72 +44,77 @@ public class LoginActivity extends Activity {
 		setContentView(R.layout.activity_login);
 		mContext = this;
 		// Session Manager
-        session = new SessionManager(getApplicationContext());   
-        if(session.isLoggedIn()){
-        	// Staring MainActivity
+		session = new SessionManager(getApplicationContext());
+		if (session.isLoggedIn()) {
+			// Staring MainActivity
 			Intent i = new Intent(getApplicationContext(), MainActivity.class);
 			startActivity(i);
 			finish();
-        }
-        
-        // Email, Password input text
-        mEmail = (EditText) findViewById(R.id.txtInpEmail);
-        mPassword = (EditText) findViewById(R.id.txtInpPassword); 
-        modelTextview = (TextView)findViewById(R.id.link_to_register);
-        
-        //Toast.makeText(getApplicationContext(), "User Login Status: " + session.isLoggedIn(), Toast.LENGTH_LONG).show();
-        
-        
-        // Login button
-        btnLogin = (Button) findViewById(R.id.btnLogin);
-        
-        // Login button click event
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-			
+		}
+
+		// Email, Password input text
+		mEmail = (EditText) findViewById(R.id.txtInpEmail);
+		mPassword = (EditText) findViewById(R.id.txtInpPassword);
+		modelTextview = (TextView) findViewById(R.id.link_to_register);
+
+		// Toast.makeText(getApplicationContext(), "User Login Status: " +
+		// session.isLoggedIn(), Toast.LENGTH_LONG).show();
+
+		// Login button
+		btnLogin = (Button) findViewById(R.id.btnLogin);
+
+		// Login button click event
+		btnLogin.setOnClickListener(new View.OnClickListener() {
+
 			@Override
 			public void onClick(View arg0) {
 				// Get username, password from EditText
 				String username = mEmail.getText().toString();
 				String password = mPassword.getText().toString();
-				
-				// Check if username, password is filled				
-				if(username.trim().length() > 0 && password.trim().length() > 0){
-					// For testing puspose username, password is checked with sample data
+
+				// Check if username, password is filled
+				if (username.trim().length() > 0
+						&& password.trim().length() > 0) {
+					// For testing puspose username, password is checked with
+					// sample data
 					// username = test
 					// password = test
-					if(username.equals("test") && password.equals("test")){
+					if (username.equals("test") && password.equals("test")) {
 						// Creating user login session
 						// For testing i am stroing name, email as follow
 						// Use user real data
-						if(session.logInUser("abc@yahoo.com", "password")){
+						if (session.logInUser("abc@yahoo.com", "password")) {
 							/**
-							 * Login succesfull 
+							 * Login succesfull
 							 * */
-							
+
 							// Staring MainActivity
-							Intent i = new Intent(getApplicationContext(), MainActivity.class);
+							Intent i = new Intent(getApplicationContext(),
+									MainActivity.class);
 							startActivity(i);
 							finish();
-						}
-						else{
+						} else {
 							/**
 							 * Login unsuccessful
 							 * */
-							alert.showAlertDialog(LoginActivity.this, "Login failed..", "Username/Password is incorrect", false);
+							alert.showAlertDialog(LoginActivity.this,
+									"Login failed..",
+									"Username/Password is incorrect", false);
 						}
-						
-						
-						
-					}else{
+
+					} else {
 						// username / password doesn't match
-						alert.showAlertDialog(LoginActivity.this, "Login failed..", "Username/Password is incorrect", false);
-					}				
-				}else{
+						alert.showAlertDialog(LoginActivity.this,
+								"Login failed..",
+								"Username/Password is incorrect", false);
+					}
+				} else {
 					// user didn't entered username or password
 					// Show alert asking him to enter the details
-					alert.showAlertDialog(LoginActivity.this, "Login failed..", "Please enter username and password", false);
+					alert.showAlertDialog(LoginActivity.this, "Login failed..",
+							"Please enter username and password", false);
 				}
-				
+
 			}
 		});
         
@@ -117,6 +124,7 @@ public class LoginActivity extends Activity {
 		//mContext = this;
         // Initialize UI method 
         //initUi();
+		
 	}
 	
 	
