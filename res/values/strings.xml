@@ -24,7 +24,8 @@
 
     <!-- Member registration step 4 -->
     <string name="member_profile_setting_interest"><u>"Select your interests from the chart"</u></string>
-
+	<string name="str_tv_title">AChartEngine </string>
+	
     <!-- Member registration step 5 -->
     <string name="member_reg_Title_for_gender"><u>"What's your gender?"</u></string>
     <string name="save_and_continue">Save and Continue</string>
@@ -102,9 +103,16 @@
     <string name="emailRequired">Email Required!</string>
     <string name="validEmail">Email Should be valid!</string>
     <string name="passwordRequired">Password Required!</string>
+    <string name="passwordLengthRequired">Password should be atleast 4 character!</string>
     <string name="emailNotExist">Email Not Exist!</string>
     <string name="emailAndPassNotMatch">Email and Password not match!</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_registration1">Registration1Activity</string>
+    
+    
+    <string name="firstnameRequired">Firstname Required!</string>
+    <string name="lastnameRequired">Lastname Required!</string>
+    
+    <string name="title_activity_member_setting">MemberSettingActivity</string>
 
 </resources>

@@ -14,7 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-             android:padding="10dip"
+            android:padding="10dip"
              >
 
             <TextView
@@ -77,16 +77,19 @@
                 android:background="@drawable/button"
                 android:text="@string/button_text_member_reg"
                 android:textColor="#fff1ff"
+                android:onClick="regStep1"
                 android:textSize="15sp" />
-            <TextView
+            <Button
                 android:id="@+id/link_to_register"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dip"
                 android:layout_marginTop="20dip"
                 android:gravity="center"
+                android:onClick="backLogin"
                 android:text="@string/sign_in_text"
                 android:textColor="#7f7f7f"
+                android:background="#ffffff"
                 android:textSize="15sp" />
         </LinearLayout>
 
@@ -103,9 +106,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="10dip"
-            
-             >
+            android:padding="10dip">
 
             <TextView
                 android:id="@+id/txtViewRegStep2H1"
@@ -139,6 +140,7 @@
                 android:padding="10dp"
                 android:singleLine="true"
                 android:textColorHint="#0a000a"
+                android:inputType="textPassword"
                 android:textSize="15sp" />
 
             <Button
@@ -150,9 +152,10 @@
                 android:background="@drawable/button"
                 android:text="@string/button_text_member_reg"
                 android:textColor="#fff1ff"
+                android:onClick="regStep2"
                 android:textSize="15sp" />
             
-            <TextView
+            <Button
                 android:id="@+id/link_to_register1"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -161,13 +164,15 @@
                 android:gravity="center"
                 android:text="@string/sign_in_text"
                 android:textColor="#7f7f7f"
+                android:background="#ffffff"
+                android:onClick="backLogin"
                 android:textSize="15sp" />
         </LinearLayout>
 
     </FrameLayout>
 
     <FrameLayout
-         android:id="@+id/member_reg_box3"
+        android:id="@+id/member_reg_box3"
         android:layout_width="match_parent"
         android:layout_height="match_parent" 
         android:visibility="invisible">
@@ -201,8 +206,10 @@
                     android:textAppearance="?android:attr/textAppearanceSmall" />
 
                 <EditText
+                    android:id="@+id/regEmailInputEdtTxt"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
                     android:layout_marginBottom="40dip"
                     android:layout_marginTop="5dip"
                     android:background="@drawable/backwithborder"
@@ -221,6 +228,7 @@
                     android:background="@drawable/button"
                     android:text="@string/button_text_member_reg"
                     android:textColor="#fff1ff"
+                    android:onClick="regStep3"
                     android:textSize="15sp" />
 
             <Button
@@ -232,7 +240,7 @@
                 android:gravity="center"
                 android:text="@string/sign_in_text"
                 android:textColor="#7f7f7f"
-                android:onClick="backToLogin"
+                android:onClick="backLogin"
                 android:textSize="15sp" 
                 android:background="#ffffff"
                 />
