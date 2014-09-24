@@ -6,8 +6,8 @@ import android.os.AsyncTask;
 
 public abstract class RPCHandler extends AsyncTask<String, String, String> {
 
-	//private final String SERVER_ADDRESS = "http://192.168.0.103/sportzweb/rpc/";
-	private final String SERVER_ADDRESS = "http://172.17.132.122/webinventory/androidrpc/";
+	private final String SERVER_ADDRESS = "http://192.168.0.103/sportzweb/rpc/";
+	//private final String SERVER_ADDRESS = "http://172.17.132.122/webinventory/androidrpc/";
 	
 	
 	private JSONRPCClient client ;
@@ -59,7 +59,8 @@ public abstract class RPCHandler extends AsyncTask<String, String, String> {
 				callBack.callBackResultHandler(client.callLong(method, this.params));
 			}
 			else if(returnType == RPCReturnType.STRING){
-				callBack.callBackResultHandler(client.callString(method, this.params));
+				String res = client.callString(method, this.params);
+				callBack.callBackResultHandler(res);
 			}
 			else if(returnType == RPCReturnType.DOUBLE){
 				callBack.callBackResultHandler(client.callDouble(method, this.params));

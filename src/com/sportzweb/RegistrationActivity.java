@@ -1,6 +1,8 @@
 package com.sportzweb;
 
+import java.lang.reflect.Field;
 import java.util.Properties;
+
 import org.alexd.jsonrpc.JSONRPCClient;
 import org.alexd.jsonrpc.JSONRPCException;
 import org.alexd.jsonrpc.JSONRPCParams.Versions;
@@ -14,6 +16,9 @@ import com.sampanit.sonutoapp.utils.UserSessionManager;
 import com.sampanit.sonutoapp.utils.WebUtil;
 import com.sonuto.rpc.ICallBack;
 import com.sonuto.rpc.register.User;
+
+
+
 
 
 
@@ -112,9 +117,36 @@ public class RegistrationActivity extends Activity {
 	
 					user.regiserUser(new ICallBack() {
 						@Override
-						public void callBackResultHandler(Object object) {
+						public void callBackResultHandler(final Object object) {
 							// TODO Auto-generated method stub
-							System.out.println(object);
+							//System.out.println(object);
+							 
+							   
+							runOnUiThread(new Runnable()
+			        		{
+			        			@Override
+			        			public void run()
+			        			{
+			        				
+			        				
+									   try {
+										Toast.makeText(getBaseContext(), object.getClass().getDeclaredField("msg").get(object).toString(), Toast.LENGTH_SHORT).show();
+									} catch (IllegalArgumentException e) {
+										// TODO Auto-generated catch block
+										e.printStackTrace();
+									} catch (IllegalAccessException e) {
+										// TODO Auto-generated catch block
+										e.printStackTrace();
+									} catch (NoSuchFieldException e) {
+										// TODO Auto-generated catch block
+										e.printStackTrace();
+									}
+										 
+									   
+			        				
+			        			}
+			        		});
+							
 						}
 	
 						@Override

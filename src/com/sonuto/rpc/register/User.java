@@ -7,16 +7,16 @@ import com.sonuto.rpc.RPCReturnType;
 
 public class User extends RPCHandler{
 	public void regiserUser(ICallBack callBack, Object...params){
-		super.setCallBack(callBack);
+		setCallBack(callBack);
 		
-		super.setControllerPath("user_registration_login/");
-		super.setMethod("userRegistration");
+		setControllerPath("user_registration_login/");
+		setMethod("userRegistration");
 		
 		//super.setControllerPath("qprovider/");
 		//super.setMethod("abc");
 		
-		super.setParams(params);
-		super.setReturnType(RPCReturnType.STRING);
+		setParams(params);
+		setReturnType(RPCReturnType.STRING);
 		execute();
 	}
 }
