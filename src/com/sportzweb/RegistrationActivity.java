@@ -1,28 +1,11 @@
 package com.sportzweb;
 
-import java.lang.reflect.Field;
-import java.util.Properties;
-
-import org.alexd.jsonrpc.JSONRPCClient;
-import org.alexd.jsonrpc.JSONRPCException;
-import org.alexd.jsonrpc.JSONRPCParams.Versions;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.google.gson.Gson;
 import com.sampanit.sonutoapp.utils.AlertDialogManager;
-import com.sampanit.sonutoapp.utils.AssetsPropertyReader;
-import com.sampanit.sonutoapp.utils.UserSessionManager;
-import com.sampanit.sonutoapp.utils.WebUtil;
 import com.sonuto.rpc.ICallBack;
 import com.sonuto.rpc.register.User;
-
-
-
-
-
-
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
@@ -117,35 +100,14 @@ public class RegistrationActivity extends Activity {
 	
 					user.regiserUser(new ICallBack() {
 						@Override
-						public void callBackResultHandler(final Object object) {
-							// TODO Auto-generated method stub
-							//System.out.println(object);
-							 
-							   
-							runOnUiThread(new Runnable()
-			        		{
-			        			@Override
-			        			public void run()
-			        			{
-			        				
-			        				
-									   try {
-										Toast.makeText(getBaseContext(), object.getClass().getDeclaredField("msg").get(object).toString(), Toast.LENGTH_SHORT).show();
-									} catch (IllegalArgumentException e) {
-										// TODO Auto-generated catch block
-										e.printStackTrace();
-									} catch (IllegalAccessException e) {
-										// TODO Auto-generated catch block
-										e.printStackTrace();
-									} catch (NoSuchFieldException e) {
-										// TODO Auto-generated catch block
-										e.printStackTrace();
-									}
-										 
-									   
-			        				
-			        			}
-			        		});
+						public void callBackResultHandler(final Object object) { 
+							JSONObject jsonObject = (JSONObject)object;
+							try {
+								Toast.makeText(getApplicationContext(), jsonObject.get("msg").toString(), Toast.LENGTH_SHORT).show();
+							} catch (JSONException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}   
 							
 						}
 	

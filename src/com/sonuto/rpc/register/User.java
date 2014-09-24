@@ -16,7 +16,7 @@ public class User extends RPCHandler{
 		//super.setMethod("abc");
 		
 		setParams(params);
-		setReturnType(RPCReturnType.STRING);
+		setReturnType(RPCReturnType.JSON_OBJECT);
 		execute();
 	}
 }
