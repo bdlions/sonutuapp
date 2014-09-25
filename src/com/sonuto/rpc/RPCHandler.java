@@ -6,7 +6,8 @@ import android.os.AsyncTask;
 
 public abstract class RPCHandler extends AsyncTask<String, String, Object> {
 
-	private final String SERVER_ADDRESS = "http://172.17.52.14/sportzweb/rpc/";
+	//private final String SERVER_ADDRESS = "http://app.sportzweb.com:8084/rpc/";
+	private final String SERVER_ADDRESS = "http://192.168.0.103/sportzweb/rpc/";
 	//private final String SERVER_ADDRESS = "http://172.17.132.122/webinventory/androidrpc/";
 	
 	

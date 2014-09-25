@@ -155,7 +155,7 @@
             <Button
                 android:id="@+id/btnRegContinue2"
                 android:layout_width="fill_parent"
-                android:layout_height="33dp"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="10dip"
                 android:layout_marginTop="40dip"
                 android:background="@drawable/button"
@@ -231,7 +231,7 @@
                 <Button
                     android:id="@+id/btnRegContinue3"
                     android:layout_width="fill_parent"
-                    android:layout_height="34dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginBottom="10dip"
                     android:layout_marginTop="60dip"
                     android:background="@drawable/button"

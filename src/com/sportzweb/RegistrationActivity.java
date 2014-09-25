@@ -6,6 +6,7 @@ import org.json.JSONObject;
 import com.sampanit.sonutoapp.utils.AlertDialogManager;
 import com.sonuto.rpc.ICallBack;
 import com.sonuto.rpc.register.User;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
@@ -100,10 +101,23 @@ public class RegistrationActivity extends Activity {
 	
 					user.regiserUser(new ICallBack() {
 						@Override
-						public void callBackResultHandler(final Object object) { 
+						public void callBackResultHandler(final Object object) {
 							JSONObject jsonObject = (JSONObject)object;
 							try {
-								Toast.makeText(getApplicationContext(), jsonObject.get("msg").toString(), Toast.LENGTH_SHORT).show();
+								//Toast.makeText(getApplicationContext(), jsonObject.get("msg").toString(), Toast.LENGTH_SHORT).show();
+								if(jsonObject.get("msg").toString().equalsIgnoreCase("SIGNUP_COMPLETED")){
+									alert.showAlertDialog(RegistrationActivity.this, "Registration complete..",
+											"SIGNUP_SUCCESSFULLY", true);
+									 RegistrationActivity.this.finish();
+									 Intent intent = new Intent(mContext,
+									 MemberSettingActivity.class);
+									 startActivity(intent);
+									
+								} else {
+									// Login unsuccessful
+									alert.showAlertDialog(RegistrationActivity.this, "Registration failed..",
+											"Registration unsuccessfull", false);
+								}
 							} catch (JSONException e) {
 								// TODO Auto-generated catch block
 								e.printStackTrace();

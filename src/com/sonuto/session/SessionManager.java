@@ -1,5 +1,8 @@
 package com.sonuto.session;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -78,13 +81,11 @@ public class SessionManager implements ISessionManager {
 	}
 
 	@Override
-	public boolean logInUser(String email, String password) {
+	public boolean logInUser(JSONObject userObj) {
 		// TODO Auto-generated method stub
-		if(email == "abc@yahoo.com" && password == "password"){
-			setUserInSession();
+			setUserInSession(userObj);
 			return true;
-		}
-		return false;
+
 	}
 
 	@Override
@@ -101,17 +102,42 @@ public class SessionManager implements ISessionManager {
 		return true;
 	}
 	
-	private void setUserInSession(){
+	private void setUserInSession(JSONObject userObj){
 		Editor editor = sharedPreferences.edit();
 		/**
 		 * Create a fake user for this time
 		 * */
-		UserInfo userInfo = new UserInfo();
-		userInfo.setFirstName("alamgir");
-		userInfo.setLastName("kabir");
-		userInfo.setUserId(1);
-		userInfo.setUserName("abc@yahoo.com");
+//		UserInfo userInfo = new UserInfo();
+//		userInfo.setFirstName("alamgir");
+//		userInfo.setLastName("kabir");
+//		userInfo.setUserId(1);
+//		userInfo.setUserName("abc@yahoo.com");
 		/***/
+		
+		UserInfo userInfo = new UserInfo();
+		
+		userInfo.setUserId(1);
+		
+		try {
+			userInfo.setFirstName(userObj.get("first_name").toString());
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		try {
+			userInfo.setLastName(userObj.get("last_name").toString());
+		} catch (JSONException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		try {
+			userInfo.setUserName(userObj.get("email").toString());
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		Gson gson = new Gson();
 	    String jsonUserInfo = gson.toJson(userInfo);
