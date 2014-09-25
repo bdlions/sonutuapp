@@ -6,9 +6,8 @@ import android.os.AsyncTask;
 
 public abstract class RPCHandler extends AsyncTask<String, String, Object> {
 
-	//private final String SERVER_ADDRESS = "http://app.sportzweb.com:8084/rpc/";
-	private final String SERVER_ADDRESS = "http://192.168.0.103/sportzweb/rpc/";
-	//private final String SERVER_ADDRESS = "http://172.17.132.122/webinventory/androidrpc/";
+	//private final String SERVER_ADDRESS = "http://31.222.168.64:8084/rpc/";
+	private final String SERVER_ADDRESS = "http://172.17.4.204/sportzweb/rpc/";
 	
 	
 	private JSONRPCClient client ;
@@ -50,8 +49,8 @@ public abstract class RPCHandler extends AsyncTask<String, String, Object> {
 	protected Object doInBackground(String... params) {
 		// TODO Auto-generated method stub
 		client = JSONRPCClient.create(SERVER_ADDRESS + controllerPath, Versions.VERSION_2);
-        client.setConnectionTimeout(2000);
-        client.setSoTimeout(2000);
+        client.setConnectionTimeout(10000);
+        client.setSoTimeout(10000);
         Object result = null;
 		try {
 			

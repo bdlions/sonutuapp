@@ -106,12 +106,13 @@ public class RegistrationActivity extends Activity {
 							try {
 								//Toast.makeText(getApplicationContext(), jsonObject.get("msg").toString(), Toast.LENGTH_SHORT).show();
 								if(jsonObject.get("msg").toString().equalsIgnoreCase("SIGNUP_COMPLETED")){
-									alert.showAlertDialog(RegistrationActivity.this, "Registration complete..",
-											"SIGNUP_SUCCESSFULLY", true);
-									 RegistrationActivity.this.finish();
+									//alert.showAlertDialog(RegistrationActivity.this, "Registration complete..",
+										//	"SIGNUP_SUCCESSFULLY", true);
+									 /*RegistrationActivity.this.finish();
 									 Intent intent = new Intent(mContext,
 									 MemberSettingActivity.class);
-									 startActivity(intent);
+									 startActivity(intent);*/
+									Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_SHORT).show();
 									
 								} else {
 									// Login unsuccessful
