@@ -77,7 +77,7 @@ public class SessionManager implements ISessionManager {
 		if(userInfo == null){
 			throw new NullPointerException();
 		}
-		return userInfo.getUserName();
+		return userInfo.getEmail();
 	}
 
 	@Override
@@ -103,47 +103,8 @@ public class SessionManager implements ISessionManager {
 	}
 	
 	private void setUserInSession(JSONObject userObj){
-		Editor editor = sharedPreferences.edit();
-		/**
-		 * Create a fake user for this time
-		 * */
-//		UserInfo userInfo = new UserInfo();
-//		userInfo.setFirstName("alamgir");
-//		userInfo.setLastName("kabir");
-//		userInfo.setUserId(1);
-//		userInfo.setUserName("abc@yahoo.com");
-		/***/
-		
-		UserInfo userInfo = new UserInfo();
-		
-		userInfo.setUserId(1);
-		
-		try {
-			userInfo.setFirstName(userObj.get("first_name").toString());
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		try {
-			userInfo.setLastName(userObj.get("last_name").toString());
-		} catch (JSONException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		
-		try {
-			userInfo.setUserName(userObj.get("email").toString());
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		Gson gson = new Gson();
-	    String jsonUserInfo = gson.toJson(userInfo);
-	     
-		editor.putString(USER_INFO, jsonUserInfo);
-		
+		Editor editor = sharedPreferences.edit();	
+		editor.putString(USER_INFO, userObj.toString());		
 		// commit changes
 		editor.commit();
 	}

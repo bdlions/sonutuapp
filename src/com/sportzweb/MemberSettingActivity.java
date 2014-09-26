@@ -143,9 +143,10 @@ private void openChart(){
 	 * Back to login click action
 	 */
 	public void skipthisStep(View view) {
-		MemberSettingActivity.this.finish();
+		//MemberSettingActivity.this.finish();
 		Intent intent = new Intent(mContext, LoginActivity.class);
 		startActivity(intent);
+		finish();
 	}
 
 }

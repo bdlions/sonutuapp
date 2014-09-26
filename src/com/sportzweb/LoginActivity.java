@@ -90,9 +90,9 @@ public class LoginActivity extends Activity {
 						
 						if(jsonObject.get("msg").toString().equalsIgnoreCase("SIGNIN_SUCCESSFULLY")){
 							//Toast.makeText(getApplicationContext(), jsonObject.get("msg").toString(),Toast.LENGTH_SHORT).show();
-							alert.showAlertDialog(LoginActivity.this, "Logedin ..",
-									"SIGNIN_SUCCESSFULLY", true);
-							if(session.logInUser(jsonObject)){
+							//alert.showAlertDialog(LoginActivity.this, "Logedin ..",
+							//		"SIGNIN_SUCCESSFULLY", true);
+							if(session.logInUser(jsonObject.getJSONObject("user_info"))){
 								Intent i = new Intent(getApplicationContext(),MainActivity.class);
 								startActivity(i);
 								finish();
@@ -154,9 +154,8 @@ public class LoginActivity extends Activity {
 	 * Create new account click action
 	 */
 	public void newAccount(View view) {
-		LoginActivity.this.finish();
-
 		Intent intent = new Intent(mContext, RegistrationActivity.class);
 		startActivity(intent);
+		finish();
 	}
 }

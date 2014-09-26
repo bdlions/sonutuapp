@@ -57,7 +57,7 @@ public class MainActivity extends Activity {
         
 	        // get user data from session
 	        
-	        lblEmail.setText(Html.fromHtml("Email: <b>" + session.getUserName() + "</b>"));
+	        lblEmail.setText(Html.fromHtml("Email: <b>" + session.getEmailAddress() + "</b>"));
 	        lblName.setText(Html.fromHtml("Name: <b>" + session.getDisplayName() + "</b>"));
         }
         

@@ -107,12 +107,13 @@ public class RegistrationActivity extends Activity {
 								//Toast.makeText(getApplicationContext(), jsonObject.get("msg").toString(), Toast.LENGTH_SHORT).show();
 								if(jsonObject.get("msg").toString().equalsIgnoreCase("SIGNUP_COMPLETED")){
 									//alert.showAlertDialog(RegistrationActivity.this, "Registration complete..",
-										//	"SIGNUP_SUCCESSFULLY", true);
-									 /*RegistrationActivity.this.finish();
+									//		"SIGNUP_SUCCESSFULLY", true);
+									 //RegistrationActivity.this.finish();
 									 Intent intent = new Intent(mContext,
 									 MemberSettingActivity.class);
-									 startActivity(intent);*/
-									Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_SHORT).show();
+									 startActivity(intent);
+									 finish();
+									//Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_SHORT).show();
 									
 								} else {
 									// Login unsuccessful
@@ -290,10 +291,11 @@ public class RegistrationActivity extends Activity {
 	 * Back to login click action
 	 */
 	public void backLogin(View view) {
-		alert.showAlertDialog(RegistrationActivity.this, "registraion will be failed..", "You will loss data", false);
-		RegistrationActivity.this.finish();
+		//alert.showAlertDialog(RegistrationActivity.this, "registraion will be failed..", "You will loss data", false);
+		//RegistrationActivity.this.finish();
 		Intent intent = new Intent(mContext, LoginActivity.class);
 		startActivity(intent);
+		finish();
 	}
 
 }
