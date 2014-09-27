@@ -1,0 +1,51 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollView1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true" >
+
+    <LinearLayout
+        android:id="@+id/parent_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" 
+        android:padding="10dip">
+
+        <include layout="@layout/partial_layout_header" />
+
+        <LinearLayout
+            android:id="@+id/chart_containe"
+            android:layout_width="fill_parent"
+            android:layout_height="0dip"
+            android:layout_weight="1"
+
+            android:orientation="horizontal" >
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnRegContinue4"
+            android:layout_width="fill_parent"
+            android:layout_height="34dp"
+            android:layout_marginBottom="10dip"
+            android:layout_marginTop="60dip"
+            android:background="@drawable/button"
+            android:text="@string/save_and_continue"
+            android:textColor="#fff1ff"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/link_to_register"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dip"
+            android:layout_marginTop="20dip"
+            android:background="#ffffff"
+            android:gravity="center"
+            android:onClick="skipthisStep"
+            android:text="@string/member_profile_setting_skip"
+            android:textColor="#7f7f7f"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+</ScrollView>
