@@ -23,7 +23,7 @@ public class RegistrationActivity extends Activity {
 	private Context mContext;
 	private EditText mEmail, mFirstname, mLastname, mPassword;
 	TextView modelTextview;
-	Button backLogin, regContinue1, regContinue2, regContinue3;
+	Button regContinue1, regContinue2, regContinue3;
 	FrameLayout reg_step_1_layout, reg_step_2_layout, reg_step_3_layout;
 	String fname,lname,password,email;
 	
@@ -109,8 +109,7 @@ public class RegistrationActivity extends Activity {
 									//alert.showAlertDialog(RegistrationActivity.this, "Registration complete..",
 									//		"SIGNUP_SUCCESSFULLY", true);
 									 //RegistrationActivity.this.finish();
-									 Intent intent = new Intent(mContext,
-									 MemberSettingActivity.class);
+									 Intent intent = new Intent(mContext,MemberSettingActivity.class);
 									 startActivity(intent);
 									 finish();
 									//Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_SHORT).show();

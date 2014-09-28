@@ -1,0 +1,95 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="." >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="0dp" >
+
+        <include layout="@layout/partial_layout_header" />
+
+        <LinearLayout
+            android:id="@+id/member_reg_box5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dip" >
+
+            <!-- Restration Email Label -->
+
+            <TextView
+                android:id="@+id/txtViewRegStep5H1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="25dip"
+                android:layout_marginTop="30dip"
+                android:gravity="center"
+                android:text="@string/member_reg_Title_for_gender"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#00acea" />
+
+            <!-- save and continue up button -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:weightSum="2" >
+
+                <LinearLayout
+                    android:id="@+id/maleBorder"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#ffffff"
+                    android:padding="5dp" >
+
+                    <ImageButton
+                        android:id="@+id/image_male_button"
+                        android:layout_width="0dp"
+                        android:layout_height="130dp"
+                        android:layout_weight="1.00"
+                        android:contentDescription="@string/gender_male_img"
+                        android:src="@drawable/user_male" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/femaleBorder"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#ffffff"
+                    android:padding="5dp" >
+
+                    <ImageButton
+                        android:id="@+id/image_female_button"
+                        android:layout_width="0dp"
+                        android:layout_height="130dp"
+                        android:layout_weight="0.76"
+                        android:contentDescription="@string/gender_female_img"
+                        android:src="@drawable/user_female" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnRegContinue5"
+                android:layout_width="fill_parent"
+                android:layout_height="34dp"
+                android:layout_marginBottom="10dip"
+                android:layout_marginTop="60dip"
+                android:background="@drawable/button"
+                android:onClick="saveANDcontinue"
+                android:text="@string/save_and_continue"
+                android:textColor="#fff1ff"
+                android:textSize="15sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

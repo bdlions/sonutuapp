@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="title_activity_registration">RegistrationActivity</string>
-    <string name="forgot_password_text"><u>Forgot password?</u>.</string>
-    <string name="register_account_text"><u>Register User Account?</u>.</string>
-    <string name="label_email"><u>Email</u>.</string>
+    <string name="forgot_password_text"><u>Forgot password?</u></string>
+    <string name="register_account_text"><u>Register User Account?</u></string>
+    <string name="label_email"><u>Email</u></string>
     <string name="label_password">Password</string>
     <string name="button_text_login">Login</string>
 </resources>

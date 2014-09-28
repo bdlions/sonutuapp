@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="8"
+        android:minSdkVersion="11"
         android:targetSdkVersion="18" />
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -16,7 +16,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.sportzweb.GoogleAPITestActivity"
+            android:name="com.sportzweb.LoginActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -36,6 +36,15 @@
             android:name="com.sportzweb.MemberSettingActivity"
             android:label="@string/title_activity_member_setting" >
         </activity>
+        <activity
+            android:name="com.sportzweb.GenderSelectionActivity"
+            android:label="@string/title_activity_genger_selection" >
+        </activity>
+        <activity
+            android:name="com.sportzweb.ProfileInformationActivity">
+        </activity>
+        <activity android:name="com.sportzweb.BirthDaySettingActivity"></activity>
+        <activity android:name="com.sportzweb.AddProfilePictureActivity"></activity>
     </application>
 
 </manifest>

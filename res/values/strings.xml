@@ -111,6 +111,12 @@
     <string name="firstnameRequired">Firstname Required!</string>
     <string name="lastnameRequired">Lastname Required!</string>
     <string name="title_activity_member_setting">MemberSettingActivity</string>
+    <string name="title_activity_genger_selection">GenderSelectionActivity</string>
     <string name="title_activity_google_apitest">GoogleAPITestActivity</string>
+    
+    <string name="countyRequired">Country Required!</string>
+    <string name="institutionRequired">Educational Institution Required!</string>
+    <string name="occupationRequired">Occupation Required!</string>
+    <string name="employeRequired">Employe Required!</string>
 
 </resources>

@@ -17,7 +17,7 @@
         <include layout="@layout/partial_layout_header"/>
 
         <LinearLayout
-            android:id="@+id/member_profile_seting_box3"
+            android:id="@+id/member_profile_seting_box9"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -38,12 +38,11 @@
 
 
             <DatePicker
-                android:id="@+id/datePicker1"
+                android:id="@+id/dpDOB"
 		        android:layout_width="fill_parent"
 		        android:layout_height="wrap_content"
 		        android:layout_marginTop="5dip"
 		         />
-
             
             <!-- Registration continue button -->
             <Button
@@ -53,10 +52,9 @@
                 android:layout_marginBottom="10dip"
                 android:layout_marginTop="60dip"
                 android:background="@drawable/button"
+                android:onClick="saveANDcontinue"
                 android:text="@string/save_and_continue"
                 android:textColor="#fff1ff" />
-
-           
            
         </LinearLayout>
     </LinearLayout>

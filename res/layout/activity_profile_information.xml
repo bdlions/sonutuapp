@@ -36,8 +36,20 @@
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <!-- Country Label -->
-
-            <EditText
+				<AutoCompleteTextView
+			        android:id="@+id/actSelectCountry"
+			        android:layout_marginTop="5dip"
+			        android:layout_width="match_parent"
+			        android:layout_height="wrap_content"
+			        android:background="@drawable/backwithborder"
+			        android:ems="10"
+			        android:hint="@string/reg_country" 
+			        android:padding="10dp"
+                	android:textSize="15sp"
+			        android:textColorHint="#0a000a"
+			        android:completionThreshold="1">
+			    </AutoCompleteTextView>
+            <!--  <EditText
                 android:id="@+id/regeduationInputEdtTxt"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -47,10 +59,10 @@
                 android:padding="10dp"
                 android:textSize="15sp"
                 android:singleLine="true"
-                android:textColorHint="#0a000a" />
+                android:textColorHint="#0a000a" />-->
 
             <EditText
-                android:id="@+id/regemployeInputEdtTxt"
+                android:id="@+id/regInstituteInputEdtTxt"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/backwithborder"
@@ -63,7 +75,7 @@
             <!-- Last Name Label -->
 
             <EditText
-                android:id="@+id/regOccupationInputEdtTxt"
+                android:id="@+id/regemployeInputEdtTxt"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/backwithborder"
@@ -74,7 +86,7 @@
                 android:textColorHint="#0a000a" />
             
             <EditText
-                android:id="@+id/regCountyInputEdtTxt"
+                android:id="@+id/regOccupationInputEdtTxt"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dip"
@@ -95,6 +107,7 @@
                 android:layout_marginTop="60dip"
                 android:background="@drawable/button"
                 android:textSize="15sp"
+                android:onClick="saveANDcontinue"
                 android:text="@string/save_and_continue"
                 android:textColor="#fff1ff" />
         </LinearLayout>

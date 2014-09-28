@@ -2,8 +2,6 @@ package com.sportzweb;
 
 
 import java.text.DecimalFormat;
-import java.util.Properties;
-
 import org.achartengine.ChartFactory;
 import org.achartengine.GraphicalView;
 import org.achartengine.model.CategorySeries;
@@ -11,52 +9,44 @@ import org.achartengine.model.SeriesSelection;
 import org.achartengine.renderer.DefaultRenderer;
 import org.achartengine.renderer.SimpleSeriesRenderer;
 
-import com.sampanit.sonutoapp.utils.AlertDialogManager;
-
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
+import android.view.Menu;
 import android.view.View;
 import android.widget.LinearLayout;
-
 import android.widget.Toast;
 
 public class MemberSettingActivity extends Activity {
 
-	private Context mContext;
 	private GraphicalView mChart;
 	private String[] code;
+	private Context mContext;
 	
-	// Alert Dialog Manager
-	AlertDialogManager alert = new AlertDialogManager();
-
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_member_setting);
-
-		mContext = this;
-		
-		// Ploting the chart
-        openChart();
-	}
-	
-	
-private void openChart(){
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_member_setting);
+        mContext = this;
+        // Ploting the chart
+        openChart();        
+    }
+    
+    private void openChart(){
     	
     	// Pie Chart Slice Names
-    	code = new String[] {"Health", "Sports", "Fitness"};    	
+    	code = new String[] {"Fitness", "Health", "Sports"};
     	
     	// Pie Chart Slice Values
     	double[] distribution = { 33.3, 33.3, 33.3 } ;
     	
     	// Color of each Pie Chart Slices
-    	int[] colors = { Color.BLUE, Color.YELLOW, Color.MAGENTA};
+    	//int[] colors = { Color.BLUE, Color.YELLOW, Color.MAGENTA};
+    	int[] colors = { 0xFFDC3812, 0xFF3266CC, 0xFFFE9900};
     	
     	// Instantiating CategorySeries to plot Pie Chart    	
-    	CategorySeries distributionSeries = new CategorySeries(" Sonuto user interest distribution");
+    	CategorySeries distributionSeries = new CategorySeries("");
     	for(int i=0 ;i < distribution.length;i++){
     		// Adding a slice with its values and name to the Pie Chart
     		distributionSeries.add(code[i], distribution[i]);
@@ -69,19 +59,24 @@ private void openChart(){
     		// Instantiating a render for the slice
     		SimpleSeriesRenderer seriesRenderer = new SimpleSeriesRenderer();    	
     		seriesRenderer.setColor(colors[i]);
-    		seriesRenderer.setDisplayChartValues(true);
+    		//seriesRenderer.setDisplayChartValues(true);
     		
     		// Adding the renderer of a slice to the renderer of the pie chart
     		defaultRenderer.addSeriesRenderer(seriesRenderer);
     	}
     	
-    	defaultRenderer.setChartTitle("Sonuto user interest distribution ");
-    	defaultRenderer.setChartTitleTextSize(15);
-    	defaultRenderer.setZoomButtonsVisible(true);    	    		
-    		
+    	defaultRenderer.setZoomEnabled(false);
+    	defaultRenderer.setPanEnabled(false);
+    	defaultRenderer.setZoomRate(6.0f);
+    	defaultRenderer.setShowLabels(true);
+    	defaultRenderer.setFitLegend(true);
+    	defaultRenderer.setInScroll(true);
+    	defaultRenderer.setLegendTextSize(10);
+    	
     	// Getting a reference to view group linear layout chart_container
     	LinearLayout chartContainer = (LinearLayout) findViewById(R.id.chart_containe);
-    	
+    	LinearLayout.LayoutParams params = new  LinearLayout.LayoutParams(200,200);
+    	chartContainer.setLayoutParams(params);
     	
     	// Getting PieChartView to add to the custom layout
     	mChart = ChartFactory.getPieChartView(getBaseContext(), distributionSeries, defaultRenderer);
@@ -103,27 +98,49 @@ private void openChart(){
         			// Getting the value of the clicked slice
         			double value = seriesSelection.getXValue();
         			DecimalFormat dFormat = new DecimalFormat("#.#");
-        			 
+        			
+        			// write code to save the selected interested and update db value
+        			
         			// Displaying the message
         			Toast.makeText(
         					getBaseContext(),
         					selectedSeries + " : "  + Double.valueOf(dFormat.format(value)) + " % " ,
         					Toast.LENGTH_SHORT).show();
+	        			
         		}
         }
         });
         
         // Adding the pie chart to the custom layout
     	chartContainer.addView(mChart);
+    	
+    	
     }
+    
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.google_apitest, menu);
+        return true;
+    }
+    
+    /*
+	 * Save and continue click action
+	 */
+	public void saveANDcontinue(View view) {
+		//MemberSettingActivity.this.finish();
+		Intent intent = new Intent(mContext, GenderSelectionActivity.class);
+		startActivity(intent);
+		finish();
+	}
 	
 
 	/*
-	 * Back to login click action
+	 * Skip this step open next activity click action
 	 */
 	public void skipthisStep(View view) {
 		//MemberSettingActivity.this.finish();
-		Intent intent = new Intent(mContext, LoginActivity.class);
+		Intent intent = new Intent(mContext, GenderSelectionActivity.class);
 		startActivity(intent);
 		finish();
 	}

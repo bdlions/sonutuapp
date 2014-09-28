@@ -90,10 +90,13 @@ public class GoogleAPITestActivity extends Activity {
 
     	defaultRenderer.setFitLegend(true);
 
-    	defaultRenderer.setInScroll(true); 
+    	defaultRenderer.setInScroll(true);
+    	defaultRenderer.setLegendTextSize(10);
     	
     	// Getting a reference to view group linear layout chart_container
     	LinearLayout chartContainer = (LinearLayout) findViewById(R.id.chart_containe);
+    	LinearLayout.LayoutParams params = new  LinearLayout.LayoutParams(200,200);
+    	chartContainer.setLayoutParams(params);
  
     	
     	
