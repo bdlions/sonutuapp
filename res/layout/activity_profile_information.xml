@@ -14,7 +14,7 @@
         android:orientation="vertical"
         android:paddingTop="0dp" >
 
-         <include layout="@layout/partial_layout_header"/> 
+         <!-- <include layout="@layout/partial_layout_header"/>-->
 
         <LinearLayout
             android:id="@+id/member_reg_box3"

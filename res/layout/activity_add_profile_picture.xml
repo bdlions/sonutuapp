@@ -14,7 +14,7 @@
         android:paddingTop="0dp"
         android:orientation="vertical">
         
-        <include layout="@layout/partial_layout_header"/>
+        <!-- <include layout="@layout/partial_layout_header"/> -->
 
         <LinearLayout
             android:id="@+id/member_profile_seting_box3"
