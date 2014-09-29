@@ -3,6 +3,7 @@
 
     <string name="app_name">Sonuto</string>
     <string name="action_settings">Settings</string>
+    <string name="action_search">Search</string>
 
     <!-- Member registration step 1 -->
     <string name="member_reg_Title"><u><b>"What's your name?"</b></u></string>
