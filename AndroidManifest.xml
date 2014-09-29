@@ -27,6 +27,7 @@
         </activity>
         <activity
             android:name="com.sportzweb.MainActivity"
+            android:theme="@style/CustomActionBarTheme"
             android:label="@string/title_activity_main" >
         </activity>
         <activity
