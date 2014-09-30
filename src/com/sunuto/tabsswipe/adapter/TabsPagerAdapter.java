@@ -3,6 +3,7 @@ package com.sunuto.tabsswipe.adapter;
 import com.sonuto.tabsswipe.ApplicationsFragment;
 import com.sonuto.tabsswipe.MessageFragment;
 import com.sonuto.tabsswipe.FriendsFragment;
+import com.sonuto.tabsswipe.SettingsFragment;
 import com.sonuto.tabsswipe.TopRatedFragment;
 
 import android.support.v4.app.Fragment;
@@ -31,7 +32,10 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
 		case 3:
 			// Applications fragment activity
 			return new ApplicationsFragment();
-		}
+	case 4:
+		// Applications fragment activity
+		return new SettingsFragment();
+	}
 
 		return null;
 	}
@@ -39,7 +43,7 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
 	@Override
 	public int getCount() {
 		// get item count - equal to number of tabs
-		return 4;
+		return 5;
 	}
 
 }

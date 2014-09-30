@@ -8,20 +8,19 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="." >
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingTop="0dp" >
 
-        <!-- <include layout="@layout/partial_layout_header" /> -->
-
-        <LinearLayout
+        <!--<LinearLayout
             android:id="@+id/member_reg_box5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="10dip" >
+            android:gravity="center"
+            android:padding="10dip" >-->
+            <LinearLayout
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:gravity="center"
+		        android:orientation="vertical" >
 
             <!-- Restration Email Label -->
 
@@ -81,7 +80,7 @@
             <Button
                 android:id="@+id/btnRegContinue5"
                 android:layout_width="fill_parent"
-                android:layout_height="34dp"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="10dip"
                 android:layout_marginTop="60dip"
                 android:background="@drawable/button"
@@ -90,6 +89,6 @@
                 android:textColor="#fff1ff"
                 android:textSize="15sp" />
         </LinearLayout>
-    </LinearLayout>
+
 
 </ScrollView>

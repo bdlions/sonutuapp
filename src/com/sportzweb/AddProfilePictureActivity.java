@@ -23,7 +23,7 @@ public class AddProfilePictureActivity extends Activity{
 	 * Save and continue click action
 	 */
 	public void saveANDcontinue(View v) {
-		Intent intent = new Intent(mContext, AddProfilePictureActivity.class);
+		Intent intent = new Intent(mContext, NewsFeedActivity.class);
 		startActivity(intent);
 		finish();
 	}

@@ -1,14 +1,16 @@
 package com.sportzweb;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import com.sampanit.sonutoapp.utils.AlertDialogManager;
+import com.sonuto.rpc.ICallBack;
+import com.sonuto.rpc.register.User;
 import com.sonuto.users.Gender;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.PaintDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -23,6 +25,8 @@ public class GenderSelectionActivity extends Activity {
 	Gender genderValue;
 	private int initialBackColor = 0xffffffff;
 	private int selectedColor;
+	// Alert Dialog Manager
+		AlertDialogManager alert = new AlertDialogManager();
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -53,8 +57,15 @@ public class GenderSelectionActivity extends Activity {
 				genderValue = Gender.FEMALE;
 				GenderSelectionActivity.this.maleBorder.setBackgroundColor(initialBackColor);
 				GenderSelectionActivity.this.femaleBorder.setBackgroundColor(selectedColor);
+				
 			}
 		});
+		
+		
+	}
+	
+	public void save(){
+		
 	}
 
 	/*
@@ -63,9 +74,50 @@ public class GenderSelectionActivity extends Activity {
 	public void saveANDcontinue(View view) {
 		if(genderValue==Gender.FEMALE || genderValue==Gender.MALE){
 			//Toast.makeText(mContext, genderValue.toString(), Toast.LENGTH_SHORT).show();
-			Intent intent = new Intent(mContext, ProfileInformationActivity.class);
-			startActivity(intent);
-			finish();
+			User user = new User();
+			
+			try {
+				JSONObject jsonUser = new JSONObject();
+				jsonUser.put("genden", genderValue);
+				
+				user.updateGenderUser(new ICallBack() {
+					@Override
+					public void callBackResultHandler(final Object object) {
+						JSONObject jsonObject = (JSONObject)object;
+						try {
+							
+							Toast.makeText(getApplicationContext(), jsonObject.get("msg").toString(), Toast.LENGTH_SHORT).show();
+							
+							if(jsonObject.get("msg").toString().equalsIgnoreCase("UPDATE_OK")){
+								 Intent intent = new Intent(mContext, ProfileInformationActivity.class);
+									startActivity(intent);
+									finish();
+								Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_SHORT).show();
+								
+							} else {
+								// Login unsuccessful
+								alert.showAlertDialog(GenderSelectionActivity.this, "User update failed..",
+										"Update unsuccessfull", false);
+							}
+						} catch (JSONException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}   
+						
+					}
+
+					@Override
+					public void callBackErrorHandler(Object object) {
+						// TODO Auto-generated method stub
+						System.out.println(object);
+					}
+				}, jsonUser.toString());
+				
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 		} else{
 			Toast.makeText(mContext, "Please select a gender", Toast.LENGTH_SHORT).show();
 		}

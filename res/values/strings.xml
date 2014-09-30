@@ -4,7 +4,8 @@
     <string name="app_name">Sonuto</string>
     <string name="action_settings">Settings</string>
     <string name="action_search">Search</string>
-
+    
+	<string name="signIn">Sign In</string>
     <!-- Member registration step 1 -->
     <string name="member_reg_Title"><u><b>"What's your name?"</b></u></string>
     <string name="reg_Title">Using your real name allows friends to connect and provides a better experience</string>
@@ -68,6 +69,7 @@
         <item>Multiple</item>
         <item>Group of com</item>
     </string-array>
+    
     <string-array name="countries_list">
         <item>Afghanistan</item>
         <item>Albania</item>
@@ -111,13 +113,19 @@
     <string name="title_activity_registration1">Registration1Activity</string>
     <string name="firstnameRequired">Firstname Required!</string>
     <string name="lastnameRequired">Lastname Required!</string>
-    <string name="title_activity_member_setting">MemberSettingActivity</string>
-    <string name="title_activity_genger_selection">GenderSelectionActivity</string>
+    <string name="title_activity_member_setting">Add Your Interest</string>
+    <string name="title_activity_genger_selection">Select Gender</string>
     <string name="title_activity_google_apitest">GoogleAPITestActivity</string>
     
+    <string name="title_activity_profile_information">Profile Information</string>
     <string name="countyRequired">Country Required!</string>
     <string name="institutionRequired">Educational Institution Required!</string>
     <string name="occupationRequired">Occupation Required!</string>
     <string name="employeRequired">Employe Required!</string>
+    
+    <string name="title_activity_add_photo">Add your photo</string>
+    <string name="title_activity_news_feed">News Feed</string>
+    
+    
 
 </resources>

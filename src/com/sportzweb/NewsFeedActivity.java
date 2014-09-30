@@ -16,7 +16,8 @@ public class NewsFeedActivity extends FragmentActivity implements
 	private TabsPagerAdapter mAdapter;
 	private ActionBar actionBar;
 	// Tab titles
-	private String[] tabs = { "News Feed", "Friends", "Message", "Applications" };
+	//private String[] tabs = { "News Feed", "Friends", "Message", "Applications", "Settings" };
+	private String[] tabs = { "Feed", "Friends", "Msg", "App", "Settings" };
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -27,16 +28,31 @@ public class NewsFeedActivity extends FragmentActivity implements
 		viewPager = (ViewPager) findViewById(R.id.pager);
 		actionBar = getActionBar();
 		mAdapter = new TabsPagerAdapter(getSupportFragmentManager());
+		
+		final int[] ICONS = new int[] {
+	            R.drawable.ic_launcher,
+	            R.drawable.inbox,
+	            R.drawable.ic_launcher,
+	            R.drawable.ic_launcher,
+	            R.drawable.ic_launcher
+	    };
 
 		viewPager.setAdapter(mAdapter);
 		actionBar.setHomeButtonEnabled(false);
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);		
 
 		// Adding Tabs
-		for (String tab_name : tabs) {
+		/*for (String tab_name : tabs) {
 			actionBar.addTab(actionBar.newTab().setText(tab_name)
 					.setTabListener(this));
-		}
+		}*/
+		
+		for (int i=0; i < tabs.length; i++)
+		{
+		actionBar.addTab(actionBar.newTab().setText(tabs[i])
+		                         .setIcon(NewsFeedActivity.this.getResources().getDrawable(ICONS[i]))
+		                         .setTabListener(this));
+		}//endfor
 
 		/**
 		 * on swiping the viewpager make respective tab selected
