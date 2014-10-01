@@ -6,7 +6,10 @@ import org.json.JSONObject;
 import com.sampanit.sonutoapp.utils.AlertDialogManager;
 import com.sonuto.rpc.ICallBack;
 import com.sonuto.rpc.register.User;
+import com.sonuto.session.ISessionManager;
+import com.sonuto.session.SessionManager;
 import com.sonuto.users.Gender;
+import com.sonuto.users.UserInfo;
 
 import android.app.Activity;
 import android.content.Context;
@@ -26,12 +29,15 @@ public class GenderSelectionActivity extends Activity {
 	private int initialBackColor = 0xffffffff;
 	private int selectedColor;
 	// Alert Dialog Manager
-		AlertDialogManager alert = new AlertDialogManager();
+	AlertDialogManager alert = new AlertDialogManager();
+	ISessionManager session;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_gender_selection);
+		// Session Manager
+		session = new SessionManager(getApplicationContext());
 		
 		selectedColor = 0xFFB5B5B5;
 		
@@ -64,9 +70,6 @@ public class GenderSelectionActivity extends Activity {
 		
 	}
 	
-	public void save(){
-		
-	}
 
 	/*
 	 * Save and continue click action for profileInformation activity
@@ -78,7 +81,11 @@ public class GenderSelectionActivity extends Activity {
 			
 			try {
 				JSONObject jsonUser = new JSONObject();
-				jsonUser.put("genden", genderValue);
+				
+				
+				jsonUser.put("user_id", session.getUserInfo().getUserId());
+				jsonUser.put("gender_id", genderValue.getValue());
+				
 				
 				user.updateGenderUser(new ICallBack() {
 					@Override
@@ -86,9 +93,7 @@ public class GenderSelectionActivity extends Activity {
 						JSONObject jsonObject = (JSONObject)object;
 						try {
 							
-							Toast.makeText(getApplicationContext(), jsonObject.get("msg").toString(), Toast.LENGTH_SHORT).show();
-							
-							if(jsonObject.get("msg").toString().equalsIgnoreCase("UPDATE_OK")){
+							if(jsonObject.get("status") != null && jsonObject.get("status").toString().equalsIgnoreCase("1")){
 								 Intent intent = new Intent(mContext, ProfileInformationActivity.class);
 									startActivity(intent);
 									finish();

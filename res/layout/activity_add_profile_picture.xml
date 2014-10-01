@@ -13,8 +13,7 @@
         android:layout_height="wrap_content"
         android:paddingTop="0dp"
         android:orientation="vertical">
-        
-        <!-- <include layout="@layout/partial_layout_header"/> -->
+
 
         <LinearLayout
             android:id="@+id/member_profile_seting_box3"
@@ -23,7 +22,7 @@
             android:orientation="vertical"
             android:padding="10dip" >
 
-            <!-- member_setting_birthday_title Label -->
+
 
             <TextView
                 android:layout_width="fill_parent"
@@ -35,7 +34,7 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#00acea" />
 
-            <!-- Registration continue button -->
+
 
             <ImageView
                 android:id="@+id/imageView1"
@@ -45,6 +44,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="0.08"
             	android:background="@drawable/image_border"
+            	android:onClick="browseFile"
                 android:src="@drawable/user_female" />
 
             <Button

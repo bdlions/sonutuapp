@@ -14,7 +14,7 @@ public class UserInfo {
     private String last_name;
     private String email;
     private String userName;
-    private int userId;
+    private int user_id;
     
     public String getFirstName() {
         return first_name;
@@ -33,18 +33,18 @@ public class UserInfo {
     }
 
     public int userId() {
-        return userId;
+        return user_id;
     }
 
     public void setUserId(int id) {
-        this.userId = id;
+        this.user_id = id;
     }
     
     public String getUserName() {
 		return userName;
 	}
     public int getUserId() {
-		return userId;
+		return user_id;
 	}
     public void setUserName(String userName) {
 		this.userName = userName;

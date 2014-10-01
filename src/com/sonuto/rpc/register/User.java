@@ -35,7 +35,7 @@ public class User extends RPCHandler{
 		setCallBack(callBack);
 		
 		setControllerPath("auth/");
-		setMethod("updateGender");
+		setMethod("update_gender");
 		
 		setParams(params);
 		setReturnType(RPCReturnType.JSON_OBJECT);
@@ -46,7 +46,18 @@ public class User extends RPCHandler{
 		setCallBack(callBack);
 		
 		setControllerPath("auth/");
-		setMethod("updateUsersInfo");
+		setMethod("update_profile_information");
+		
+		setParams(params);
+		setReturnType(RPCReturnType.JSON_OBJECT);
+		execute();
+	}
+	
+	public void updateDateOfBirth(ICallBack callBack, Object...params){
+		setCallBack(callBack);
+		
+		setControllerPath("auth/");
+		setMethod("update_dob");
 		
 		setParams(params);
 		setReturnType(RPCReturnType.JSON_OBJECT);

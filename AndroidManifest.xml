@@ -25,16 +25,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
         <activity
             android:name="com.sportzweb.MainActivity"
             android:theme="@style/CustomActionBarTheme"
             android:label="@string/title_activity_main" >
         </activity>
+        
         <activity
             android:name="com.sportzweb.RegistrationActivity"
             android:theme="@style/CustomActionBarTheme"
             android:label="@string/title_activity_registration" >
         </activity>
+        
         <activity
             android:name="com.sportzweb.MemberSettingActivity"
             android:theme="@style/CustomActionBarTheme"
@@ -52,12 +55,13 @@
             android:label="@string/title_activity_profile_information"
             android:theme="@style/CustomActionBarTheme">
         </activity>
+        
         <activity android:name="com.sportzweb.BirthDaySettingActivity"
             android:theme="@style/CustomActionBarTheme"></activity>
         
-        <activity android:name="com.sportzweb.AddProfilePictureActivity"
+        <!-- <activity android:name="com.sportzweb.AddProfilePictureActivity"
             android:label="@string/title_activity_add_photo"
-            android:theme="@style/CustomActionBarTheme"></activity>
+            android:theme="@style/CustomActionBarTheme"></activity> -->
         
         <activity android:name="com.sportzweb.NewsFeedActivity"
             android:label="@string/title_activity_news_feed"

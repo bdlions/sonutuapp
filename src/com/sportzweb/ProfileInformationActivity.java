@@ -6,6 +6,8 @@ import org.json.JSONObject;
 import com.sampanit.sonutoapp.utils.AlertDialogManager;
 import com.sonuto.rpc.ICallBack;
 import com.sonuto.rpc.register.User;
+import com.sonuto.session.ISessionManager;
+import com.sonuto.session.SessionManager;
 
 import android.app.Activity;
 import android.content.Context;
@@ -23,6 +25,7 @@ public class ProfileInformationActivity extends Activity {
 	private Context mContext;
 	private EditText mInstituiton, mOccupation, mEmployee;
 	String country, occupation, institution, employee;
+	ISessionManager session;
 	// data source for auto complete text view
 	private static String[] countries = { "Albania", "Algeria", "Argentina",
 			"Australia", "Austria", "Bahrain", "Bangladesh", "Belarus",
@@ -57,6 +60,9 @@ public class ProfileInformationActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_profile_information);
 		mContext = this;
+		
+		// Session Manager
+		session = new SessionManager(getApplicationContext());
 
 		initUi();
 	}
@@ -124,18 +130,19 @@ public class ProfileInformationActivity extends Activity {
 
 		try {
 			JSONObject jsonUser = new JSONObject();
-			jsonUser.put("country", country);
+			jsonUser.put("user_id", session.getUserId());
+			jsonUser.put("country_id", 15);
 			jsonUser.put("occupation", occupation);
-			jsonUser.put("institution", institution);
-			jsonUser.put("employee", employee);
+			jsonUser.put("clg_or_uni", institution);
+			jsonUser.put("employer", employee);
 			
 			user.updateUsersProfileInfo(new ICallBack() {
 				@Override
 				public void callBackResultHandler(final Object object) {
 					JSONObject jsonObject = (JSONObject)object;
 					try {
-						//Toast.makeText(getApplicationContext(), jsonObject.get("msg").toString(), Toast.LENGTH_SHORT).show();
-						if(jsonObject.get("msg").toString().equalsIgnoreCase("UPDATE_OK")){
+						//Toast.makeText(getApplicationContext(), jsonObject.get("status").toString(), Toast.LENGTH_SHORT).show();
+						if(jsonObject.get("status").toString().equalsIgnoreCase("1")){
 							 Intent intent = new Intent(mContext,BirthDaySettingActivity.class);
 							 startActivity(intent);
 							 finish();

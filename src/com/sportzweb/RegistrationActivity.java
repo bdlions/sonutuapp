@@ -6,6 +6,8 @@ import org.json.JSONObject;
 import com.sampanit.sonutoapp.utils.AlertDialogManager;
 import com.sonuto.rpc.ICallBack;
 import com.sonuto.rpc.register.User;
+import com.sonuto.session.ISessionManager;
+import com.sonuto.session.SessionManager;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -26,7 +28,7 @@ public class RegistrationActivity extends Activity {
 	Button regContinue1, regContinue2, regContinue3;
 	FrameLayout reg_step_1_layout, reg_step_2_layout, reg_step_3_layout;
 	String fname,lname,password,email;
-	
+	ISessionManager session;
 	// Alert Dialog Manager
 	AlertDialogManager alert = new AlertDialogManager();
 
@@ -36,7 +38,8 @@ public class RegistrationActivity extends Activity {
 		setContentView(R.layout.activity_resigtration);
 
 		mContext = this;
-		
+		// Session Manager
+		session = new SessionManager(getApplicationContext());
 		// Initialize UI method
 		initUi();
 	}
@@ -106,12 +109,14 @@ public class RegistrationActivity extends Activity {
 							try {
 								//Toast.makeText(getApplicationContext(), jsonObject.get("msg").toString(), Toast.LENGTH_SHORT).show();
 								if(jsonObject.get("msg").toString().equalsIgnoreCase("SIGNUP_COMPLETED")){
-									//alert.showAlertDialog(RegistrationActivity.this, "Registration complete..",
-									//		"SIGNUP_SUCCESSFULLY", true);
-									 //RegistrationActivity.this.finish();
-									 Intent intent = new Intent(mContext,MemberSettingActivity.class);
-									 startActivity(intent);
-									 finish();
+									
+									if(session.logInUser(jsonObject.getJSONObject("user_info"))){
+
+										 Intent intent = new Intent(mContext,MemberSettingActivity.class);
+										 startActivity(intent);
+										 finish();
+									}
+									
 									//Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_SHORT).show();
 									
 								} else {
