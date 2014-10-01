@@ -45,7 +45,7 @@ public class AddProfilePictureActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_profile_picture);
-        upLoadServerUri = "http://192.168.0.103/uploads/UploadToServer.php";
+        upLoadServerUri = "http://192.168.0.102/sportzweb/service/media/upload_profile_picture.php";
         mContext = this;       
     }
 	
