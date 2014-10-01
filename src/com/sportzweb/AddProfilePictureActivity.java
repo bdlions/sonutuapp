@@ -34,6 +34,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class AddProfilePictureActivity extends Activity {
 	private Context mContext;
@@ -45,7 +47,9 @@ public class AddProfilePictureActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_profile_picture);
-        upLoadServerUri = "http://192.168.0.102/sportzweb/service/media/upload_profile_picture.php";
+        
+        upLoadServerUri = "http://31.222.168.64:8084/service/media/upload_profile_picture";	
+        //upLoadServerUri = "http://192.168.137.1/sportzweb/service/media/upload_profile_picture";
         mContext = this;       
     }
 	
@@ -54,6 +58,8 @@ public class AddProfilePictureActivity extends Activity {
 		if (requestCode == 1 && resultCode == RESULT_OK) {
             Uri selectedImageUri = data.getData();
             imagepath = getPath(selectedImageUri);
+            ImageView imageview = (ImageView) findViewById(R.id.imageView1);
+            imageview.setImageURI(selectedImageUri);
 		}
 	}
 	
@@ -114,7 +120,7 @@ public class AddProfilePictureActivity extends Activity {
 				MultipartEntityBuilder builder = MultipartEntityBuilder.create();        
 
 				builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
-				builder.addPart("image", inputStreamBody); 
+				builder.addPart("userfile", inputStreamBody); 
 
 				
 				builder.addPart("name", new StringBody("Test", ContentType.TEXT_PLAIN));
@@ -133,11 +139,13 @@ public class AddProfilePictureActivity extends Activity {
 				JSONObject jsonobject = jsonarray.getJSONObject(0);
 				
 				
-				final String msg = (jsonobject.getString("msg"));
+				final String msg = (jsonobject.getString("message"));
 				
 				runOnUiThread(new Runnable() {
 					public void run() {
 						//messageText.setText(msg);
+						TextView textViewMessage = (TextView)findViewById(R.id.textViewMessage);
+						textViewMessage.setText(msg);
 					}
 				});
 				dialog.dismiss();
