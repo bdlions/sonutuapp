@@ -47,7 +47,7 @@ public class LoginActivity extends Activity {
 		session = new SessionManager(getApplicationContext());
 		if (session.isLoggedIn()) {
 			// Staring MainActivity
-			Intent i = new Intent(getApplicationContext(), MainActivity.class);
+			Intent i = new Intent(getApplicationContext(), NewsFeedActivity.class);
 			startActivity(i);
 			finish();
 		}
@@ -93,7 +93,7 @@ public class LoginActivity extends Activity {
 							//alert.showAlertDialog(LoginActivity.this, "Logedin ..",
 							//		"SIGNIN_SUCCESSFULLY", true);
 							if(session.logInUser(jsonObject.getJSONObject("user_info"))){
-								Intent i = new Intent(getApplicationContext(),MainActivity.class);
+								Intent i = new Intent(getApplicationContext(),NewsFeedActivity.class);
 								startActivity(i);
 								finish();
 							} else {

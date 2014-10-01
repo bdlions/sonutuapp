@@ -1,7 +1,7 @@
 package com.sonuto.tabsswipe;
 
+import com.sonuto.session.SessionManager;
 import com.sportzweb.LoginActivity;
-import com.sportzweb.MainActivity;
 import com.sportzweb.R;
 
 import android.app.Activity;
@@ -48,12 +48,19 @@ public class SettingsFragment extends Fragment {
 				// TODO Auto-generated method stub
 
 				String category = values[position];
-				System.out.print(position);
+				if(position == 3){
+					SessionManager manager = new SessionManager(getActivity().getApplicationContext());
+					if(manager.logoutUser()){
+						Intent intent = new Intent(getActivity(), LoginActivity.class);
+						startActivity(intent);
+					}
+				}
+				
 
 				// ListView Clicked item value
-				String itemValue = (String) lv.getItemAtPosition(position);
-				Intent intent = new Intent(getActivity(), MainActivity.class);
-				startActivity(intent);
+				//String itemValue = (String) lv.getItemAtPosition(position);
+				//Intent intent = new Intent(getActivity(), MainActivity.class);
+				//startActivity(intent);
 
 			}
 		});
