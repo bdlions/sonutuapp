@@ -8,106 +8,327 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="." >
 
-    <LinearLayout
-        android:id="@+id/bp_reg_setting1"
+    <FrameLayout
+        android:id="@+id/business_profile_frameLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="10dip" >
+        android:layout_height="wrap_content" >
 
-        <!-- Business Profile Registration Title -->
+        <FrameLayout
+            android:id="@+id/business_profile_reg_box1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible" >
 
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dip"
-            android:layout_marginTop="30dip"
-            android:gravity="center"
-            android:text="@string/bp_registration_title"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-             />
-
-        <!-- Business Profile type Label -->
-
-        <TextView
-            android:id="@+id/textView0"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dip"
-            android:layout_marginTop="30dip"
-            android:gravity="center"
-            android:text="@string/business_description"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-             />
-
-        <!-- Business Name Label -->
-
-        <Spinner
-            android:id="@+id/business_category_arrays"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dip"
-            android:entries="@array/business_category_arrays" />
-        
-        <Spinner
-            android:id="@+id/business_type_spinner"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="60dip"
-            android:entries="@array/business_profile_type_arrays" />
-
-        <EditText
-            android:id="@+id/businessNameInputEdtTxt"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dip"
-            android:layout_marginTop="5dip"
-            android:background="@drawable/backwithborder"
-            android:hint="@string/business_name_label"
-            android:padding="10dp"
-            android:singleLine="true"
-            android:textColorHint="#0a000a"
-            android:textSize="15sp" />
-
-        <EditText
-            android:id="@+id/businessStreetNameInputEdtTxt"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dip"
-            android:layout_marginTop="5dip"
-            android:background="@drawable/backwithborder"
-            android:hint="@string/business_street_label"
-            android:padding="10dp"
-            android:singleLine="true"
-            android:textColorHint="#0a000a"
-            android:textSize="15sp" />
-
-        <!-- Business Profile Registration continue button -->
-        <Button
-             android:id="@+id/btnBusinessRegContinue1"
-             android:layout_width="fill_parent"
-             android:layout_height="wrap_content"
-             android:layout_marginBottom="10dip"
-             android:layout_marginTop="60dip"
-             android:background="@drawable/button"
-             android:text="@string/button_text_member_reg"
-             android:textColor="#fff1ff"
-             android:onClick="regStep1"
-             android:textSize="15sp" />
-
-        <!-- Link to Business profile login Screen -->
-        <Button
-                android:id="@+id/link_to_register"
-                android:layout_width="fill_parent"
+            <LinearLayout
+                android:id="@+id/bp_reg_setting1"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dip"
-                android:layout_marginTop="20dip"
-                android:gravity="center"
-                android:onClick="backLogin"
-                android:text="@string/sign_in_text"
-                android:textColor="#7f7f7f"
-                android:background="#ffffff"
-                android:textSize="15sp" />
-    </LinearLayout>
+                android:orientation="vertical"
+                android:padding="10dip" >
+
+                <!-- Business Profile Registration Title -->
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dip"
+                    android:layout_marginTop="30dip"
+                    android:gravity="center"
+                    android:text="@string/bp_registration_title"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <!-- Business Profile type Label -->
+
+                <TextView
+                    android:id="@+id/textView0"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dip"
+                    android:layout_marginTop="30dip"
+                    android:gravity="center"
+                    android:text="@string/business_description"
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                <!-- Business Name Label -->
+
+                <Spinner
+                    android:id="@+id/business_category"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dip"
+                     />
+
+                <Spinner
+                    android:id="@+id/business_type"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="60dip"
+                     />
+
+                <EditText
+                    android:id="@+id/businessNameInputEdtTxt"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dip"
+                    android:layout_marginTop="5dip"
+                    android:background="@drawable/backwithborder"
+                    android:hint="@string/business_name_label"
+                    android:padding="10dp"
+                    android:singleLine="true"
+                    android:textColorHint="#0a000a"
+                    android:textSize="15sp" />
+
+                <EditText
+                    android:id="@+id/businessStreetNameInputEdtTxt"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dip"
+                    android:layout_marginTop="5dip"
+                    android:background="@drawable/backwithborder"
+                    android:hint="@string/business_street_label"
+                    android:padding="10dp"
+                    android:singleLine="true"
+                    android:textColorHint="#0a000a"
+                    android:textSize="15sp" />
+
+                <!-- Business Profile Registration continue button -->
+
+                <Button
+                    android:id="@+id/btnBusinessRegIntial"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dip"
+                    android:layout_marginTop="60dip"
+                    android:background="@drawable/button"
+                    android:onClick="bpRegInitialStep"
+                    android:text="@string/button_text_member_reg"
+                    android:textColor="#fff1ff"
+                    android:textSize="15sp" />
+
+                <!-- Link to Business profile login Screen -->
+
+                <Button
+                    android:id="@+id/link_to_register"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dip"
+                    android:layout_marginTop="20dip"
+                    android:background="#ffffff"
+                    android:gravity="center"
+                    android:onClick="backLogin"
+                    android:text="@string/sign_in_text"
+                    android:textColor="#7f7f7f"
+                    android:textSize="15sp" />
+            </LinearLayout>
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/business_profile_reg_box2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="invisible" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="10dip" >
+
+                <AutoCompleteTextView
+                    android:id="@+id/actSelectCountry"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dip"
+                    android:background="@drawable/backwithborder"
+                    android:completionThreshold="1"
+                    android:ems="10"
+                    android:hint="@string/business_country_label"
+                    android:padding="10dp"
+                    android:textColorHint="#0a000a"
+                    android:textSize="15sp" >
+                </AutoCompleteTextView>
+
+                <EditText
+                    android:id="@+id/businessStreetEdtTxt"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dip"
+                    android:background="@drawable/backwithborder"
+                    android:hint="@string/business_street_label"
+                    android:padding="10dp"
+                    android:singleLine="true"
+                    android:textColorHint="#0a000a"
+                    android:textSize="15sp" />
+
+                <EditText
+                    android:id="@+id/businessCityEdtTxt"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dip"
+                    android:background="@drawable/backwithborder"
+                    android:hint="@string/city_label"
+                    android:padding="10dp"
+                    android:singleLine="true"
+                    android:textColorHint="#0a000a"
+                    android:textSize="15sp" />
+
+                <EditText
+                    android:id="@+id/businessPostEdtTxt"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dip"
+                    android:layout_marginTop="20dip"
+                    android:background="@drawable/backwithborder"
+                    android:hint="@string/zip_label"
+                    android:padding="10dp"
+                    android:singleLine="true"
+                    android:textColorHint="#0a000a"
+                    android:textSize="15sp" />
+
+                <Button
+                    android:id="@+id/btnBusinessRegInfo"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dip"
+                    android:layout_marginTop="60dip"
+                    android:background="@drawable/button"
+                    android:onClick="bpRegInfoStep"
+                    android:text="@string/save_and_continue"
+                    android:textColor="#fff1ff"
+                    android:textSize="15sp" />
+            </LinearLayout>
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/business_profile_reg_box3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="invisible" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="10dip" >
+
+                <EditText
+                    android:id="@+id/businessTelephoneNoEdtTxt"
+                    android:inputType="phone"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dip"
+                    android:background="@drawable/backwithborder"
+                    android:hint="@string/business_telephone_label"
+                    android:padding="10dp"
+                    android:singleLine="true"
+                    android:textColorHint="#0a000a"
+                    android:textSize="15sp" />
+
+                <EditText
+                    android:id="@+id/businessEmailEdtTxt"
+                    android:inputType="textEmailAddress"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dip"
+                    android:background="@drawable/backwithborder"
+                    android:hint="@string/business_email_label"
+                    android:padding="10dp"
+                    android:singleLine="true"
+                    android:textColorHint="#0a000a"
+                    android:textSize="15sp" />
+
+                <EditText
+                    android:id="@+id/businessWebsiteEdtTxt"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dip"
+                    android:background="@drawable/backwithborder"
+                    android:hint="@string/business_website_label"
+                    android:padding="10dp"
+                    android:singleLine="true"
+                    android:textColorHint="#0a000a"
+                    android:textSize="15sp" />
+
+                <EditText
+                    android:id="@+id/businessOpeningTimeEdtTxt"
+                    android:inputType="time"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dip"
+                    android:layout_marginTop="15dip"
+                    android:background="@drawable/backwithborder"
+                    android:hint="@string/business_hour_label"
+                    android:padding="10dp"
+                    android:singleLine="true"
+                    android:textColorHint="#0a000a"
+                    android:textSize="15sp" />
+
+                <EditText
+                    android:id="@+id/businessCompanyNoEdtTxt"
+                    android:inputType="number"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dip"
+                    android:layout_marginTop="20dip"
+                    android:background="@drawable/backwithborder"
+                    android:hint="@string/business_registered_com_no_label"
+                    android:padding="10dp"
+                    android:singleLine="true"
+                    android:textColorHint="#0a000a"
+                    android:textSize="15sp" />
+
+                <!-- SIgn up button -->
+
+                <Button
+                    android:id="@+id/btnBusinessRegExtraInfo"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dip"
+                    android:layout_marginTop="60dip"
+                    android:background="@drawable/button"
+                    android:onClick="bpRegExtraInfoStep"
+                    android:text="@string/save_and_continue"
+                    android:textColor="#fff1ff"
+                    android:textSize="15sp" />
+            </LinearLayout>
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/business_profile_reg_box4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="invisible" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="10dip" >
+
+                <EditText
+                    android:id="@+id/businessDescriptionEdtTxt"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dip"
+                    android:layout_marginTop="5dip"
+                    android:hint="@string/bp_description_title"
+                    android:inputType="textMultiLine"
+                    android:lines="5"
+                    android:singleLine="true" />
+
+                <!-- Business Profile Registration continue button -->
+
+                <Button
+                    android:id="@+id/btnBusinessRegDescription"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dip"
+                    android:layout_marginTop="20dip"
+                    android:onClick="bpRegDescriptionStep"
+                    android:background="@drawable/button"
+                    android:text="@string/button_text_member_reg" />
+            </LinearLayout>
+        </FrameLayout>
+    </FrameLayout>
 
 </ScrollView>

@@ -1,20 +1,22 @@
 package com.sportzweb;
 
-
 import java.util.ArrayList;
-
-
-
 import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import com.sonuto.rpc.ICallBack;
+import com.sonuto.rpc.register.BusinessProfile;
 import com.sonuto.rpc.register.User;
+import com.sonuto.users.BusinessCategory;
 import com.sonuto.users.Country;
 
+import android.R.bool;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -23,172 +25,351 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.Spinner;
-
+import android.widget.Toast;
+import android.widget.AdapterView.OnItemSelectedListener;
 
 public class BusinessRegistrationActivity extends Activity {
 
+	Button businessRegInitialBtn, businessRegInfoBtn, businessRegExrtaInfoBtn,
+			businessRegDescriptionBtn;
+
+	FrameLayout business_reg_initial_step_layout,
+			business_reg_info_step_layout, business_reg_extra_info_step_layout,
+			business_reg_desc_step_layout;
+
+	private EditText bCategory, bType, bName, bStreet, bCountry, bStreetName,
+			bCity, bPostcode, bTelephone, bEmail, bWebsite, bOpeningTime,
+			bRegisteredCompNo, bDescription;
+
+	String businessType, businessCategory, businessName, businessStreet,
+			businessCountry, businessCity, businessPostalcode,
+			businessSreetName, businessDescription, businessEmail,
+			businessTelephone, businessWebsite, businessOpeningTime,
+			businessRegisteredCompNo;
+
 	private Context mContext;
-	
+
 	// data source for auto complete text view
-		private static String[] countries = { "Albania", "Algeria", "Argentina",
-				"Australia", "Austria", "Bahrain", "Bangladesh", "Belarus",
-				"Belgium", "Belgium", "Bolivia", "Bosnia and Herzegovina",
-				"Bosnia and Herzegovina", "Brazil", "Bulgaria", "Canada", "Canada",
-				"Chile", "China", "Colombia", "Costa Rica", "Croatia", "Cyprus",
-				"Czech Republic", "Denmark", "Dominican Republic", "Ecuador",
-				"Egypt", "El Salvador", "Estonia", "Finland", "France", "Germany",
-				"Greece", "Guatemala", "Honduras", "Hong Kong", "Hungary",
-				"Iceland", "India", "India", "Indonesia", "Iraq", "Ireland",
-				"Ireland", "Israel", "Italy", "Japan", "Japan", "Jordan", "Kuwait",
-				"Latvia", "Lebanon", "Libya", "Lithuania", "Luxembourg",
-				"Luxembourg", "Macedonia", "Malaysia", "Malta", "Malta", "Mexico",
-				"Montenegro", "Montenegro", "Morocco", "Netherlands",
-				"New Zealand", "Nicaragua", "Norway", "Norway", "Oman", "Panama",
-				"Paraguay", "Peru", "Philippines", "Poland", "Portugal",
-				"Puerto Rico", "Qatar", "Romania", "Russia", "Saudi Arabia",
-				"Serbia", "Serbia", "Serbia and Montenegro", "Singapore",
-				"Singapore", "Slovakia", "Slovenia", "South Africa", "South Korea",
-				"Spain", "Spain", "Sudan", "Sweden", "Switzerland", "Switzerland",
-				"Switzerland", "Syria", "Taiwan", "Thailand", "Thailand",
-				"Tunisia", "Turkey", "Ukraine", "United Arab Emirates",
-				"United Kingdom", "United States", "United States", "Uruguay",
-				"Venezuela", "Vietnam", "Yemen" };
-		private AutoCompleteTextView actCounties;
-		ArrayAdapter<String> countriesAdapter;
-		
-		private Spinner spinnerFood;
-		// array list for spinner adapter
-		private ArrayList<Country> countryList;
-		ProgressDialog pDialog;
-		
-		String json;
+	private AutoCompleteTextView actCounties;
+	// array adapter for counties
+	ArrayAdapter<String> countriesAdapter;
+
+	// array adapter for business category
+	ArrayAdapter<String> bCategoryAdapter;
+
+	private Spinner spinnerBCategory, spinnerBType;
+
+	// array list for BusinessCategory spinner adapter
+	private ArrayList<BusinessCategory> bcategoriesList;
+
+	// array list for country Autocomplete adapter
+	private ArrayList<Country> countryList;
+
+	// process dialer
+	ProgressDialog pDialog;
+
+	String json, countries;
+	JSONArray business_categories;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_business_profile_information);
-		
-		
+		setContentView(R.layout.activity_business_resigtration);
+
 		mContext = this;
 		initUi();
 	}
-	
+
 	/*
-	 *  Initialize UI
+	 * Initialize UI
 	 */
 	private void initUi() {
 		
-		// initialize view
-				actCounties = (AutoCompleteTextView) findViewById(R.id.actSelectCountry);
-//				countriesAdapter = new ArrayAdapter<String>(
-//						BusinessRegistrationActivity.this,
-//						android.R.layout.simple_list_item_1, countries);
-//				// bind adapter and view
-//				actCounties.setAdapter(countriesAdapter);
-				
-				countryList = new ArrayList<Country>();
-				new GetCountries().execute();
-	}
-	
-	
-	/**
-	 * Async task to get all food categories
-	 **/
-	private class GetCountries extends AsyncTask<Void, Void, Void> {
+		spinnerBCategory = (Spinner) findViewById(R.id.business_category);
+		spinnerBType = (Spinner) findViewById(R.id.business_type);
+		
+		bcategoriesList = new ArrayList<BusinessCategory>();
+		BusinessProfile bProfile = new BusinessProfile();
 
-		@Override
-		protected void onPreExecute() {
-			super.onPreExecute();
-			pDialog = new ProgressDialog(BusinessRegistrationActivity.this);
-			pDialog.setMessage("Fetching all country..");
-			pDialog.setCancelable(false);
-			pDialog.show();
-
-		}
-
-		@Override
-		protected Void doInBackground(Void... arg0) {
-			//ServiceHandler jsonParser = new ServiceHandler();
-			//String json = jsonParser.makeServiceCall(URL_CATEGORIES, ServiceHandler.GET);
-			User user = new User();
-			try {
-				JSONObject jsonUser = new JSONObject();
-				 json="{'categories':[{'id':'1','name':'Bangladesh'},{'id':'2','name':'Bahrian'},{'id':'3','name':'Canada'},{'id':'4','name':'China'},{'id':'5','name':'USA'},{'id':'6','name':'UK'}]}";
-				
-				user.businessRegistration(new ICallBack() {
-					@Override
-					public void callBackResultHandler(final Object object) {
-						JSONObject jsonObject = (JSONObject)object;
-					}
-
-					@Override
-					public void callBackErrorHandler(Object object) {
-						// TODO Auto-generated method stub
-						System.out.println(object);
-					}
-				}, jsonUser.toString());
-			} finally {
-				
-			}
-			
-			Log.e("Response: ", "> " + json);
-
-			if (json != null) {
-				try {
-					JSONObject jsonObj = new JSONObject(json);
-					if (jsonObj != null) {
-						JSONArray categories = jsonObj
-								.getJSONArray("categories");						
-
-						for (int i = 0; i < categories.length(); i++) {
-							JSONObject catObj = (JSONObject) categories.get(i);
-							Country cat = new Country(catObj.getInt("id"),
-									catObj.getString("name"));
-							countryList.add(cat);
-						}
-					}
-
-				} catch (JSONException e) {
-					e.printStackTrace();
-				}
-
-			} else {
-				Log.e("JSON Data", "Didn't receive any data from server!");
-			}
-
-			return null;
-		}
-
-		@Override
-		protected void onPostExecute(Void result) {
-			super.onPostExecute(result);
-			if (pDialog.isShowing())
+		JSONObject jsonUser = new JSONObject();
+		
+		pDialog = new ProgressDialog(mContext);
+		pDialog.setMessage("Fetching data..");
+		pDialog.setCancelable(false);
+		pDialog.show();
+		
+		bProfile.getBusinessProfileData(new ICallBack() {
+			@Override
+			public void callBackResultHandler(final Object object) {
+				JSONObject jsonObject = (JSONObject) object;
 				pDialog.dismiss();
-			populateSpinner();
+				try {
+					//business_categories = jsonObject.get("business_profile_type_list").toString();
+					countries = jsonObject.get("country_list").toString();
+					business_categories = jsonObject.getJSONArray("business_profile_type_list");
+					
+					Gson gson = new Gson();
+					int size = business_categories.length();
+					for (int i = 0; i < size; i++) {
+						BusinessCategory catObj = gson.fromJson(business_categories.get(i).toString(), BusinessCategory.class);
+						bcategoriesList.add(catObj);
+					}
+						
+					ArrayAdapter<BusinessCategory> spinnerAdapter = new ArrayAdapter<BusinessCategory>(mContext, android.R.layout.simple_spinner_item,bcategoriesList);
+					spinnerBCategory.setAdapter(spinnerAdapter);
+			
+					spinnerBCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+						@Override
+                        public void onItemSelected(AdapterView<?> arg0,
+                                View arg1, int position, long arg3) {
+					
+							// TODO Auto-generated method stub
+							if(spinnerBCategory.getSelectedItem() != null){
+								BusinessCategory businessCategory = (BusinessCategory)spinnerBCategory.getSelectedItem();
+								ArrayList<BusinessCategory> bSubCategories = new ArrayList<BusinessCategory>();
+								
+								JsonArray subCategories = businessCategory.getSub_type_list();
+								
+								Gson gson = new Gson();
+								int size = subCategories.size();
+								
+								for (int i = 0; i < size; i++) {
+									BusinessCategory catObj = gson.fromJson(subCategories.get(i).toString(), BusinessCategory.class);
+									bSubCategories.add(catObj);
+									
+									
+									ArrayAdapter<BusinessCategory> spinnerSubCategoryAdapter = new ArrayAdapter<BusinessCategory>(mContext, android.R.layout.simple_spinner_item,bSubCategories);
+									spinnerBType.setAdapter(spinnerSubCategoryAdapter);
+								}
+							}
+						}
+
+						@Override
+						public void onNothingSelected(AdapterView<?> parent) {
+							// TODO Auto-generated method stub
+							
+						}
+						
+					});
+
+
+				} 
+				catch (JSONException e) {
+					//give proper error message to the client
+				}
+				catch(NullPointerException npe){
+					//give proper error message to the client
+				}
+			}
+
+			@Override
+			public void callBackErrorHandler(Object object) {
+				// TODO Auto-generated method stub
+				System.out.println(object);
+			}
+		}, jsonUser.toString());
+			 
+		
+		bName = (EditText) findViewById(R.id.businessNameInputEdtTxt);
+		bStreet = (EditText) findViewById(R.id.businessStreetNameInputEdtTxt);
+		
+		bStreetName = (EditText) findViewById(R.id.businessStreetEdtTxt);
+		bCity = (EditText) findViewById(R.id.businessCityEdtTxt);
+		bPostcode = (EditText) findViewById(R.id.businessPostEdtTxt);
+		
+		bTelephone = (EditText) findViewById(R.id.businessTelephoneNoEdtTxt);
+		bEmail = (EditText) findViewById(R.id.businessEmailEdtTxt);
+		bWebsite = (EditText) findViewById(R.id.businessWebsiteEdtTxt);
+		bOpeningTime = (EditText) findViewById(R.id.businessOpeningTimeEdtTxt);
+		bRegisteredCompNo = (EditText) findViewById(R.id.businessCompanyNoEdtTxt);
+		
+		bDescription = (EditText) findViewById(R.id.businessDescriptionEdtTxt);
+		
+		business_reg_initial_step_layout = (FrameLayout) findViewById(R.id.business_profile_reg_box1);
+		business_reg_info_step_layout = (FrameLayout) findViewById(R.id.business_profile_reg_box2);
+		business_reg_extra_info_step_layout = (FrameLayout) findViewById(R.id.business_profile_reg_box3);
+		business_reg_desc_step_layout = (FrameLayout) findViewById(R.id.business_profile_reg_box4);
+		
+		businessRegInitialBtn = (Button) findViewById(R.id.btnBusinessRegIntial);
+		businessRegInfoBtn = (Button) findViewById(R.id.btnBusinessRegInfo);
+		businessRegExrtaInfoBtn = (Button) findViewById(R.id.btnBusinessRegExtraInfo);
+		businessRegDescriptionBtn = (Button) findViewById(R.id.btnBusinessRegDescription);
+		
+		// initialize view
+		actCounties = (AutoCompleteTextView) findViewById(R.id.actSelectCountry);
+		countryList = new ArrayList<Country>();
+	}
+
+	public void businessProfileValue() {
+		businessCategory = spinnerBCategory.getSelectedItem().toString();
+		businessType = spinnerBType.getSelectedItem().toString().trim();
+		businessName = bName.getText().toString().trim();
+		businessStreet = bStreet.getText().toString().trim();
+
+		businessCountry = actCounties.getText().toString().trim();
+		businessSreetName = bStreetName.getText().toString().trim();
+		businessCity = bCity.getText().toString().trim();
+		businessPostalcode = bPostcode.getText().toString().trim();
+
+		businessTelephone = bTelephone.getText().toString().trim();
+		businessEmail = bEmail.getText().toString().trim();
+		businessWebsite = bWebsite.getText().toString().trim();
+		businessOpeningTime = bOpeningTime.getText().toString().trim();
+		businessRegisteredCompNo = bRegisteredCompNo.getText().toString()
+				.trim();
+
+		businessDescription = bDescription.getText().toString().trim();
+	}
+
+	/*
+	 * continue button click action for step 1
+	 */
+	public void bpRegInitialStep(View view) {
+		businessProfileValue();
+		if (isVerifiedInitialStep()) {
+			business_reg_info_step_layout.setVisibility(View.VISIBLE);
+			business_reg_initial_step_layout.setVisibility(View.GONE);
 		}
 
 	}
-	
-	/**
-	 * Adding spinner data
-	 * */
-	private void populateSpinner() {
-		List<String> lables = new ArrayList<String>();
-		
 
-		for (int i = 0; i < countryList.size(); i++) {
-			lables.add(countryList.get(i).getName());
+	public boolean isVerifiedInitialStep() {
+
+		if (businessCategory.length() == 0) {
+			Toast.makeText(mContext,
+					getString(R.string.businessCategoryRequired),
+					Toast.LENGTH_SHORT).show();
+			return false;
+		} else if (businessType.length() == 0) {
+			Toast.makeText(mContext, getString(R.string.businessTypeRequired),
+					Toast.LENGTH_SHORT).show();
+			return false;
+		} else if (businessName.length() == 0) {
+			Toast.makeText(mContext, getString(R.string.businessNameRequired),
+					Toast.LENGTH_SHORT).show();
+			return false;
+		} else if (businessName.length() == 0) {
+			Toast.makeText(mContext,
+					getString(R.string.businessStreetRequired),
+					Toast.LENGTH_SHORT).show();
+			return false;
+		} else {
+			return true;
 		}
-		
-		countriesAdapter = new ArrayAdapter<String>(
-				BusinessRegistrationActivity.this,
-				android.R.layout.simple_list_item_1, lables);
-		// bind adapter and view
-		actCounties.setAdapter(countriesAdapter);
+
 	}
+
+	/*
+	 * continue button click action for step 2
+	 */
+	public void bpRegInfoStep(View view) {
+		businessProfileValue();
+		if (isVerifiedInfoStep()) {
+			business_reg_extra_info_step_layout.setVisibility(View.VISIBLE);
+			business_reg_info_step_layout.setVisibility(View.GONE);
+		}
+
+	}
+
+	public boolean isVerifiedInfoStep() {
+		if (businessCountry.length() == 0) {
+			Toast.makeText(mContext,
+					getString(R.string.businessCountryRequired),
+					Toast.LENGTH_SHORT).show();
+			return false;
+		} else if (businessSreetName.length() == 0) {
+			Toast.makeText(mContext,
+					getString(R.string.businessStreetNameRequired),
+					Toast.LENGTH_SHORT).show();
+			return false;
+		} else if (businessCity.length() == 0) {
+			Toast.makeText(mContext, getString(R.string.businessCityRequired),
+					Toast.LENGTH_SHORT).show();
+			return false;
+		} else if (businessPostalcode.length() == 0) {
+			Toast.makeText(mContext,
+					getString(R.string.businessPostcodeRequired),
+					Toast.LENGTH_SHORT).show();
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	/*
+	 * continue button click action for step 3
+	 */
+	public void bpRegExtraInfoStep(View view) {
+		businessProfileValue();
+		if (isVerifiedExtraInfoStep()) {
+			business_reg_desc_step_layout.setVisibility(View.VISIBLE);
+			business_reg_extra_info_step_layout.setVisibility(View.GONE);
+		}
+
+	}
+
+	public boolean isVerifiedExtraInfoStep() {
+		if (businessTelephone.length() == 0) {
+			Toast.makeText(mContext,
+					getString(R.string.businessTelephoneRequired),
+					Toast.LENGTH_SHORT).show();
+			return false;
+		} else if (businessEmail.length() == 0) {
+			Toast.makeText(mContext, getString(R.string.businessEmailRequired),
+					Toast.LENGTH_SHORT).show();
+			return false;
+		} else if (businessWebsite.length() == 0) {
+			Toast.makeText(mContext,
+					getString(R.string.businessWebsiteRequired),
+					Toast.LENGTH_SHORT).show();
+			return false;
+		} else if (businessOpeningTime.length() == 0) {
+			Toast.makeText(mContext,
+					getString(R.string.businessOpeningHourRequired),
+					Toast.LENGTH_SHORT).show();
+			return false;
+		} else if (businessRegisteredCompNo.length() == 0) {
+			Toast.makeText(mContext,
+					getString(R.string.businessRegistredCompNoRequired),
+					Toast.LENGTH_SHORT).show();
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	/*
+	 * continue button click action for final step
+	 */
+	public void bpRegDescriptionStep(View view) {
+		businessProfileValue();
+		if (isVerifiedDescriptionStep()) {
+			// do ur job here
+		}
+
+	}
+
+	public boolean isVerifiedDescriptionStep() {
+		if (businessDescription.length() == 0) {
+			Toast.makeText(mContext,
+					getString(R.string.businessDescriptionRequired),
+					Toast.LENGTH_SHORT).show();
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+
+
 	
 
 	/*

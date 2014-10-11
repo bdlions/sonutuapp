@@ -137,6 +137,24 @@
     <string name="title_activity_add_photo">Add your photo</string>
     <string name="title_activity_news_feed">News Feed</string>
     
+    <!-- Business profile required filed notification message -->
+    <string name="businessCategoryRequired">Please select a business category!</string>
+    <string name="businessTypeRequired">Please select a business type!</string>
+    <string name="businessNameRequired">Business name is Required!</string>
+    <string name="businessStreetRequired">Please select a business type!</string>
     
+    <string name="businessCountryRequired">Please select a country!</string>
+    <string name="businessStreetNameRequired">Street Name is Required!</string>
+    <string name="businessCityRequired">City is Required!</string>
+    <string name="businessPostcodeRequired">postcode is Required!</string>
+    
+    <string name="businessTelephoneRequired">Business telephone is Required!</string>
+    <string name="businessEmailRequired">Business email is Required!</string>
+    <string name="businessWebsiteRequired">Business website is Required!</string>
+    <string name="businessOpeningHourRequired">Business opening hour is Required!</string>
+    <string name="businessRegistredCompNoRequired">Business opening hour is Required!</string>
+    
+    <string name="businessDescriptionRequired">Business description is Required!</string>
+    <!-- End of the business profile required filed notification message -->
 
 </resources>
