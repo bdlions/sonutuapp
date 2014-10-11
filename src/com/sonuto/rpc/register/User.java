@@ -63,4 +63,15 @@ public class User extends RPCHandler{
 		setReturnType(RPCReturnType.JSON_OBJECT);
 		execute();
 	}
+	
+	public void businessRegistration(ICallBack callBack, Object...params){
+		setCallBack(callBack);
+		
+		setControllerPath("User_registration_login/");
+		setMethod("business_registration");
+		
+		setParams(params);
+		setReturnType(RPCReturnType.JSON_OBJECT);
+		execute();
+	}
 }

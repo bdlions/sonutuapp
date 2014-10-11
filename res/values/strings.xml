@@ -12,7 +12,7 @@
     <string name="reg_first_name">First Name</string>
     <string name="reg_last_name">Last Name</string>
     <string name="button_text_member_reg">Continue</string>
-    <string name="sign_in_text"><u>Sign in</u></string>
+    <string name="sign_in_text">Sign in</string>
 
     <!-- Member registration step 2 -->
     <string name="member_reg_Title_for_password"><u>Create a password</u></string>
@@ -48,26 +48,37 @@
     <string name="member_setting_upload_pic_title"><u>Upload photo</u></string>
 
     <!-- Initial account for business profile related text -->
-    <string name="bp_registration_title"><u>Registration</u></string>
-    <string name="business_profile_label">Business profile type : </string>
-    <string name="business_name_label">Business name: </string>
-    <string name="street_label">Street name:</string>
-    <string name="address_label">Address:</string>
-    <string name="city_label">City/Town: </string>
-    <string name="country_label">Country:</string>
-    <string name="zip_label">Postal/Zip code:</string>
-    <string name="business_telephone_label">Business telephone:</string>
-    <string name="business_email_label">Business email:</string>
-    <string name="business_registered_com_no_label">Registred company number:</string>
-    <string name="business_web_add_label">Business web address:</string>
-    <string name="business_hour_label">Business hour:</string>
-    <string name="bp_description_title"><u>Description</u></string>
+    <string name="bp_registration_title">Business Profile Registration</string>
+    <string name="business_description">Select and add information to create a profile for your business </string>
+    <string name="business_category_label">Business category : </string>
+    <string name="business_type_label">Business type : </string>
+    
+    <string name="business_name_label">Business name </string>
+    <string name="business_street_label">Street name</string>
+    <string name="address_label">Address</string>
+    <string name="city_label">City/Town </string>
+    <string name="business_country_label">Country</string>
+    <string name="zip_label">Post/Zip code</string>
+    
+    <string name="business_telephone_label">Telephone</string>
+    <string name="business_email_label">E-mail</string>
+    <string name="business_website_label">Website</string>
+    <string name="business_hour_label">Opening times</string>
+    <string name="business_registered_com_no_label">Registred company number</string>
+    
+    <string name="bp_description_title">Description...</string>
     <string name="bp_description_label">Add your business description :</string>
 
-    <string-array name="business_profile_type_arrays">
+    <string-array name="business_category_arrays">
         <item>SIngle</item>
         <item>Multiple</item>
         <item>Group of com</item>
+    </string-array>
+    
+    <string-array name="business_profile_type_arrays">
+        <item>One</item>
+        <item>Two</item>
+        <item>Three</item>
     </string-array>
     
     <string-array name="countries_list">
