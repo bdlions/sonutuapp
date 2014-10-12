@@ -98,7 +98,7 @@
 
     <string name="seettings_account_title"><u>General Information</u></string>
     <string name="settings_account_gender_label">Gender: </string>
-    <string name="settings_account_dob_label">Date Of Birth: </string>
+    <string name="settings_account_dob_label">Date Of Birth </string>
     <string name="settings_account_Country_label">Country: </string>
     <string name="settings_account_tome_town_label">Home Town: </string>
     <string name="settings_account_store_address_label">Store Address: </string>
@@ -156,5 +156,11 @@
     
     <string name="businessDescriptionRequired">Business description is Required!</string>
     <!-- End of the business profile required filed notification message -->
+    
+    <string name="title_activity_business_profile_registration">Business Profile Registration</string>
+    
+    <string name="business_category">Business Category</string>
+    
+    <string name="business_type">Business Type</string>
 
 </resources>

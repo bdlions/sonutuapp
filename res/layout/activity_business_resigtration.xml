@@ -51,19 +51,19 @@
 
                 <!-- Business Name Label -->
 
-                <Spinner
+                <com.sonuto.utils.component.CustomSpinner
                     android:id="@+id/business_category"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dip"
-                     />
+                    android:prompt="@string/business_category" />
 
-                <Spinner
+                <com.sonuto.utils.component.CustomSpinner
                     android:id="@+id/business_type"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="60dip"
-                     />
+                    android:prompt="@string/business_type" />
 
                 <EditText
                     android:id="@+id/businessNameInputEdtTxt"

@@ -9,8 +9,8 @@ public class BusinessProfile extends RPCHandler{
 	public void regiserBusinessProfile(ICallBack callBack, Object...params){
 		setCallBack(callBack);
 		
-		setControllerPath("auth/");
-		setMethod("register");
+		setControllerPath("business_profile/");
+		setMethod("create_business_profile");
 
 		setParams(params);
 		setReturnType(RPCReturnType.JSON_OBJECT);

@@ -1,4 +1,4 @@
-package com.sampanit.sonutoapp.utils;
+package com.sonuto.utils.component;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;
@@ -21,17 +21,17 @@ import android.widget.TextView;
  *
  * Limitations: does not display prompt if the entry list is empty.
  */
-public class NoDefaultSpinner extends Spinner {
+public class CustomSpinner extends Spinner {
 
-    public NoDefaultSpinner(Context context) {
+    public CustomSpinner(Context context) {
         super(context);
     }
 
-    public NoDefaultSpinner(Context context, AttributeSet attrs) {
+    public CustomSpinner(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public NoDefaultSpinner(Context context, AttributeSet attrs, int defStyle) {
+    public CustomSpinner(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
     }
 

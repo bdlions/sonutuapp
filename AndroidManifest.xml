@@ -67,6 +67,11 @@
             android:label="@string/title_activity_news_feed"
             android:theme="@style/CustomActionBarTheme"></activity>
         
+        <!-- <activity android:name="com.sportzweb.BusinessRegistrationActivity"
+            android:label="@string/title_activity_business_profile_registration"
+            android:theme="@style/CustomActionBarTheme"></activity>-->
+        
+        
     </application>
 
 </manifest>
