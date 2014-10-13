@@ -17,7 +17,7 @@ public class NewsFeedActivity extends FragmentActivity implements
 	private ActionBar actionBar;
 	// Tab titles
 	//private String[] tabs = { "News Feed", "Friends", "Message", "Applications", "Settings" };
-	private String[] tabs = { "Feed", "Friends", "Msg", "App", "Settings" };
+	private String[] tabs = { "", "", "", "", "" };
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -30,11 +30,11 @@ public class NewsFeedActivity extends FragmentActivity implements
 		mAdapter = new TabsPagerAdapter(getSupportFragmentManager());
 		
 		final int[] ICONS = new int[] {
-	            R.drawable.ic_launcher,
-	            R.drawable.inbox,
-	            R.drawable.ic_launcher,
-	            R.drawable.ic_launcher,
-	            R.drawable.ic_launcher
+	            R.drawable.chat_bubble,
+	            R.drawable.followers,
+	            R.drawable.message,
+	            R.drawable.application,
+	            R.drawable.gear
 	    };
 
 		viewPager.setAdapter(mAdapter);
@@ -49,7 +49,8 @@ public class NewsFeedActivity extends FragmentActivity implements
 		
 		for (int i=0; i < tabs.length; i++)
 		{
-		actionBar.addTab(actionBar.newTab().setText(tabs[i])
+			//actionBar.addTab(actionBar.newTab().setText(tabs[i]).setIcon(NewsFeedActivity.this.getResources().getDrawable(ICONS[i])).setTabListener(this));
+			actionBar.addTab(actionBar.newTab().setText(tabs[i])
 		                         .setIcon(NewsFeedActivity.this.getResources().getDrawable(ICONS[i]))
 		                         .setTabListener(this));
 		}//endfor

@@ -160,7 +160,30 @@
     <string name="title_activity_business_profile_registration">Business Profile Registration</string>
     
     <string name="business_category">Business Category</string>
-    
     <string name="business_type">Business Type</string>
+    
+    <!-- BMI Calculator Application -->
+    <string name="title_activity_bmi_calculator">Bmi Calculator</string>
+    
+    <string name="bmi_select_gender_lebel">Select your gender</string>
+    <string name="bmi_male_btn">Male</string>
+    <string name="bmi_female_btn">Female</string>
+    
+    <string name="bmi_select_unit_lebel">Select unit for measurement</string>
+    <string name="bmi_metric_btn">Metric</string>
+    <string name="bmi_imperial_btn">Imperial</string>
+    
+    <string name="bmi_height_hint">Enter your height</string>
+    <string name="bmi_weight_hint">Enter your weight</string>
+    
+    <string name="bmi_result_label">Your BMI is : </string>
+    <string name="bmi_category_label">Your BMI category : </string>
+    <string name="bmi_calculate_btn">Calculate </string>
+    
+    <string name="EmptyString"></string>
+    
+    <string name="weightRequiered">Weight is requiered!</string>
+    <string name="heightRequiered">Height is requiered!</string>
+    <!-- End BMI Calculator Application -->
 
 </resources>

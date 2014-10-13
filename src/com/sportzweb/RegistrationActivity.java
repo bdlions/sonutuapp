@@ -24,11 +24,14 @@ public class RegistrationActivity extends Activity {
 
 	private Context mContext;
 	private EditText mEmail, mFirstname, mLastname, mPassword;
+	
 	TextView modelTextview;
 	Button regContinue1, regContinue2, regContinue3;
 	FrameLayout reg_step_1_layout, reg_step_2_layout, reg_step_3_layout;
+	
 	String fname,lname,password,email;
 	ISessionManager session;
+	
 	// Alert Dialog Manager
 	AlertDialogManager alert = new AlertDialogManager();
 
@@ -40,6 +43,7 @@ public class RegistrationActivity extends Activity {
 		mContext = this;
 		// Session Manager
 		session = new SessionManager(getApplicationContext());
+		
 		// Initialize UI method
 		initUi();
 	}
@@ -107,7 +111,6 @@ public class RegistrationActivity extends Activity {
 						public void callBackResultHandler(final Object object) {
 							JSONObject jsonObject = (JSONObject)object;
 							try {
-								//Toast.makeText(getApplicationContext(), jsonObject.get("msg").toString(), Toast.LENGTH_SHORT).show();
 								if(jsonObject.get("msg").toString().equalsIgnoreCase("SIGNUP_COMPLETED")){
 									
 									if(session.logInUser(jsonObject.getJSONObject("user_info"))){
@@ -117,15 +120,12 @@ public class RegistrationActivity extends Activity {
 										 finish();
 									}
 									
-									//Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_SHORT).show();
-									
 								} else {
 									// Login unsuccessful
 									alert.showAlertDialog(RegistrationActivity.this, "Registration failed..",
 											"Registration unsuccessfull", false);
 								}
 							} catch (JSONException e) {
-								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}   
 							
@@ -133,34 +133,13 @@ public class RegistrationActivity extends Activity {
 	
 						@Override
 						public void callBackErrorHandler(Object object) {
-							// TODO Auto-generated method stub
 							System.out.println(object);
 						}
 					}, jsonUser.toString());
 				
 			} catch (JSONException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-
-			// reg_step_1_layout.setVisibility(View.VISIBLE);
-			// reg_step_3_layout.setVisibility(View.GONE);
-
-			// Here we are reading server url from properties file
-			// AssetsPropertyReader asserproperties = new
-			// AssetsPropertyReader(RegistrationActivity.this);
-			// Properties project_properties =
-			// asserproperties.getProperties("project_config.properties");
-			//
-			// JSONHandler task = new JSONHandler();
-			// String ss = project_properties.getProperty("server_url") +
-			// "user_registration_login/";
-			// task.execute(new String[] {ss});
-
-			// RegistrationActivity.this.finish();
-			// Intent intent = new Intent(mContext,
-			// MemberSettingActivity.class);
-			// startActivity(intent);
 
 		}
 
@@ -241,9 +220,6 @@ public class RegistrationActivity extends Activity {
 	 */
 	public boolean isVerifiedStep1() {
 		
-		//String fname = mFirstname.getText().toString().trim();
-		//String lname = mLastname.getText().toString().trim();
-		
 		if(fname.length() == 0) {
 			Toast.makeText(mContext, getString(R.string.firstnameRequired), Toast.LENGTH_SHORT).show();
 			return false;
@@ -260,9 +236,6 @@ public class RegistrationActivity extends Activity {
 	 * 	Verification registration step2 Screen Data
 	 */
 	public boolean isVerifiedStep2() {
-		
-		//String password = mPassword.getText().toString().trim();
-		
 		if(password.length() == 0) {
 			Toast.makeText(mContext, getString(R.string.passwordRequired), Toast.LENGTH_SHORT).show();
 			return false;
@@ -279,9 +252,6 @@ public class RegistrationActivity extends Activity {
 	 * 	Verification registration step2 Screen Data
 	 */
 	public boolean isVerifiedStep3() {
-
-		//String email = mEmail.getText().toString().trim();
-		
 		if(email.length() == 0) {
 			Toast.makeText(mContext, getString(R.string.emailRequired), Toast.LENGTH_SHORT).show();
 			return false;
@@ -295,8 +265,6 @@ public class RegistrationActivity extends Activity {
 	 * Back to login click action
 	 */
 	public void backLogin(View view) {
-		//alert.showAlertDialog(RegistrationActivity.this, "registraion will be failed..", "You will loss data", false);
-		//RegistrationActivity.this.finish();
 		Intent intent = new Intent(mContext, LoginActivity.class);
 		startActivity(intent);
 		finish();

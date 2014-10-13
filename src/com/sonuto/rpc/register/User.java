@@ -31,6 +31,18 @@ public class User extends RPCHandler{
 		execute();
 	}
 	
+	public void countryList(ICallBack callBack, Object...params){
+		setCallBack(callBack);
+		
+		setControllerPath("auth/");
+		setMethod("country_list");
+		
+		setParams(params);
+		setReturnType(RPCReturnType.JSON_OBJECT);
+		execute();
+		
+	}
+	
 	public void updateGenderUser(ICallBack callBack, Object...params){
 		setCallBack(callBack);
 		

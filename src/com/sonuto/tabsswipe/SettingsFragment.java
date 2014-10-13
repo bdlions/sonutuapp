@@ -1,10 +1,11 @@
 package com.sonuto.tabsswipe;
 
 import com.sonuto.session.SessionManager;
+import com.sportzweb.BusinessRegistrationActivity;
 import com.sportzweb.LoginActivity;
 import com.sportzweb.R;
 
-import android.app.Activity;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,11 +17,11 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 public class SettingsFragment extends Fragment {
 
 	private Context mContext;
+	SessionManager manager;
 	/*
 	 * @Override public View onCreateView(LayoutInflater inflater, ViewGroup
 	 * container, Bundle savedInstanceState) {
@@ -40,7 +41,11 @@ public class SettingsFragment extends Fragment {
 		View v = inflater.inflate(R.layout.fragment_settings, container, false);
 		lv = (ListView) v.findViewById(R.id.listViewSettings);
 		perform(v);
-
+		manager = new SessionManager(getActivity().getApplicationContext());
+//		if(manager.getUserId() > 0){
+//			values[0] = "your Business Profile";
+//		}
+		
 		lv.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
@@ -48,8 +53,11 @@ public class SettingsFragment extends Fragment {
 				// TODO Auto-generated method stub
 
 				String category = values[position];
-				if(position == 3){
-					SessionManager manager = new SessionManager(getActivity().getApplicationContext());
+				if(position == 0){
+					Intent intent = new Intent(getActivity(), BusinessRegistrationActivity.class);
+					startActivity(intent);
+				}
+				else if(position == 3){
 					if(manager.logoutUser()){
 						Intent intent = new Intent(getActivity(), LoginActivity.class);
 						startActivity(intent);

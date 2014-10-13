@@ -1,24 +1,29 @@
 package com.sportzweb;
 
+import java.util.ArrayList;
+
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.google.gson.Gson;
 import com.sampanit.sonutoapp.utils.AlertDialogManager;
 import com.sonuto.rpc.ICallBack;
 import com.sonuto.rpc.register.User;
 import com.sonuto.session.ISessionManager;
 import com.sonuto.session.SessionManager;
+import com.sonuto.users.Country;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.FrameLayout;
 import android.widget.Toast;
 
 public class ProfileInformationActivity extends Activity {
@@ -26,32 +31,16 @@ public class ProfileInformationActivity extends Activity {
 	private EditText mInstituiton, mOccupation, mEmployee;
 	String country, occupation, institution, employee;
 	ISessionManager session;
-	// data source for auto complete text view
-	private static String[] countries = { "Albania", "Algeria", "Argentina",
-			"Australia", "Austria", "Bahrain", "Bangladesh", "Belarus",
-			"Belgium", "Belgium", "Bolivia", "Bosnia and Herzegovina",
-			"Bosnia and Herzegovina", "Brazil", "Bulgaria", "Canada", "Canada",
-			"Chile", "China", "Colombia", "Costa Rica", "Croatia", "Cyprus",
-			"Czech Republic", "Denmark", "Dominican Republic", "Ecuador",
-			"Egypt", "El Salvador", "Estonia", "Finland", "France", "Germany",
-			"Greece", "Guatemala", "Honduras", "Hong Kong", "Hungary",
-			"Iceland", "India", "India", "Indonesia", "Iraq", "Ireland",
-			"Ireland", "Israel", "Italy", "Japan", "Japan", "Jordan", "Kuwait",
-			"Latvia", "Lebanon", "Libya", "Lithuania", "Luxembourg",
-			"Luxembourg", "Macedonia", "Malaysia", "Malta", "Malta", "Mexico",
-			"Montenegro", "Montenegro", "Morocco", "Netherlands",
-			"New Zealand", "Nicaragua", "Norway", "Norway", "Oman", "Panama",
-			"Paraguay", "Peru", "Philippines", "Poland", "Portugal",
-			"Puerto Rico", "Qatar", "Romania", "Russia", "Saudi Arabia",
-			"Serbia", "Serbia", "Serbia and Montenegro", "Singapore",
-			"Singapore", "Slovakia", "Slovenia", "South Africa", "South Korea",
-			"Spain", "Spain", "Sudan", "Sweden", "Switzerland", "Switzerland",
-			"Switzerland", "Syria", "Taiwan", "Thailand", "Thailand",
-			"Tunisia", "Turkey", "Ukraine", "United Arab Emirates",
-			"United Kingdom", "United States", "United States", "Uruguay",
-			"Venezuela", "Vietnam", "Yemen" };
+
 	private AutoCompleteTextView actCounties;
 	ArrayAdapter<String> countriesAdapter;
+	JSONArray countries;
+	private Country selectedCountry = null;
+	int countryId = -1;
+
+	// array list for country AutoCompleteTextView adapter
+	private ArrayList<Country> countryList;
+
 	// Alert Dialog Manager
 	AlertDialogManager alert = new AlertDialogManager();
 
@@ -60,7 +49,7 @@ public class ProfileInformationActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_profile_information);
 		mContext = this;
-		
+
 		// Session Manager
 		session = new SessionManager(getApplicationContext());
 
@@ -72,14 +61,58 @@ public class ProfileInformationActivity extends Activity {
 	 */
 	private void initUi() {
 
-		// initialize view
+		// initialize AutoCompleteTextView
 		actCounties = (AutoCompleteTextView) findViewById(R.id.actSelectCountry);
-		countriesAdapter = new ArrayAdapter<String>(
-				ProfileInformationActivity.this,
-				android.R.layout.simple_list_item_1, countries);
 
-		// bind adapter and view
-		actCounties.setAdapter(countriesAdapter);
+		// Load data from server for AutoCompleteTextView
+		User getCountryList = new User();
+		countryList = new ArrayList<Country>();
+		getCountryList.countryList(new ICallBack() {
+
+			@Override
+			public void callBackResultHandler(Object object) {
+				JSONObject jsonObject = (JSONObject) object;
+				try {
+					countries = jsonObject.getJSONArray("country_list");
+
+					Gson gson = new Gson();
+					int total_country = countries.length();
+					for (int i = 0; i < total_country; i++) {
+						Country countryObj = gson.fromJson(countries.get(i)
+								.toString(), Country.class);
+						countryList.add(countryObj);
+					}
+
+					ArrayAdapter<Country> countriesAdapter = new ArrayAdapter<Country>(
+							mContext, android.R.layout.simple_list_item_1,
+							countryList);
+					// bind adapter and view
+					actCounties.setAdapter(countriesAdapter);
+
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+			}
+
+			@Override
+			public void callBackErrorHandler(Object object) {
+
+			}
+		});
+
+		// Here get the selected item from AutoCompleteTextView
+		actCounties.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				selectedCountry = (Country) parent.getAdapter().getItem(
+						position);
+
+			}
+		});
 
 		mInstituiton = (EditText) findViewById(R.id.regInstituteInputEdtTxt);
 		mOccupation = (EditText) findViewById(R.id.regOccupationInputEdtTxt);
@@ -87,7 +120,7 @@ public class ProfileInformationActivity extends Activity {
 	}
 
 	public void userValue() {
-		country = actCounties.getText().toString().trim();
+		countryId = selectedCountry == null ? 0 : selectedCountry.getId();
 		occupation = mOccupation.getText().toString().trim();
 		institution = mInstituiton.getText().toString().trim();
 		employee = mEmployee.getText().toString().trim();
@@ -98,7 +131,7 @@ public class ProfileInformationActivity extends Activity {
 	 */
 	public boolean isVerified() {
 
-		if (country.length() == 0) {
+		if (countryId <= 0) {
 			Toast.makeText(mContext, getString(R.string.countyRequired),
 					Toast.LENGTH_SHORT).show();
 			return false;
@@ -125,50 +158,52 @@ public class ProfileInformationActivity extends Activity {
 	 */
 	public void saveANDcontinue(View view) {
 		userValue();
+		if (isVerified()) {
+			User user = new User();
+			try {
+				JSONObject jsonUser = new JSONObject();
+				jsonUser.put("user_id", session.getUserId());
+				jsonUser.put("country_id", countryId);
+				jsonUser.put("occupation", occupation);
+				jsonUser.put("clg_or_uni", institution);
+				jsonUser.put("employer", employee);
 
-		User user = new User();
-
-		try {
-			JSONObject jsonUser = new JSONObject();
-			jsonUser.put("user_id", session.getUserId());
-			jsonUser.put("country_id", 15);
-			jsonUser.put("occupation", occupation);
-			jsonUser.put("clg_or_uni", institution);
-			jsonUser.put("employer", employee);
-			
-			user.updateUsersProfileInfo(new ICallBack() {
-				@Override
-				public void callBackResultHandler(final Object object) {
-					JSONObject jsonObject = (JSONObject)object;
-					try {
-						//Toast.makeText(getApplicationContext(), jsonObject.get("status").toString(), Toast.LENGTH_SHORT).show();
-						if(jsonObject.get("status").toString().equalsIgnoreCase("1")){
-							 Intent intent = new Intent(mContext,BirthDaySettingActivity.class);
-							 startActivity(intent);
-							 finish();
-						} else {
-							// Login unsuccessful
-							alert.showAlertDialog(ProfileInformationActivity.this, "Profile Edit failed..",
-									"Profile edit unsuccessfull", false);
+				user.updateUsersProfileInfo(new ICallBack() {
+					@Override
+					public void callBackResultHandler(final Object object) {
+						JSONObject jsonObject = (JSONObject) object;
+						try {
+							if (jsonObject.get("status").toString()
+									.equalsIgnoreCase("1")) {
+								Intent intent = new Intent(mContext,
+										BirthDaySettingActivity.class);
+								startActivity(intent);
+								finish();
+							} else {
+								// Login unsuccessful
+								alert.showAlertDialog(
+										ProfileInformationActivity.this,
+										"Profile Edit failed..",
+										"Profile edit unsuccessfull", false);
+							}
+						} catch (JSONException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
 						}
-					} catch (JSONException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}   
-					
-				}
 
-				@Override
-				public void callBackErrorHandler(Object object) {
-					// TODO Auto-generated method stub
-					System.out.println(object);
-				}
-			}, jsonUser.toString());
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+					}
+
+					@Override
+					public void callBackErrorHandler(Object object) {
+						// TODO Auto-generated method stub
+						System.out.println(object);
+					}
+				}, jsonUser.toString());
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
-
 	}
 
 }

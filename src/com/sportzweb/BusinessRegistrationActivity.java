@@ -9,22 +9,19 @@ import org.json.JSONObject;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 import com.sampanit.sonutoapp.utils.AlertDialogManager;
 import com.sonuto.rpc.ICallBack;
 import com.sonuto.rpc.register.BusinessProfile;
-import com.sonuto.rpc.register.User;
+import com.sonuto.session.ISessionManager;
+import com.sonuto.session.SessionManager;
 import com.sonuto.users.BusinessCategory;
 import com.sonuto.users.Country;
 
-import android.R.bool;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -34,7 +31,6 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
-import android.widget.AdapterView.OnItemSelectedListener;
 
 public class BusinessRegistrationActivity extends Activity {
 
@@ -45,7 +41,7 @@ public class BusinessRegistrationActivity extends Activity {
 			business_reg_info_step_layout, business_reg_extra_info_step_layout,
 			business_reg_desc_step_layout;
 
-	private EditText bCategory, bType, bName, bStreet, bCountry, bStreetName,
+	private EditText bName, bStreet, bStreetName,
 			bCity, bPostcode, bTelephone, bEmail, bWebsite, bOpeningTime,
 			bRegisteredCompNo, bDescription;
 
@@ -59,20 +55,16 @@ public class BusinessRegistrationActivity extends Activity {
 	private Context mContext;
 	private Country selectedCountry = null;
 
-	// data source for auto complete text view
-	private AutoCompleteTextView actCounties;
-	// array adapter for counties
+	// array adapter for counties and business category
 	ArrayAdapter<String> countriesAdapter;
-
-	// array adapter for business category
 	ArrayAdapter<String> bCategoryAdapter;
-
+	
+	// view of spinner and AutoCompleteTextView
+	private AutoCompleteTextView actCounties;
 	private Spinner spinnerBCategory, spinnerBType;
 
-	// array list for BusinessCategory spinner adapter
+	// array list for BusinessCategory spinner adapter and country AutoCompleteTextView adapter
 	private ArrayList<BusinessCategory> bcategoriesList;
-
-	// array list for country Autocomplete adapter
 	private ArrayList<Country> countryList;
 
 	// process dialer
@@ -82,12 +74,14 @@ public class BusinessRegistrationActivity extends Activity {
 	AlertDialogManager alert = new AlertDialogManager();
 
 	JSONArray business_categories,countries;
+	ISessionManager session;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_business_resigtration);
-
+		// Session Manager
+		session = new SessionManager(getApplicationContext());
 		mContext = this;
 		initUi();
 	}
@@ -104,7 +98,7 @@ public class BusinessRegistrationActivity extends Activity {
 		countryList = new ArrayList<Country>();
 		BusinessProfile bProfile = new BusinessProfile();
 
-		JSONObject jsonUser = new JSONObject();
+		JSONObject jsonBusinessObject = new JSONObject();
 		
 		List<BusinessCategory> bcl = new ArrayList<BusinessCategory>();
 		bcl.add(new BusinessCategory());
@@ -151,8 +145,6 @@ public class BusinessRegistrationActivity extends Activity {
 						bcategoriesList.add(catObj);
 					}
 					
-					//business_categories.getId(i);
-					
 					ArrayAdapter<BusinessCategory> spinnerAdapter = new ArrayAdapter<BusinessCategory>(mContext, android.R.layout.simple_spinner_item,bcategoriesList);
 					spinnerBCategory.setAdapter(spinnerAdapter);
 			
@@ -164,13 +156,6 @@ public class BusinessRegistrationActivity extends Activity {
 					
 							// TODO Auto-generated method stub
 							if(spinnerBCategory.getSelectedItem() != null){
-								
-								//businessCategory = spinnerBCategory.getItemAtPosition(position).toString();
-								//spinnerBCategory.getSelectedItem();
-								
-								//Object selected = arg0.getItemAtPosition(position);
-								
-								//System.out.print(selected);
 								
 								BusinessCategory businessCategory = (BusinessCategory)spinnerBCategory.getSelectedItem();
 								ArrayList<BusinessCategory> bSubCategories = new ArrayList<BusinessCategory>();
@@ -199,7 +184,6 @@ public class BusinessRegistrationActivity extends Activity {
 						
 					});
 
-
 				} 
 				catch (JSONException e) {
 					//give proper error message to the client
@@ -216,7 +200,7 @@ public class BusinessRegistrationActivity extends Activity {
 				// TODO Auto-generated method stub
 				System.out.println(object);
 			}
-		}, jsonUser.toString());
+		}, jsonBusinessObject.toString());
 			 
 		
 		bName = (EditText) findViewById(R.id.businessNameInputEdtTxt);
@@ -257,12 +241,11 @@ public class BusinessRegistrationActivity extends Activity {
 			
 			
 		});
-		countryList = new ArrayList<Country>();
+		
 	}
-
+	
+	// get the value from all input field
 	public void businessProfileValue() {
-		//businessCategory = spinnerBCategory.getSelectedItem().toString();
-		//businessType = spinnerBType.getSelectedItem().toString().trim();
 		
 		BusinessCategory businessCategoryValue =(BusinessCategory)spinnerBCategory.getSelectedItem();
 		BusinessCategory businessTypeValue = (BusinessCategory) spinnerBType.getSelectedItem();
@@ -270,13 +253,10 @@ public class BusinessRegistrationActivity extends Activity {
 		businessCategory = businessCategoryValue == null ? 0 : businessCategoryValue.getId();
 		businessType = businessTypeValue == null ? 0 : businessTypeValue.getId();
 		
-		
-		
 		businessName = bName.getText().toString().trim();
 		businessStreet = bStreet.getText().toString().trim();
 		
 		businessCountry = selectedCountry == null ? 0 : selectedCountry.getId();
-		//businessCountry = actCounties.getText().toString().trim();
 		businessSreetName = bStreetName.getText().toString().trim();
 		businessCity = bCity.getText().toString().trim();
 		businessPostalcode = bPostcode.getText().toString().trim();
@@ -418,7 +398,8 @@ public class BusinessRegistrationActivity extends Activity {
 			JSONObject jsonBusinessProfile = new JSONObject();
 			
 			try {
-				jsonBusinessProfile.put("user_id", 5);
+				jsonBusinessProfile.put("user_id", session.getUserId());
+				//jsonBusinessProfile.put("user_id", 5);
 				jsonBusinessProfile.put("business_profile_type", businessCategory);
 				jsonBusinessProfile.put("business_profile_sub_type", businessType);
 				jsonBusinessProfile.put("business_name", businessName);
@@ -438,33 +419,29 @@ public class BusinessRegistrationActivity extends Activity {
 					
 					@Override
 					public void callBackResultHandler(Object object) {
-						// TODO Auto-generated method stub
 						JSONObject jsonObject = (JSONObject)object;
 						try {
 							if(jsonObject.get("status").toString().equalsIgnoreCase("1")) {
 								alert.showAlertDialog(BusinessRegistrationActivity.this, "Business Profile Registration complete..",
 										"Registration successfull", false);
-								//Toast.makeText(getApplicationContext(), jsonObject.get("success_message").toString(), Toast.LENGTH_SHORT).show();
+								
 							} else {
-								//Toast.makeText(getApplicationContext(), jsonObject.get("error_messages").toString(), Toast.LENGTH_SHORT).show();
-								// Login unsuccessful
+
+								// Registration unsuccessful
 								alert.showAlertDialog(BusinessRegistrationActivity.this, "Business Profile Registration failed..",
 										"Registration unsuccessfull", false);
 							}
 						} catch (JSONException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
 					}
 					
 					@Override
 					public void callBackErrorHandler(Object object) {
-						// TODO Auto-generated method stub
 						System.out.println(object);
 					}
 				}, jsonBusinessProfile.toString());
 			} catch (JSONException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -481,9 +458,6 @@ public class BusinessRegistrationActivity extends Activity {
 			return true;
 		}
 	}
-
-
-
 	
 
 	/*
