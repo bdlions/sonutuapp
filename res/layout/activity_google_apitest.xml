@@ -1,16 +1,17 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/scrollView1"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:fillViewport="true" >
 
     <LinearLayout
         android:id="@+id/parent_id"
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical" 
-        android:padding="10dip">
+        android:orientation="vertical"
+        android:gravity="center_horizontal|center_vertical"
+        android:padding="10dip" >
 
         <!-- <include layout="@layout/partial_layout_header" /> -->
 
@@ -19,8 +20,7 @@
             android:layout_width="fill_parent"
             android:layout_height="0dip"
             android:layout_weight="1"
-
-            android:orientation="horizontal" >
+            android:orientation="vertical" >
         </LinearLayout>
 
         <Button

@@ -152,7 +152,6 @@ public class PieChart extends RoundChart {
 //            mRenderer, prevLabelsBounds, mCenterX, mCenterY, shortRadius / 2, longRadius / 2,
 //            currentAngle, angle, left, right, mRenderer.getLabelsColor(), paint, false, true);
 //      }
-      
 
       if (mRenderer.isDisplayValues()) {
           if(angle<60)
@@ -174,7 +173,7 @@ public class PieChart extends RoundChart {
       currentAngle += angle;
     }
     prevLabelsBounds.clear();
-    drawLegend(canvas, mRenderer, titles, left, right, y, width, height, legendSize, paint, false);
+    //drawLegend(canvas, mRenderer, titles, left, right, y, width, height, legendSize, paint, false);
     drawTitle(canvas, x, y, width, paint);
   }
 

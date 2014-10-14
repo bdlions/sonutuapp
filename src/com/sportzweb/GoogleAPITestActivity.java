@@ -8,47 +8,30 @@ import org.achartengine.model.CategorySeries;
 import org.achartengine.model.SeriesSelection;
 import org.achartengine.renderer.DefaultRenderer;
 import org.achartengine.renderer.SimpleSeriesRenderer;
-
-
-
-
-
 import android.app.Activity;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
-import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 public class GoogleAPITestActivity extends Activity {
 
 	private GraphicalView mChart;
 	private String[] code;
-	
+	final DefaultRenderer defaultRenderer  = new DefaultRenderer(); 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_google_apitest);
-        
         // Ploting the chart
         openChart();        
     }
     
     private void openChart(){
     	
-    	// Pie Chart Slice Names
- 
     	code = new String[] {"Fitness", "Health", "Sports"};
-    	
-    	// Pie Chart Slice Values
     	double[] distribution = { 33.3, 33.3, 33.3 } ;
-    	
-    	// Color of each Pie Chart Slices
-    	//int[] colors = { Color.BLUE, Color.YELLOW, Color.MAGENTA};
-
     	int[] colors = { 0xFFDC3812, 0xFF3266CC, 0xFFFE9900};
     	
     	// Instantiating CategorySeries to plot Pie Chart    	
@@ -59,46 +42,24 @@ public class GoogleAPITestActivity extends Activity {
     	}   
     	
     	// Instantiating a renderer for the Pie Chart
-    	DefaultRenderer defaultRenderer  = new DefaultRenderer();    	
     	for(int i = 0 ;i<distribution.length;i++){ 
-    		
     		// Instantiating a render for the slice
     		SimpleSeriesRenderer seriesRenderer = new SimpleSeriesRenderer();    	
     		seriesRenderer.setColor(colors[i]);
-    		//seriesRenderer.setDisplayChartValues(true);
-    		
     		// Adding the renderer of a slice to the renderer of the pie chart
     		defaultRenderer.addSeriesRenderer(seriesRenderer);
     	}
-    	
-//    	defaultRenderer.setChartTitle("");
-//    	defaultRenderer.setChartTitleTextSize(20);
-//    	defaultRenderer.setZoomButtonsVisible(true);    	    		
-    	
-//    	defaultRenderer.setPanEnabled(false);
-//    	defaultRenderer.setZoomRate(0.2f);
-//    	defaultRenderer.setZoomEnabled(false);
-//    	defaultRenderer.setInScroll(true);
-    	
-    	defaultRenderer.setZoomEnabled(false);
 
     	defaultRenderer.setPanEnabled(false);
-
-    	defaultRenderer.setZoomRate(6.0f);
-
     	defaultRenderer.setShowLabels(true);
-
     	defaultRenderer.setFitLegend(true);
-
     	defaultRenderer.setInScroll(true);
-    	defaultRenderer.setLegendTextSize(10);
+    	defaultRenderer.setLegendTextSize(20);
     	
     	// Getting a reference to view group linear layout chart_container
     	LinearLayout chartContainer = (LinearLayout) findViewById(R.id.chart_containe);
-    	LinearLayout.LayoutParams params = new  LinearLayout.LayoutParams(200,200);
+    	LinearLayout.LayoutParams params = new  LinearLayout.LayoutParams(400,400);
     	chartContainer.setLayoutParams(params);
- 
-    	
     	
     	// Getting PieChartView to add to the custom layout
     	mChart = ChartFactory.getPieChartView(getBaseContext(), distributionSeries, defaultRenderer);
@@ -115,7 +76,9 @@ public class GoogleAPITestActivity extends Activity {
         			// Getting the name of the clicked slice
         			int seriesIndex = seriesSelection.getPointIndex();
         			String selectedSeries="";
-        			selectedSeries = code[seriesIndex];        			
+        			selectedSeries = code[seriesIndex];  
+        			GoogleAPITestActivity.this.defaultRenderer.getSeriesRendererAt(seriesIndex).setHighlighted(true);
+        	        mChart.repaint();
                     
         			// Getting the value of the clicked slice
         			double value = seriesSelection.getXValue();
@@ -129,10 +92,8 @@ public class GoogleAPITestActivity extends Activity {
         		}
         }
         });
-        
         // Adding the pie chart to the custom layout
     	chartContainer.addView(mChart);
-    	
     	
     }
 
