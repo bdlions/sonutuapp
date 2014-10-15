@@ -89,13 +89,16 @@ public class LoginActivity extends Activity {
 					try {
 						
 						if(jsonObject.get("msg").toString().equalsIgnoreCase("SIGNIN_SUCCESSFULLY")){
-							//Toast.makeText(getApplicationContext(), jsonObject.get("msg").toString(),Toast.LENGTH_SHORT).show();
-							//alert.showAlertDialog(LoginActivity.this, "Logedin ..",
-							//		"SIGNIN_SUCCESSFULLY", true);
+
 							if(session.logInUser(jsonObject.getJSONObject("user_info"))){
+								if(jsonObject.get("is_bp_exists").toString().equalsIgnoreCase("1")){
+									session.logInUserBusinessProfile(jsonObject.getJSONObject("business_profile_info"));
+								}
+								
 								Intent i = new Intent(getApplicationContext(),NewsFeedActivity.class);
 								startActivity(i);
 								finish();
+								
 							} else {
 								// Login unsuccessful
 								alert.showAlertDialog(LoginActivity.this, "Login failed..",

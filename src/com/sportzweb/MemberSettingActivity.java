@@ -1,7 +1,7 @@
 package com.sportzweb;
 
-
 import java.text.DecimalFormat;
+
 import org.achartengine.ChartFactory;
 import org.achartengine.GraphicalView;
 import org.achartengine.model.CategorySeries;
@@ -9,10 +9,10 @@ import org.achartengine.model.SeriesSelection;
 import org.achartengine.renderer.DefaultRenderer;
 import org.achartengine.renderer.SimpleSeriesRenderer;
 
-import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -22,12 +22,14 @@ public class MemberSettingActivity extends Activity {
 
 	private GraphicalView mChart;
 	private String[] code;
+	final DefaultRenderer defaultRenderer  = new DefaultRenderer(); 
 	private Context mContext;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_member_setting);
+        
         mContext = this;
         // Ploting the chart
         openChart();        
@@ -35,14 +37,8 @@ public class MemberSettingActivity extends Activity {
     
     private void openChart(){
     	
-    	// Pie Chart Slice Names
     	code = new String[] {"Fitness", "Health", "Sports"};
-    	
-    	// Pie Chart Slice Values
     	double[] distribution = { 33.3, 33.3, 33.3 } ;
-    	
-    	// Color of each Pie Chart Slices
-    	//int[] colors = { Color.BLUE, Color.YELLOW, Color.MAGENTA};
     	int[] colors = { 0xFFDC3812, 0xFF3266CC, 0xFFFE9900};
     	
     	// Instantiating CategorySeries to plot Pie Chart    	
@@ -53,29 +49,23 @@ public class MemberSettingActivity extends Activity {
     	}   
     	
     	// Instantiating a renderer for the Pie Chart
-    	DefaultRenderer defaultRenderer  = new DefaultRenderer();    	
     	for(int i = 0 ;i<distribution.length;i++){ 
-    		
     		// Instantiating a render for the slice
     		SimpleSeriesRenderer seriesRenderer = new SimpleSeriesRenderer();    	
     		seriesRenderer.setColor(colors[i]);
-    		//seriesRenderer.setDisplayChartValues(true);
-    		
     		// Adding the renderer of a slice to the renderer of the pie chart
     		defaultRenderer.addSeriesRenderer(seriesRenderer);
     	}
-    	
-    	defaultRenderer.setZoomEnabled(false);
+
     	defaultRenderer.setPanEnabled(false);
-    	defaultRenderer.setZoomRate(6.0f);
     	defaultRenderer.setShowLabels(true);
     	defaultRenderer.setFitLegend(true);
     	defaultRenderer.setInScroll(true);
-    	defaultRenderer.setLegendTextSize(10);
+    	defaultRenderer.setLegendTextSize(20);
     	
     	// Getting a reference to view group linear layout chart_container
     	LinearLayout chartContainer = (LinearLayout) findViewById(R.id.chart_containe);
-    	LinearLayout.LayoutParams params = new  LinearLayout.LayoutParams(200,200);
+    	LinearLayout.LayoutParams params = new  LinearLayout.LayoutParams(400,400);
     	chartContainer.setLayoutParams(params);
     	
     	// Getting PieChartView to add to the custom layout
@@ -93,30 +83,26 @@ public class MemberSettingActivity extends Activity {
         			// Getting the name of the clicked slice
         			int seriesIndex = seriesSelection.getPointIndex();
         			String selectedSeries="";
-        			selectedSeries = code[seriesIndex];        			
+        			selectedSeries = code[seriesIndex];  
+        			MemberSettingActivity.this.defaultRenderer.getSeriesRendererAt(seriesIndex).setHighlighted(true);
+        	        mChart.repaint();
                     
         			// Getting the value of the clicked slice
         			double value = seriesSelection.getXValue();
         			DecimalFormat dFormat = new DecimalFormat("#.#");
-        			
-        			// write code to save the selected interested and update db value
-        			
+        			 
         			// Displaying the message
         			Toast.makeText(
         					getBaseContext(),
         					selectedSeries + " : "  + Double.valueOf(dFormat.format(value)) + " % " ,
         					Toast.LENGTH_SHORT).show();
-	        			
         		}
         }
         });
-        
         // Adding the pie chart to the custom layout
     	chartContainer.addView(mChart);
     	
-    	
     }
-    
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

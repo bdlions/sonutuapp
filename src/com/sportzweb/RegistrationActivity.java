@@ -114,7 +114,9 @@ public class RegistrationActivity extends Activity {
 								if(jsonObject.get("msg").toString().equalsIgnoreCase("SIGNUP_COMPLETED")){
 									
 									if(session.logInUser(jsonObject.getJSONObject("user_info"))){
-
+										if(jsonObject.get("is_bp_exists").toString().equalsIgnoreCase("1")){
+											session.logInUserBusinessProfile(jsonObject.getJSONObject("business_profile_info"));
+										}
 										 Intent intent = new Intent(mContext,MemberSettingActivity.class);
 										 startActivity(intent);
 										 finish();

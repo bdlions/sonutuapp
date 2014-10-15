@@ -81,17 +81,19 @@
         <item>Three</item>
     </string-array>
     
-    <string-array name="countries_list">
-        <item>Afghanistan</item>
-        <item>Albania</item>
-        <item>Australia</item>
-        <item>Bangladesh</item>
-        <item>Bhutan</item>
-        <item>England</item>
-        <item>Finland</item>
-        <item>India</item>
-        <item>Saudi Arabia</item>
-        <item>Nepal</item>
+    <string name="sports_prompt">Select sports..</string>
+    <string-array name="sports_list">
+        <item>Football</item>
+        <item>Cricket</item>
+        <item>BasketBall</item>
+        <item>Rugby Union</item>
+    </string-array>
+    
+    <string name="tournament_prompt">Select tournament..</string>
+    <string-array name="tournament_list">
+        <item>Chanpion League</item>
+        <item>La League</item>
+        <item>Premier</item>
     </string-array>
 
     <!-- seettings account -->
@@ -185,5 +187,17 @@
     <string name="weightRequiered">Weight is requiered!</string>
     <string name="heightRequiered">Height is requiered!</string>
     <!-- End BMI Calculator Application -->
+    
+    <!-- Xtream banter Application -->
+    <string name="title_activity_xtream_banter">Xtream Banter</string>
+	<string name="xtream_banter_title">Xtream Banter</string>
+	<string name="xtream_banter_list"></string>
+	<string name="dd">r</string>
+	<string name="button_create_chat_room">Create Chat Room</string>
+	<string name="button_join_chat_room">Join Chat Room</string>
+	<string name="button_enter_chat_room">Enter Chat Room</string>
+    <string name="button_send_chat">Send</string>
+    <string name="button_back">Back</string>
+    <!-- Xtream banter Application -->
 
 </resources>

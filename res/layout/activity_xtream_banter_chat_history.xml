@@ -1,0 +1,65 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="." >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="10dp" >
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dip"
+            android:layout_marginTop="10dip"
+            android:gravity="center"
+            android:text="Premier League"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+             />
+         <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="15 October 2014"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+             />
+         
+         <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Arsenal V Chealsi (12:00)"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#00acea" />
+
+       <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" 
+            android:layout_marginTop="100dip">
+
+            <EditText
+                android:id="@+id/chat_edt_text"
+                android:layout_width="196dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="#00acea" />
+
+            <Button
+                android:id="@+id/btnenterChatRoom"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button"
+                android:text="@string/button_send_chat"
+                android:textSize="15sp" />
+            
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

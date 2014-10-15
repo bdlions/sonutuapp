@@ -52,7 +52,7 @@ public class AddProfilePictureActivity extends Activity {
         setContentView(R.layout.activity_add_profile_picture);
         
         upLoadServerUri = "http://31.222.168.64:8084/service/media/upload_profile_picture";	
-        //upLoadServerUri = "http://192.168.137.1/sportzweb/service/media/upload_profile_picture";
+        //upLoadServerUri = "http://192.168.0.101/sportzweb/service/media/upload_profile_picture";
         mContext = this;       
     }
 	

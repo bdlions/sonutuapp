@@ -15,8 +15,8 @@ public class BmiCalculatorActivity extends Activity {
 
 	EditText weightText, heightText;
 	TextView resultBmiText,resultBmiCategoryText;
-	private int selectedColor = Color.GREEN;
-	private int defaultColor = Color.GRAY;
+	private int selectedColor = 0xFF22B14C;
+	private int defaultColor = 0xFFD6D6D6;
 	
 	private float weight=0,height=0,bmiValue;
 
@@ -117,6 +117,8 @@ public class BmiCalculatorActivity extends Activity {
 		
 		btnMale.setBackgroundColor(selectedColor);
 		btnMetric.setBackgroundColor(selectedColor);
+		btnFemale.setBackgroundColor(defaultColor);
+		btnImperical.setBackgroundColor(defaultColor);
 
 	}
 

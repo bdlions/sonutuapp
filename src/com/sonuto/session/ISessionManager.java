@@ -2,6 +2,7 @@ package com.sonuto.session;
 
 import org.json.JSONObject;
 
+import com.sonuto.users.BusinessProfileInfo;
 import com.sonuto.users.UserInfo;
 
 public interface ISessionManager {
@@ -14,5 +15,11 @@ public interface ISessionManager {
 	public boolean logInUser(JSONObject userobj);
 	public boolean logoutUser();
 	public int getUserId();
+	
+	public boolean logInUserBusinessProfile(JSONObject userBpobj);
+	public BusinessProfileInfo getUsersBusinessProfileInfo();
+	public int getUsersBusinessProfileId();
+	
+	public String getUsersBusinessProfileName();
 	
 }

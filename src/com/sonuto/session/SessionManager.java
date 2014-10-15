@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 
 import com.google.gson.Gson;
+import com.sonuto.users.BusinessProfileInfo;
 import com.sonuto.users.UserInfo;
 
 public class SessionManager implements ISessionManager {
@@ -17,6 +18,7 @@ public class SessionManager implements ISessionManager {
 	 * */
 	private final String PREF_NAME = "SONUTO_SESSION_PREFERENCE";
 	private final String USER_INFO = "USER_INFO";
+	private final String BP_INFO = "BP_INFO";
 	
 	
 	private Context appContext;
@@ -118,5 +120,53 @@ public class SessionManager implements ISessionManager {
 		}
 		return userInfo.getUserId();
 	}
+
+	@Override
+	public boolean logInUserBusinessProfile(JSONObject userBpobj) {
+		setUsersBPInSession(userBpobj);
+		return true;
+	}
+	
+	private void setUsersBPInSession(JSONObject usersBpObj){
+		Editor editor = sharedPreferences.edit();	
+		editor.putString(BP_INFO, usersBpObj.toString());		
+		// commit changes
+		editor.commit();
+	}
+	
+	@Override
+	public BusinessProfileInfo getUsersBusinessProfileInfo() {
+		// TODO Auto-generated method stub
+		if(sharedPreferences == null){
+			throw new NullPointerException();
+		}
+		
+		Gson gson = new Gson();
+	    String jsonUsersBpInfo = sharedPreferences.getString(BP_INFO, null);
+	    BusinessProfileInfo usersBpInfo = gson.fromJson(jsonUsersBpInfo, BusinessProfileInfo.class);
+		return usersBpInfo;
+	}
+	
+	
+	@Override
+	public int getUsersBusinessProfileId() {
+		// TODO Auto-generated method stub
+		BusinessProfileInfo userBPInfo = getUsersBusinessProfileInfo();
+		if(userBPInfo == null){
+			throw new NullPointerException();
+		}
+		return userBPInfo.getUserBusinessProfileId();
+	}
+	
+	@Override
+	public String getUsersBusinessProfileName() {
+		// TODO Auto-generated method stub
+		BusinessProfileInfo userBPInfo = getUsersBusinessProfileInfo();
+		if(userBPInfo == null){
+			throw new NullPointerException();
+		}
+		return userBPInfo.getBusinessProfileName();
+	}
+	
 
 }

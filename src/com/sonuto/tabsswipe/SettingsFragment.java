@@ -42,8 +42,8 @@ public class SettingsFragment extends Fragment {
 		lv = (ListView) v.findViewById(R.id.listViewSettings);
 		perform(v);
 		manager = new SessionManager(getActivity().getApplicationContext());
-//		if(manager.getUserId() > 0){
-//			values[0] = "your Business Profile";
+//		if(manager.getUsersBusinessProfileId() > 0){
+//			values[0] = manager.getUsersBusinessProfileName();
 //		}
 		
 		lv.setOnItemClickListener(new OnItemClickListener() {
@@ -63,12 +63,6 @@ public class SettingsFragment extends Fragment {
 						startActivity(intent);
 					}
 				}
-				
-
-				// ListView Clicked item value
-				//String itemValue = (String) lv.getItemAtPosition(position);
-				//Intent intent = new Intent(getActivity(), MainActivity.class);
-				//startActivity(intent);
 
 			}
 		});
