@@ -15,7 +15,6 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
-
 public class GoogleAPITestActivity extends Activity {
 
 	private GraphicalView mChart;
