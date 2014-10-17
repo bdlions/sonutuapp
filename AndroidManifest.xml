@@ -16,7 +16,7 @@
         android:label="@string/app_name"
         android:theme="@android:style/Theme.NoTitleBar">
         <activity
-            android:name="com.sportzweb.LoginActivity"
+            android:name="com.sportzweb.TestActivity"
             android:theme="@style/CustomActionBarTheme"
             android:label="@string/app_name" >
             <intent-filter>
