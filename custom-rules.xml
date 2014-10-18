@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="custom_rules" default="debug">    
+     
+    <!-- Input directories -->
+    <property name="source.dir" value="src" />
+    <property name="source.absolute.dir" location="${source.dir}" />
+    <property name="gen.dir" value="gen" />
+    <property name="gen.absolute.dir" location="${gen.dir}" />
+    <property name="resource.dir" value="res" />
+    <property name="resource.absolute.dir" location="${resource.dir}" />
+    <property name="asset.dir" value="assets" />
+    <property name="asset.absolute.dir" location="${asset.dir}" />
+     
+    <target name="development" depends="-set-development-props, config">
+    </target>
+ 
+    <target name="production" depends="-set-production-props, config" description="Builds the application in release mode.">
+    </target>
+ 
+    <target name="-set-development-props">
+        <property name="config.logging" value="true" />
+        <property name="config.server_root_url" value="http://10.10.2.2/sportzweb/" />
+        <property name="config.rpc_controller_path" value="http://10.10.2.2/sportzweb/rpc/" />
+        <property name="config.service_controller_path" value="http://10.10.2.2/sportzweb/service/" />
+        <property name="config.profile_pic_dir" value="http://10.10.2.2/sportzweb/media/upload_profile_picture/" />
+    </target>
+ 
+    <target name="-set-production-props">
+        <property name="config.logging" value="true" />
+        <property name="config.server_root_url" value="http://31.222.168.64:8084/" />
+        <property name="config.rpc_controller_path" value="http://31.222.168.64:8084/rpc/" />
+        <property name="config.service_controller_path" value="http://31.222.168.64:8084/service/" />
+        <property name="config.profile_pic_dir" value="http://31.222.168.64:8084/media/upload_profile_picture/" />
+    </target>
+     
+    <!-- Copy Config.java to our source tree, replacing custom tokens with values in build.properties. The configuration depends on "clean" because otherwise the build system will not detect changes in the configuration. -->
+    <target name="config">
+ 
+        <property name="config-target-path" value="${source.dir}"/>
+ 
+        <chmod file="${config-target-path}/Config.java" perm="+w"/>
+        <attrib file="${config-target-path}/Config.java" readonly="false"/>
+   
+        <!-- Copy the configuration file, replacing tokens in the file. -->
+        <copy file="config/Config.java" todir="${config-target-path}/com/sonuto"
+              overwrite="true" encoding="utf-8">
+            <filterset>
+                <filter token="CONFIG.LOGGING" value="${config.logging}"/>
+                <filter token="CONFIG.SERVER_ROOT_URL" value="${config.server_root_url}"/>
+                <filter token="CONFIG.RPC_CONTROLLER_PATH" value="${config.rpc_controller_path}"/>
+                <filter token="CONFIG.SERVICE_CONTROLLER_PATH" value="${config.service_controller_path}"/>
+                <filter token="CONFIG.PROFILE_PIC_DIR" value="${config.profile_pic_dir}"/>
+            </filterset>
+        </copy>
+   
+        <!-- Now set it to read-only, as we don't want people accidentally
+             editing the wrong one. NOTE: This step is unnecessary, but I do
+             it so the developers remember that this is not the original file. -->
+        <chmod file="${config-target-path}/Config.java" perm="-w"/>
+        <attrib file="${config-target-path}/Config.java" readonly="true"/>
+ 
+    </target>
+</project>

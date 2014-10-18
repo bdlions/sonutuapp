@@ -2,25 +2,18 @@ package com.sonuto.rpc;
 import org.alexd.jsonrpc.JSONRPCClient;
 import org.alexd.jsonrpc.JSONRPCException;
 import org.alexd.jsonrpc.JSONRPCParams.Versions;
+
+import com.sonuto.Config;
+
 import android.os.AsyncTask;
 
 public abstract class RPCHandler extends AsyncTask<String, String, Object> {
-
-
-	private final String SERVER_ADDRESS = "http://31.222.168.64:8084/rpc/";
-	//private final String SERVER_ADDRESS = "http://172.17.4.204/sportzweb/rpc/";
-
-	//private final String SERVER_ADDRESS = "http://172.17.104.100/sportzweb/rpc/";
-	//private final String SERVER_ADDRESS = "http://172.17.132.122/webinventory/androidrpc/";
-
-	
-	
 	private JSONRPCClient client ;
 	private Object params[];
 	private ICallBack callBack;
 	private String method;
 	private RPCReturnType returnType;
-	private String controllerPath;
+	private String controllerName;
 
 	
 	public void setReturnType(RPCReturnType returnType) {
@@ -35,25 +28,14 @@ public abstract class RPCHandler extends AsyncTask<String, String, Object> {
 	public void setParams(Object... params) {
 		this.params = params;
 	}
-	public void setControllerPath(String controllerPath) {
-		this.controllerPath = controllerPath;
+	public void setControllerName(String controllerName) {
+		this.controllerName = controllerName;
 	}
-	
-//	public RPCHandler(String url, String method, RPCReturnType returnType, ICallBack callBack, Object ... params){
-//		client = JSONRPCClient.create(url, Versions.VERSION_2);
-//        client.setConnectionTimeout(2000);
-//        client.setSoTimeout(2000);
-//        
-//        this.params = params;
-//        this.method = method;
-//        this.returnType = returnType;
-//        
-//	}
-	
+
 	@Override
 	protected Object doInBackground(String... params) {
 		// TODO Auto-generated method stub
-		client = JSONRPCClient.create(SERVER_ADDRESS + controllerPath, Versions.VERSION_2);
+		client = JSONRPCClient.create(Config.RPC_CONTROLLER_PATH + controllerName, Versions.VERSION_2);
         client.setConnectionTimeout(10000);
         client.setSoTimeout(10000);
         Object result = null;

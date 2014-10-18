@@ -25,6 +25,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.sonuto.Config;
 import com.sonuto.session.SessionManager;
 import com.sonuto.users.UserInfo;
 
@@ -42,7 +43,6 @@ import android.widget.TextView;
 
 public class AddProfilePictureActivity extends Activity {
 	private Context mContext;
-	private String upLoadServerUri;
 	ProgressDialog dialog = null;
 	private String imagepath = null;
 	
@@ -50,9 +50,6 @@ public class AddProfilePictureActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_profile_picture);
-        
-        upLoadServerUri = "http://31.222.168.64:8084/service/media/upload_profile_picture";	
-        //upLoadServerUri = "http://192.168.0.101/sportzweb/service/media/upload_profile_picture";
         mContext = this;       
     }
 	
@@ -116,7 +113,7 @@ public class AddProfilePictureActivity extends Activity {
 				data = IOUtils.toByteArray(inputStream);
 
 				HttpClient httpClient = new DefaultHttpClient();
-				HttpPost httpPost = new HttpPost(upLoadServerUri);
+				HttpPost httpPost = new HttpPost(Config.PROFILE_PIC_DIR);
 
 				InputStreamBody inputStreamBody = new InputStreamBody(new ByteArrayInputStream(data), file.getName());
 				
