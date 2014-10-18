@@ -3,7 +3,6 @@
 #################
 project.properties
 *.pydevproject
-.project
 .metadata
 bin/
 tmp/
