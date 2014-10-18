@@ -9,7 +9,7 @@ public class BusinessProfile extends RPCHandler{
 	public void regiserBusinessProfile(ICallBack callBack, Object...params){
 		setCallBack(callBack);
 		
-		setControllerPath("business_profile/");
+		setControllerName("business_profile/");
 		setMethod("create_business_profile");
 
 		setParams(params);
@@ -20,7 +20,7 @@ public class BusinessProfile extends RPCHandler{
 	public void getBusinessProfileData(ICallBack callBack, Object...params){
 		setCallBack(callBack);
 		
-		setControllerPath("business_profile/");
+		setControllerName("business_profile/");
 		setMethod("get_business_profile_registration_data");
 		
 		setParams(params);

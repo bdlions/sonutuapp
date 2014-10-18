@@ -9,10 +9,10 @@ public class User extends RPCHandler{
 	public void regiserUser(ICallBack callBack, Object...params){
 		setCallBack(callBack);
 		
-		setControllerPath("auth/");
+		setControllerName("auth/");
 		setMethod("register");
 		
-		//super.setControllerPath("qprovider/");
+		//super.setControllerName("qprovider/");
 		//super.setMethod("abc");
 		
 		setParams(params);
@@ -23,7 +23,7 @@ public class User extends RPCHandler{
 	public void loginUser(ICallBack callBack, Object...params){
 		setCallBack(callBack);
 		
-		setControllerPath("auth/");
+		setControllerName("auth/");
 		setMethod("login");
 		
 		setParams(params);
@@ -34,7 +34,7 @@ public class User extends RPCHandler{
 	public void countryList(ICallBack callBack, Object...params){
 		setCallBack(callBack);
 		
-		setControllerPath("auth/");
+		setControllerName("auth/");
 		setMethod("country_list");
 		
 		setParams(params);
@@ -46,7 +46,7 @@ public class User extends RPCHandler{
 	public void updateGenderUser(ICallBack callBack, Object...params){
 		setCallBack(callBack);
 		
-		setControllerPath("auth/");
+		setControllerName("auth/");
 		setMethod("update_gender");
 		
 		setParams(params);
@@ -57,7 +57,7 @@ public class User extends RPCHandler{
 	public void updateUsersProfileInfo(ICallBack callBack, Object...params){
 		setCallBack(callBack);
 		
-		setControllerPath("auth/");
+		setControllerName("auth/");
 		setMethod("update_profile_information");
 		
 		setParams(params);
@@ -68,7 +68,7 @@ public class User extends RPCHandler{
 	public void updateDateOfBirth(ICallBack callBack, Object...params){
 		setCallBack(callBack);
 		
-		setControllerPath("auth/");
+		setControllerName("auth/");
 		setMethod("update_dob");
 		
 		setParams(params);
@@ -79,7 +79,7 @@ public class User extends RPCHandler{
 	public void businessRegistration(ICallBack callBack, Object...params){
 		setCallBack(callBack);
 		
-		setControllerPath("User_registration_login/");
+		setControllerName("User_registration_login/");
 		setMethod("business_registration");
 		
 		setParams(params);
