@@ -16,7 +16,7 @@
         android:label="@string/app_name"
         android:theme="@android:style/Theme.NoTitleBar">
         <activity
-            android:name="com.sportzweb.TestActivity"
+            android:name="com.sportzweb.LoginActivity"
             android:theme="@style/CustomActionBarTheme"
             android:label="@string/app_name" >
             <intent-filter>
@@ -85,7 +85,11 @@
         <activity android:name="com.sportzweb.XtreamBanterActivity"
             android:label="@string/title_activity_bmi_calculator"
             android:theme="@style/CustomActionBarTheme"></activity>
-            
+        
+        <activity android:name="com.sportzweb.XtreamBanterTournamentActivity"
+            android:label="@string/title_activity_bmi_calculator"
+            android:theme="@style/CustomActionBarTheme"></activity>
+        
     </application>
 
 </manifest>

@@ -3,6 +3,7 @@ package com.sonuto.tabsswipe;
 import com.sportzweb.BlogActivity;
 import com.sportzweb.BmiCalculatorActivity;
 import com.sportzweb.R;
+import com.sportzweb.XtreamBanterActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,7 +18,7 @@ import android.widget.AdapterView.OnItemClickListener;
 
 public class ApplicationsFragment extends Fragment {
 	
-	String[] apps = new String[] { "BMI Calculator","Healthy Recipy", "News", "Blog" };
+	String[] apps = new String[] { "BMI Calculator","Healthy Recipy", "News", "Blog", "Xtream Banter" };
 	ListView appListView;
 	
 	@Override
@@ -41,6 +42,9 @@ public class ApplicationsFragment extends Fragment {
 					startActivity(intent);
 				} else if(position == 3) {
 					Intent intent = new Intent(getActivity(), BlogActivity.class);
+					startActivity(intent);
+				} else if(position == 4) {
+					Intent intent = new Intent(getActivity(), XtreamBanterActivity.class);
 					startActivity(intent);
 				}
 
