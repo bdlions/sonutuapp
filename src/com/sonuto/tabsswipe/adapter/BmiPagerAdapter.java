@@ -1,4 +1,4 @@
-package com.sunuto.tabsswipe.adapter;
+package com.sonuto.tabsswipe.adapter;
 
 import com.sonuto.tabsswipe.BmiQuestionFragment;
 import com.sonuto.tabsswipe.BmiCalculatorFragment;

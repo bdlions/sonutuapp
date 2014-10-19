@@ -2,6 +2,7 @@ package com.sonuto.tabsswipe;
 
 import com.sportzweb.BlogActivity;
 import com.sportzweb.BmiCalculatorActivity;
+import com.sportzweb.CreateBlogActivity;
 import com.sportzweb.R;
 import com.sportzweb.XtreamBanterActivity;
 
@@ -41,7 +42,7 @@ public class ApplicationsFragment extends Fragment {
 					Intent intent = new Intent(getActivity(), BmiCalculatorActivity.class);
 					startActivity(intent);
 				} else if(position == 3) {
-					Intent intent = new Intent(getActivity(), BlogActivity.class);
+					Intent intent = new Intent(getActivity(), CreateBlogActivity.class);
 					startActivity(intent);
 				} else if(position == 4) {
 					Intent intent = new Intent(getActivity(), XtreamBanterActivity.class);

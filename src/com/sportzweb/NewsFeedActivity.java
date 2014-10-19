@@ -1,6 +1,6 @@
 package com.sportzweb;
 
-import com.sunuto.tabsswipe.adapter.TabsPagerAdapter;
+import com.sonuto.tabsswipe.adapter.TabsPagerAdapter;
 
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;

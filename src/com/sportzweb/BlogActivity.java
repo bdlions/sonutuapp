@@ -1,6 +1,6 @@
 package com.sportzweb;
 
-import com.sunuto.tabsswipe.adapter.BmiPagerAdapter;
+import com.sonuto.tabsswipe.adapter.BmiPagerAdapter;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;

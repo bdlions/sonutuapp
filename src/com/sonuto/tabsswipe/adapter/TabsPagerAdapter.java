@@ -1,4 +1,4 @@
-package com.sunuto.tabsswipe.adapter;
+package com.sonuto.tabsswipe.adapter;
 
 import com.sonuto.tabsswipe.ApplicationsFragment;
 import com.sonuto.tabsswipe.MessageFragment;

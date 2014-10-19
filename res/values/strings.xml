@@ -68,7 +68,23 @@
     
     <string name="bp_description_title">Description...</string>
     <string name="bp_description_label">Add your business description :</string>
-
+    
+    <!-- forget password strings -->
+    <string name="forget_password_heading">Forget Password?</string>
+    <string name="forget_password_title">Please enter your email so we can send you an email to reset your password.</string>
+    <string name="forget_password_email">Email</string>
+    <string name="forget_password_question_answare">Answare</string>
+    <string name="forget_password_email_check">Check your E-mail</string>
+    <string name="forget_password_code">Check your E-mail</string>
+    <string name="forget_password_email_check_title">We send you an e-mail with a confirmation code.Enter it below to continue to reset your password.</string>
+    <string name="forget_password_send_email">We have send you an email to:</string>
+    
+    <string name="forget_password_send_email_error">I did not receive a code</string>
+    <string name="cancel_btn">Cancel</string>
+    
+	<!--End forget password strings -->
+	
+	
     <string-array name="business_category_arrays">
         <item>SIngle</item>
         <item>Multiple</item>
@@ -199,5 +215,20 @@
     <string name="button_send_chat">Send</string>
     <string name="button_back">Back</string>
     <!-- Xtream banter Application -->
-
+    
+    
+    <!-- Blog Application -->
+    <string name="create_blog_category_title">Select a category for your blog</string>
+    <string name="blog_title">Blog Title</string>
+    <string name="blog_title_hint">Enter a title here for your Blog</string>
+    <string name="blog_main_text">Main Text</string>
+    <string name="blog_main_text_hint">Enter your blog text here</string>
+    
+    <string name="button_text_blog_create">Continue</string>
+    <string name="add_blog_pic">Add a Blog picture</string>
+    <string name="blog_pic">Blog picture</string>
+	<string name="blog">Save</string>
+	<string name="title_activity_create_blog">Save</string>
+		
+	<!-- Blog Application -->
 </resources>
