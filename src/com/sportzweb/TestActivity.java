@@ -12,7 +12,7 @@ public class TestActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_forget_pass_conf_code_reset);
+        setContentView(R.layout.activity_profile_business);
         mContext = this;
             
     }

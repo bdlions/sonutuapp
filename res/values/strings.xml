@@ -81,7 +81,9 @@
     
     <string name="forget_password_send_email_error">I did not receive a code</string>
     <string name="cancel_btn">Cancel</string>
-    
+    <string name="not_my_account_btn">Not My account</string>
+    <string name="forget_pass_continue_btn">Continue</string>
+    <string name="reset_password_link">Email me a link to reset a password</string>
 	<!--End forget password strings -->
 	
 	
@@ -229,6 +231,8 @@
     <string name="blog_pic">Blog picture</string>
 	<string name="blog">Save</string>
 	<string name="title_activity_create_blog">Save</string>
+	<string name="blog_category_title_for">Sport</string>
+
 		
 	<!-- Blog Application -->
 </resources>

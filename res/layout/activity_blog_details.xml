@@ -1,0 +1,131 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="." >
+
+    <LinearLayout
+        android:id="@+id/create_blog_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dip" >
+
+        <TextView
+            android:id="@+id/blogCategorytext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@string/blog_category_title_for"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/blogHTitletext"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="5dp"
+            android:text="Cutest doggy ever"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/blogPostedTimeDatetext"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:text="20th October 2014 5:10pm"
+            android:textColor="#7f7f7f"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:id="@+id/BlogImageView"
+            android:layout_width="264dp"
+            android:layout_height="0dp"
+            android:layout_weight="0.30"
+            android:src="@drawable/upload_img_icon" />
+
+        <TextView
+            android:id="@+id/blogtext"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:text="kjdfs sdfsd sdfsdfsdf sdf"
+            android:textColor="#7f7f7f"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/blogDetailstext"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:text="fdg ddgdf gdfg df gdfg dfg dfdfg dfds fsdfsd dfgdf ggdf gdfg dfgdfgfdg dfg dfgfdgdf gdfg dfg"
+            android:textSize="12sp" />
+
+        <LinearLayout
+            android:id="@+id/layout2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:orientation="horizontal" >
+
+            <ImageButton
+                android:id="@+id/btn10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/thumb_up" />
+
+            <TextView
+                android:id="@+id/text7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="Bold"
+                android:text="3 Likes"
+                android:textSize="15sp" />
+            <ImageButton
+                android:id="@+id/btn10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/thumb_up" />
+
+            <TextView
+                android:id="@+id/text7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="Bold"
+                android:text="Comments"
+                android:textSize="15sp" />
+
+            <ImageButton
+                android:id="@+id/btn11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:src="@drawable/thumb_up" />
+
+            <ImageButton
+                android:id="@+id/btn12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/inbox" />
+
+            <ImageButton
+                android:id="@+id/btn13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/inbox" />
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>
