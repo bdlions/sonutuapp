@@ -1,0 +1,172 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dip" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dip"
+            android:layout_marginTop="20dip"
+            android:layout_weight="1"
+            android:text="@string/bmi_select_gender_lebel"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <Spinner
+            android:id="@+id/spinner_gender"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dip"
+            android:layout_marginTop="20dip"
+            android:layout_weight="1"
+            android:entries="@array/gender_list"
+            android:prompt="@string/business_category" />
+    </LinearLayout>
+
+
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dip"
+            android:layout_marginTop="20dip"
+            android:layout_weight="1"
+            android:text="@string/bmi_select_unit_lebel"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <Spinner
+            android:id="@+id/spinner_mesure_unit"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dip"
+            android:layout_marginTop="20dip"
+            android:layout_weight="1"
+            android:entries="@array/mesurement_unit_list"
+            android:prompt="@string/business_category" />
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dip"
+            android:layout_marginTop="20dip"
+            android:layout_weight="1"
+            android:text="@string/height"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <com.sonuto.utils.component.CustomSpinner
+            android:id="@+id/metric_height"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dip"
+            android:layout_marginTop="20dip"
+            android:layout_weight="1"
+            android:entries="@array/gender_list"
+            android:prompt="@string/business_category" />
+    </LinearLayout>
+
+    
+
+<!--     <EditText -->
+<!--         android:id="@+id/bmiHeightEdtTxt" -->
+<!--         android:layout_width="fill_parent" -->
+<!--         android:layout_height="wrap_content" -->
+<!--         android:layout_marginTop="15dip" -->
+<!--         android:background="@drawable/backwithborder" -->
+<!--         android:hint="@string/bmi_height_hint" -->
+<!--         android:inputType="numberDecimal" -->
+<!--         android:padding="10dp" -->
+<!--         android:singleLine="true" -->
+<!--         android:textColorHint="#0a000a" -->
+<!--         android:textSize="15sp" /> -->
+
+<!--     <EditText -->
+<!--         android:id="@+id/bmiWeightEdtTxt" -->
+<!--         android:layout_width="fill_parent" -->
+<!--         android:layout_height="wrap_content" -->
+<!--         android:layout_marginTop="15dip" -->
+<!--         android:background="@drawable/backwithborder" -->
+<!--         android:hint="@string/bmi_weight_hint" -->
+<!--         android:inputType="numberDecimal" -->
+<!--         android:padding="10dp" -->
+<!--         android:singleLine="true" -->
+<!--         android:textColorHint="#0a000a" -->
+<!--         android:textSize="15sp" /> -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dip" >
+
+        <TextView
+            android:id="@+id/yourBmiLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bmi_result_label"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <TextView
+            android:id="@+id/bmiResultLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/EmptyString"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dip" >
+
+        <TextView
+            android:id="@+id/yourBmiCategoryLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bmi_category_label"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <TextView
+            android:id="@+id/bmiCategoryResultLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/EmptyString"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+    </LinearLayout>
+
+    <!--
+             <Button
+            android:id="@+id/btnCalculate"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/bmi_calculate_btn" />
+    -->
+
+    <Button
+        android:id="@+id/btnCalculate"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dip"
+        android:background="@drawable/button"
+        android:text="@string/bmi_calculate_btn"
+        android:textColor="#fff1ff" />
+
+</LinearLayout>

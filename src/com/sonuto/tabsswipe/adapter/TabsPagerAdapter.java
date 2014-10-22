@@ -32,10 +32,10 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
 		case 3:
 			// Applications fragment activity
 			return new ApplicationsFragment();
-	case 4:
-		// Applications fragment activity
-		return new SettingsFragment();
-	}
+		case 4:
+			// Applications fragment activity
+			return new SettingsFragment();
+		}
 
 		return null;
 	}

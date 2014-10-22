@@ -19,10 +19,10 @@
  
     <target name="-set-development-props">
         <property name="config.logging" value="true" />
-        <property name="config.server_root_url" value="http://10.10.2.2/sportzweb/" />
-        <property name="config.rpc_controller_path" value="http://10.10.2.2/sportzweb/rpc/" />
-        <property name="config.service_controller_path" value="http://10.10.2.2/sportzweb/service/" />
-        <property name="config.profile_pic_dir" value="http://10.10.2.2/sportzweb/media/upload_profile_picture/" />
+        <property name="config.server_root_url" value="http://192.168.0.101/sportzweb/" />
+        <property name="config.rpc_controller_path" value="http://192.168.0.101/sportzweb/rpc/" />
+        <property name="config.service_controller_path" value="http://192.168.0.101/sportzweb/service/" />
+        <property name="config.profile_pic_dir" value="http://192.168.0.101/sportzweb/media/upload_profile_picture/" />
     </target>
  
     <target name="-set-production-props">
