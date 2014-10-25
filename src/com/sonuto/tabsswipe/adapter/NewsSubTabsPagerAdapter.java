@@ -11,30 +11,31 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-public class NewsTabsPagerAdapter extends FragmentPagerAdapter {
+public class NewsSubTabsPagerAdapter extends FragmentPagerAdapter {
 
-	private ArrayList<NewsTab> tabList = new ArrayList<NewsTab>();
+	private ArrayList<NewsTab> subTabList = new ArrayList<NewsTab>();
 	private String newsList;
-	public NewsTabsPagerAdapter(FragmentManager fm, ArrayList<NewsTab> tabList, String newsList) {
+	public NewsSubTabsPagerAdapter(FragmentManager fm, ArrayList<NewsTab> subTabList, String newsList) {
 		super(fm);
-		this.tabList = tabList;
+		this.subTabList = subTabList;
 		this.newsList = newsList;
 	}
 
 	@Override
 	public Fragment getItem(int index) {
-		NewsCommonFragment newsCommonFragment =  new NewsCommonFragment();
+		/*NewsCommonFragment newsCommonFragment =  new NewsCommonFragment();
 		Bundle bundle = new Bundle();
-		bundle.putInt("tabId", tabList.get(index).getId());
+		bundle.putInt("tabId", subTabList.get(index).getId());
 		bundle.putString("newsList", newsList);
 		newsCommonFragment.setArguments(bundle);
-		return newsCommonFragment;
+		return newsCommonFragment;*/
+		return new Fragment();
 	}
 
 	@Override
 	public int getCount() {
 		// get item count - equal to number of tabs
-		return tabList.size();
+		return 1;
 	}
 
 }
