@@ -23,16 +23,13 @@
             android:paddingBottom="20dp"
             android:src="@drawable/xb_logo" />
             
-            <Spinner
-                android:id="@+id/spinner_Month"
+            <com.sonuto.utils.component.CustomSpinner
+                android:id="@+id/spinner_tournaments"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:minWidth="350dp"
                 android:layout_gravity="center"
-                android:entries="@array/tournament_list"
-                android:prompt="@string/tournament_prompt" >
-                
-            </Spinner>
+                android:prompt="@string/tournament_prompt" />
             
     </LinearLayout>
 
