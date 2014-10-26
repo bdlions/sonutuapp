@@ -4,9 +4,11 @@ import java.text.AttributedCharacterIterator.Attribute;
 import java.util.ArrayList;
 import java.util.jar.Attributes;
 
+import org.apache.http.client.cache.Resource;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.xmlpull.v1.XmlPullParser;
 
 import android.app.ActionBar;
 import android.app.ActionBar.LayoutParams;
@@ -14,10 +16,14 @@ import android.app.ActionBar.Tab;
 import android.app.Activity;
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.res.Resources;
+import android.content.res.XmlResourceParser;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
+import android.util.Xml;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -53,6 +59,7 @@ public class BlogAppActivity extends Activity{
 				// get json list of news tabs
 				JSONObject jsonObject = (JSONObject) object;
 
+				
 					try {
 						JSONArray jsonTabs = jsonObject.getJSONArray("blog_category_list");
 						
@@ -84,9 +91,12 @@ public class BlogAppActivity extends Activity{
 							tv.setText(tabList.get(i).getTitle());
 							parentLayout.addView(tv);
 							
+							Resources res = getResources();
+							XmlPullParser parser = res.getXml(R.xml.horizontal_list_model);
+							AttributeSet attributes = Xml.asAttributeSet(parser);
 							
 							//blogs item
-							HorizontalListView hListView = new HorizontalListView(getApplicationContext());
+							HorizontalListView hListView = new HorizontalListView(getApplicationContext(), attributes);
 							hListView.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, 200));
 							hListView.setDividerWidth(2);
 							
