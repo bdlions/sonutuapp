@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import com.sonuto.newstabsswipe.BlogsCommonFragment;
 import com.sonuto.newstabsswipe.NewsCommonFragment;
 import com.sonuto.newstabsswipe.NewsHomeFragment;
-import com.sportzweb.jsonObject.BlogsTab;
-import com.sportzweb.jsonObject.NewsTab;
+import com.sportzweb.JSONObjectModel.BlogsTab;
+import com.sportzweb.JSONObjectModel.NewsTab;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

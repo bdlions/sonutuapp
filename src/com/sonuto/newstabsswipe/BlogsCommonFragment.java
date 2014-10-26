@@ -6,6 +6,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.google.gson.Gson;
 import com.meetme.android.horizontallistview.HorizontalListView;
 import com.sonuto.Config;
 import com.sonuto.rpc.ICallBack;
@@ -14,6 +15,7 @@ import com.sonuto.rpc.register.NewsApp;
 import com.sonuto.utils.component.CustomAdapter;
 import com.sonuto.utils.component.RecipeBlogCustomAdapter;
 import com.sportzweb.R;
+import com.sportzweb.JSONObjectModel.News;
 
 import android.net.Uri;
 import android.os.Bundle;
@@ -57,23 +59,14 @@ public class BlogsCommonFragment extends Fragment {
 			// call server to get information/data for this tabid
 			// and set news in the fragment
 
-			ArrayList<String> items = new ArrayList<String>();
-			items.add("Item 1");
-			items.add("Item 2");
-			items.add("Item 3");
-			items.add("Item 4");
-			items.add("Item 1");
-			items.add("Item 2");
-			items.add("Item 3");
-			items.add("Item 4");
-			items.add("Item 1");
-			items.add("Item 2");
-			items.add("Item 3");
-			items.add("Item 4");
-			items.add("Item 1");
-			items.add("Item 2");
-			items.add("Item 3");
-			items.add("Item 4");
+			ArrayList<News> items = new ArrayList<News>();
+			for(int j = 0; j < 20; j ++){
+				News news = new News();
+				news.setId(j + 1);
+				news.setTitle("title: " + j + 1);
+				news.setPicture("http://lh6.googleusercontent.com/-spR6L3z1hHQ/AAAAAAAAAAI/AAAAAAAAAAA/hVXPzP19P1Q/s32-c/photo.jpg");
+				items.add(news);
+			}
 			//HorizontalListView lvTest = (HorizontalListView) rootView
 			//		.findViewById(R.id.HorizontalListView);
 			//HorizontalListView lvTest1 = (HorizontalListView) rootView
@@ -93,7 +86,7 @@ public class BlogsCommonFragment extends Fragment {
 
 	private void processNews(JSONArray blogList) {
 
-		ArrayList<String> item = new ArrayList<String>();
+		ArrayList<News> item = new ArrayList<News>();
 
 		try {
 			// JSONArray jsonArray = new JSONArray(newsList);
@@ -103,10 +96,8 @@ public class BlogsCommonFragment extends Fragment {
 			int newsCount = blogList.length();
 			for (int i = 0; i < newsCount; i++) {
 				blogs = (JSONObject) blogList.get(i);
-
-				//String picture = news.get("picture").toString();
-				String description = blogs.get("title").toString();
-				item.add(description);
+				Gson gson = new Gson();
+				item.add(gson.fromJson(blogs.toString(), News.class));
 			}
 			
 			RecipeBlogCustomAdapter adapter = new RecipeBlogCustomAdapter(

@@ -21,7 +21,7 @@ import com.sonuto.tabsswipe.adapter.NewsSubTabsPagerAdapter;
 import com.sonuto.tabsswipe.adapter.NewsTabsPagerAdapter;
 import com.sonuto.utils.component.CustomAdapter;
 import com.sportzweb.R;
-import com.sportzweb.jsonObject.NewsTab;
+import com.sportzweb.JSONObjectModel.NewsTab;
 
 import android.app.ActionBar;
 import android.app.FragmentTransaction;

@@ -2,7 +2,9 @@ package com.sonuto.utils.component;
 
 import java.util.ArrayList;
 
+import com.sonuto.loadimage.ImageLoader;
 import com.sportzweb.R;
+import com.sportzweb.JSONObjectModel.News;
 
 import android.app.Activity;
 import android.view.LayoutInflater;
@@ -14,15 +16,16 @@ import android.widget.TextView;
 
 public class RecipeBlogCustomAdapter extends BaseAdapter {
 
-	ArrayList<String> newsItem;
+	ArrayList<News> newsItem;
 	private Activity context;
+	public ImageLoader imageLoader; 
 
-	public RecipeBlogCustomAdapter(Activity context, ArrayList<String> news) {
+	public RecipeBlogCustomAdapter(Activity context, ArrayList<News> news) {
 
 		// TODO Auto-generated constructor stub
 		this.context = context;
 		this.newsItem = news;
-
+		imageLoader=new ImageLoader(context);
 	}
 
 	@Override
@@ -56,10 +59,11 @@ public class RecipeBlogCustomAdapter extends BaseAdapter {
 				.findViewById(R.id.blog_recipe_title);
 		ImageView imageView = (ImageView) convertView.findViewById(R.id.blog_or_recipe_image);
 
-		String name = newsItem.get(position);
-		newsTitle.setText(name);
-		
+		News news = newsItem.get(position);
+		newsTitle.setText(news.getTitle());
 		imageView.setImageResource(R.drawable.upload_img_icon);
+        imageLoader.DisplayImage(news.getPicture(), imageView);
+        
 		return convertView;
 	}
 

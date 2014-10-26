@@ -13,7 +13,7 @@ import com.sonuto.rpc.register.NewsApp;
 import com.sonuto.tabsswipe.adapter.NewsTabsPagerAdapter;
 import com.sonuto.tabsswipe.adapter.TabsPagerAdapter;
 import com.sonuto.users.Country;
-import com.sportzweb.jsonObject.NewsTab;
+import com.sportzweb.JSONObjectModel.NewsTab;
 
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;

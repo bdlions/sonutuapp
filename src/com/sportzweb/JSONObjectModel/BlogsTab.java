@@ -1,6 +1,6 @@
-package com.sportzweb.jsonObject;
+package com.sportzweb.JSONObjectModel;
 
-public class NewsTab {
+public class BlogsTab {
 
 	private int id;
 	private String title;

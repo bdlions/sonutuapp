@@ -56,7 +56,7 @@ public class TestActivity extends Activity {
 
 		
 		
-		RecipeBlogCustomAdapter adapter = new RecipeBlogCustomAdapter(this, items);
+		//RecipeBlogCustomAdapter adapter = new RecipeBlogCustomAdapter(this, items);
 		//lvTest.setAdapter(adapter);
 		//lvTest1.setAdapter(adapter);
 		

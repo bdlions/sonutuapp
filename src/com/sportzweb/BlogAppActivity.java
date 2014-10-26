@@ -34,8 +34,9 @@ import com.sonuto.rpc.register.BlogsApp;
 import com.sonuto.tabsswipe.adapter.BlogsTabsPagerAdapter;
 import com.sonuto.tabsswipe.adapter.NewsTabsPagerAdapter;
 import com.sonuto.utils.component.RecipeBlogCustomAdapter;
-import com.sportzweb.jsonObject.BlogsTab;
-import com.sportzweb.jsonObject.NewsTab;
+import com.sportzweb.JSONObjectModel.BlogsTab;
+import com.sportzweb.JSONObjectModel.News;
+import com.sportzweb.JSONObjectModel.NewsTab;
 
 public class BlogAppActivity extends Activity{
 
@@ -100,27 +101,14 @@ public class BlogAppActivity extends Activity{
 							hListView.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, 200));
 							hListView.setDividerWidth(2);
 							
-							ArrayList<String> items = new ArrayList<String>();
-							items.add("Item 1");
-							items.add("Item 2");
-							items.add("Item 3");
-							items.add("Item 4");
-							items.add("Item 1");
-							items.add("Item 1");
-							items.add("Item 2");
-							items.add("Item 3");
-							items.add("Item 4");
-							items.add("Item 1");
-							items.add("Item 1");
-							items.add("Item 2");
-							items.add("Item 3");
-							items.add("Item 4");
-							items.add("Item 1");
-							items.add("Item 1");
-							items.add("Item 2");
-							items.add("Item 3");
-							items.add("Item 4");
-							items.add("Item 1");
+							ArrayList<News> items = new ArrayList<News>();
+							for(int j = 0; j < 20; j ++){
+								News news = new News();
+								news.setId(j + 1);
+								news.setTitle("title: " + j + 1);
+								news.setPicture("http://lh6.googleusercontent.com/-spR6L3z1hHQ/AAAAAAAAAAI/AAAAAAAAAAA/hVXPzP19P1Q/s32-c/photo.jpg");
+								items.add(news);
+							}
 							RecipeBlogCustomAdapter adapter = new RecipeBlogCustomAdapter(BlogAppActivity.this, items);
 							hListView.setAdapter(adapter);
 							
