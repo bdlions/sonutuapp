@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:widget="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/parentLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+	android:orientation="vertical" >
+	
+<!-- <com.meetme.android.horizontallistview.HorizontalListView -->
+<!--     android:id="@+id/HorizontalListView" -->
+<!--     android:layout_width="fill_parent" -->
+<!--     android:layout_height="150dp" -->
+<!--     widget:dividerWidth="2dp" /> -->
+
+<!-- <com.meetme.android.horizontallistview.HorizontalListView -->
+<!--     android:id="@+id/HorizontalListView1" -->
+<!--     android:layout_width="fill_parent" -->
+<!--     android:layout_height="150dp" -->
+<!--     widget:dividerWidth="2dp" /> -->
+ </LinearLayout>
+
+<!-- <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" -->
+<!--     android:layout_width="match_parent" -->
+<!--     android:layout_height="match_parent" -->
+<!--     android:orientation="vertical" > -->
+
+<!--     <ScrollView -->
+<!--         android:id="@+id/layout" -->
+<!--         android:layout_width="match_parent" -->
+<!--         android:layout_height="match_parent" -->
+<!--         android:layout_marginTop="5dip" -->
+<!--         android:fillViewport="true" -->
+<!--         android:scrollbarStyle="outsideInset" -->
+<!--         android:scrollbars="horizontal|vertical" > -->
+
+<!--         <HorizontalScrollView -->
+<!--             android:id="@+id/horizontalView" -->
+<!--             android:layout_width="wrap_content" -->
+<!--             android:layout_height="wrap_content" -->
+<!--             android:layout_marginTop="5dip" -->
+<!--             android:scrollbars="horizontal|vertical" > -->
+
+<!--             <TableLayout -->
+<!--                 android:id="@+id/tlGridTable" -->
+<!--                 android:layout_width="match_parent" -->
+<!--                 android:layout_height="match_parent" > -->
+
+<!--                 <TableRow -->
+<!--                     android:id="@+id/tableRow3" -->
+<!--                     android:layout_width="wrap_content" -->
+<!--                     android:layout_height="wrap_content" -->
+<!--                     android:padding="5dip" > -->
+
+<!--                     <TextView -->
+<!--                         android:id="@+id/textView1" -->
+<!--                         android:layout_width="wrap_content" -->
+<!--                         android:layout_height="wrap_content" -->
+<!--                         android:layout_marginLeft="20dp" -->
+<!--                         android:text="Home"  -->
+<!--                         android:textSize="20dp"/> -->
+<!--                 </TableRow> -->
+<!--                 display this button in 2nd column via layout_column(zero based) -->
+
+<!--                 <TableRow -->
+<!--                     android:id="@+id/tableRow4" -->
+<!--                     android:layout_width="wrap_content" -->
+<!--                     android:layout_height="wrap_content" -->
+<!--                     android:padding="5dip" > -->
+<!--                     <ImageView android:id="@+id/imageView1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/chat_bubble"/> -->
+
+<!--                     <Button -->
+<!--                         android:id="@+id/button4" -->
+<!--                         android:layout_column="1" -->
+<!--                         android:text="Column 3" /> -->
+<!--                 </TableRow> -->
+<!--                 display this button in 3rd column via layout_column(zero based) -->
+
+<!--                 <TableRow -->
+<!--                     android:id="@+id/tableRow5" -->
+<!--                     android:layout_width="wrap_content" -->
+<!--                     android:layout_height="wrap_content" -->
+<!--                     android:padding="5dip" > -->
+
+<!--                     <Button -->
+<!--                         android:id="@+id/button5" -->
+<!--                         android:layout_column="2" -->
+<!--                         android:text="Column 3" /> -->
+<!--                 </TableRow> -->
+
+<!--                 3 columns -->
+
+<!--                 <TableRow -->
+<!--                     android:id="@+id/tableRow6" -->
+<!--                     android:layout_width="wrap_content" -->
+<!--                     android:layout_height="10dip" -->
+<!--                     android:padding="5dip" > -->
+
+<!--                     <Button -->
+<!--                         android:id="@+id/textView6" -->
+<!--                         android:text="Column 1" /> -->
+
+<!--                     <Button -->
+<!--                         android:id="@+id/button2" -->
+<!--                         android:text="Column 2" /> -->
+
+<!--                     <Button -->
+<!--                         android:id="@+id/button3" -->
+<!--                         android:text="Column 3" /> -->
+<!--                 </TableRow> -->
+<!--                 span 2 column -->
+
+<!--                 <TableRow -->
+<!--                     android:id="@+id/tableRow2" -->
+<!--                     android:layout_width="wrap_content" -->
+<!--                     android:layout_height="wrap_content" -->
+<!--                     android:padding="5dip" > -->
+
+<!--                     <Button -->
+<!--                         android:id="@+id/editText1" -->
+<!--                         android:layout_span="2" -->
+<!--                         android:text="Column 1 &amp; 2 " /> -->
+<!--                 </TableRow> -->
+<!--                 span 3 column -->
+
+<!--                 <TableRow -->
+<!--                     android:id="@+id/tableRow2" -->
+<!--                     android:layout_width="wrap_content" -->
+<!--                     android:layout_height="wrap_content" -->
+<!--                     android:padding="5dip" > -->
+
+<!--                     <Button -->
+<!--                         android:id="@+id/editText1" -->
+<!--                         android:layout_span="3" -->
+<!--                         android:text="Column 1 &amp; 2 &amp; 3" /> -->
+<!--                 </TableRow> -->
+<!--                 Span two rows -->
+
+<!--                 <TableRow -->
+<!--                     android:layout_width="wrap_content" -->
+<!--                     android:layout_height="wrap_content" -->
+<!--                     android:padding="5dip" > -->
+
+<!--                     <Button -->
+<!--                         android:layout_gravity="center" -->
+<!--                         android:text="Column 1" /> -->
+
+<!--                     <TableLayout> -->
+
+<!--                         <TableRow> -->
+
+<!--                             <Button -->
+<!--                                 android:layout_gravity="center" -->
+<!--                                 android:text="Column 2" /> -->
+<!--                         </TableRow> -->
+
+<!--                         <TableRow> -->
+
+<!--                             <Button -->
+<!--                                 android:layout_gravity="center" -->
+<!--                                 android:text="Column 2" /> -->
+<!--                         </TableRow> -->
+<!--                     </TableLayout> -->
+<!--                 </TableRow> -->
+<!--             </TableLayout> -->
+<!--         </HorizontalScrollView> -->
+<!--     </ScrollView> -->
+
+<!-- </LinearLayout> -->

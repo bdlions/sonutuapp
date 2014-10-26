@@ -257,7 +257,14 @@
 	<string name="blog">Save</string>
 	<string name="title_activity_create_blog">Save</string>
 	<string name="blog_category_title_for">Sport</string>
-
-		
 	<!-- Blog Application -->
+	
+	
+	<!-- Healty Recipe Application -->
+    <string name="recipe_duration_label">Duration :</string>
+    <string name="recipe_ingredient_label">Ingredient :</string>
+    <string name="recipe_preparation_method_label">Preparation Method :</string>
+    
+	<!-- Healty Recipe Application -->
+	
 </resources>

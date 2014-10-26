@@ -12,12 +12,12 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class CustomAdapter extends BaseAdapter {
+public class RecipeBlogCustomAdapter extends BaseAdapter {
 
 	ArrayList<String> newsItem;
 	private Activity context;
 
-	public CustomAdapter(Activity context, ArrayList<String> news) {
+	public RecipeBlogCustomAdapter(Activity context, ArrayList<String> news) {
 
 		// TODO Auto-generated constructor stub
 		this.context = context;
@@ -48,13 +48,13 @@ public class CustomAdapter extends BaseAdapter {
 		// TODO Auto-generated method stub
 
 		if (convertView == null) {
-			convertView = LayoutInflater.from(context).inflate(R.layout.row,
+			convertView = LayoutInflater.from(context).inflate(R.layout.blog_or_recipe_item,
 					parent, false);
 		}
 
 		TextView newsTitle = (TextView) convertView
-				.findViewById(R.id.newsTitle);
-		ImageView imageView = (ImageView) convertView.findViewById(R.id.flag);
+				.findViewById(R.id.blog_recipe_title);
+		ImageView imageView = (ImageView) convertView.findViewById(R.id.blog_or_recipe_image);
 
 		String name = newsItem.get(position);
 		newsTitle.setText(name);

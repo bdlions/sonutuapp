@@ -1,0 +1,184 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="." >
+
+    <LinearLayout
+        android:id="@+id/create_recipe_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dip" >
+
+        <TextView
+            android:id="@+id/recipeCategorytext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="15dp"
+            android:text="Apple Crumble"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:id="@+id/recipeImageView"
+            android:layout_width="264dp"
+            android:layout_height="0dp"
+            android:layout_weight="0.30"
+            android:src="@drawable/upload_img_icon" />
+
+        <LinearLayout
+            android:id="@+id/layout22"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/durationLabeltextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:text="@string/recipe_duration_label" />
+
+            <TextView
+                android:id="@+id/durationOfRecipetext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="This is sis si sis sis si" />
+            
+        </LinearLayout>
+        
+        <LinearLayout
+            android:id="@+id/layout22"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/ingeadientLabeltextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:text="@string/recipe_ingredient_label" />
+
+            <TextView
+                android:id="@+id/ingredientOfRecipetext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="This is sis si sis sis si" />
+            
+        </LinearLayout>
+        
+        <LinearLayout
+            android:id="@+id/layout22"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/prepationMethodLabeltextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:text="@string/recipe_preparation_method_label" />
+
+            <TextView
+                android:id="@+id/preparationMethodOfRecipetext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="This is sis si sis sis si" />
+            
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:gravity="center"
+            android:orientation="horizontal" >
+            
+            <LinearLayout
+            android:id="@+id/layout2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal" >
+
+            <ImageButton
+                android:id="@+id/btn10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="#FFFFFF"
+                android:src="@drawable/like" />
+
+            <TextView
+                android:id="@+id/text7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="3dp"
+                android:fontFamily="Bold"
+                android:text="3 Likes"
+                android:textSize="15sp" />
+            </LinearLayout>
+            
+            <LinearLayout
+            android:id="@+id/layout2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            android:orientation="horizontal" >
+
+            <ImageButton
+                android:id="@+id/btn11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:background="#FFFFFF"
+                android:layout_weight="1"
+                android:contentDescription="dd"
+                android:src="@drawable/like" />
+
+            <ImageButton
+                android:id="@+id/btn12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:layout_weight="1"
+                android:background="#FFFFFF"
+                android:src="@drawable/comment" />
+
+            <ImageButton
+                android:id="@+id/btn13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#FFFFFF"
+                android:src="@drawable/share" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/txtComment"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="10dip"
+            android:background="@drawable/backwithborder"
+            android:hint="Comment"
+            android:padding="10dp"
+            android:singleLine="true" />
+    </LinearLayout>
+
+</ScrollView>

@@ -32,9 +32,6 @@ public class NewsAppActivity extends FragmentActivity{
 
 	private ArrayList<NewsTab> tabList = new ArrayList<NewsTab>();
 	private ArrayList<NewsTab> newsList = new ArrayList<NewsTab>();
-	// Tab titles
-	// private String[] tabs = { "Home", "Football", "Baseball",
-	// "Formula","Basketball","Boxing", "Tennis","Cricket","Rugby" };
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -47,18 +44,10 @@ public class NewsAppActivity extends FragmentActivity{
 
 			@Override
 			public void callBackResultHandler(Object object) {
-				// TODO Auto-generated method stub
-				// dummy string of json news tabs
-				// String tabString =
-				// "{\"news_tab_list\":[{\"id\": \"1\",\"title\": \"Home\"}, {\"id\": \"2\",\"title\": \"Football\"}, {\"id\": \"3\",\"title\": \"Baseball\"}, {\"id\": \"4\",\"title\": \"Formula\"}]}";
 				// get json list of news tabs
 				JSONObject jsonObject = (JSONObject) object;
 
 				try {
-					// jsonObject = new JSONObject(tabString);
-					
-
-					
 					JSONArray jsonTabs = jsonObject
 							.getJSONArray("news_category_list");
 					
