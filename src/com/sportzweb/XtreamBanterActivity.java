@@ -4,72 +4,111 @@ import java.util.ArrayList;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
-import com.sonuto.utils.UtilityJsonParser;
-
-import android.net.Uri;
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.os.Message;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.content.Intent;
+
+import com.google.gson.Gson;
+import com.sonuto.rpc.ICallBack;
+import com.sonuto.rpc.register.Sports;
+import com.sportzweb.JSONObjectModel.Sport;
 
 
-public class XtreamBanterActivity extends Activity implements OnItemSelectedListener{
+public class XtreamBanterActivity extends Activity{
 
-	ArrayList<String> spinnerSportsList = new ArrayList<String>();
+	ArrayList<Sport> spinnerSportsList = new ArrayList<Sport>();
+	Spinner spinnerSportsListView;
+	
+	//JSONObject jsonObject = (JSONObject) getJsonObject();
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_xtream_banter);
 		
-		Spinner spinnerSportsListView = (Spinner)findViewById(R.id.spinner_Month);
-		
-		String jsonString = "[Select_sports,Football,Cricket,Hockey]";		
+		spinnerSportsListView = (Spinner)findViewById(R.id.spinner_sports);
+		getAndSetLiistInSpinner();
+		spinnerSportsListView.setOnItemSelectedListener(new OnItemSelectedListener() {
+	        @Override
+	        public void onItemSelected(AdapterView<?>arg0, View view, int arg2, long arg3) {
+
+	        	if(spinnerSportsList.size()>0){
+	        	Sport selectedSport = spinnerSportsList.get(arg2);
+	    		Gson gS = new Gson();
+	    		String target = gS.toJson(selectedSport);
+	        	
+	    		Intent i = new Intent(getApplicationContext(), XtreamBanterTournamentActivity.class);
+	    		i.putExtra("selectedSport",target);
+	    		
+	    		if(arg2 > 0){
+	    			startActivity(i);
+	    			}	    
+	        	}
+	        }
+			@Override
+			public void onNothingSelected(AdapterView<?> parent) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+
+		/*String jsonString = "[Select_sports,Football,Cricket,Hockey]";		
 		
 		try {
 			spinnerSportsList = UtilityJsonParser.jsonStringToArray(jsonString);
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		setListToSpinner(spinnerSportsList,spinnerSportsListView);
+		}*/
+		//setListToSpinner(spinnerSportsList,spinnerSportsListView);
 		
 	}	
 		
-	 private void setListToSpinner(ArrayList<String> spinnerSportsList,	Spinner spinnerSportsListView) {
-		 	
-		ArrayAdapter<String> sportsList = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,spinnerSportsList);
-		sportsList.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		spinnerSportsListView.setAdapter(sportsList);
-		spinnerSportsListView.setOnItemSelectedListener(this);
-			 
-		// TODO Auto-generated method stub
-		
-	}
+	 private void getAndSetLiistInSpinner() {
+		 Sports sportsList = new Sports();
+		 JSONObject jsonObject = new JSONObject();
+		 sportsList.getSportsList(new ICallBack() {
+				@Override
+				public void callBackResultHandler(final Object object) {
+					JSONObject jsonObject = (JSONObject) object;
+					JSONArray sportsList;
+					try {
+						sportsList = jsonObject.getJSONArray("sports_list");
+						
+						Gson gson = new Gson();
+						int total_sports = sportsList.length();
+						for (int i = 0; i < total_sports; i++) {
+							Sport sport = gson.fromJson(sportsList.get(i).toString(), Sport.class);
+							spinnerSportsList.add(sport);
+						}
+						
+						ArrayAdapter<Sport> sportsAdapter = new ArrayAdapter<Sport>(getApplicationContext(),android.R.layout.simple_list_item_1, spinnerSportsList);
+						// bind adapter and view
+						spinnerSportsListView.setAdapter(sportsAdapter);
 
-	
-	@Override
-	public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2,long arg3) {
-		String selectedSport = spinnerSportsList.get(arg2);
-		Intent i = new Intent(getApplicationContext(), XtreamBanterTournamentActivity.class);
-		i.putExtra("selectedSport",selectedSport);
-		
-		if(arg2 > 0){
-			startActivity(i);
-		}
-	}	
+					} 
+					catch (JSONException e) {
+						//give proper error message to the client
+						e.printStackTrace();
+					}
+					catch(NullPointerException npe){
+						//give proper error message to the client
+						npe.printStackTrace();
+					}
+				}
 
-	@Override
-	public void onNothingSelected(AdapterView<?> arg0) {
-		// TODO Auto-generated method stub
-		
+				@Override
+				public void callBackErrorHandler(Object object) {
+					// TODO Auto-generated method stub
+					System.out.println(object);
+				}
+			},jsonObject.toString());		 
 	}
 		
 }
