@@ -15,6 +15,7 @@ import com.sonuto.rpc.register.NewsApp;
 import com.sonuto.utils.component.CustomAdapter;
 import com.sonuto.utils.component.RecipeBlogCustomAdapter;
 import com.sportzweb.R;
+import com.sportzweb.JSONObjectModel.Blogs;
 import com.sportzweb.JSONObjectModel.News;
 
 import android.net.Uri;
@@ -38,7 +39,7 @@ public class BlogsCommonFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		
-		View rootView = inflater.inflate(R.layout.activity_healthy_recipes,container, false);
+		View rootView = inflater.inflate(R.layout.activity_blog_app,container, false);
 		 //lvTest = (HorizontalListView) rootView.findViewById(R.id.HorizontalListView);
 		 //lvTest1 = (HorizontalListView) rootView.findViewById(R.id.HorizontalListView1);
 		
@@ -59,9 +60,9 @@ public class BlogsCommonFragment extends Fragment {
 			// call server to get information/data for this tabid
 			// and set news in the fragment
 
-			ArrayList<News> items = new ArrayList<News>();
+			ArrayList<Blogs> items = new ArrayList<Blogs>();
 			for(int j = 0; j < 20; j ++){
-				News news = new News();
+				Blogs news = new Blogs();
 				news.setId(j + 1);
 				news.setTitle("title: " + j + 1);
 				news.setPicture("http://lh6.googleusercontent.com/-spR6L3z1hHQ/AAAAAAAAAAI/AAAAAAAAAAA/hVXPzP19P1Q/s32-c/photo.jpg");
@@ -74,8 +75,7 @@ public class BlogsCommonFragment extends Fragment {
 
 
 
-			RecipeBlogCustomAdapter adapter = new RecipeBlogCustomAdapter(
-					getActivity(), items);
+			RecipeBlogCustomAdapter adapter = new RecipeBlogCustomAdapter(getActivity(), items);
 			lvTest.setAdapter(adapter);
 			lvTest1.setAdapter(adapter);
 
@@ -86,7 +86,7 @@ public class BlogsCommonFragment extends Fragment {
 
 	private void processNews(JSONArray blogList) {
 
-		ArrayList<News> item = new ArrayList<News>();
+		ArrayList<Blogs> item = new ArrayList<Blogs>();
 
 		try {
 			// JSONArray jsonArray = new JSONArray(newsList);
@@ -97,11 +97,10 @@ public class BlogsCommonFragment extends Fragment {
 			for (int i = 0; i < newsCount; i++) {
 				blogs = (JSONObject) blogList.get(i);
 				Gson gson = new Gson();
-				item.add(gson.fromJson(blogs.toString(), News.class));
+				item.add(gson.fromJson(blogs.toString(), Blogs.class));
 			}
 			
-			RecipeBlogCustomAdapter adapter = new RecipeBlogCustomAdapter(
-					getActivity(), item);
+			RecipeBlogCustomAdapter adapter = new RecipeBlogCustomAdapter(getActivity(), item);
 			lvTest.setAdapter(adapter);
 			lvTest1.setAdapter(adapter);
 			

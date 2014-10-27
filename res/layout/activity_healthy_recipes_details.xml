@@ -19,9 +19,9 @@
             android:id="@+id/recipeCategorytext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="15dp"
+            android:gravity="center"
             android:text="Apple Crumble"
             android:textSize="20sp" />
 
@@ -51,9 +51,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="This is sis si sis sis si" />
-            
         </LinearLayout>
-        
+
         <LinearLayout
             android:id="@+id/layout22"
             android:layout_width="fill_parent"
@@ -73,9 +72,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="This is sis si sis sis si" />
-            
         </LinearLayout>
-        
+
         <LinearLayout
             android:id="@+id/layout22"
             android:layout_width="fill_parent"
@@ -95,7 +93,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="This is sis si sis sis si" />
-            
         </LinearLayout>
 
         <LinearLayout
@@ -105,67 +102,67 @@
             android:layout_marginTop="25dp"
             android:gravity="center"
             android:orientation="horizontal" >
-            
+
             <LinearLayout
-            android:id="@+id/layout2"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="horizontal" >
-
-            <ImageButton
-                android:id="@+id/btn10"
-                android:layout_width="wrap_content"
+                android:id="@+id/layout2"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:background="#FFFFFF"
-                android:src="@drawable/like" />
+                android:layout_weight="1"
+                android:orientation="horizontal" >
 
-            <TextView
-                android:id="@+id/text7"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="3dp"
-                android:fontFamily="Bold"
-                android:text="3 Likes"
-                android:textSize="15sp" />
+                <ImageButton
+                    android:id="@+id/btn10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="#FFFFFF"
+                    android:src="@drawable/like" />
+
+                <TextView
+                    android:id="@+id/text7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="3dp"
+                    android:fontFamily="Bold"
+                    android:text="3 Likes"
+                    android:textSize="15sp" />
             </LinearLayout>
-            
+
             <LinearLayout
-            android:id="@+id/layout2"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.3"
-            android:orientation="horizontal" >
-
-            <ImageButton
-                android:id="@+id/btn11"
-                android:layout_width="wrap_content"
+                android:id="@+id/layout2"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="20dp"
-                android:background="#FFFFFF"
-                android:layout_weight="1"
-                android:contentDescription="dd"
-                android:src="@drawable/like" />
+                android:layout_weight="0.3"
+                android:orientation="horizontal" >
 
-            <ImageButton
-                android:id="@+id/btn12"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="20dp"
-                android:layout_weight="1"
-                android:background="#FFFFFF"
-                android:src="@drawable/comment" />
+                <ImageButton
+                    android:id="@+id/btn11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:background="#FFFFFF"
+                    android:contentDescription="dd"
+                    android:src="@drawable/like" />
 
-            <ImageButton
-                android:id="@+id/btn13"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="#FFFFFF"
-                android:src="@drawable/share" />
+                <ImageButton
+                    android:id="@+id/btn12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:background="#FFFFFF"
+                    android:src="@drawable/comment" />
+
+                <ImageButton
+                    android:id="@+id/btn13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#FFFFFF"
+                    android:src="@drawable/share" />
             </LinearLayout>
         </LinearLayout>
 

@@ -15,16 +15,16 @@
         android:orientation="vertical"
         android:padding="10dip" >
 
-        <TextView
-            android:id="@+id/blogCategorytext"
+        <!-- <TextView
+            android:id="@+id/blogCategoryText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:text="@string/blog_category_title_for"
-            android:textSize="20sp" />
+            android:textSize="20sp" /> -->
 
         <TextView
-            android:id="@+id/blogHTitletext"
+            android:id="@+id/blogTitleText"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
@@ -50,7 +50,7 @@
             android:src="@drawable/upload_img_icon" />
 
         <TextView
-            android:id="@+id/blogtext"
+            android:id="@+id/blogImageDescText"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
@@ -60,7 +60,7 @@
             android:textSize="12sp" />
 
         <TextView
-            android:id="@+id/blogDetailstext"
+            android:id="@+id/blogDetailsText"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
@@ -73,58 +73,70 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
+            android:gravity="center"
             android:orientation="horizontal" >
 
-            <ImageButton
-                android:id="@+id/btn10"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:id="@+id/layout2"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/thumb_up" />
+                android:layout_weight="1"
+                android:orientation="horizontal" >
 
-            <TextView
-                android:id="@+id/text7"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="8dp"
-                android:fontFamily="Bold"
-                android:text="3 Likes"
-                android:textSize="15sp" />
-            <ImageButton
-                android:id="@+id/btn10"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:src="@drawable/thumb_up" />
+                <ImageButton
+                    android:id="@+id/btn10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="#FFFFFF"
+                    android:src="@drawable/like" />
 
-            <TextView
-                android:id="@+id/text7"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="8dp"
-                android:fontFamily="Bold"
-                android:text="Comments"
-                android:textSize="15sp" />
+                <TextView
+                    android:id="@+id/text7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="3dp"
+                    android:fontFamily="Bold"
+                    android:text="3 Likes"
+                    android:textSize="15sp" />
+            </LinearLayout>
 
-            <ImageButton
-                android:id="@+id/btn11"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:id="@+id/layout2"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:src="@drawable/thumb_up" />
+                android:layout_weight="0.3"
+                android:orientation="horizontal" >
 
-            <ImageButton
-                android:id="@+id/btn12"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/inbox" />
+                <ImageButton
+                    android:id="@+id/btn11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:background="#FFFFFF"
+                    android:contentDescription="dd"
+                    android:src="@drawable/like" />
 
-            <ImageButton
-                android:id="@+id/btn13"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/inbox" />
+                <ImageButton
+                    android:id="@+id/btn12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:background="#FFFFFF"
+                    android:src="@drawable/comment" />
+
+                <ImageButton
+                    android:id="@+id/btn13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#FFFFFF"
+                    android:src="@drawable/share" />
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 

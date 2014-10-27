@@ -3,35 +3,41 @@ package com.sonuto.utils.component;
 import java.util.ArrayList;
 
 import com.sonuto.loadimage.ImageLoader;
+import com.sportzweb.BlogAppActivity;
+import com.sportzweb.BlogDetailsActivity;
 import com.sportzweb.R;
+import com.sportzweb.JSONObjectModel.Blogs;
 import com.sportzweb.JSONObjectModel.News;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class RecipeBlogCustomAdapter extends BaseAdapter {
 
-	ArrayList<News> newsItem;
+	ArrayList<Blogs> blogsItem;
 	private Activity context;
 	public ImageLoader imageLoader; 
 
-	public RecipeBlogCustomAdapter(Activity context, ArrayList<News> news) {
+	public RecipeBlogCustomAdapter(Activity context, ArrayList<Blogs> blogs) {
 
 		// TODO Auto-generated constructor stub
 		this.context = context;
-		this.newsItem = news;
+		this.blogsItem = blogs;
 		imageLoader=new ImageLoader(context);
 	}
 
 	@Override
 	public int getCount() {
 		// TODO Auto-generated method stub
-		return newsItem.size();
+		return blogsItem.size();
 	}
 
 	@Override
@@ -55,14 +61,34 @@ public class RecipeBlogCustomAdapter extends BaseAdapter {
 					parent, false);
 		}
 
+		final Blogs blogs = blogsItem.get(position);
+		
+		OnClickListener listerner = new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Toast.makeText(context, "Id is : " + blogs.getId(), Toast.LENGTH_SHORT).show();
+				Intent intent = new Intent(context, BlogDetailsActivity.class);
+				intent.putExtra("blog_id",blogs.getId());
+				//intent.putExtra("blog_category_title",blogs.getTitle());
+				
+				context.startActivity(intent);
+			}
+		};
+		
 		TextView newsTitle = (TextView) convertView
 				.findViewById(R.id.blog_recipe_title);
+		newsTitle.setOnClickListener(listerner);
+		
+		
+		
+		
 		ImageView imageView = (ImageView) convertView.findViewById(R.id.blog_or_recipe_image);
-
-		News news = newsItem.get(position);
-		newsTitle.setText(news.getTitle());
+		//imageView.setOnClickListener(listerner);
+		
+		newsTitle.setText(blogs.getTitle());
 		imageView.setImageResource(R.drawable.upload_img_icon);
-        imageLoader.DisplayImage(news.getPicture(), imageView);
+        imageLoader.DisplayImage(blogs.getPicture(), imageView);
         
 		return convertView;
 	}

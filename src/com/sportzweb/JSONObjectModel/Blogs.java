@@ -1,15 +1,10 @@
 package com.sportzweb.JSONObjectModel;
 
-import org.json.JSONArray;
-
-import com.google.gson.JsonArray;
-
-public class BlogsTab {
-
+public class Blogs {
 	private int id;
 	private String title;
-	private JsonArray blog_list;
-	
+	private String picture;
+
 	public int getId() {
 		return id;
 	}
@@ -22,12 +17,12 @@ public class BlogsTab {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public JsonArray getBlog_list() {
-		return blog_list;
+	public String getPicture() {
+		return picture;
 	}
-	public void setBlog_list(JsonArray blog_list) {
-		this.blog_list = blog_list;
+	public void setPicture(String picture) {
+		this.picture = picture;
 	}
-
-
+	
+	
 }

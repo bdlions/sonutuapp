@@ -265,6 +265,9 @@
     <string name="recipe_ingredient_label">Ingredient :</string>
     <string name="recipe_preparation_method_label">Preparation Method :</string>
     
+    <string name="title_activity_blog_details">Blog Details</string>
+    <string name="title_activity_blog_app">Blog App</string>
+    
 	<!-- Healty Recipe Application -->
 	
 </resources>

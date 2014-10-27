@@ -195,9 +195,7 @@ public class NewsCommonFragment extends Fragment  {
 			
 			firstNewsHeading.setText(news.get("headline").toString());
 			String imagePath = Config.SERVER_ROOT_URL + "resources/images/applications/news_app/news/"+ news.get("picture").toString();
-			//URL img_url = new URL(imagePath);
-			//Bitmap bmp = BitmapFactory.decodeStream(img_url.openConnection().getInputStream());
-			//firstNewsImage.setImageBitmap(bmp);
+	
 			firstNewsImage.setImageURI(Uri.parse(imagePath));
 			
 			

@@ -1,74 +1,67 @@
 package com.sportzweb;
 
-import java.text.AttributedCharacterIterator.Attribute;
 import java.util.ArrayList;
-import java.util.jar.Attributes;
 
-import org.apache.http.client.cache.Resource;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 import org.xmlpull.v1.XmlPullParser;
 
-import android.app.ActionBar;
+import android.app.ProgressDialog;
 import android.app.ActionBar.LayoutParams;
-import android.app.ActionBar.Tab;
 import android.app.Activity;
-import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.res.Resources;
-import android.content.res.XmlResourceParser;
-import android.graphics.drawable.Drawable;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.util.Xml;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.meetme.android.horizontallistview.HorizontalListView;
+import com.sonuto.Config;
 import com.sonuto.rpc.ICallBack;
 import com.sonuto.rpc.register.BlogsApp;
-import com.sonuto.tabsswipe.adapter.BlogsTabsPagerAdapter;
-import com.sonuto.tabsswipe.adapter.NewsTabsPagerAdapter;
 import com.sonuto.utils.component.RecipeBlogCustomAdapter;
+import com.sportzweb.JSONObjectModel.Blogs;
 import com.sportzweb.JSONObjectModel.BlogsTab;
-import com.sportzweb.JSONObjectModel.News;
-import com.sportzweb.JSONObjectModel.NewsTab;
+
 
 public class BlogAppActivity extends Activity{
-
-	private ViewPager viewPager;
-	private BlogsTabsPagerAdapter mAdapter;
-	private ActionBar actionBar;
-
+	// process dialer
+	ProgressDialog pDialog;
+	//Context context;
+	
 	private ArrayList<BlogsTab> tabList = new ArrayList<BlogsTab>();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_healthy_recipes);
+		setContentView(R.layout.activity_blog_app);
 		
-		BlogsApp newsApp = new BlogsApp();
-
-		newsApp.getHomePageData(new ICallBack() {
+//		pDialog = new ProgressDialog(context);
+//		pDialog.setMessage("Fetching data..");
+//		pDialog.setCancelable(false);
+//		pDialog.show();
+		
+		BlogsApp blogsApp = new BlogsApp();
+		blogsApp.getHomePageData(new ICallBack() {
 
 			@Override
 			public void callBackResultHandler(Object object) {
 				// get json list of news tabs
 				JSONObject jsonObject = (JSONObject) object;
-
-				
+				//pDialog.dismiss();
 					try {
-						JSONArray jsonTabs = jsonObject.getJSONArray("blog_category_list");
+						JSONArray jsonTabs = jsonObject.getJSONArray("blog_category_blog_list");
 						
-						JSONArray customJSONTabs = jsonObject.getJSONArray("blog_custom_category_list");
-						
+						//JSONArray customJSONTabs = jsonObject.getJSONArray("blog_custom_category_list");
 						
 						Gson gson = new Gson();
-						tabList.add(gson.fromJson(customJSONTabs.get(0).toString(),BlogsTab.class));
+						//tabList.add(gson.fromJson(customJSONTabs.get(0).toString(),BlogsTab.class));
 						
 						int tabCount = jsonTabs.length();
 						for (int i = 0; i < tabCount; i++) {
@@ -76,11 +69,11 @@ public class BlogAppActivity extends Activity{
 							tabList.add(tab);
 						}
 						
-						tabCount = customJSONTabs.length();
+						/*tabCount = customJSONTabs.length();
 						for (int i = 1; i < tabCount; i++) {
 							BlogsTab tab = gson.fromJson(customJSONTabs.get(i).toString(),BlogsTab.class);
 							tabList.add(tab);
-						}
+						}*/
 						
 						
 						LinearLayout parentLayout = (LinearLayout)findViewById(R.id.parentLayout);
@@ -90,24 +83,32 @@ public class BlogAppActivity extends Activity{
 							
 							TextView tv = new TextView(getApplicationContext());
 							tv.setText(tabList.get(i).getTitle());
+							tv.setTextColor(Color.parseColor("#00ACEA"));
+							tv.setTypeface(null, Typeface.BOLD);
 							parentLayout.addView(tv);
 							
 							Resources res = getResources();
 							XmlPullParser parser = res.getXml(R.xml.horizontal_list_model);
 							AttributeSet attributes = Xml.asAttributeSet(parser);
 							
+							//JSONArray blogsJsonList = jsonObject.getJSONArray("blog_list");
+							JsonArray blogsJsonList = tabList.get(i).getBlog_list();
+							int total_blog = blogsJsonList.size();
 							//blogs item
 							HorizontalListView hListView = new HorizontalListView(getApplicationContext(), attributes);
 							hListView.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, 200));
 							hListView.setDividerWidth(2);
 							
-							ArrayList<News> items = new ArrayList<News>();
-							for(int j = 0; j < 20; j ++){
-								News news = new News();
-								news.setId(j + 1);
-								news.setTitle("title: " + j + 1);
-								news.setPicture("http://lh6.googleusercontent.com/-spR6L3z1hHQ/AAAAAAAAAAI/AAAAAAAAAAA/hVXPzP19P1Q/s32-c/photo.jpg");
-								items.add(news);
+							Blogs blogs = new Blogs();
+							
+							String imagePath = Config.SERVER_ROOT_URL + "resources/images/applications/blog_app/";
+							
+							ArrayList<Blogs> items = new ArrayList<Blogs>();
+							for(int j = 0; j < total_blog; j ++){
+								//Blogs blogs = new Blogs();
+								blogs = gson.fromJson(blogsJsonList.get(j).toString(),Blogs.class);
+								blogs.setPicture(imagePath+ blogs.getPicture());
+								items.add(blogs);
 							}
 							RecipeBlogCustomAdapter adapter = new RecipeBlogCustomAdapter(BlogAppActivity.this, items);
 							hListView.setAdapter(adapter);
