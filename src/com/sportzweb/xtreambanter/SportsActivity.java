@@ -1,4 +1,4 @@
-package com.sportzweb;
+package com.sportzweb.xtreambanter;
 
 import java.util.ArrayList;
 
@@ -18,10 +18,13 @@ import android.widget.Spinner;
 import com.google.gson.Gson;
 import com.sonuto.rpc.ICallBack;
 import com.sonuto.rpc.register.Sports;
+import com.sportzweb.R;
 import com.sportzweb.JSONObjectModel.Sport;
+import com.sportzweb.R.id;
+import com.sportzweb.R.layout;
 
 
-public class XtreamBanterActivity extends Activity{
+public class SportsActivity extends Activity{
 
 	ArrayList<Sport> spinnerSportsList = new ArrayList<Sport>();
 	Spinner spinnerSportsListView;
@@ -39,16 +42,15 @@ public class XtreamBanterActivity extends Activity{
 	        public void onItemSelected(AdapterView<?>arg0, View view, int arg2, long arg3) {
 
 	        	if(spinnerSportsList.size()>0){
-	        	Sport selectedSport = spinnerSportsList.get(arg2);
-	    		Gson gS = new Gson();
-	    		String target = gS.toJson(selectedSport);
+		        	Sport selectedSport = spinnerSportsList.get(arg2);
+		    		Gson gS = new Gson();
+		    		String target = gS.toJson(selectedSport);
+		        	
+		    		Intent i = new Intent(getApplicationContext(), TournamentActivity.class);
+		    		i.putExtra("selectedSport",target);
+		    		
+		    		startActivity(i);
 	        	
-	    		Intent i = new Intent(getApplicationContext(), XtreamBanterTournamentActivity.class);
-	    		i.putExtra("selectedSport",target);
-	    		
-	    		if(arg2 > 0){
-	    			startActivity(i);
-	    			}	    
 	        	}
 	        }
 			@Override

@@ -1,4 +1,4 @@
-package com.sportzweb;
+package com.sportzweb.xtreambanter;
 
 import java.util.ArrayList;
 
@@ -10,8 +10,11 @@ import com.google.gson.Gson;
 import com.sonuto.rpc.ICallBack;
 import com.sonuto.rpc.register.Tournaments;
 import com.sonuto.utils.UtilityJsonParser;
+import com.sportzweb.R;
 import com.sportzweb.JSONObjectModel.Sport;
 import com.sportzweb.JSONObjectModel.Tournament;
+import com.sportzweb.R.id;
+import com.sportzweb.R.layout;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -25,7 +28,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.AdapterView.OnItemSelectedListener;
 
-public class XtreamBanterTournamentActivity extends Activity{
+public class TournamentActivity extends Activity{
 
 
 	ArrayList<Tournament> spinnerTournamentsList = new ArrayList<Tournament>();
@@ -45,17 +48,14 @@ public class XtreamBanterTournamentActivity extends Activity{
 	        public void onItemSelected(AdapterView<?>arg0, View view, int arg2, long arg3) {
 
 	        	if(spinnerTournamentsList.size()>0){
-	        	Tournament selectedTournament = spinnerTournamentsList.get(arg2);
-	    		Gson gS = new Gson();
-	    		String target = gS.toJson(selectedTournament);
-	        	
-	    		final Intent i = new Intent(getApplicationContext(), XtreamBanterMatchActivity.class);
-	    		i.putExtra("selectedTournament",target);
-	    		
-	    		if(arg2 > 0){
-	    			startActivity(i);
-	    			
-	    			}	    
+		        	Tournament selectedTournament = spinnerTournamentsList.get(arg2);
+		    		Gson gS = new Gson();
+		    		String target = gS.toJson(selectedTournament);
+		        	
+		    		final Intent i = new Intent(getApplicationContext(), MatchesActivity.class);
+		    		i.putExtra("selectedTournament",target);
+		    		
+		    		startActivity(i);
 	        	}
 	        }
 			@Override

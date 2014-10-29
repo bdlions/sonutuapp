@@ -1,5 +1,6 @@
-package com.sportzweb;
+package com.sportzweb.xtreambanter;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -9,8 +10,13 @@ import org.json.JSONObject;
 
 import android.app.Activity;
 import android.app.ListActivity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -19,13 +25,16 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.sonuto.rpc.ICallBack;
 import com.sonuto.rpc.register.Matches;
+import com.sportzweb.R;
 import com.sportzweb.JSONObjectModel.Match;
 import com.sportzweb.JSONObjectModel.Tournament;
+import com.sportzweb.R.id;
+import com.sportzweb.R.layout;
 
-public class XtreamBanterMatchActivity extends Activity{
+public class MatchesActivity extends Activity{
 
 
-	ArrayList<String> matchesList = new ArrayList<String>();
+	ArrayList<Match> matchesList = new ArrayList<Match>();
 	Tournament tournament;
 	ListView listView;
 	Gson gS;
@@ -40,12 +49,30 @@ public class XtreamBanterMatchActivity extends Activity{
 		listView = (ListView)findViewById(R.id.list);
 		gS = new Gson();
 		
-		Date date = new Date();
 		
-		today.setText(date.toString());
+		Date date = new Date(0);
+		
+		today.setText(DateFormat.getDateInstance().format(date).toString());
 		String src = getIntent().getStringExtra("selectedTournament");
 		tournament = gS.fromJson(src, Tournament.class);
 		getAndSetLiistInSpinner();
+		listView.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				if(matchesList.size()>0){
+		        	Match selectedTournament = matchesList.get(position);
+		    		Gson gS = new Gson();
+		    		String target = gS.toJson(selectedTournament);
+		        	
+		    		Intent i = new Intent(getApplicationContext(), MatchActivity.class);
+		    		i.putExtra("selectedMatch",target);
+		    		
+		    		startActivity(i);
+	        	}
+				
+			}
+		});
 		
 	}
 	
@@ -64,10 +91,10 @@ public class XtreamBanterMatchActivity extends Activity{
 						int total_matches = matchList.length();
 						for (int i = 0; i < total_matches; i++) {
 							Match match = gson.fromJson(matchList.get(i).toString(), Match.class);
-							matchesList.add(match.toString());
+							matchesList.add(match);
 						}
 						
-						ArrayAdapter<String> matchesAdapter = new ArrayAdapter<String>(getApplicationContext(),android.R.layout.simple_list_item_1, matchesList);
+						ArrayAdapter<Match> matchesAdapter = new ArrayAdapter<Match>(getApplicationContext(),android.R.layout.simple_list_item_1, matchesList);
 						//this.setListAdapter(matchesAdapter);
 						listView.setAdapter(matchesAdapter);
 						//spinnerMatchesListView.setAdapter(matchesAdapter);
