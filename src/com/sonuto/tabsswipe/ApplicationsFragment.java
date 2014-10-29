@@ -1,8 +1,12 @@
 package com.sonuto.tabsswipe;
 
+import com.sonuto.rpc.register.HealthyRecipeApp;
 import com.sportzweb.BlogActivity;
+import com.sportzweb.BlogAppActivity;
 import com.sportzweb.BmiCalculatorActivity;
 import com.sportzweb.CreateBlogActivity;
+import com.sportzweb.HealthyRecipeAppActivity;
+import com.sportzweb.NewsAppActivity;
 import com.sportzweb.R;
 import com.sportzweb.XtreamBanterActivity;
 
@@ -41,8 +45,14 @@ public class ApplicationsFragment extends Fragment {
 				if(position == 0){
 					Intent intent = new Intent(getActivity(), BmiCalculatorActivity.class);
 					startActivity(intent);
+				}else if(position == 1) {
+					Intent intent = new Intent(getActivity(), HealthyRecipeAppActivity.class);
+					startActivity(intent);
+				}else if(position == 2) {
+					Intent intent = new Intent(getActivity(), NewsAppActivity.class);
+					startActivity(intent);
 				} else if(position == 3) {
-					Intent intent = new Intent(getActivity(), CreateBlogActivity.class);
+					Intent intent = new Intent(getActivity(), BlogAppActivity.class);
 					startActivity(intent);
 				} else if(position == 4) {
 					Intent intent = new Intent(getActivity(), XtreamBanterActivity.class);

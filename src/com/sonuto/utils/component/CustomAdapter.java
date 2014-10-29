@@ -2,7 +2,10 @@ package com.sonuto.utils.component;
 
 import java.util.ArrayList;
 
+import com.sonuto.loadimage.ImageLoader;
 import com.sportzweb.R;
+import com.sportzweb.JSONObjectModel.Blogs;
+import com.sportzweb.JSONObjectModel.News;
 
 import android.app.Activity;
 import android.view.LayoutInflater;
@@ -14,14 +17,16 @@ import android.widget.TextView;
 
 public class CustomAdapter extends BaseAdapter {
 
-	ArrayList<String> newsItem;
+	ArrayList<News> newsItem;
 	private Activity context;
+	public ImageLoader imageLoader; 
 
-	public CustomAdapter(Activity context, ArrayList<String> news) {
+	public CustomAdapter(Activity context, ArrayList<News> news) {
 
 		// TODO Auto-generated constructor stub
 		this.context = context;
 		this.newsItem = news;
+		imageLoader=new ImageLoader(context);
 
 	}
 
@@ -56,45 +61,16 @@ public class CustomAdapter extends BaseAdapter {
 				.findViewById(R.id.newsTitle);
 		ImageView imageView = (ImageView) convertView.findViewById(R.id.flag);
 
-		String name = newsItem.get(position);
-		newsTitle.setText(name);
+		
+		final News news = newsItem.get(position);
+		
+		//String name = newsItem.get(position);
+		newsTitle.setText(news.getTitle());
 		
 		imageView.setImageResource(R.drawable.upload_img_icon);
+        imageLoader.DisplayImage(news.getPicture(), imageView);
 		
-//		if (name.contains("Home")) {
-//
-//			flag.setImageResource(R.drawable.upload_img_icon);
-//			
-//		} else if (name.contains("Football")) {
-//
-//			flag.setImageResource(R.drawable.followers);
-//
-//		} else if (name.contains("Handball")) {
-//
-//			flag.setImageResource(R.drawable.upload_img_icon);
-//
-//		} else if (name.contains("Cricket")) {
-//
-//			flag.setImageResource(R.drawable.message);
-//
-//		} else if (name.contains("Rougby")) {
-//
-//			flag.setImageResource(R.drawable.gear);
-//
-//		} else if (name.contains("Bollyball")) {
-//
-//			flag.setImageResource(R.drawable.user_female);
-//
-//		} else if (name.contains("Boxing")) {
-//
-//			flag.setImageResource(R.drawable.user_male);
-//
-//		} else {
-//
-//			flag.setImageResource(R.drawable.gear);
-//
-//		}
-
+		
 		return convertView;
 	}
 

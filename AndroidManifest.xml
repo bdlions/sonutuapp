@@ -9,14 +9,16 @@
         android:targetSdkVersion="18" />
 
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	
     <application
         android:allowBackup="true"
         android:icon="@drawable/logo"
         android:label="@string/app_name"
         android:theme="@android:style/Theme.NoTitleBar">
         <activity
-            android:name="com.sportzweb.NewsAppActivity"
+            android:name="com.sportzweb.LoginActivity"
             android:theme="@style/CustomActionBarTheme"
             android:label="@string/app_name" >
             <intent-filter>
@@ -73,9 +75,9 @@
             android:label="@string/title_activity_business_profile_registration"
             android:theme="@style/CustomActionBarTheme"></activity>
 
-        <!--<activity android:name="com.sportzweb.BmiCalculatorActivity"
+        <activity android:name="com.sportzweb.BmiCalculatorActivity"
             android:label="@string/title_activity_bmi_calculator"
-            android:theme="@style/CustomActionBarTheme"></activity>-->
+            android:theme="@style/CustomActionBarTheme"></activity>
 
         
         <activity android:name="com.sportzweb.BlogActivity"
@@ -92,6 +94,34 @@
         
         <activity android:name="com.sportzweb.CreateBlogActivity"
             android:label="@string/title_activity_create_blog"
+            android:theme="@style/CustomActionBarTheme"></activity>
+        
+        <activity android:name="com.sportzweb.BlogAppActivity"
+            android:label="@string/title_activity_blog_app"
+            android:theme="@style/CustomActionBarTheme"></activity>
+        
+        <activity android:name="com.sportzweb.BlogDetailsActivity"
+            android:label="@string/title_activity_blog_details"
+            android:theme="@style/CustomActionBarTheme"></activity>
+        
+        <activity android:name="com.sportzweb.BlogCommentsActivity"
+            android:label="@string/title_activity_blog_comments"
+            android:theme="@style/CustomActionBarTheme"></activity>
+        
+        <activity android:name="com.sportzweb.HealthyRecipeAppActivity"
+            android:label="@string/title_activity_healthy_recipe_app"
+            android:theme="@style/CustomActionBarTheme"></activity>
+        
+        <activity android:name="com.sportzweb.RecipeDetailsActivity"
+            android:label="@string/title_activity_recipe_details"
+            android:theme="@style/CustomActionBarTheme"></activity>
+        
+        <activity android:name="com.sportzweb.RecipeCommentsActivity"
+            android:label="@string/title_activity_recipe_comments"
+            android:theme="@style/CustomActionBarTheme"></activity>
+        
+        <activity android:name="com.sportzweb.NewsAppActivity"
+            android:label="@string/title_activity_news_app"
             android:theme="@style/CustomActionBarTheme"></activity>
         
     </application>

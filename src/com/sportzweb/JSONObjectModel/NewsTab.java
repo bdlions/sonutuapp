@@ -1,4 +1,4 @@
-package com.sportzweb.jsonObject;
+package com.sportzweb.JSONObjectModel;
 
 public class NewsTab {
 

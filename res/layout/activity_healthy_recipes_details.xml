@@ -9,72 +9,112 @@
     tools:context="." >
 
     <LinearLayout
-        android:id="@+id/create_blog_ll"
+        android:id="@+id/create_recipe_ll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="10dip" >
-
+        
         <TextView
-            android:id="@+id/blogCategoryText"
+            android:id="@+id/recipeCategoryText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:text="@string/blog_category_title_for"
-            android:textSize="20sp" />
+            android:textSize="20sp" /> 
 
         <TextView
-            android:id="@+id/blogTitleText"
-            android:layout_width="fill_parent"
+            android:id="@+id/recipeTitletext"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
             android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/blogPostedTimeDatetext"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp"
-            android:text="20th October 2014 5:10pm"
-            android:textColor="#7f7f7f"
-            android:textSize="12sp" />
 
         <ImageView
-            android:id="@+id/BlogImageView"
-            android:layout_width="match_parent"
+            android:id="@+id/recipeImageView"
+            android:layout_width="264dp"
             android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:src="@drawable/user_female"
             android:layout_weight="0.30"
-            android:src="@drawable/upload_img_icon" />
-
+             />
+        
         <TextView
-            android:id="@+id/blogImageDescText"
+            android:id="@+id/recipeDetailsText"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp"
-            android:textColor="#7f7f7f"
+            android:layout_marginTop="10dp"
             android:textSize="12sp" />
 
-        <TextView
-            android:id="@+id/blogDetailsText"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp"
-            android:textSize="12sp" />
+
+
+            <TextView
+                android:id="@+id/durationLabeltextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
+                android:textSize="20sp"
+                android:text="@string/recipe_duration_label" />
+
+            <TextView
+                android:id="@+id/durationOfRecipetext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+
+
+
+            <TextView
+                android:id="@+id/ingeadientLabeltextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
+                android:text="@string/recipe_ingredient_label" />
+
+            <TextView
+                android:id="@+id/ingredientOfRecipetext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+ 
+
+
+            <TextView
+                android:id="@+id/prepationMethodLabeltextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
+                android:textSize="20sp"
+                android:text="@string/recipe_preparation_method_label" />
+
+            <TextView
+                android:id="@+id/preparationMethodOfRecipetext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
 
         <LinearLayout
-            android:id="@+id/layout23"
+            android:id="@+id/layout24"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
             android:gravity="center"
+            android:baselineAligned="false"
             android:orientation="horizontal" >
 
             <LinearLayout
-                android:id="@+id/layout233"
+                android:id="@+id/layout243"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.3"
@@ -101,14 +141,14 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/layout222"
+                android:id="@+id/layout2"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.3"
                 android:orientation="horizontal" >
 
                 <ImageButton
-                    android:id="@+id/btnLikeBlog"
+                    android:id="@+id/btnLikeReipe"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="20dp"
@@ -118,7 +158,7 @@
                     android:src="@drawable/like" />
 
                 <ImageButton
-                    android:id="@+id/btnCommentBlog"
+                    android:id="@+id/btnCommentReipe"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="20dp"
@@ -127,7 +167,7 @@
                     android:src="@drawable/comment" />
 
                 <ImageButton
-                    android:id="@+id/btnShareBlog"
+                    android:id="@+id/btnShareReipe"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -135,6 +175,17 @@
                     android:src="@drawable/share" />
             </LinearLayout>
         </LinearLayout>
+
+        <EditText
+            android:id="@+id/txtComment"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="10dip"
+            android:background="@drawable/backwithborder"
+            android:hint="Comment"
+            android:padding="10dp"
+            android:singleLine="true" />
     </LinearLayout>
 
 </ScrollView>
