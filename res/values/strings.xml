@@ -245,6 +245,10 @@
     
     
     <!-- Blog Application -->
+    <string name="title_activity_blog_details">Blog Details</string>
+    <string name="title_activity_blog_app">Blog App</string>
+    <string name="title_activity_blog_comments">Blog comments</string>
+    
     <string name="create_blog_category_title">Select a category for your blog</string>
     <string name="blog_title">Blog Title</string>
     <string name="blog_title_hint">Enter a title here for your Blog</string>
@@ -265,9 +269,15 @@
     <string name="recipe_ingredient_label">Ingredient :</string>
     <string name="recipe_preparation_method_label">Preparation Method :</string>
     
-    <string name="title_activity_blog_details">Blog Details</string>
-    <string name="title_activity_blog_app">Blog App</string>
+    <string name="title_activity_recipe_details">Recipe Details</string>
+    <string name="title_activity_recipe_comments">Recipe comments</string>
+    <string name="title_activity_healthy_recipe_app">Healthy Recipe App</string>
     
 	<!-- Healty Recipe Application -->
+	
+	<!-- News Application -->
+    <string name="title_activity_news_app">News App</string>
+	<!-- News Application -->
+	
 	
 </resources>

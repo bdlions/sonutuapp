@@ -48,8 +48,7 @@ public class NewsAppActivity extends FragmentActivity{
 				JSONObject jsonObject = (JSONObject) object;
 
 				try {
-					JSONArray jsonTabs = jsonObject
-							.getJSONArray("news_category_list");
+					JSONArray jsonTabs = jsonObject.getJSONArray("news_category_list");
 					
 					Gson gson = new Gson();
 					int tabCount = jsonTabs.length();
@@ -60,8 +59,7 @@ public class NewsAppActivity extends FragmentActivity{
 					}
 					
 					
-					JSONArray newsJsonList = jsonObject
-							.getJSONArray("news_list");
+					JSONArray newsJsonList = jsonObject.getJSONArray("news_list");
 
 					// Initilization
 					viewPager = (ViewPager) findViewById(R.id.newspager);

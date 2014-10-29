@@ -2,7 +2,10 @@ package com.sonuto.utils.component;
 
 import java.util.ArrayList;
 
+import com.sonuto.loadimage.ImageLoader;
 import com.sportzweb.R;
+import com.sportzweb.JSONObjectModel.Blogs;
+import com.sportzweb.JSONObjectModel.News;
 
 import android.app.Activity;
 import android.view.LayoutInflater;
@@ -14,14 +17,16 @@ import android.widget.TextView;
 
 public class CustomAdapter extends BaseAdapter {
 
-	ArrayList<String> newsItem;
+	ArrayList<News> newsItem;
 	private Activity context;
+	public ImageLoader imageLoader; 
 
-	public CustomAdapter(Activity context, ArrayList<String> news) {
+	public CustomAdapter(Activity context, ArrayList<News> news) {
 
 		// TODO Auto-generated constructor stub
 		this.context = context;
 		this.newsItem = news;
+		imageLoader=new ImageLoader(context);
 
 	}
 
@@ -56,10 +61,16 @@ public class CustomAdapter extends BaseAdapter {
 				.findViewById(R.id.newsTitle);
 		ImageView imageView = (ImageView) convertView.findViewById(R.id.flag);
 
-		String name = newsItem.get(position);
-		newsTitle.setText(name);
+		
+		final News news = newsItem.get(position);
+		
+		//String name = newsItem.get(position);
+		newsTitle.setText(news.getTitle());
 		
 		imageView.setImageResource(R.drawable.upload_img_icon);
+        imageLoader.DisplayImage(news.getPicture(), imageView);
+		
+		
 		return convertView;
 	}
 

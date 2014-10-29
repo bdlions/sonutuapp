@@ -6,8 +6,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.bdlions.components.HListView;
 import com.google.gson.Gson;
-import com.meetme.android.horizontallistview.HorizontalListView;
 import com.sonuto.Config;
 import com.sonuto.rpc.ICallBack;
 import com.sonuto.rpc.register.BlogsApp;
@@ -33,7 +33,7 @@ public class BlogsCommonFragment extends Fragment {
 	
 	JSONArray blogsJsonList;
 	ArrayList<String> item;
-	HorizontalListView lvTest,lvTest1;
+	HListView lvTest,lvTest1;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,

@@ -1,16 +1,16 @@
 package com.sportzweb.JSONObjectModel;
 
-public class Blogs {
+public class HealthyRecipes {
 	private int id;
 	private String title;
 	private String picture;
-	private String blog_category;
+	private String recipe_category;
 
-	public String getBlog_category() {
-		return blog_category;
+	public String getRecipe_category() {
+		return recipe_category;
 	}
-	public void setBlog_category(String blog_category) {
-		this.blog_category = blog_category;
+	public void setRecipe_category(String recipe_category) {
+		this.recipe_category = recipe_category;
 	}
 	public int getId() {
 		return id;

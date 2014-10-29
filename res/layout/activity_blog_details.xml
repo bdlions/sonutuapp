@@ -15,13 +15,13 @@
         android:orientation="vertical"
         android:padding="10dip" >
 
-        <!-- <TextView
+        <TextView
             android:id="@+id/blogCategoryText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:text="@string/blog_category_title_for"
-            android:textSize="20sp" /> -->
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/blogTitleText"
@@ -29,7 +29,6 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
             android:layout_marginTop="5dp"
-            android:text="Cutest doggy ever"
             android:textSize="20sp" />
 
         <TextView
@@ -44,7 +43,7 @@
 
         <ImageView
             android:id="@+id/BlogImageView"
-            android:layout_width="264dp"
+            android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.30"
             android:src="@drawable/upload_img_icon" />
@@ -55,7 +54,6 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:layout_marginTop="5dp"
-            android:text="kjdfs sdfsd sdfsdfsdf sdf"
             android:textColor="#7f7f7f"
             android:textSize="12sp" />
 
@@ -65,11 +63,10 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:layout_marginTop="5dp"
-            android:text="fdg ddgdf gdfg df gdfg dfg dfdfg dfds fsdfsd dfgdf ggdf gdfg dfgdfgfdg dfg dfgfdgdf gdfg dfg"
             android:textSize="12sp" />
 
         <LinearLayout
-            android:id="@+id/layout2"
+            android:id="@+id/layout23"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
@@ -77,10 +74,10 @@
             android:orientation="horizontal" >
 
             <LinearLayout
-                android:id="@+id/layout2"
+                android:id="@+id/layout233"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="0.3"
                 android:orientation="horizontal" >
 
                 <ImageButton
@@ -104,14 +101,14 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/layout2"
+                android:id="@+id/layout222"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.3"
                 android:orientation="horizontal" >
 
                 <ImageButton
-                    android:id="@+id/btn11"
+                    android:id="@+id/btnLikeBlog"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="20dp"
@@ -121,7 +118,7 @@
                     android:src="@drawable/like" />
 
                 <ImageButton
-                    android:id="@+id/btn12"
+                    android:id="@+id/btnCommentBlog"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="20dp"
@@ -130,7 +127,7 @@
                     android:src="@drawable/comment" />
 
                 <ImageButton
-                    android:id="@+id/btn13"
+                    android:id="@+id/btnShareBlog"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"

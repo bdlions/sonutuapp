@@ -104,6 +104,26 @@
             android:label="@string/title_activity_blog_details"
             android:theme="@style/CustomActionBarTheme"></activity>
         
+        <activity android:name="com.sportzweb.BlogCommentsActivity"
+            android:label="@string/title_activity_blog_comments"
+            android:theme="@style/CustomActionBarTheme"></activity>
+        
+        <activity android:name="com.sportzweb.HealthyRecipeAppActivity"
+            android:label="@string/title_activity_healthy_recipe_app"
+            android:theme="@style/CustomActionBarTheme"></activity>
+        
+        <activity android:name="com.sportzweb.RecipeDetailsActivity"
+            android:label="@string/title_activity_recipe_details"
+            android:theme="@style/CustomActionBarTheme"></activity>
+        
+        <activity android:name="com.sportzweb.RecipeCommentsActivity"
+            android:label="@string/title_activity_recipe_comments"
+            android:theme="@style/CustomActionBarTheme"></activity>
+        
+        <activity android:name="com.sportzweb.NewsAppActivity"
+            android:label="@string/title_activity_news_app"
+            android:theme="@style/CustomActionBarTheme"></activity>
+        
     </application>
 
 </manifest>

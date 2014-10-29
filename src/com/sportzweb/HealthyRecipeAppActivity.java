@@ -25,22 +25,23 @@ import com.google.gson.JsonArray;
 import com.sonuto.Config;
 import com.sonuto.rpc.ICallBack;
 import com.sonuto.rpc.register.BlogsApp;
-import com.sonuto.utils.component.RecipeBlogCustomAdapter;
-import com.sportzweb.JSONObjectModel.Blogs;
-import com.sportzweb.JSONObjectModel.BlogsTab;
+import com.sonuto.rpc.register.HealthyRecipeApp;
+import com.sonuto.utils.component.HealthyRecipeCustomAdapter;
+import com.sportzweb.JSONObjectModel.HealthyRecipes;
+import com.sportzweb.JSONObjectModel.HealthyRecipesTab;
 
 
-public class BlogAppActivity extends Activity{
+public class HealthyRecipeAppActivity extends Activity{
 	// process dialer
 	ProgressDialog pDialog;
 	private Context mContext;
-	String blogCategory;
-	private ArrayList<BlogsTab> tabList = new ArrayList<BlogsTab>();
+	String recipe_category;
+	private ArrayList<HealthyRecipesTab> tabList = new ArrayList<HealthyRecipesTab>();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_blog_app);
+		setContentView(R.layout.activity_healthy_recipe_app);
 		
 		mContext = this;
 		
@@ -50,12 +51,12 @@ public class BlogAppActivity extends Activity{
 	
 	public void process() {
 		pDialog = new ProgressDialog(mContext);
-		pDialog.setMessage("Fetching data..");
+		pDialog.setMessage("Fetching data ...");
 		pDialog.setCancelable(false);
 		pDialog.show();
 		
-		BlogsApp blogsApp = new BlogsApp();
-		blogsApp.getHomePageData(new ICallBack() {
+		HealthyRecipeApp healthyRecipeApp = new HealthyRecipeApp();
+		healthyRecipeApp.getHomePageData(new ICallBack() {
 
 			@Override
 			public void callBackResultHandler(Object object) {
@@ -63,7 +64,7 @@ public class BlogAppActivity extends Activity{
 				JSONObject jsonObject = (JSONObject) object;
 				pDialog.dismiss();
 					try {
-						JSONArray jsonTabs = jsonObject.getJSONArray("blog_category_blog_list");
+						JSONArray jsonTabs = jsonObject.getJSONArray("recipe_category_recipe_list");
 						
 						//JSONArray customJSONTabs = jsonObject.getJSONArray("blog_custom_category_list");
 						
@@ -72,27 +73,21 @@ public class BlogAppActivity extends Activity{
 						
 						int tabCount = jsonTabs.length();
 						for (int i = 0; i < tabCount; i++) {
-							BlogsTab tab = gson.fromJson(jsonTabs.get(i).toString(),BlogsTab.class);
+							HealthyRecipesTab tab = gson.fromJson(jsonTabs.get(i).toString(),HealthyRecipesTab.class);
 							tabList.add(tab);
 						}
 						
-						/*tabCount = customJSONTabs.length();
-						for (int i = 1; i < tabCount; i++) {
-							BlogsTab tab = gson.fromJson(customJSONTabs.get(i).toString(),BlogsTab.class);
-							tabList.add(tab);
-						}*/
 						
-						
-						LinearLayout parentLayout = (LinearLayout)findViewById(R.id.parentLayout);
+						LinearLayout parentLayout = (LinearLayout)findViewById(R.id.parentLayoutForRecipeApp);
 						
 						for(int i = 0; i < tabList.size(); i ++){
 							//blog title
 							
 							TextView tv = new TextView(getApplicationContext());
 							
-							blogCategory = tabList.get(i).getTitle();
+							recipe_category = tabList.get(i).getTitle();
 							
-							tv.setText(blogCategory);
+							tv.setText(tabList.get(i).getTitle());
 							tv.setTextColor(Color.parseColor("#00ACEA"));
 							tv.setTypeface(null, Typeface.BOLD);
 							parentLayout.addView(tv);
@@ -102,31 +97,30 @@ public class BlogAppActivity extends Activity{
 							AttributeSet attributes = Xml.asAttributeSet(parser);
 							
 							//JSONArray blogsJsonList = jsonObject.getJSONArray("blog_list");
-							JsonArray blogsJsonList = tabList.get(i).getBlog_list();
-							int total_blog = blogsJsonList.size();
-							//blogs item
+							JsonArray recipesJsonList = tabList.get(i).getRecipe_list();
+							int total_recipe = recipesJsonList.size();
+							//recipes item
 							HListView hListView = new HListView(getApplicationContext(), attributes);
 							hListView.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, 200));
 							//hListView.setDividerWidth(2);
 							
-							Blogs blogs = new Blogs();
+							HealthyRecipes recipes = new HealthyRecipes();
 							
-							String imagePath = Config.SERVER_ROOT_URL + "resources/images/applications/blog_app/";
+							String imagePath = Config.SERVER_ROOT_URL + "resources/images/applications/healthy_recipes/";
 							
-							ArrayList<Blogs> items = new ArrayList<Blogs>();
-							for(int j = 0; j < total_blog; j ++){
-								//Blogs blogs = new Blogs();
-								blogs = gson.fromJson(blogsJsonList.get(j).toString(),Blogs.class);
-								blogs.setPicture(imagePath+ blogs.getPicture());
-								blogs.setBlog_category(blogCategory);
-								items.add(blogs);
+							ArrayList<HealthyRecipes> items = new ArrayList<HealthyRecipes>();
+							for(int j = 0; j < total_recipe; j ++){
+								recipes = gson.fromJson(recipesJsonList.get(j).toString(),HealthyRecipes.class);
+								recipes.setPicture(imagePath+ recipes.getPicture());
+								recipes.setRecipe_category(recipe_category);
+								items.add(recipes);
 							}
-							RecipeBlogCustomAdapter adapter = new RecipeBlogCustomAdapter(BlogAppActivity.this, items);
+							HealthyRecipeCustomAdapter adapter = new HealthyRecipeCustomAdapter(HealthyRecipeAppActivity.this, items);
 							hListView.setAdapter(adapter);
 							
 							
 							parentLayout.addView(hListView);
-							
+
 						}
 						
 						

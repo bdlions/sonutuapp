@@ -6,7 +6,8 @@ import com.sonuto.loadimage.ImageLoader;
 import com.sportzweb.BlogAppActivity;
 import com.sportzweb.BlogDetailsActivity;
 import com.sportzweb.R;
-import com.sportzweb.JSONObjectModel.Blogs;
+import com.sportzweb.RecipeDetailsActivity;
+import com.sportzweb.JSONObjectModel.HealthyRecipes;
 import com.sportzweb.JSONObjectModel.News;
 
 import android.app.Activity;
@@ -20,24 +21,24 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class RecipeBlogCustomAdapter extends BaseAdapter {
+public class HealthyRecipeCustomAdapter extends BaseAdapter {
 
-	ArrayList<Blogs> blogsItem;
+	ArrayList<HealthyRecipes> healthyRecipesItem;
 	private Activity context;
 	public ImageLoader imageLoader; 
 
-	public RecipeBlogCustomAdapter(Activity context, ArrayList<Blogs> blogs) {
+	public HealthyRecipeCustomAdapter(Activity context, ArrayList<HealthyRecipes> healthyRecipes) {
 
 		// TODO Auto-generated constructor stub
 		this.context = context;
-		this.blogsItem = blogs;
+		this.healthyRecipesItem = healthyRecipes;
 		imageLoader=new ImageLoader(context);
 	}
 
 	@Override
 	public int getCount() {
 		// TODO Auto-generated method stub
-		return blogsItem.size();
+		return healthyRecipesItem.size();
 	}
 
 	@Override
@@ -61,35 +62,30 @@ public class RecipeBlogCustomAdapter extends BaseAdapter {
 					parent, false);
 		}
 
-		final Blogs blogs = blogsItem.get(position);
+		final HealthyRecipes healthyRecipes = healthyRecipesItem.get(position);
 		
 		
 		TextView newsTitle = (TextView) convertView
 				.findViewById(R.id.blog_recipe_title);
-		//newsTitle.setOnClickListener(listerner);
-		
-		
-		
 		
 		ImageView imageView = (ImageView) convertView.findViewById(R.id.blog_or_recipe_image);
-		//imageView.setOnClickListener(listerner);
-		
+
 		convertView.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				//Toast.makeText(context, "Id is : " + blogs.getId(), Toast.LENGTH_SHORT).show();
-				Intent intent = new Intent(context, BlogDetailsActivity.class);
-				intent.putExtra("blog_id",blogs.getId());
-				intent.putExtra("blog_category_title",blogs.getBlog_category());
+				
+				Intent intent = new Intent(context, RecipeDetailsActivity.class);
+				intent.putExtra("recipe_id",healthyRecipes.getId());
+				intent.putExtra("recipe_category_title",healthyRecipes.getRecipe_category());
 				
 				context.startActivity(intent);
 			}
 		});
 		
-		newsTitle.setText(blogs.getTitle());
+		newsTitle.setText(healthyRecipes.getTitle());
 		imageView.setImageResource(R.drawable.upload_img_icon);
-        imageLoader.DisplayImage(blogs.getPicture(), imageView);
+        imageLoader.DisplayImage(healthyRecipes.getPicture(), imageView);
         
 		return convertView;
 	}
