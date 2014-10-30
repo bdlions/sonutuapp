@@ -1,14 +1,12 @@
 package com.sportzweb;
 
-
 import java.text.DecimalFormat;
-import org.achartengine.ChartFactory;
-import org.achartengine.GraphicalView;
-import org.achartengine.model.CategorySeries;
-import org.achartengine.model.SeriesSelection;
-import org.achartengine.renderer.DefaultRenderer;
-import org.achartengine.renderer.SimpleSeriesRenderer;
-
+import com.bdlions.achartengine.ChartFactory;
+import com.bdlions.achartengine.GraphicalView;
+import com.bdlions.achartengine.model.CategorySeries;
+import com.bdlions.achartengine.model.SeriesSelection;
+import com.bdlions.achartengine.renderer.DefaultRenderer;
+import com.bdlions.achartengine.renderer.SimpleSeriesRenderer;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;

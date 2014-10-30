@@ -2,7 +2,6 @@ package com.sportzweb;
 
 import java.util.ArrayList;
 
-import com.meetme.android.horizontallistview.HorizontalListView;
 import com.sonuto.utils.component.CustomAdapter;
 import com.sonuto.utils.component.NewsAdapter;
 import com.sonuto.utils.component.RecipeBlogCustomAdapter;
@@ -26,7 +25,7 @@ public class TestActivity extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_healthy_recipes);
+		//setContentView(R.layout.activity_healthy_recipes);
 		mContext = this;
 		
 		ArrayList<String> items = new ArrayList<String>();

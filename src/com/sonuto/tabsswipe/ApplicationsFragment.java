@@ -8,7 +8,7 @@ import com.sportzweb.CreateBlogActivity;
 import com.sportzweb.HealthyRecipeAppActivity;
 import com.sportzweb.NewsAppActivity;
 import com.sportzweb.R;
-import com.sportzweb.XtreamBanterActivity;
+import com.sportzweb.xtreambanter.SportsActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -55,7 +55,7 @@ public class ApplicationsFragment extends Fragment {
 					Intent intent = new Intent(getActivity(), BlogAppActivity.class);
 					startActivity(intent);
 				} else if(position == 4) {
-					Intent intent = new Intent(getActivity(), XtreamBanterActivity.class);
+					Intent intent = new Intent(getActivity(), SportsActivity.class);
 					startActivity(intent);
 				}
 
