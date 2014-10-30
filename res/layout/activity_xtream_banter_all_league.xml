@@ -29,9 +29,10 @@
           android:id="@+id/list"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:background="@color/image_border_start" >
+          android:background="@color/image_border_start"
+          android:cacheColorHint="@color/image_border_start" >
 		    
-</ListView>
+	  </ListView>
       
         
     </LinearLayout>

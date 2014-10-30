@@ -16,6 +16,7 @@
         android:paddingTop="10dp" >
 
         <TextView
+            android:id="@+id/genCode"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dip"
@@ -26,11 +27,10 @@
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <Spinner
-            android:id="@+id/spinner_Month"
+            android:id="@+id/spinner_teams"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:entries="@array/tournament_list"
             android:minWidth="350dp"
             android:prompt="@string/tournament_prompt" >
         </Spinner>
@@ -46,6 +46,7 @@
             android:textSize="15sp" />
 
         <TextView
+            android:id="@+id/oldCode"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dip"
@@ -54,6 +55,15 @@
             android:gravity="center"
             android:text="Previous Code"
             android:textAppearance="?android:attr/textAppearanceLarge" />
+        
+        <ListView
+          android:id="@+id/previousCodelist"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:background="@color/image_border_start"
+          android:cacheColorHint="@color/image_border_start" >
+		    
+	  </ListView>
     </LinearLayout>
 
 </ScrollView>
