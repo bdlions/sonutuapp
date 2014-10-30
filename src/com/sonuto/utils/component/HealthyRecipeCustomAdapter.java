@@ -2,7 +2,7 @@ package com.sonuto.utils.component;
 
 import java.util.ArrayList;
 
-import com.sonuto.loadimage.ImageLoader;
+import com.bdlions.load.image.ImageLoader;
 import com.sportzweb.BlogAppActivity;
 import com.sportzweb.BlogDetailsActivity;
 import com.sportzweb.R;

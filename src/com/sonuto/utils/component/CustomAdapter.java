@@ -2,9 +2,8 @@ package com.sonuto.utils.component;
 
 import java.util.ArrayList;
 
-import com.sonuto.loadimage.ImageLoader;
+import com.bdlions.load.image.ImageLoader;
 import com.sportzweb.R;
-import com.sportzweb.JSONObjectModel.Blogs;
 import com.sportzweb.JSONObjectModel.News;
 
 import android.app.Activity;

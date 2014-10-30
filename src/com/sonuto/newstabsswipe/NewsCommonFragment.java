@@ -9,10 +9,10 @@ import org.json.JSONObject;
 import org.xmlpull.v1.XmlPullParser;
 
 import com.bdlions.components.HListView;
+import com.bdlions.load.image.ImageLoader;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.sonuto.Config;
-import com.sonuto.loadimage.ImageLoader;
 import com.sonuto.rpc.ICallBack;
 import com.sonuto.rpc.register.NewsApp;
 import com.sonuto.tabsswipe.adapter.NewsSubTabsPagerAdapter;

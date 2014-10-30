@@ -1,9 +1,5 @@
 package com.sportzweb.xtreambanter;
-
-import java.text.DateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,11 +9,9 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
-
 import com.google.gson.Gson;
 import com.sportzweb.R;
 import com.sportzweb.JSONObjectModel.Match;
-import com.sportzweb.JSONObjectModel.Sport;
 
 public class JoinChatRoom extends Activity{
 

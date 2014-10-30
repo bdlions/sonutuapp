@@ -1,28 +1,21 @@
 package com.sportzweb;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import com.google.gson.JsonObject;
+import com.bdlions.load.image.ImageLoader;
 import com.sonuto.Config;
-import com.sonuto.loadimage.ImageLoader;
 import com.sonuto.rpc.ICallBack;
-import com.sonuto.rpc.register.BlogsApp;
 import com.sonuto.rpc.register.HealthyRecipeApp;
-
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.media.TimedText;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class RecipeDetailsActivity extends Activity {
 

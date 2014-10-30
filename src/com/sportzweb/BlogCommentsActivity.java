@@ -1,9 +1,5 @@
 package com.sportzweb;
-
-import com.sonuto.loadimage.ImageLoader;
-
-
-
+import com.bdlions.load.image.ImageLoader;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
