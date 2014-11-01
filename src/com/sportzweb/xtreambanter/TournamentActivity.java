@@ -102,7 +102,7 @@ public class TournamentActivity extends Activity{
 							spinnerTournamentsList.add(tournament);
 						}
 						
-						ArrayAdapter<Tournament> tournamentsAdapter = new ArrayAdapter<Tournament>(getApplicationContext(),android.R.layout.simple_list_item_1, spinnerTournamentsList);
+						ArrayAdapter<Tournament> tournamentsAdapter = new ArrayAdapter<Tournament>(TournamentActivity.this,android.R.layout.simple_list_item_1, spinnerTournamentsList);
 						// bind adapter and view
 						spinnerTournamentsListView.setAdapter(tournamentsAdapter);
 

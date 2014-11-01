@@ -123,7 +123,28 @@
         <activity android:name="com.sportzweb.NewsAppActivity"
             android:label="@string/title_activity_news_app"
             android:theme="@style/CustomActionBarTheme"></activity>
+        <activity android:name="com.sportzweb.xtreambanter.SportsActivity"
+            android:label="@string/title_activity_news_app"
+            android:theme="@style/CustomActionBarTheme"></activity>
         
+        <activity android:name="com.sportzweb.xtreambanter.TournamentActivity"
+            android:label="@string/title_activity_news_app"
+            android:theme="@style/CustomActionBarTheme">
+        </activity>
+        
+        <activity android:name="com.sportzweb.xtreambanter.CreateChatRoom"
+            android:label="@string/title_activity_news_app"
+            android:theme="@style/CustomActionBarTheme">
+        </activity>
+		<activity android:name="com.sportzweb.xtreambanter.JoinChatRoom"
+            android:label="@string/title_activity_news_app"
+            android:theme="@style/CustomActionBarTheme">
+        </activity>
+		<activity android:name="com.sportzweb.xtreambanter.MatchesActivity"
+            android:label="@string/title_activity_news_app"
+            android:theme="@style/CustomActionBarTheme">
+        </activity>
+                
     </application>
 
 </manifest>

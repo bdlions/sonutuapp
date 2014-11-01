@@ -90,7 +90,7 @@ public class SportsActivity extends Activity{
 							spinnerSportsList.add(sport);
 						}
 						
-						ArrayAdapter<Sport> sportsAdapter = new ArrayAdapter<Sport>(getApplicationContext(),android.R.layout.simple_list_item_1, spinnerSportsList);
+						ArrayAdapter<Sport> sportsAdapter = new ArrayAdapter<Sport>(SportsActivity.this,android.R.layout.simple_list_item_1, spinnerSportsList);
 						// bind adapter and view
 						spinnerSportsListView.setAdapter(sportsAdapter);
 
