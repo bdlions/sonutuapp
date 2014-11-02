@@ -277,6 +277,7 @@
 	
 	<!-- News Application -->
     <string name="title_activity_news_app">News App</string>
+    <string name="title_activity_news_details">News Details</string>
 	<!-- News Application -->
 	
 	

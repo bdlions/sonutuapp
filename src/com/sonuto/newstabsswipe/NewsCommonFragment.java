@@ -20,6 +20,7 @@ import com.sonuto.utils.component.CustomAdapter;
 import com.sonuto.utils.component.NewsAdapter;
 import com.sonuto.utils.component.RecipeBlogCustomAdapter;
 import com.sportzweb.BlogAppActivity;
+import com.sportzweb.NewsDetailsActivity;
 import com.sportzweb.R;
 import com.sportzweb.JSONObjectModel.Blogs;
 import com.sportzweb.JSONObjectModel.News;
@@ -31,6 +32,7 @@ import android.app.ActionBar;
 import android.app.FragmentTransaction;
 import android.app.ActionBar.LayoutParams;
 import android.app.ActionBar.Tab;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -70,6 +72,7 @@ public class NewsCommonFragment extends Fragment  {
 	private ArrayList<SubNewsTab> subCategoryNewsList = new ArrayList<SubNewsTab>();
 	LinearLayout parentLayout;
 	TextView tv;
+	private JSONObject firstNews;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -134,10 +137,9 @@ public class NewsCommonFragment extends Fragment  {
 							JsonArray newsJsonList = categoryNews.getNews_list();
 							int total_news = newsJsonList.size();
 							
-							//blogs item
+							// this is for news category horizontal list view
 							HListView hListView = new HListView(getActivity().getApplicationContext(), attributes);
 							hListView.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, 200));
-							//hListView.setDividerWidth(2);
 							
 							SubNews news = new SubNews();
 							
@@ -182,7 +184,9 @@ public class NewsCommonFragment extends Fragment  {
 							//JSONArray blogsJsonList = jsonObject.getJSONArray("blog_list");
 							JsonArray blogsJsonList = subNewsCategory.getNews_list();
 							int total_blog = blogsJsonList.size();
-							//blogs item
+							
+							
+							// this is for Sub news category horizontal list view
 							HListView hListView = new HListView(getActivity().getApplicationContext(), attributes);
 							hListView.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, 200));
 							
@@ -242,7 +246,7 @@ public class NewsCommonFragment extends Fragment  {
 		
 		try {
 			//JSONArray jsonArray = new JSONArray(newsList);
-			JSONObject firstNews = (JSONObject)newsList.get(0);
+			firstNews = (JSONObject)newsList.get(0);
 			
 			firstNewsHeading.setText(firstNews.get("headline").toString());
 			String imagePath = Config.SERVER_ROOT_URL + "resources/images/applications/news_app/news/";
@@ -250,7 +254,25 @@ public class NewsCommonFragment extends Fragment  {
 			firstNewsImage.setImageResource(R.drawable.upload_img_icon);
 	        imageLoader.DisplayImage(imagePath+firstNews.get("picture").toString(), firstNewsImage);
 			
-			
+	      
+	        firstNewsImage.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					try {
+						Intent intent = new Intent(getActivity(), NewsDetailsActivity.class);
+						intent.putExtra("news_id", Integer.parseInt(firstNews.get("news_id").toString()));
+						intent.putExtra("news_category_title","Home");
+						
+						getActivity().startActivity(intent);
+					} catch (JSONException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
+				}
+			});
+	        
+	        
 			
 			int newsCount = newsList.length();
 			for(int i = 1; i < newsCount; i ++) {

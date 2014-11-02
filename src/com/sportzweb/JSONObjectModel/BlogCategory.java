@@ -1,10 +1,8 @@
 package com.sportzweb.JSONObjectModel;
 
-public class News {
+public class BlogCategory {
 	private int id;
 	private String title;
-	private String picture;
-	
 	public int getId() {
 		return id;
 	}
@@ -17,12 +15,6 @@ public class News {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getPicture() {
-		return picture;
-	}
-	public void setPicture(String picture) {
-		this.picture = picture;
-	}
 	
-	
+
 }

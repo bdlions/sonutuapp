@@ -6,36 +6,42 @@ import com.bdlions.load.image.ImageLoader;
 import com.sportzweb.NewsDetailsActivity;
 import com.sportzweb.R;
 import com.sportzweb.RecipeDetailsActivity;
+import com.sportzweb.JSONObjectModel.BlogCategory;
 import com.sportzweb.JSONObjectModel.News;
+import com.sportzweb.JSONObjectModel.SubNews;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView.FindListener;
 import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TableRow;
 import android.widget.TextView;
 
-public class CustomAdapter extends BaseAdapter {
+public class BlogCategoryCustomAdapter extends BaseAdapter {
 
-	ArrayList<News> newsItem;
+	ArrayList<BlogCategory> blogCategoryItem;
 	private Activity context;
 	public ImageLoader imageLoader; 
 
-	public CustomAdapter(Activity context, ArrayList<News> news) {
+	public BlogCategoryCustomAdapter(Activity context, ArrayList<BlogCategory> blogCategory) {
 
 		// TODO Auto-generated constructor stub
 		this.context = context;
-		this.newsItem = news;
-		imageLoader=new ImageLoader(context);
+		this.blogCategoryItem = blogCategory;
 
 	}
 
 	@Override
 	public int getCount() {
 		// TODO Auto-generated method stub
-		return newsItem.size();
+		return blogCategoryItem.size();
 	}
 
 	@Override
@@ -55,35 +61,20 @@ public class CustomAdapter extends BaseAdapter {
 		// TODO Auto-generated method stub
 
 		if (convertView == null) {
-			convertView = LayoutInflater.from(context).inflate(R.layout.row,
-					parent, false);
+			convertView = LayoutInflater.from(context).inflate(R.layout.blog_category_row,parent, false);
 		}
+		
+		final BlogCategory bCategory = blogCategoryItem.get(position);
 
-		TextView newsTitle = (TextView) convertView.findViewById(R.id.newsTitle);
-		ImageView imageView = (ImageView) convertView.findViewById(R.id.flag);
-
+		//CheckBox category = (CheckBox) convertView.findViewById(R.id.category_checkBox);
+		//category.setText(bCategory.getTitle());
 		
-		final News news = newsItem.get(position);
+		TextView blogCategoryTitle = (TextView) convertView.findViewById(R.id.blogCategoryTitle);
+		Button categoryImg = (Button) convertView.findViewById(R.id.imgBtn);
 		
-		//String name = newsItem.get(position);
-		newsTitle.setText(news.getTitle());
-		
-		convertView.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				
-				Intent intent = new Intent(context, NewsDetailsActivity.class);
-				intent.putExtra("news_id",news.getId());
-				intent.putExtra("news_category_title",news.getTitle());
-				
-				context.startActivity(intent);
-			}
-		});
+		blogCategoryTitle.setText(bCategory.getTitle());
 		
 		
-		imageView.setImageResource(R.drawable.upload_img_icon);
-        imageLoader.DisplayImage(news.getPicture(), imageView);
 		
 		
 		return convertView;

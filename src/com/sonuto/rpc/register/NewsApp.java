@@ -28,4 +28,15 @@ public class NewsApp extends RPCHandler{
 		execute();
 	}
 	
+	public void getNewsDetails(ICallBack callBack, Object...params){
+		setCallBack(callBack);
+		
+		setControllerName("app_news/");
+		setMethod("get_news_info");
+
+		setParams(params);
+		setReturnType(RPCReturnType.JSON_OBJECT);
+		execute();
+	}
+	
 }

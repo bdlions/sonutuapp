@@ -29,4 +29,15 @@ public class BlogsApp extends RPCHandler{
 		execute();
 	}
 	
+	public void getBlogCategoryList(ICallBack callBack, Object...params){
+		setCallBack(callBack);
+		
+		setControllerName("app_blog/");
+		setMethod("get_blog_category_list");
+
+		setParams(params);
+		setReturnType(RPCReturnType.JSON_OBJECT);
+		execute();
+	}
+	
 }

@@ -18,7 +18,7 @@
         android:label="@string/app_name"
         android:theme="@android:style/Theme.NoTitleBar">
         <activity
-            android:name="com.sportzweb.LoginActivity"
+            android:name="com.sportzweb.BlogAppActivity"
             android:theme="@style/CustomActionBarTheme"
             android:label="@string/app_name" >
             <intent-filter>
@@ -96,9 +96,9 @@
             android:label="@string/title_activity_create_blog"
             android:theme="@style/CustomActionBarTheme"></activity>
         
-        <activity android:name="com.sportzweb.BlogAppActivity"
+        <!-- <activity android:name="com.sportzweb.BlogAppActivity"
             android:label="@string/title_activity_blog_app"
-            android:theme="@style/CustomActionBarTheme"></activity>
+            android:theme="@style/CustomActionBarTheme"></activity>-->
         
         <activity android:name="com.sportzweb.BlogDetailsActivity"
             android:label="@string/title_activity_blog_details"
@@ -120,9 +120,14 @@
             android:label="@string/title_activity_recipe_comments"
             android:theme="@style/CustomActionBarTheme"></activity>
         
-        <activity android:name="com.sportzweb.NewsAppActivity"
+        <!--<activity android:name="com.sportzweb.NewsAppActivity"
             android:label="@string/title_activity_news_app"
+            android:theme="@style/CustomActionBarTheme"></activity>-->
+            
+            <activity android:name="com.sportzweb.NewsDetailsActivity"
+            android:label="@string/title_activity_news_details"
             android:theme="@style/CustomActionBarTheme"></activity>
+        
         <activity android:name="com.sportzweb.xtreambanter.SportsActivity"
             android:label="@string/title_activity_news_app"
             android:theme="@style/CustomActionBarTheme"></activity>
@@ -136,10 +141,12 @@
             android:label="@string/title_activity_news_app"
             android:theme="@style/CustomActionBarTheme">
         </activity>
+        
 		<activity android:name="com.sportzweb.xtreambanter.JoinChatRoom"
             android:label="@string/title_activity_news_app"
             android:theme="@style/CustomActionBarTheme">
         </activity>
+        
 		<activity android:name="com.sportzweb.xtreambanter.MatchesActivity"
             android:label="@string/title_activity_news_app"
             android:theme="@style/CustomActionBarTheme">

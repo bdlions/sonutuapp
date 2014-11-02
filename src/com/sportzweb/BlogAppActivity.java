@@ -6,16 +6,21 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.xmlpull.v1.XmlPullParser;
 
+import android.app.ActionBar;
 import android.app.ProgressDialog;
 import android.app.ActionBar.LayoutParams;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.AttributeSet;
 import android.util.Xml;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -41,8 +46,12 @@ public class BlogAppActivity extends Activity{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_blog_app);
-		
 		mContext = this;
+		
+		// gets the activity's default ActionBar
+	    ActionBar actionBar = getActionBar();
+	    actionBar.show();
+	    actionBar.setDisplayHomeAsUpEnabled(true);
 		
 		process();
 	}
@@ -146,6 +155,34 @@ public class BlogAppActivity extends Activity{
 		});
 	}
 	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+	    MenuInflater inflater = getMenuInflater();
+	    inflater.inflate(R.menu.blog, menu); //inflate our menu
+	    return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item){
+	    switch(item.getItemId()) {
+	    case R.id.menu_create_blog:
+	        //click on create blog
+	    	createBlog();
+	        break;
+	    case R.id.menu_my_blog:
+	        //click on save item
+	        break;
+	    }
+	    return true;
+	}
+	
+	 /**
+     * Launching new activity
+     * */
+    private void createBlog() {
+        Intent i = new Intent(BlogAppActivity.this, CreateBlogActivity.class);
+        startActivity(i);
+    }
 	
 
 }
