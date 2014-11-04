@@ -15,7 +15,6 @@ public class MessageFragment extends Fragment {
 			Bundle savedInstanceState) {
 
 		View rootView = inflater.inflate(R.layout.fragment_message, container, false);
-		
 		return rootView;
 	}
 }

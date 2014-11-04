@@ -1,9 +1,13 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="10dip" >
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dip" >
 
         <TextView
             android:layout_width="fill_parent"
@@ -15,8 +19,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-             >
+            android:layout_height="wrap_content" >
 
             <Button
                 android:id="@+id/btnMale"
@@ -34,7 +37,6 @@
                 android:layout_weight="1"
                 android:paddingLeft="20dp"
                 android:text="@string/bmi_female_btn" />
-
         </LinearLayout>
 
         <TextView
@@ -115,7 +117,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-             android:layout_marginTop="10dip" >
+            android:layout_marginTop="10dip" >
 
             <TextView
                 android:id="@+id/yourBmiCategoryLabel"
@@ -131,15 +133,15 @@
                 android:text="@string/EmptyString"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
         </LinearLayout>
-        
 
         <Button
             android:id="@+id/btnCalculate"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/button"
             android:layout_marginTop="10dip"
+            android:background="@drawable/button"
             android:text="@string/bmi_calculate_btn"
             android:textColor="#fff1ff" />
+    </LinearLayout>
 
-</LinearLayout>
+</ScrollView>
