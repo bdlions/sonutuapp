@@ -170,7 +170,8 @@ public class BlogAppActivity extends Activity{
 	    	createBlog();
 	        break;
 	    case R.id.menu_my_blog:
-	        //click on save item
+	        //click on my blogs
+	    	myBlog();
 	        break;
 	    }
 	    return true;
@@ -181,6 +182,14 @@ public class BlogAppActivity extends Activity{
      * */
     private void createBlog() {
         Intent i = new Intent(BlogAppActivity.this, CreateBlogActivity.class);
+        startActivity(i);
+    }
+    
+    /**
+     * Launching new activity
+     * */
+    private void myBlog() {
+        Intent i = new Intent(BlogAppActivity.this, MyBlogActivity.class);
         startActivity(i);
     }
 	

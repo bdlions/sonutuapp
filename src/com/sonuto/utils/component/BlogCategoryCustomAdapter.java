@@ -19,6 +19,8 @@ import android.webkit.WebView.FindListener;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TableRow;
@@ -28,7 +30,8 @@ public class BlogCategoryCustomAdapter extends BaseAdapter {
 
 	ArrayList<BlogCategory> blogCategoryItem;
 	private Activity context;
-	public ImageLoader imageLoader; 
+	public ImageLoader imageLoader;
+	private boolean[] checked;
 
 	public BlogCategoryCustomAdapter(Activity context, ArrayList<BlogCategory> blogCategory) {
 
@@ -57,27 +60,37 @@ public class BlogCategoryCustomAdapter extends BaseAdapter {
 	}
 
 	@Override
-	public View getView(int position, View convertView, ViewGroup parent) {
+	public View getView(final int position, View convertView, ViewGroup parent) {
 		// TODO Auto-generated method stub
 
 		if (convertView == null) {
-			convertView = LayoutInflater.from(context).inflate(R.layout.blog_category_row,parent, false);
+			convertView = LayoutInflater.from(context).inflate(R.layout.blog_category_row, parent, false);
 		}
 		
 		final BlogCategory bCategory = blogCategoryItem.get(position);
 
-		//CheckBox category = (CheckBox) convertView.findViewById(R.id.category_checkBox);
+		CheckBox categoryCheckBox = (CheckBox) convertView.findViewById(R.id.category_checkBox);
 		//category.setText(bCategory.getTitle());
 		
 		TextView blogCategoryTitle = (TextView) convertView.findViewById(R.id.blogCategoryTitle);
-		Button categoryImg = (Button) convertView.findViewById(R.id.imgBtn);
+		//Button categoryImg = (Button) convertView.findViewById(R.id.imgBtn);
 		
 		blogCategoryTitle.setText(bCategory.getTitle());
+		//blogCategoryTitle.setLayoutParams();
 		
 		
-		
+		categoryCheckBox.setTag(Integer.valueOf(position)); // set the tag so we can identify the correct row in the listener
+//		categoryCheckBox.setChecked(checked[position]); // set the status as we stored it        
+//		categoryCheckBox.setOnCheckedChangeListener(new OnCheckedChangeListener(){
+//
+//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//                checked[position]=isChecked;
+//            }
+//        });
 		
 		return convertView;
 	}
+	
+
 
 }

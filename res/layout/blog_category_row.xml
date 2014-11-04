@@ -2,30 +2,31 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="5dp"
-    android:orientation="horizontal" >
-
-    <!-- <CheckBox -->
-    <!-- android:id="@+id/category_checkBox" -->
-    <!-- android:layout_width="wrap_content" -->
-    <!-- android:layout_height="wrap_content" -->
-    <!-- android:layout_marginLeft="5dp" -->
-    <!-- android:layout_marginTop="20dp" -->
-    <!-- android:text="name of the category" /> -->
+    android:orientation="horizontal"
+    android:padding="5dp" >
 
     <TextView
         android:id="@+id/blogCategoryTitle"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="4"
         android:text="Blog Category"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <Button
-        android:id="@+id/imgBtn"
+    <!-- <Button -->
+    <!-- android:id="@+id/imgBtn" -->
+    <!-- android:layout_width="wrap_content" -->
+    <!-- android:layout_height="wrap_content" -->
+    <!-- android:layout_marginRight="20dp" -->
+    <!-- android:layout_marginLeft="60dp" -->
+    <!-- android:layout_weight="0.3" -->
+    <!-- android:text="Column 2" /> -->
+
+    <CheckBox
+        android:id="@+id/category_checkBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="0dp"
-        android:layout_marginLeft="60dp"
-        android:text="Column 2" />
+        android:layout_weight="0.3"
+        android:text="" />
 
 </LinearLayout>

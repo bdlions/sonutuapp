@@ -1,5 +1,6 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/edit_blog_frameLayout"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
@@ -8,84 +9,200 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="." >
 
-    <LinearLayout
-        android:id="@+id/create_blog_ll"
+    <FrameLayout
+        android:id="@+id/edit_blog_box1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="10dip" >
+        android:layout_height="match_parent"
+        android:visibility="visible" >
 
-        <Spinner
-            android:id="@+id/spinner_Month"
-            android:layout_width="fill_parent"
+        <LinearLayout
+            android:id="@+id/edit_blog_ll"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="15dip"
-            android:layout_gravity="center"
-            android:entries="@array/sports_list"
-            android:prompt="@string/sports_prompt" />        
+            android:orientation="vertical"
+            android:padding="10dip" >
 
-        <EditText
-            android:id="@+id/blogTitleEdtTxt"
-            android:layout_width="fill_parent"
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dip"
+                android:layout_marginTop="30dip"
+                android:text="@string/edit_blog_category_title"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#00acea" />
+
+            <ListView
+                android:id="@+id/blogCategoryListviewEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+            </ListView>
+
+<!--             <Spinner -->
+<!--                 android:id="@+id/spinner_Month" -->
+<!--                 android:layout_width="wrap_content" -->
+<!--                 android:layout_height="wrap_content" -->
+<!--                 android:layout_gravity="center" -->
+<!--                 android:entries="@array/sports_list" -->
+<!--                 android:minWidth="350dp" -->
+<!--                 android:prompt="@string/sports_prompt" /> -->
+
+            <Button
+                android:id="@+id/btneditBlogSelectCategory"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dip"
+                android:layout_marginTop="60dip"
+                android:background="@drawable/button"
+                android:onClick="editBlogCategorySelectionStep"
+                android:text="@string/button_text_blog_edit"
+                android:textColor="#fff1ff"
+                android:textSize="15sp" />
+        </LinearLayout>
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/edit_blog_box2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="15dip"
-            android:layout_marginTop="5dip"
-            android:hint="@string/blog_title_hint"
-            android:inputType="textMultiLine"
-            android:background="@drawable/backwithborder"
-            android:lines="5"
-            android:singleLine="true" />
+            android:orientation="vertical"
+            android:padding="10dip" >
 
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dip"
+                android:layout_marginTop="30dip"
+                android:gravity="center"
+                android:text="@string/blog_title"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="#00acea" />
 
-        <EditText
-            android:id="@+id/blogMainTextEdtTxt"
-            android:layout_width="fill_parent"
+            <EditText
+                android:id="@+id/blogTitleEdtTxt"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dip"
+                android:layout_marginTop="5dip"
+                android:inputType="textMultiLine"
+                android:lines="5"
+                android:singleLine="true" />
+
+            <Button
+                android:id="@+id/btneditBlogTitle"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dip"
+                android:layout_marginTop="60dip"
+                android:background="@drawable/button"
+                android:onClick="editBlogTitleStep"
+                android:text="@string/button_text_blog_edit"
+                android:textColor="#fff1ff"
+                android:textSize="15sp" />
+        </LinearLayout>
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/edit_blog_box3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="15dip"
-            android:layout_marginTop="5dip"
-            android:background="@drawable/backwithborder"
-            android:hint="@string/blog_main_text_hint"
-            android:inputType="textMultiLine"
-            android:lines="5"
-            android:singleLine="true" />
+            android:orientation="vertical"
+            android:padding="10dip" >
 
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dip"
+                android:layout_marginTop="30dip"
+                android:gravity="center"
+                android:text="@string/blog_main_text"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="#00acea" />
 
-        <TextView
-            android:layout_width="fill_parent"
+            <EditText
+                android:id="@+id/blogMainTextEdtTxt"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dip"
+                android:layout_marginTop="5dip"
+                android:inputType="textMultiLine"
+                android:lines="5"
+                android:singleLine="true" />
+
+            <Button
+                android:id="@+id/btneditBlogMainText"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dip"
+                android:layout_marginTop="60dip"
+                android:background="@drawable/button"
+                android:onClick="editBlogMainTextStep"
+                android:text="@string/save_and_continue"
+                android:textColor="#fff1ff"
+                android:textSize="15sp" />
+        </LinearLayout>
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/edit_blog_box4"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dip"
-            android:layout_marginTop="30dip"
-            android:text="@string/blog_pic"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="#00acea" />
+            android:orientation="vertical"
+            android:padding="10dip" >
 
-        <ImageView
-            android:id="@+id/imageView1"
-            android:layout_width="160dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.01"
-            android:background="@drawable/image_border"
-            android:contentDescription="@string/sample_upload_img"
-            android:onClick="browseFile"
-            android:src="@drawable/user_female" />
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dip"
+                android:layout_marginTop="30dip"
+                android:gravity="center"
+                android:text="@string/add_blog_pic"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#00acea" />
 
-        <TextView
-            android:id="@+id/textViewMessage"
-            android:layout_width="144dp"
-            android:layout_height="0dp"
-            android:layout_gravity="center"
-            android:layout_weight="0.08"
-            android:text="" />
+            <ImageView
+                android:id="@+id/blogImageViewForEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="0.08"
+                android:background="@drawable/image_border"
+                android:contentDescription="@string/sample_upload_img"
+                android:onClick="browseFile"
+                android:src="@drawable/user_female" />
 
-        <Button
-            android:id="@+id/btnBusinessRegDescription"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dip"
-            android:layout_marginTop="20dip"
-            android:background="@drawable/button"
-            android:onClick="bpRegDescriptionStep"
-            android:text="@string/blog" />
-    </LinearLayout>
+            <TextView
+                android:id="@+id/textViewMsg"
+                android:layout_width="144dp"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="0.08"
+                android:text="" />
 
-</ScrollView>
+            <Button
+                android:id="@+id/btnBusinessRegDescription"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dip"
+                android:layout_marginTop="20dip"
+                android:background="@drawable/button"
+                android:onClick="editBlog"
+                android:text="@string/save_and_continue" />
+        </LinearLayout>
+    </FrameLayout>
+
+</FrameLayout>

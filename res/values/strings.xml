@@ -248,6 +248,9 @@
     <string name="title_activity_blog_details">Blog Details</string>
     <string name="title_activity_blog_app">Blog App</string>
     <string name="title_activity_blog_comments">Blog comments</string>
+    <string name="title_activity_my_blog">My Blogs</string>
+    <string name="title_activity_create_blog">Create Blog</string>
+    <string name="title_activity_edit_blog">Edit Blog</string>
     
     <string name="create_blog_category_title">Select a category for your blog</string>
     <string name="blog_title">Blog Title</string>
@@ -259,7 +262,20 @@
     <string name="add_blog_pic">Add a Blog picture</string>
     <string name="blog_pic">Blog picture</string>
 	<string name="blog">Save</string>
-	<string name="title_activity_create_blog">Save</string>
+	
+	<string name="blogTitleRequired">Blog Title is Required!</string>
+	<string name="blogDescriptionRequired">Blog Description is Required!</string>
+	
+	<string name="button_text_blog_edit">Continue</string>
+    <string name="edit_blog_pic">Edit a Blog picture</string>
+	<string name="blog_update">Update</string>
+	
+	<string name="edit_blog_category_title">Select a category for your blog</string>
+    <string name="edit_blog_title">Blog Title</string>
+    <string name="blog_title_hint_for_edit">Enter a title here for your Blog</string>
+    <string name="blog_main_text_for_edit">Main Text</string>
+    <string name="blog_main_text_hint_for_edit">Enter your blog text here</string>
+	
 	<string name="blog_category_title_for">Sport</string>
 	<!-- Blog Application -->
 	

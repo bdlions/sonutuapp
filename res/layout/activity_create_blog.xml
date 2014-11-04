@@ -177,7 +177,7 @@
                 android:textColor="#00acea" />
 
             <ImageView
-                android:id="@+id/imageView1"
+                android:id="@+id/blogImageView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -188,7 +188,7 @@
                 android:src="@drawable/user_female" />
 
             <TextView
-                android:id="@+id/textViewMessage"
+                android:id="@+id/textViewMsg"
                 android:layout_width="144dp"
                 android:layout_height="0dp"
                 android:layout_gravity="center"
@@ -202,7 +202,7 @@
                 android:layout_marginBottom="10dip"
                 android:layout_marginTop="20dip"
                 android:background="@drawable/button"
-                android:onClick="bpRegDescriptionStep"
+                android:onClick="createBlog"
                 android:text="@string/save_and_continue" />
         </LinearLayout>
     </FrameLayout>

@@ -120,7 +120,7 @@ public class AddProfilePictureActivity extends Activity {
 				MultipartEntityBuilder builder = MultipartEntityBuilder.create();        
 
 				builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
-				builder.addPart("userfile", inputStreamBody); 
+				builder.addPart("userfile", inputStreamBody);
 
 				SessionManager manager = new SessionManager(getApplicationContext());
 				

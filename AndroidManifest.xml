@@ -92,9 +92,6 @@
             android:label="@string/title_activity_bmi_calculator"
             android:theme="@style/CustomActionBarTheme"></activity>
         
-        <activity android:name="com.sportzweb.CreateBlogActivity"
-            android:label="@string/title_activity_create_blog"
-            android:theme="@style/CustomActionBarTheme"></activity>
         
         <!-- <activity android:name="com.sportzweb.BlogAppActivity"
             android:label="@string/title_activity_blog_app"
@@ -106,6 +103,18 @@
         
         <activity android:name="com.sportzweb.BlogCommentsActivity"
             android:label="@string/title_activity_blog_comments"
+            android:theme="@style/CustomActionBarTheme"></activity>
+        
+        <activity android:name="com.sportzweb.MyBlogActivity"
+            android:label="@string/title_activity_my_blog"
+            android:theme="@style/CustomActionBarTheme"></activity>
+        
+        <activity android:name="com.sportzweb.CreateBlogActivity"
+            android:label="@string/title_activity_create_blog"
+            android:theme="@style/CustomActionBarTheme"></activity>
+        
+        <activity android:name="com.sportzweb.EditBlogActivity"
+            android:label="@string/title_activity_edit_blog"
             android:theme="@style/CustomActionBarTheme"></activity>
         
         <activity android:name="com.sportzweb.HealthyRecipeAppActivity"

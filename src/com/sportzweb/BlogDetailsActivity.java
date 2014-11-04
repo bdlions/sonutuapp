@@ -48,13 +48,6 @@ public class BlogDetailsActivity extends Activity {
 	
 	public void initUI(){
 		
-//		OnClickListener listener = new OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//            	
-//            }
-//      };
-		
 		imageLoader = new ImageLoader(context);
 		blogCategory = (TextView) findViewById(R.id.blogCategoryText);
 		blogTitle = (TextView) findViewById(R.id.blogTitleText);
@@ -102,18 +95,16 @@ public class BlogDetailsActivity extends Activity {
 				JSONObject blogDetaisJSONObject = (JSONObject) object;
 				pDialog.dismiss();
 				try {
-					JSONObject blogDetails = blogDetaisJSONObject
-							.getJSONObject("blog_info");
-					blogCategory.setText(blog_category_title);
+					JSONObject blogDetails = blogDetaisJSONObject.getJSONObject("blog_info");
+					JSONObject blogCategoryIdList = blogDetaisJSONObject.getJSONObject("category_id_list");
 					
+					blogCategory.setText(blog_category_title);
 					blogCategory.setTextColor(Color.parseColor("#00ACEA"));
 					
 					blogTitle.setText(blogDetails.getString("title"));
 					blogDetail.setText(blogDetails.getString("description"));
-					imageDescription.setText(blogDetails
-							.getString("picture_description"));
-					String imagePath = Config.SERVER_ROOT_URL
-							+ "resources/images/applications/blog_app/";
+					imageDescription.setText(blogDetails.getString("picture_description"));
+					String imagePath = Config.SERVER_ROOT_URL + "resources/images/applications/blog_app/";
 
 					blogImageView.setImageResource(R.drawable.upload_img_icon);
 					imageLoader.DisplayImage(
