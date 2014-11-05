@@ -112,7 +112,7 @@
         <item>Three</item>
     </string-array>
     
-    <string name="sports_prompt">Select sports..</string>
+    <string name="sports_prompt">Select sports</string>
     <string-array name="sports_list">
         <item>Football</item>
         <item>Cricket</item>
@@ -120,7 +120,7 @@
         <item>Rugby Union</item>
     </string-array>
     
-    <string name="tournament_prompt">Select tournament..</string>
+    <string name="tournament_prompt">Select tournament</string>
     <string-array name="tournament_list">
         <item>Chanpion League</item>
         <item>La League</item>
@@ -233,7 +233,13 @@
     
     <!-- Xtream banter Application -->
     <string name="title_activity_xtream_banter">Xtream Banter</string>
-	<string name="xtream_banter_title">Xtream Banter</string>
+	<string name="xtream_banter_title">Sports</string>
+	<string name="xtream_banter_tournament_title">Tournaments</string>
+	<string name="xtream_banter_matches_title">Matches</string>
+	<string name="xtream_banter_match_title">Match</string>	
+	<string name="xtream_banter_join_chat_room">Join Chat Room</string>
+	<string name="xtream_banter_create_chat_room">Create Chat Room</string>
+	<string name="xtream_banter_chat_room">Chat Room</string>
 	<string name="xtream_banter_list"></string>
 	<string name="dd">r</string>
 	<string name="button_create_chat_room">Create Chat Room</string>

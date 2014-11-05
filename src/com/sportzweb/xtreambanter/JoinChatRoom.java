@@ -22,6 +22,7 @@ public class JoinChatRoom extends Activity{
 	Button enterChatRoom;
 	Match match;
 	String matchAsJsonString;
+	String tournamentAsJsonString;
 	ListView previousCodes;
 	Spinner teamSelect;
 	
@@ -36,6 +37,8 @@ public class JoinChatRoom extends Activity{
 		matchAsJsonString = getIntent().getStringExtra("selectedMatch");
 		match = gS.fromJson(matchAsJsonString, Match.class);
 		
+		tournamentAsJsonString = getIntent().getStringExtra("selectedTournament");
+		
 		generatedCode = (TextView)findViewById(R.id.genCode);
 		teamSelect = (Spinner)findViewById(R.id.spinner_teams);
 		enterChatRoom = (Button)findViewById(R.id.btnenterChatRoom);
@@ -49,7 +52,7 @@ public class JoinChatRoom extends Activity{
 		teams.add(match.getTeam1_title());
 		teams.add(match.getTeam2_title());
 		
-		ArrayAdapter<String> teamAdapter = new ArrayAdapter<String>(getApplicationContext(),android.R.layout.simple_list_item_1, teams);
+		ArrayAdapter<String> teamAdapter = new ArrayAdapter<String>(JoinChatRoom.this,android.R.layout.simple_list_item_1, teams);
 		// bind adapter and view
 		teamSelect.setAdapter(teamAdapter);
 		//getAndSetLiistInSpinner();
@@ -58,8 +61,9 @@ public class JoinChatRoom extends Activity{
 			@Override
 			public void onClick(View v) {
 					
-	    		final Intent i = new Intent(getApplicationContext(), MatchActivity.class);
+	    		final Intent i = new Intent(getApplicationContext(), ChatRoom.class);
 	    		i.putExtra("selectedMatch",matchAsJsonString);		    		
+	    		i.putExtra("selectedTournament",tournamentAsJsonString);	    		
 	    		startActivity(i);
 			}
 		});

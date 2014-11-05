@@ -43,6 +43,7 @@ public class MatchActivity extends Activity{
 	Button joinChatRoom;
 	Match match;
 	String matchAsJsonString;
+	String tournamentAsJsonString;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +55,7 @@ public class MatchActivity extends Activity{
 		Date date = new Date();
 		
 		matchAsJsonString = getIntent().getStringExtra("selectedMatch");
+		tournamentAsJsonString = getIntent().getStringExtra("selectedTournament");
 		match = gS.fromJson(matchAsJsonString, Match.class);
 		today = (TextView)findViewById(R.id.today);
 		matchText = (TextView)findViewById(R.id.match);
@@ -70,8 +72,9 @@ public class MatchActivity extends Activity{
 
 			@Override
 			public void onClick(View v) {					
-	    		final Intent i = new Intent(getApplicationContext(), MatchActivity.class);
-	    		i.putExtra("selectedMatch",matchAsJsonString);		    		
+	    		final Intent i = new Intent(getApplicationContext(), CreateChatRoom.class);
+	    		i.putExtra("selectedMatch",matchAsJsonString);	    		
+	    		i.putExtra("selectedTournament",tournamentAsJsonString);
 	    		startActivity(i);
 			}
 		});
@@ -81,7 +84,8 @@ public class MatchActivity extends Activity{
 			@Override
 			public void onClick(View v) {					
 	    		final Intent i = new Intent(getApplicationContext(), JoinChatRoom.class);
-	    		i.putExtra("selectedMatch",matchAsJsonString);		    		
+	    		i.putExtra("selectedMatch",matchAsJsonString);		
+	    		i.putExtra("selectedTournament",tournamentAsJsonString);
 	    		startActivity(i);
 			}
 		});

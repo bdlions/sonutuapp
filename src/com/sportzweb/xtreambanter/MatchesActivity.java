@@ -61,13 +61,10 @@ public class MatchesActivity extends Activity{
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 				if(matchesList.size()>0){
-		        	Match selectedTournament = matchesList.get(position);
-		    		Gson gS = new Gson();
-		    		String target = gS.toJson(selectedTournament);
-		        	
-		    		Intent i = new Intent(getApplicationContext(), MatchActivity.class);
-		    		i.putExtra("selectedMatch",target);
-		    		
+					Intent i = new Intent(getApplicationContext(), MatchActivity.class);
+		        	Match selectedMatch = matchesList.get(position);
+		    		i.putExtra("selectedMatch",gS.toJson(selectedMatch));
+		    		i.putExtra("selectedTournament", gS.toJson(tournament));		    		
 		    		startActivity(i);
 	        	}
 				
@@ -94,7 +91,7 @@ public class MatchesActivity extends Activity{
 							matchesList.add(match);
 						}
 						
-						ArrayAdapter<Match> matchesAdapter = new ArrayAdapter<Match>(getApplicationContext(),android.R.layout.simple_list_item_1, matchesList);
+						ArrayAdapter<Match> matchesAdapter = new ArrayAdapter<Match>(MatchesActivity.this,android.R.layout.simple_list_item_1, matchesList);
 						//this.setListAdapter(matchesAdapter);
 						listView.setAdapter(matchesAdapter);
 						//spinnerMatchesListView.setAdapter(matchesAdapter);

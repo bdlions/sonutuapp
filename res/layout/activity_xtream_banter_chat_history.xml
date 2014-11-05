@@ -15,27 +15,28 @@
         android:paddingTop="10dp" >
 
         <TextView
+            android:id="@+id/tournamentName"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dip"
             android:layout_marginTop="10dip"
             android:gravity="center"
-            android:text="Premier League"
             android:textAppearance="?android:attr/textAppearanceLarge"
              />
+        
          <TextView
+            android:id="@+id/today"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="15 October 2014"
             android:textAppearance="?android:attr/textAppearanceMedium"
              />
          
          <TextView
+            android:id="@+id/match"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Arsenal V Chealsi (12:00)"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="#00acea" />
 
@@ -52,7 +53,7 @@
                 android:textColor="#00acea" />
 
             <Button
-                android:id="@+id/btnenterChatRoom"
+                android:id="@+id/btnSendChatRoom"
                 android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/button"
