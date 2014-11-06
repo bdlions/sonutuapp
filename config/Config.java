@@ -7,4 +7,5 @@ public class Config {
     public final static String RPC_CONTROLLER_PATH 			= "@CONFIG.RPC_CONTROLLER_PATH@";
 	public final static String SERVICE_CONTROLLER_PATH 		= "@CONFIG.SERVICE_CONTROLLER_PATH@";
 	public final static String PROFILE_PIC_DIR 				= "@CONFIG.PROFILE_PIC_DIR@";
+	public final static String CREATE_BLOG_DIR 				= "@CONFIG.CREATE_BLOG_DIR@";
 }

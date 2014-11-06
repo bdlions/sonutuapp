@@ -52,7 +52,7 @@
                 <filter token="CONFIG.RPC_CONTROLLER_PATH" value="${config.rpc_controller_path}"/>
                 <filter token="CONFIG.SERVICE_CONTROLLER_PATH" value="${config.service_controller_path}"/>
                 <filter token="CONFIG.PROFILE_PIC_DIR" value="${config.profile_pic_dir}"/>
-                 <filter token="CONFIG.CREATE_BLOG_DIR" value="${config.create_blog_dir"/>
+                 <filter token="CONFIG.CREATE_BLOG_DIR" value="${config.create_blog_dir}"/>
             </filterset>
         </copy>
    
