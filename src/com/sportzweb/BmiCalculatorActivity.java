@@ -3,17 +3,22 @@ package com.sportzweb;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.app.Activity;
+import android.app.Fragment;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 
-public class BmiCalculatorActivity extends Activity {
+public class BmiCalculatorActivity extends Fragment {
 
+	View rootView;
+	
 	EditText weightText, heightText;
 	TextView resultBmiText, resultBmiCategoryText;
 	private int selectedColor = 0xFF22B14C;
@@ -23,19 +28,20 @@ public class BmiCalculatorActivity extends Activity {
 
 	Button btnMale, btnFemale, btnMetric, btnImperical;
 
+
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_bmi_calculator);
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		rootView = inflater.inflate(R.layout.activity_bmi_calculator, container, false);
+		
 
-		btnMale = (Button) findViewById(R.id.btnMale);
-		btnFemale = (Button) findViewById(R.id.btnFemale);
-		btnMetric = (Button) findViewById(R.id.btnMetric);
-		btnImperical = (Button) findViewById(R.id.btnImperial);
-		Button btnCalculateBMI = (Button) findViewById(R.id.btnCalculate);
+		btnMale = (Button) rootView.findViewById(R.id.btnMale);
+		btnFemale = (Button) rootView.findViewById(R.id.btnFemale);
+		btnMetric = (Button) rootView.findViewById(R.id.btnMetric);
+		btnImperical = (Button) rootView.findViewById(R.id.btnImperial);
+		Button btnCalculateBMI = (Button) rootView.findViewById(R.id.btnCalculate);
 
-		weightText = (EditText) findViewById(R.id.bmiWeightEdtTxt);
-		heightText = (EditText) findViewById(R.id.bmiHeightEdtTxt);
+		weightText = (EditText) rootView.findViewById(R.id.bmiWeightEdtTxt);
+		heightText = (EditText) rootView.findViewById(R.id.bmiHeightEdtTxt);
 
 		btnMale.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -168,12 +174,12 @@ public class BmiCalculatorActivity extends Activity {
 		btnMetric.setBackgroundColor(selectedColor);
 		btnFemale.setBackgroundColor(defaultColor);
 		btnImperical.setBackgroundColor(defaultColor);
-
+		return rootView;
 	}
 
 	public void displayBmiResult() {
-		resultBmiText = (TextView) findViewById(R.id.bmiResultLabel);
-		resultBmiCategoryText = (TextView) findViewById(R.id.bmiCategoryResultLabel);
+		resultBmiText = (TextView) rootView.findViewById(R.id.bmiResultLabel);
+		resultBmiCategoryText = (TextView) rootView.findViewById(R.id.bmiCategoryResultLabel);
 
 		resultBmiText.setText("");
 		resultBmiCategoryText.setText("");
@@ -235,13 +241,13 @@ public class BmiCalculatorActivity extends Activity {
 
 	private boolean bmiFieldValidation() {
 		if (heightText.getText().length() <= 0) {
-			Toast.makeText(getApplicationContext(),
+			Toast.makeText(rootView.getContext(),
 					getString(R.string.heightRequiered), Toast.LENGTH_SHORT)
 					.show();
 			return false;
 		}
 		if (weightText.getText().length() <= 0) {
-			Toast.makeText(getApplicationContext(),
+			Toast.makeText(rootView.getContext(),
 					getString(R.string.weightRequiered), Toast.LENGTH_SHORT)
 					.show();
 			return false;

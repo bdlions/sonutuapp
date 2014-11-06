@@ -9,15 +9,15 @@ import android.view.ViewGroup;
 
 public class ApplicationsFragment extends Fragment {
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-	View rootView = inflater.inflate(R.layout.fragment_applications,container, false);
-	AppListFragment newFragment = new AppListFragment();
-	FragmentTransaction transaction = getFragmentManager().beginTransaction();
-	transaction.add(R.id.fragment_container, newFragment);
-	transaction.commit();
-	return rootView;
-    }
+		View rootView = inflater.inflate(R.layout.fragment_applications, container, false);
+		AppListFragment newFragment = new AppListFragment();
+		FragmentTransaction transaction = getFragmentManager().beginTransaction();
+		transaction.add(R.id.fragment_container, newFragment);
+		transaction.commit();
+		return rootView;
+	}
 
 }

@@ -17,12 +17,17 @@ import com.sportzweb.JSONObjectModel.NewsTab;
 
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
+import android.app.Activity;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
-public class NewsAppActivity extends FragmentActivity{
+public class NewsAppActivity extends Fragment{
 
 	private ViewPager viewPager;
 	private NewsTabsPagerAdapter mAdapter;
@@ -34,12 +39,14 @@ public class NewsAppActivity extends FragmentActivity{
 	private ArrayList<NewsTab> newsList = new ArrayList<NewsTab>();
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_news_tab);
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
+		final View rootView = inflater.inflate(R.layout.activity_news_tab, container, false);
+		final Activity activity = getActivity();
 		NewsApp newsApp = new NewsApp();
+		final FragmentManager fm = getFragmentManager();
 
+		
 		newsApp.getHomePageData(new ICallBack() {
 
 			@Override
@@ -62,10 +69,9 @@ public class NewsAppActivity extends FragmentActivity{
 					JSONArray newsJsonList = jsonObject.getJSONArray("news_list");
 
 					// Initilization
-					viewPager = (ViewPager) findViewById(R.id.newspager);
-					actionBar = getActionBar();
-					mAdapter = new NewsTabsPagerAdapter(
-							getSupportFragmentManager(), tabList, newsJsonList.toString());
+					viewPager = (ViewPager) rootView.findViewById(R.id.newspager);
+					actionBar = activity.getActionBar();
+					mAdapter = new NewsTabsPagerAdapter(fm, tabList, newsJsonList.toString());
 
 					viewPager.setAdapter(mAdapter);
 					actionBar.setHomeButtonEnabled(false);
@@ -131,5 +137,6 @@ public class NewsAppActivity extends FragmentActivity{
 
 			}
 		});
+		return rootView;
 	}
 }

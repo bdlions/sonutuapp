@@ -14,8 +14,12 @@ import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.util.AttributeSet;
 import android.util.Xml;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -31,22 +35,25 @@ import com.sportzweb.JSONObjectModel.HealthyRecipes;
 import com.sportzweb.JSONObjectModel.HealthyRecipesTab;
 
 
-public class HealthyRecipeAppActivity extends Activity{
+public class HealthyRecipeAppActivity extends Fragment{
 	// process dialer
 	ProgressDialog pDialog;
 	private Context mContext;
 	String recipe_category;
 	private ArrayList<HealthyRecipesTab> tabList = new ArrayList<HealthyRecipesTab>();
 
+	View rootView;
+	Activity activity;
+	
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_healthy_recipe_app);
-		
-		mContext = this;
-		
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		rootView = inflater.inflate(R.layout.fragment_app_list, null);
+		mContext = rootView.getContext();
+		activity = getActivity();
 		process();
+		return rootView;
 	}
+
 	
 	
 	public void process() {
@@ -78,12 +85,12 @@ public class HealthyRecipeAppActivity extends Activity{
 						}
 						
 						
-						LinearLayout parentLayout = (LinearLayout)findViewById(R.id.parentLayoutForRecipeApp);
+						LinearLayout parentLayout = (LinearLayout)rootView.findViewById(R.id.parentLayoutForRecipeApp);
 						
 						for(int i = 0; i < tabList.size(); i ++){
 							//blog title
 							
-							TextView tv = new TextView(getApplicationContext());
+							TextView tv = new TextView(mContext);
 							
 							recipe_category = tabList.get(i).getTitle();
 							
@@ -100,7 +107,7 @@ public class HealthyRecipeAppActivity extends Activity{
 							JsonArray recipesJsonList = tabList.get(i).getRecipe_list();
 							int total_recipe = recipesJsonList.size();
 							//recipes item
-							HListView hListView = new HListView(getApplicationContext(), attributes);
+							HListView hListView = new HListView(mContext, attributes);
 							hListView.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, 200));
 							//hListView.setDividerWidth(2);
 							
@@ -115,7 +122,7 @@ public class HealthyRecipeAppActivity extends Activity{
 								recipes.setRecipe_category(recipe_category);
 								items.add(recipes);
 							}
-							HealthyRecipeCustomAdapter adapter = new HealthyRecipeCustomAdapter(HealthyRecipeAppActivity.this, items);
+							HealthyRecipeCustomAdapter adapter = new HealthyRecipeCustomAdapter(activity, items);
 							hListView.setAdapter(adapter);
 							
 							
