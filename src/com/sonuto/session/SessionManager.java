@@ -33,7 +33,7 @@ public class SessionManager implements ISessionManager {
 	public boolean isLoggedIn() {
 		// TODO Auto-generated method stub
 		if(sharedPreferences == null){
-			throw new NullPointerException();
+			return false;
 		}
 		String userInfo = sharedPreferences.getString(USER_INFO, null);
 		return userInfo != null ? true : false;

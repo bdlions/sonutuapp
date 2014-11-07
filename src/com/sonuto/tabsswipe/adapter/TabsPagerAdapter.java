@@ -14,7 +14,7 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
 
 	@Override
 	public Fragment getItem(int index) {
-		if(TAB_INFO.class.getEnumConstants().length < index)
+		if(index < TAB_INFO.class.getEnumConstants().length)
 			return TAB_INFO.class.getEnumConstants()[index].INSTANCE;
 		return null;
 	}
