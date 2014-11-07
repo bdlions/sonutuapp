@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import com.bdlions.load.image.ImageLoader;
 import com.sportzweb.NewsDetailsActivity;
 import com.sportzweb.R;
-import com.sportzweb.RecipeDetailsActivity;
 import com.sportzweb.JSONObjectModel.News;
 
 import android.app.Activity;
