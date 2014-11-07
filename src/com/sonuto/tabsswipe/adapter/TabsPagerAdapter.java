@@ -1,10 +1,6 @@
 package com.sonuto.tabsswipe.adapter;
 
-import com.sonuto.tabsswipe.ApplicationsFragment;
-import com.sonuto.tabsswipe.MessageFragment;
-import com.sonuto.tabsswipe.FriendsFragment;
-import com.sonuto.tabsswipe.SettingsFragment;
-import com.sonuto.tabsswipe.TopRatedFragment;
+import com.sonuto.utils.TAB_INFO;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -18,32 +14,15 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
 
 	@Override
 	public Fragment getItem(int index) {
-
-		switch (index) {
-		case 0:
-			// Top Rated feed fragment activity
-			return new TopRatedFragment();
-		case 1:
-			// Message fragment activity
-			return new MessageFragment();
-		case 2:
-			// Friends fragment activity
-			return new FriendsFragment();
-		case 3:
-			// Applications fragment activity
-			return new ApplicationsFragment();
-		case 4:
-			// Applications fragment activity
-			return new SettingsFragment();
-		}
-
+		if(TAB_INFO.class.getEnumConstants().length < index)
+			return TAB_INFO.class.getEnumConstants()[index].INSTANCE;
 		return null;
 	}
 
 	@Override
 	public int getCount() {
 		// get item count - equal to number of tabs
-		return 5;
+		return TAB_INFO.class.getEnumConstants().length;
 	}
 
 }

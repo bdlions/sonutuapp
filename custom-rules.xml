@@ -20,26 +20,25 @@
     <target name="-set-development-props">
         <property name="config.logging" value="true" />
         <property name="config.server_root_url" value="http://10.0.2.2/sportzweb/" />
-        <property name="config.rpc_controller_path" value="http://10.0.2.2/sportzweb/rpc/" />
-        <property name="config.service_controller_path" value="http://10.0.2.2/sportzweb/service/" />
-        <property name="config.profile_pic_dir" value="http://10.0.2.2/sportzweb/service/media/upload_profile_picture/"/>
-        <property name="config.create_blog_dir" value="http://10.0.2.2/sportzweb/service/media/create_blog_with_picture/" />
     </target>
  
     <target name="-set-production-props">
-        <property name="config.logging" value="true" />
+        <property name="config.logging" value="false" />
         <property name="config.server_root_url" value="http://31.222.168.64:8084/" />
-        <property name="config.rpc_controller_path" value="http://31.222.168.64:8084/rpc/" />
-        <property name="config.service_controller_path" value="http://31.222.168.64:8084/service/" />
-        <property name="config.profile_pic_dir" value="http://31.222.168.64:8084/service/media/upload_profile_picture/" />
-        <property name="config.create_blog_dir" value="http://31.222.168.64:8084/service/media/create_blog_with_picture/" />
     </target>
+
      
     <!-- Copy Config.java to our source tree, replacing custom tokens with values in build.properties. The configuration depends on "clean" because otherwise the build system will not detect changes in the configuration. -->
     <target name="config">
  
+        <!--  going to the config file -->
+        <property name="config.rpc_controller_path" value="${config.server_root_url}rpc/" />
+        <property name="config.service_controller_path" value="${config.server_root_url}service/" />
+        <property name="config.profile_pic_dir" value="${config.service_controller_path}media/upload_profile_picture/" />
+        <property name="config.create_blog_dir" value="${config.service_controller_path}media/create_blog_with_picture/" />        
         <property name="config-target-path" value="${source.dir}"/>
- 
+        <!--  going to the config file -->
+
         <chmod file="${config-target-path}/Config.java" perm="+w"/>
         <attrib file="${config-target-path}/Config.java" readonly="false"/>
    
