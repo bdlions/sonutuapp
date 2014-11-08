@@ -38,7 +38,6 @@ import com.sportzweb.JSONObjectModel.HealthyRecipesTab;
 public class HealthyRecipeAppActivity extends Fragment{
 	// process dialer
 	ProgressDialog pDialog;
-	private Context mContext;
 	String recipe_category;
 	private ArrayList<HealthyRecipesTab> tabList = new ArrayList<HealthyRecipesTab>();
 
@@ -48,7 +47,7 @@ public class HealthyRecipeAppActivity extends Fragment{
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		rootView = inflater.inflate(R.layout.fragment_app_list, null);
-		mContext = rootView.getContext();
+		//mContext = getActivity().getApplicationContext();
 		activity = getActivity();
 		process();
 		return rootView;
@@ -57,7 +56,7 @@ public class HealthyRecipeAppActivity extends Fragment{
 	
 	
 	public void process() {
-		pDialog = new ProgressDialog(mContext);
+		pDialog = new ProgressDialog(getActivity());
 		pDialog.setMessage("Fetching data ...");
 		pDialog.setCancelable(false);
 		pDialog.show();
@@ -90,7 +89,7 @@ public class HealthyRecipeAppActivity extends Fragment{
 						for(int i = 0; i < tabList.size(); i ++){
 							//blog title
 							
-							TextView tv = new TextView(mContext);
+							TextView tv = new TextView(getActivity().getApplicationContext());
 							
 							recipe_category = tabList.get(i).getTitle();
 							
@@ -107,7 +106,7 @@ public class HealthyRecipeAppActivity extends Fragment{
 							JsonArray recipesJsonList = tabList.get(i).getRecipe_list();
 							int total_recipe = recipesJsonList.size();
 							//recipes item
-							HListView hListView = new HListView(mContext, attributes);
+							HListView hListView = new HListView(getActivity().getApplicationContext(), attributes);
 							hListView.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, 200));
 							//hListView.setDividerWidth(2);
 							

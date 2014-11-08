@@ -10,7 +10,11 @@ import com.sonuto.tabsswipe.TopRatedFragment;
 import com.sportzweb.R;
 
 public enum TAB_INFO {
-	NEWS_FEED("News Feed", R.drawable.chat_bubble, new TopRatedFragment()), FRIEND("Friend", R.drawable.followers, new FriendsFragment()), MESSAGE("Message", R.drawable.message, new MessageFragment()), APPLICATION("Application", R.drawable.application, new ApplicationsFragment()), SETTINGS("Settings", R.drawable.gear, new SettingsFragment());
+	NEWS_FEED("News Feed", R.drawable.chat_bubble, new TopRatedFragment()), 
+	FRIEND("Friend", R.drawable.followers, new FriendsFragment()), 
+	MESSAGE("Message", R.drawable.message, new MessageFragment()), 
+	APPLICATION("Application", R.drawable.application, new ApplicationsFragment()), 
+	SETTINGS("Settings", R.drawable.gear, new SettingsFragment());
 	public final String TITLE;
 	public final Fragment INSTANCE;
 	public final int ICON;

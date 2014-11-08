@@ -302,5 +302,10 @@
     <string name="title_activity_news_details">News Details</string>
 	<!-- News Application -->
 	
+	<!-- Service Directory app -->
+	<string name="button_service_list">List</string>
+	<string name="button_service_back">Back</string>
+	<!-- End -->
+	
 	
 </resources>

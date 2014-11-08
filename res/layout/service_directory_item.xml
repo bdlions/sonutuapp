@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/serviceHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:text="Dental Care"
+        android:textColor="#000000"
+        android:textSize="22sp" />
+    
+    <TextView
+        android:id="@+id/addressHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:text="Address"
+        android:textSize="18sp" />
+    
+    <TextView
+        android:id="@+id/serviceAddressMain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="10dp"
+        android:text="Dhaka,Uttara"
+        android:textSize="14sp" />
+    <TextView
+        android:id="@+id/serviceAddressSub"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="10dp"
+        android:text="69,Road-17,Sector-11"
+        android:textSize="14sp" />
+    
+    <TextView
+        android:id="@+id/serviceAddressPhoneNo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="10dp"
+        android:text="Mobile: + 8801725724068"
+        android:textSize="14sp" />
+    
+    <TextView
+        android:id="@+id/serviceAddressDistance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="10dp"
+        android:text="Distance : 1069.32 miles"
+        android:textSize="14sp" />
+    
+    <TextView
+        android:id="@+id/serviceAddressDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="10dp"
+        android:textColor="#93D2FB"
+        android:text="Details"
+        android:textSize="15sp" />
+    
+    
+    
+
+</LinearLayout>
