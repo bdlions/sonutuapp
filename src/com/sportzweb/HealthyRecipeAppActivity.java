@@ -9,7 +9,6 @@ import org.xmlpull.v1.XmlPullParser;
 import android.app.ProgressDialog;
 import android.app.ActionBar.LayoutParams;
 import android.app.Activity;
-import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -28,7 +27,6 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.sonuto.Config;
 import com.sonuto.rpc.ICallBack;
-import com.sonuto.rpc.register.BlogsApp;
 import com.sonuto.rpc.register.HealthyRecipeApp;
 import com.sonuto.utils.component.HealthyRecipeCustomAdapter;
 import com.sportzweb.JSONObjectModel.HealthyRecipes;
@@ -46,8 +44,7 @@ public class HealthyRecipeAppActivity extends Fragment{
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		rootView = inflater.inflate(R.layout.fragment_app_list, null);
-		//mContext = getActivity().getApplicationContext();
+		rootView = inflater.inflate(R.layout.activity_healthy_recipe_app, null);
 		activity = getActivity();
 		process();
 		return rootView;
