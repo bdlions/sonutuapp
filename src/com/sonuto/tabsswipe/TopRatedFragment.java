@@ -20,7 +20,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.ListView;
+import android.widget.AbsListView.OnScrollListener;
 
 public class TopRatedFragment extends Fragment {
 
@@ -39,7 +41,7 @@ public class TopRatedFragment extends Fragment {
 				if(statusFeed == null){
 					return;
 				}
-				ArrayList<StatusInfo> statusInfoList = new ArrayList<StatusInfo>();
+				final ArrayList<StatusInfo> statusInfoList = new ArrayList<StatusInfo>();
 				try {
 					JSONArray newsFeeds = statusFeed.getJSONArray("newsfeeds");
 					int statusCount = newsFeeds.length();
@@ -49,7 +51,8 @@ public class TopRatedFragment extends Fragment {
 						statusInfoList.add(gson.fromJson(status.toString(), StatusInfo.class));
 					}
 					
-					ListView listViewStatusItems = (ListView) rootView.findViewById(R.id.listViewStatusItems);
+					final ListView listViewStatusItems = (ListView) rootView.findViewById(R.id.listViewStatusItems);
+					listViewStatusItems.setOnScrollListener(new ScrollableLoadingList(getActivity().getApplicationContext(), listViewStatusItems, statusInfoList));
 				    
 				    StatusItemAdapter adapter = new StatusItemAdapter(getActivity().getApplicationContext(), statusInfoList);
 				    listViewStatusItems.setAdapter(adapter);
