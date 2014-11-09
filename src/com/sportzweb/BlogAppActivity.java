@@ -16,11 +16,15 @@ import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.util.AttributeSet;
 import android.util.Xml;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -35,30 +39,34 @@ import com.sportzweb.JSONObjectModel.Blogs;
 import com.sportzweb.JSONObjectModel.BlogsTab;
 
 
-public class BlogAppActivity extends Activity{
+public class BlogAppActivity extends Fragment{
 	// process dialer
 	ProgressDialog pDialog;
 	private Context mContext;
 	String blogCategory;
 	private ArrayList<BlogsTab> tabList = new ArrayList<BlogsTab>();
-
+	View rootView;
+	Activity activity;
+	
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_blog_app);
-		mContext = this;
+		setHasOptionsMenu(true);
 		
+		rootView = inflater.inflate(R.layout.activity_blog_app, null);
+		activity = getActivity();
 		// gets the activity's default ActionBar
-	    ActionBar actionBar = getActionBar();
+	    ActionBar actionBar = getActivity().getActionBar();
 	    actionBar.show();
 	    actionBar.setDisplayHomeAsUpEnabled(true);
 		
 		process();
+		return rootView;
 	}
-	
+
 	
 	public void process() {
-		pDialog = new ProgressDialog(mContext);
+		pDialog = new ProgressDialog(getActivity());
 		pDialog.setMessage("Fetching data..");
 		pDialog.setCancelable(false);
 		pDialog.show();
@@ -92,12 +100,12 @@ public class BlogAppActivity extends Activity{
 						}*/
 						
 						
-						LinearLayout parentLayout = (LinearLayout)findViewById(R.id.parentLayout);
+						LinearLayout parentLayout = (LinearLayout)rootView.findViewById(R.id.parentLayout);
 						
 						for(int i = 0; i < tabList.size(); i ++){
 							//blog title
 							
-							TextView tv = new TextView(getApplicationContext());
+							TextView tv = new TextView(getActivity());
 							
 							blogCategory = tabList.get(i).getTitle();
 							
@@ -114,7 +122,7 @@ public class BlogAppActivity extends Activity{
 							JsonArray blogsJsonList = tabList.get(i).getBlog_list();
 							int total_blog = blogsJsonList.size();
 							//blogs item
-							HListView hListView = new HListView(getApplicationContext(), attributes);
+							HListView hListView = new HListView(getActivity(), attributes);
 							hListView.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, 200));
 							//hListView.setDividerWidth(2);
 							
@@ -130,7 +138,7 @@ public class BlogAppActivity extends Activity{
 								blogs.setBlog_category(blogCategory);
 								items.add(blogs);
 							}
-							RecipeBlogCustomAdapter adapter = new RecipeBlogCustomAdapter(BlogAppActivity.this, items);
+							RecipeBlogCustomAdapter adapter = new RecipeBlogCustomAdapter(getActivity(), items);
 							hListView.setAdapter(adapter);
 							
 							
@@ -154,13 +162,14 @@ public class BlogAppActivity extends Activity{
 			}
 		});
 	}
-	
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-	    MenuInflater inflater = getMenuInflater();
-	    inflater.inflate(R.menu.blog, menu); //inflate our menu
-	    return true;
+	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+		// TODO Auto-generated method stub
+		super.onCreateOptionsMenu(menu, inflater);
+		inflater.inflate(R.menu.blog, menu); //inflate our menu
+	    return;
 	}
+
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item){
@@ -181,7 +190,7 @@ public class BlogAppActivity extends Activity{
      * Launching new activity
      * */
     private void createBlog() {
-        Intent i = new Intent(BlogAppActivity.this, CreateBlogActivity.class);
+        Intent i = new Intent(getActivity(), CreateBlogActivity.class);
         startActivity(i);
     }
     
@@ -189,7 +198,7 @@ public class BlogAppActivity extends Activity{
      * Launching new activity
      * */
     private void myBlog() {
-        Intent i = new Intent(BlogAppActivity.this, MyBlogActivity.class);
+        Intent i = new Intent(getActivity(), MyBlogActivity.class);
         startActivity(i);
     }
 	

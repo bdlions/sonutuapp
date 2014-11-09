@@ -8,7 +8,8 @@ import com.sportzweb.*;
 public enum APP_INFO {
 	BMI_CALC("BMI Calculator", new BmiCalculatorFragment()), 
 	HEALTHY_RECIPE("Healthy Recipe", new HealthyRecipeAppActivity()),
-	NEWS("News", new NewsAppActivity());
+	NEWS("News", new NewsAppActivity()), 
+	BLOG("Blog", new BlogAppActivity());
 	
 	public final String TITLE;
 	public final Fragment INSTANCE;
