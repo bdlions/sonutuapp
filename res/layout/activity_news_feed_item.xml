@@ -10,36 +10,37 @@
 
     <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:background="@drawable/custom_border"
         android:padding="10dip" >
 
         <ImageView
-            android:id="@+id/image1"
+            android:id="@+id/imageOfUser"
             android:layout_width="80dp"
             android:layout_height="80dp"
+            android:contentDescription="@string/EmptyString"
             android:src="@drawable/followers" />
 
         <TextView
-            android:id="@+id/text4"
+            android:id="@+id/textViewNameOfUser"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="10dp"
-            android:layout_toRightOf="@id/image1"
+            android:layout_toRightOf="@id/imageOfUser"
             android:fontFamily="Bold"
             android:text="Tanveer Ahmed"
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/text5"
+            android:id="@+id/textViewpostedStatusTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/text4"
+            android:layout_below="@id/textViewNameOfUser"
             android:layout_marginLeft="15dp"
             android:textColor="#9B9EA3"
             android:layout_marginTop="3dp"
-            android:layout_toRightOf="@id/image1"
+            android:layout_toRightOf="@id/imageOfUser"
             android:text="40 minites age"
             android:textSize="12sp" />
 
@@ -47,7 +48,7 @@
             android:id="@+id/textViewDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/image1"
+            android:layout_below="@id/imageOfUser"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="3dp"
             android:text="Good morning. this is my first status in mobile apps"
@@ -65,6 +66,7 @@
                 android:id="@+id/btn10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:contentDescription="@string/EmptyString"
                 android:layout_gravity="center"
                 android:background="#FFFFFF"
                 android:src="@drawable/like" />
@@ -81,33 +83,36 @@
                 android:textSize="15sp" />
 
             <ImageButton
-                android:id="@+id/btn11"
+                android:id="@+id/likeStatusBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="50dp"
                 android:layout_marginRight="20dp"
                 android:background="#FFFFFF"
-                android:contentDescription="dd"
+                android:contentDescription="@string/EmptyString"
                 android:src="@drawable/like" />
 
             <ImageButton
-                android:id="@+id/btn12"
+                android:id="@+id/commentStatusBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:contentDescription="@string/EmptyString"
+                android:layout_marginTop="2dp"
                 android:layout_marginRight="20dp"
                 android:background="#FFFFFF"
                 android:src="@drawable/comment" />
 
             <ImageButton
-                android:id="@+id/btn13"
+                android:id="@+id/shareStatusBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:contentDescription="@string/EmptyString"
                 android:layout_marginRight="20dp"
                 android:background="#FFFFFF"
                 android:src="@drawable/share" />
         </LinearLayout>
 
-        <View
+        <!--<View
             android:id="@+id/vDottedLine"
             android:layout_width="match_parent"
             android:layout_height="2dp"
@@ -131,15 +136,17 @@
             android:background="@drawable/backwithborder"
             android:hint="Comment"
             android:padding="10dp"
-            android:singleLine="true" />
+            android:singleLine="true" />-->
 
         <ImageView
             android:id="@+id/imageView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@+id/text5"
+            android:contentDescription="@string/EmptyString"
             android:layout_alignParentRight="true"
             android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
             android:src="@drawable/cross" />
     </RelativeLayout>

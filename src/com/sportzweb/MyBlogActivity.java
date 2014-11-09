@@ -1,8 +1,5 @@
 package com.sportzweb;
 
-import java.io.ObjectOutputStream.PutField;
-import java.util.ArrayList;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -10,25 +7,20 @@ import org.json.JSONObject;
 import com.google.gson.Gson;
 import com.sonuto.rpc.ICallBack;
 import com.sonuto.rpc.register.BlogsApp;
-import com.sonuto.utils.component.CustomAdapter;
 import com.sportzweb.JSONObjectModel.MyBlog;
 
 import android.app.ActionBar.LayoutParams;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.text.method.TextKeyListener;
 import android.view.Gravity;
-import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnFocusChangeListener;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -59,7 +51,7 @@ public class MyBlogActivity extends Activity {
 		pDiler.setMessage("Loading data...");
 		pDiler.setCancelable(false);
 		pDiler.show();
-
+		final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
 		BlogsApp blogApp = new BlogsApp();
 
 		blogApp.getMyBlogList(new ICallBack() {
@@ -122,7 +114,42 @@ public class MyBlogActivity extends Activity {
 						t4v.setText("Delete");
 						t4v.setTextColor(Color.parseColor("#00acea"));
 						t4v.setGravity(Gravity.CENTER);
-						
+
+						t4v.setOnClickListener(new OnClickListener() {
+							@SuppressWarnings("deprecation")
+							@Override
+							public void onClick(View v) {
+								alertDialog.setTitle("Delete Blog");
+								alertDialog.setMessage("Are you sure about deleting this blog?");
+								alertDialog.setButton2("YES",
+										new DialogInterface.OnClickListener() {
+											public void onClick(
+													DialogInterface dialog,
+													int which) {
+												Toast.makeText(
+														getApplicationContext(),
+														"well come", 1).show();
+											}
+										});
+								alertDialog.setButton("NO",
+										new DialogInterface.OnClickListener() {
+											@Override
+											public void onClick(
+													DialogInterface dialog,
+													int which) {
+												Toast.makeText(
+														getApplicationContext(),
+														"yoy have pressed cancel",
+														1).show();
+											}
+										});
+								// Set the Icon for the Dialog
+								alertDialog.setIcon(R.drawable.fail);
+								alertDialog.show();
+								// see http://androidsnippets.com/simple-alert-dialog-popup-with-title-message-icon-and-button
+							}
+						});
+
 						// table row dynamically
 						tbrow.addView(t4v);
 						stk.addView(tbrow);
