@@ -305,7 +305,14 @@
 	<!-- Service Directory app -->
 	<string name="button_service_list">List</string>
 	<string name="button_service_back">Back</string>
+	<string name="service_directory_postcode">Enter your town or postcode</string>
 	<!-- End -->
+	
+	<!--Start of News Feed -->
+	<string name="newsfeed_like">Like</string>
+	<string name="newsfeed_comment">Comment</string>
+	<string name="newsfeed_share">Share</string>
+	<!-- END of News Feed -->
 	
 	
 </resources>

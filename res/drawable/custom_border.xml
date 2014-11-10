@@ -8,7 +8,7 @@
         android:color="#BABBBF" />
 
     <padding
-        android:bottom="2dp"
+        android:bottom="0dp"
         android:left="2dp"
         android:right="2dp"
         android:top="2dp" />

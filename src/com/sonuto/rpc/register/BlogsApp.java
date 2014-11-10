@@ -51,4 +51,15 @@ public class BlogsApp extends RPCHandler{
 		execute();
 	}
 	
+	public void requestForBlogDelete(ICallBack callBack, Object...params){
+		setCallBack(callBack);
+		
+		setControllerName("app_blog/");
+		setMethod("request_to_remove_blog");
+
+		setParams(params);
+		setReturnType(RPCReturnType.JSON_OBJECT);
+		execute();
+	}
+	
 }
