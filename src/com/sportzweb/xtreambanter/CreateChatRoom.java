@@ -1,5 +1,11 @@
 package com.sportzweb.xtreambanter;
 import java.util.ArrayList;
+import java.util.Iterator;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,7 +15,12 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+
 import com.google.gson.Gson;
+import com.sonuto.rpc.ICallBack;
+import com.sonuto.rpc.register.CreateRoom;
+import com.sonuto.rpc.register.JoinRoom;
+import com.sonuto.session.ISessionManager;
 import com.sportzweb.R;
 import com.sportzweb.JSONObjectModel.Match;
 
@@ -46,6 +57,32 @@ public class CreateChatRoom extends Activity{
 		teams = new ArrayList<String>();
 		teams.add(match.getTeam1_title());
 		teams.add(match.getTeam2_title());
+		
+		CreateRoom createChatRoom = new CreateRoom();
+		 JSONObject jsonObject = new JSONObject();
+		 createChatRoom.getGeneratedCode(new ICallBack() {
+				@Override
+				public void callBackResultHandler(final Object object) {
+					JSONObject jsonObject = (JSONObject) object;
+					Iterator iter = jsonObject.keys();
+					 while(iter.hasNext()){
+					   String key = (String)iter.next();
+					   if(key.equals("group_access_code"))
+						try {
+							generatedCode.setText("Group Access Code: "+jsonObject.getString(key));
+						} catch (JSONException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+				}
+
+				@Override
+				public void callBackErrorHandler(Object object) {
+					// TODO Auto-generated method stub
+					System.out.println(object);
+				}
+			}, gS.toJson(match));
 		
 		ArrayAdapter<String> teamAdapter = new ArrayAdapter<String>(CreateChatRoom.this,android.R.layout.simple_list_item_1, teams);
 		// bind adapter and view
