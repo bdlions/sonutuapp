@@ -16,7 +16,7 @@
         android:padding="10dip" >
 
         <TextView
-            android:id="@+id/serviceDetailsHeading"
+            android:id="@+id/sdMoreHeading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
@@ -25,7 +25,7 @@
             android:textSize="22sp" />
 
         <LinearLayout
-            android:id="@+id/ll_address"
+            android:id="@+id/sdMore_ll_address"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal" >
@@ -33,12 +33,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:text="Store Address :"
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/serviceStoreAddress"
+                android:id="@+id/sdMoreStoreAddress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -59,7 +58,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/serviceOpeningHour"
+                android:id="@+id/sdMoreOpeningHour"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -67,7 +66,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/ll_telephone"
+            android:id="@+id/llsdMore_telephone"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal" >
@@ -80,7 +79,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/servicetelephone"
+                android:id="@+id/sdMoreTelephone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -88,7 +87,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/ll_website"
+            android:id="@+id/llsdMore_website"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal" >
@@ -101,7 +100,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/serviceWWevsite"
+                android:id="@+id/sdMoreWWevsite"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -109,7 +108,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/ll_profile"
+            android:id="@+id/llsdMore_profile"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal" >
@@ -122,7 +121,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/serviceProfile"
+                android:id="@+id/sdMoreProfile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -130,7 +129,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/ll_picture"
+            android:id="@+id/llsdMore_picture"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal" >
@@ -143,7 +142,7 @@
                 android:textSize="18sp" />
 
             <ImageView
-                android:id="@+id/servicePicture"
+                android:id="@+id/sdMorePicture"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -152,7 +151,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/ll_service_address"
+            android:id="@+id/llsdMore_service_address"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal" >
@@ -165,7 +164,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/sAddress"
+                android:id="@+id/sdMoreAddress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -179,45 +178,63 @@
             android:orientation="horizontal" >
 
             <LinearLayout
+                android:id="@+id/ll_service_comments"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
+                android:layout_weight="1"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/custom_border_for_layout"
+                android:gravity="center"
                 android:orientation="horizontal" >
 
                 <ImageView
                     android:id="@+id/imageView1"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="25dp"
+                    android:gravity="center"
+                    android:layout_marginRight="5dp"
                     android:src="@drawable/comment" />
 
                 <TextView
                     android:id="@+id/btnforgetPass"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="3dp"
+                    android:layout_height="25dp"
+                    android:layout_marginBottom="1dp"
+                    android:gravity="center"
                     android:text="Comments"
                     android:textSize="15sp" />
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/btnforgetPassCancel"
+            <LinearLayout
+                android:id="@+id/ll_service_recomments"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Recommends"
-                android:textSize="15sp" />
+                android:background="@drawable/custom_border_for_layout"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/btnforgetPassCancel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_marginBottom="1dp"
+                    android:gravity="center"
+                    android:text="Recommends"
+                    android:textSize="15sp" />
+            </LinearLayout>
         </LinearLayout>
 
         <Button
-            android:id="@+id/ServiceDetailsBackBtn"
+            android:id="@+id/serviceMoreDetailsBackBtn"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dip"
             android:layout_marginTop="10dip"
-            android:background="#ffffff"
+            android:background="@drawable/button"
             android:gravity="center"
             android:text="Back"
-            android:textColor="#00acea"
+            android:textColor="#000000"
             android:textSize="20sp" />
     </LinearLayout>
 

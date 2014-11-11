@@ -57,11 +57,43 @@
             <LinearLayout
                 android:id="@+id/service_details_ll"
                 android:layout_width="match_parent"
-                android:layout_height="461dp"
+                android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:padding="10dip" >
 
-                <TextView
+                <ListView
+                    android:id="@+id/serviceCategoryListview"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                     >
+                </ListView>
+
+                <Button
+                    android:id="@+id/btnSDCategorySelect"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dip"
+                    android:layout_marginTop="20dip"
+                    android:background="@drawable/button"
+                    android:onClick="bpRegDescriptionStep"
+                    android:text="@string/button_text_member_reg" />
+            </LinearLayout>
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/service_directory_result_list_setp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="invisible" >
+
+            <LinearLayout
+                android:id="@+id/service_result_list_ll"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="10dip" >
+                
+                 <TextView
                     android:id="@+id/serviceSearchHeading"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -70,14 +102,13 @@
                     android:text="Service Near : W4 5es"
                     android:textColor="#70C77C"
                     android:textSize="22sp" />
-
                 
-            <ListView
-                android:id="@+id/serviceCategoryListview"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" >
-            </ListView>
-            
+                <ListView
+                    android:id="@+id/serviceDirectoryResultList"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" >
+                </ListView>
+                
             </LinearLayout>
         </FrameLayout>
     </FrameLayout>

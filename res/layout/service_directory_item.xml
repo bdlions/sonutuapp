@@ -5,70 +5,68 @@
     android:orientation="vertical" >
 
     <TextView
-        android:id="@+id/serviceHeading"
+        android:id="@+id/serviceItemHeading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
         android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
         android:text="Dental Care"
         android:textColor="#000000"
         android:textSize="22sp" />
-    
+
     <TextView
-        android:id="@+id/addressHeading"
+        android:id="@+id/serviceAddressItemHeading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="5dp"
         android:text="Address"
         android:textSize="18sp" />
-    
+
     <TextView
-        android:id="@+id/serviceAddressMain"
+        android:id="@+id/serviceItemAddressMain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
         android:layout_marginLeft="10dp"
+        android:layout_marginTop="2dp"
         android:text="Dhaka,Uttara"
         android:textSize="14sp" />
+
     <TextView
-        android:id="@+id/serviceAddressSub"
+        android:id="@+id/serviceItemAddressSub"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
         android:layout_marginLeft="10dp"
+        android:layout_marginTop="2dp"
         android:text="69,Road-17,Sector-11"
         android:textSize="14sp" />
-    
+
     <TextView
-        android:id="@+id/serviceAddressPhoneNo"
+        android:id="@+id/serviceItemAddressPhoneNo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
         android:layout_marginLeft="10dp"
+        android:layout_marginTop="2dp"
         android:text="Mobile: + 8801725724068"
         android:textSize="14sp" />
-    
+
     <TextView
-        android:id="@+id/serviceAddressDistance"
+        android:id="@+id/serviceItemAddressDistance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
         android:layout_marginLeft="10dp"
+        android:layout_marginTop="2dp"
         android:text="Distance : 1069.32 miles"
         android:textSize="14sp" />
-    
+
     <TextView
-        android:id="@+id/serviceAddressDetails"
+        android:id="@+id/serviceItemAddressDetails"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
         android:layout_marginLeft="10dp"
-        android:textColor="#93D2FB"
+        android:layout_marginTop="2dp"
         android:text="Details"
+        android:textColor="#93D2FB"
         android:textSize="15sp" />
-    
-    
-    
 
 </LinearLayout>

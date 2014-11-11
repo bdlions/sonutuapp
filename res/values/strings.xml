@@ -303,9 +303,12 @@
 	<!-- News Application -->
 	
 	<!-- Service Directory app -->
+	<string name="title_activity_service_details">Service Details</string>
 	<string name="button_service_list">List</string>
 	<string name="button_service_back">Back</string>
 	<string name="service_directory_postcode">Enter your town or postcode</string>
+	<string name="serviceCityOrPostcodeRequired">City or Postcode is Required!</string>
+	
 	<!-- End -->
 	
 	<!--Start of News Feed -->
