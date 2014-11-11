@@ -29,6 +29,7 @@ import com.sonuto.Config;
 import com.sonuto.rpc.ICallBack;
 import com.sonuto.rpc.register.BlogsApp;
 import com.sonuto.session.SessionManager;
+import com.sonuto.utils.component.ArrayListFragment;
 import com.sonuto.utils.component.BlogCategoryCustomAdapter;
 import com.sportzweb.JSONObjectModel.BlogCategory;
 
@@ -59,7 +60,7 @@ public class CreateBlogActivity extends Activity {
 			bcreate_main_step_layout, bcreate_add_pic_step_layout;
 	// process dialer
 	ProgressDialog pDialog,dialog;
-	ListView blogCategoryListView;
+	//ListView blogCategoryListView;
 	EditText blogTitle,blogMainText;
 	private String imagepath = null;
 	
@@ -97,7 +98,7 @@ public class CreateBlogActivity extends Activity {
 		bcreate_title_step_layout = (FrameLayout) findViewById(R.id.create_blog_box2);
 		bcreate_main_step_layout = (FrameLayout) findViewById(R.id.create_blog_box3);
 		bcreate_add_pic_step_layout = (FrameLayout) findViewById(R.id.create_blog_box4);
-		blogCategoryListView = (ListView) findViewById(R.id.blogCategoryListview);
+		//blogCategoryListView = (ListView) findViewById(R.id.blogCategoryListview);
 		
 		blogTitle = (EditText) findViewById(R.id.blogTitleEdtTxt);
 		blogMainText = (EditText) findViewById(R.id.blogMainTextEdtTxt);
@@ -114,7 +115,6 @@ public class CreateBlogActivity extends Activity {
 			public void callBackResultHandler(Object object) {
 				pDialog.dismiss();
 				JSONObject blogListJsonObj = (JSONObject) object;
-				//System.out.print(blogListJsonObj);
 				
 				try {
 					JSONArray blogCategoryListArray = blogListJsonObj.getJSONArray("blog_category_list");
@@ -125,9 +125,11 @@ public class CreateBlogActivity extends Activity {
 						BlogCategory item = gson.fromJson(blogCategoryListArray.get(i).toString(), BlogCategory.class);
 						blogCategoryItem.add(item);
 					}
-					
-					BlogCategoryCustomAdapter adapter = new BlogCategoryCustomAdapter(CreateBlogActivity.this, blogCategoryItem);
-					blogCategoryListView.setAdapter(adapter);
+					if (getFragmentManager().findFragmentById(R.id.categoryListFragmentLayout) == null) {
+			            ArrayListFragment list = new ArrayListFragment();
+			            list.setBlogCategoryItem(blogCategoryItem);
+			            getFragmentManager().beginTransaction().add(R.id.categoryListFragmentLayout, list).commit();
+			        }
 					
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
