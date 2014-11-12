@@ -154,6 +154,7 @@
     <string name="emailNotExist">Email Not Exist!</string>
     <string name="emailAndPassNotMatch">Email and Password not match!</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_user_profile">User Profile</string>
     <string name="title_activity_registration1">Registration1Activity</string>
     <string name="firstnameRequired">Firstname Required!</string>
     <string name="lastnameRequired">Lastname Required!</string>
@@ -308,7 +309,7 @@
 	<string name="button_service_back">Back</string>
 	<string name="service_directory_postcode">Enter your town or postcode</string>
 	<string name="serviceCityOrPostcodeRequired">City or Postcode is Required!</string>
-	
+	<string name="button_search">Search</string>
 	<!-- End -->
 	
 	<!--Start of News Feed -->

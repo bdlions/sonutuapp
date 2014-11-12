@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="14"
+        android:minSdkVersion="17"
         android:targetSdkVersion="18" />
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -44,6 +44,12 @@
             android:name="com.sportzweb.MainActivity"
             android:theme="@style/CustomActionBarTheme"
             android:label="@string/title_activity_main" >
+        </activity>
+        
+        <activity
+            android:name="com.sportzweb.UserProfileActivity"
+            android:theme="@style/CustomActionBarTheme"
+            android:label="@string/title_activity_user_profile" >
         </activity>
         
         <activity
@@ -151,9 +157,9 @@
             android:label="@string/title_activity_news_details"
             android:theme="@style/CustomActionBarTheme"></activity>
         
-        <activity android:name="com.sportzweb.xtreambanter.SportsActivity"
+        <!-- <activity android:name="com.sportzweb.xtreambanter.SportsActivity"
             android:label="@string/title_activity_news_app"
-            android:theme="@style/CustomActionBarTheme"></activity>
+            android:theme="@style/CustomActionBarTheme"></activity> -->
         
         <activity android:name="com.sportzweb.xtreambanter.TournamentActivity"
             android:label="@string/title_activity_news_app"
@@ -170,7 +176,17 @@
             android:theme="@style/CustomActionBarTheme">
         </activity>
         
+		<activity android:name="com.sportzweb.xtreambanter.ChatRoom"
+            android:label="@string/title_activity_news_app"
+            android:theme="@style/CustomActionBarTheme">
+        </activity>
+		
 		<activity android:name="com.sportzweb.xtreambanter.MatchesActivity"
+            android:label="@string/title_activity_news_app"
+            android:theme="@style/CustomActionBarTheme">
+        </activity>
+        
+		<activity android:name="com.sportzweb.xtreambanter.MatchActivity"
             android:label="@string/title_activity_news_app"
             android:theme="@style/CustomActionBarTheme">
         </activity>

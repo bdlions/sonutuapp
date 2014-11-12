@@ -4,15 +4,37 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <ListView
-        android:id="@+id/listViewSettings"
-        android:layout_width="match_parent"
+    <ImageView
+        android:id="@+id/userImage"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_marginTop="40dp"
-        android:layout_marginBottom="80dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp" >
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="20dp"
+        android:contentDescription="@string/EmptyString"
+        android:src="@drawable/upload_img_icon" />
+
+    <TextView
+        android:id="@+id/userProfileNameTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="59dp"
+        android:layout_marginTop="50dp"
+        android:layout_toRightOf="@+id/userImage"
+        android:text="Alamgir Hossian" />
+
+	<ListView
+	    android:id="@+id/listViewSettings"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_alignLeft="@+id/userImage"
+	    android:layout_below="@+id/userImage"
+	    android:layout_marginBottom="40dp"
+	    android:layout_marginRight="25dp"
+	    android:layout_marginTop="44dp" >
+
     </ListView>
 
 </RelativeLayout>

@@ -31,11 +31,18 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="#00acea" />
 
-            <ListView
+            <!--<ListView
                 android:id="@+id/blogCategoryListviewEdit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" >
-            </ListView>
+            </ListView>-->
+            <LinearLayout
+                android:id="@+id/categoryEditListFragmentLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="10dip" >
+            </LinearLayout>
 
 <!--             <Spinner -->
 <!--                 android:id="@+id/spinner_Month" -->

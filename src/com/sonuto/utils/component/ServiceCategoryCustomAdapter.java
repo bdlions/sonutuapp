@@ -20,6 +20,7 @@ import android.webkit.WebView.FindListener;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CheckedTextView;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ImageButton;
@@ -30,7 +31,7 @@ import android.widget.TextView;
 public class ServiceCategoryCustomAdapter extends BaseAdapter {
 
 	ArrayList<ServiceCategory> serviceCategoryItem;
-	private Activity context;
+	private final Activity context;
 	public ImageLoader imageLoader;
 	private boolean[] checked;
 
@@ -45,19 +46,19 @@ public class ServiceCategoryCustomAdapter extends BaseAdapter {
 	@Override
 	public int getCount() {
 		// TODO Auto-generated method stub
-		return serviceCategoryItem.size();
+		return this.serviceCategoryItem.size();
 	}
 
 	@Override
-	public Object getItem(int arg0) {
+	public Object getItem(int position) {
 		// TODO Auto-generated method stub
-		return null;
+		return this.serviceCategoryItem.get(position);
 	}
 
 	@Override
-	public long getItemId(int arg0) {
+	public long getItemId(int position) {
 		// TODO Auto-generated method stub
-		return 0;
+		return position;
 	}
 
 	@Override
@@ -66,17 +67,21 @@ public class ServiceCategoryCustomAdapter extends BaseAdapter {
 
 		if (convertView == null) {
 			convertView = LayoutInflater.from(context).inflate(R.layout.service_category_row, parent, false);
+			//convertView = LayoutInflater.from(this.context).inflate(R.layout.service_category_row, parent, false);
 		}
 		
 		final ServiceCategory sCategory = serviceCategoryItem.get(position);
 
 		CheckBox categoryCheckBox = (CheckBox) convertView.findViewById(R.id.serviceCategoryCheckBox);
-		
 		TextView blogCategoryTitle = (TextView) convertView.findViewById(R.id.serviceCategoryTitle);
-		
 		blogCategoryTitle.setText(sCategory.getTitle());
 		categoryCheckBox.setTag(Integer.valueOf(position)); // set the tag so we can identify the correct row in the listener
-
+		
+		//final CheckedTextView categoryCheckBox = (CheckedTextView) convertView.findViewById(R.id.service_category_checkBox);
+		//categoryCheckBox.setText(sCategory.getTitle());
+		//categoryCheckBox.setTag(Integer.valueOf(position));
+		
+		
 		return convertView;
 	}
 	

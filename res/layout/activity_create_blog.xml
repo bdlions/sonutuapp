@@ -45,14 +45,6 @@
 <!--                 android:layout_height="wrap_content" > -->
 <!--             </ListView> -->
 
-<!--             <Spinner -->
-<!--                 android:id="@+id/spinner_Month" -->
-<!--                 android:layout_width="wrap_content" -->
-<!--                 android:layout_height="wrap_content" -->
-<!--                 android:layout_gravity="center" -->
-<!--                 android:entries="@array/sports_list" -->
-<!--                 android:minWidth="350dp" -->
-<!--                 android:prompt="@string/sports_prompt" /> -->
 
             <Button
                 android:id="@+id/btncreateBlogSelectCategory"

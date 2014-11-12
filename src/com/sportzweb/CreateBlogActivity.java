@@ -28,13 +28,10 @@ import com.google.gson.Gson;
 import com.sonuto.Config;
 import com.sonuto.rpc.ICallBack;
 import com.sonuto.rpc.register.BlogsApp;
-import com.sonuto.session.SessionManager;
 import com.sonuto.utils.component.ArrayListFragment;
-import com.sonuto.utils.component.BlogCategoryCustomAdapter;
 import com.sportzweb.JSONObjectModel.BlogCategory;
 
-import android.R.color;
-import android.R.integer;
+
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -43,13 +40,11 @@ import android.database.Cursor;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.CalendarContract.Colors;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -132,17 +127,13 @@ public class CreateBlogActivity extends Activity {
 			        }
 					
 				} catch (JSONException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				
-				
 				
 			}
 			
 			@Override
 			public void callBackErrorHandler(Object object) {
-				// TODO Auto-generated method stub
 				
 			}
 		});

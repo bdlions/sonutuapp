@@ -2,7 +2,7 @@ package com.sonuto.utils.component;
 
 import java.util.ArrayList;
 
-import com.sportzweb.JSONObjectModel.BlogCategory;
+import com.sportzweb.JSONObjectModel.ServiceCategory;
 
 import android.app.ListFragment;
 import android.os.Bundle;
@@ -10,14 +10,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.ListView;
+import android.support.v4.app.Fragment;
 
+public class ServiceCategoryArrayListFragment extends ListFragment {
 
-public class ArrayListFragment extends ListFragment {
+	private ArrayList<ServiceCategory> serviceCategoryItem;
 
-	private ArrayList<BlogCategory> blogCategoryItem;
-
-	public ArrayList<BlogCategory> getBlogCategoryItem() {
-		return this.blogCategoryItem;
+	public ArrayList<ServiceCategory> getServiceCategoryItem() {
+		return this.serviceCategoryItem;
 	}
 
 	@Override
@@ -27,7 +27,7 @@ public class ArrayListFragment extends ListFragment {
 		lview.setChoiceMode(AbsListView.CHOICE_MODE_MULTIPLE);
 		lview.setTextFilterEnabled(true);
 
-		final BlogCategoryCustomAdapter adapter = new BlogCategoryCustomAdapter(getActivity(), this.blogCategoryItem);
+		final ServiceCategoryCustomAdapter adapter = new ServiceCategoryCustomAdapter(getActivity(), this.serviceCategoryItem);
 		setListAdapter(adapter);
 
 	}
@@ -37,7 +37,7 @@ public class ArrayListFragment extends ListFragment {
 		Log.i("FragmentList", "Item clicked: " + id);
 	}
 
-	public void setBlogCategoryItem(ArrayList<BlogCategory> blogCategoryItem) {
-		this.blogCategoryItem = blogCategoryItem;
+	public void setServiceCategoryItem(ArrayList<ServiceCategory> serviceCategoryItem) {
+		this.serviceCategoryItem = serviceCategoryItem;
 	}
 }

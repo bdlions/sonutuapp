@@ -8,6 +8,8 @@ import com.google.gson.Gson;
 import com.sampanit.sonutoapp.utils.AlertDialogManager;
 import com.sonuto.rpc.ICallBack;
 import com.sonuto.rpc.register.BlogsApp;
+import com.sonuto.session.ISessionManager;
+import com.sonuto.session.SessionManager;
 import com.sportzweb.JSONObjectModel.MyBlog;
 
 import android.app.ActionBar.LayoutParams;
@@ -34,7 +36,8 @@ public class MyBlogActivity extends Activity {
 	TextView t1v, t2v, t3v, t4v;
 	TableRow tbrow;
 	TableLayout stk;
-	
+	ISessionManager session;
+	int userId;
 	// Alert Dialog Manager
 	AlertDialogManager alert = new AlertDialogManager();
 	
@@ -43,13 +46,17 @@ public class MyBlogActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_my_blogs);
 		mComtext = this;
+		// Session Manager
+		session = new SessionManager(getApplicationContext());
+		
 		initUi();
 	}
 
 	public void initUi() {
-
+		
+		userId = session.getUserId();
+		
 		stk = (TableLayout) findViewById(R.id.table_main);
-
 		pDiler = new ProgressDialog(mComtext);
 		pDiler.setMessage("Loading data...");
 		pDiler.setCancelable(false);
@@ -158,7 +165,7 @@ public class MyBlogActivity extends Activity {
 
 			}
 			// here the user id will be dynamic according to logged-in user
-		}, 69);
+		}, userId);
 
 	}
 	

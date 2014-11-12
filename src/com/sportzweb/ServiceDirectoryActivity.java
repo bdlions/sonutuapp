@@ -6,26 +6,29 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.view.View.OnClickListener;
 import android.app.ActionBar;
-import android.app.ProgressDialog;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
-
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.google.gson.Gson;
 import com.sonuto.rpc.ICallBack;
 import com.sonuto.rpc.register.ServiceDirectoryApp;
+import com.sonuto.utils.component.ServiceCategoryArrayListFragment;
 import com.sonuto.utils.component.ServiceCategoryCustomAdapter;
 import com.sonuto.utils.component.ServiceItemCustomAdapter;
 import com.sportzweb.JSONObjectModel.ServiceCategory;
@@ -37,7 +40,7 @@ public class ServiceDirectoryActivity extends Fragment{
 	ProgressDialog pDialog;
 	View rootView;
 	Activity activity;
-	Button btnSDPostCode,btnSDCategorySelect;
+	Button btnSDPostCode,btnSDCategorySelect,rightArrowImgView;
 	FrameLayout sd_postcode_setp, sd_category_setp,sd_result_list_setp;
 	String city_or_postcode = "London";
 	EditText servieDirectoryEdtTxt;
@@ -75,6 +78,19 @@ public class ServiceDirectoryActivity extends Fragment{
 					}
 					ServiceCategoryCustomAdapter adapter = new ServiceCategoryCustomAdapter(getActivity(), serviceCategoryItem);
 					serviceCategoryListView.setAdapter(adapter);
+
+					/*if (getFragmentManager().findFragmentById(R.id.serviceCategoryListFragmentLayout) == null) {
+						
+						ServiceCategoryArrayListFragment sList = new ServiceCategoryArrayListFragment();
+			            sList.setServiceCategoryItem(serviceCategoryItem);
+			            FragmentManager fm = getFragmentManager();
+					    FragmentTransaction ft = fm.beginTransaction();
+			            ft.add(R.id.serviceCategoryListFragmentLayout, sList);
+			            ft.commit();
+					    
+			            //getFragmentManager().beginTransaction().add(R.id.serviceCategoryListFragmentLayout, sList).commit();
+			        }*/
+					
 					
 					//this portion is for service result
 					serviceResultItem = new ArrayList<ServiceItem>();
@@ -118,28 +134,43 @@ public class ServiceDirectoryActivity extends Fragment{
 		
 		servieDirectoryEdtTxt = (EditText) rootView.findViewById(R.id.servieDirectoryEdtTxt);
 		serviceSearchHeading = (TextView) rootView.findViewById(R.id.serviceSearchHeading);
+		rightArrowImgView = (Button) rootView.findViewById(R.id.rightArrowImgView);
 		
 		
 		btnSDPostCode.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
             	if(isVerifiedCityPostcodeStep()) {
-            		sd_category_setp.setVisibility(View.VISIBLE);
-                	sd_postcode_setp.setVisibility(View.GONE);
+            		serviceSearchHeading.setText("Service Near : " + servieDirectoryEdtTxt.getText());
+            		sd_result_list_setp.setVisibility(View.VISIBLE);
+            		sd_postcode_setp.setVisibility(View.GONE);
         		}
             	
             }
         });
 		
-		btnSDCategorySelect.setOnClickListener(new OnClickListener() {
+		rightArrowImgView.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
             	//if(isVerifiedCityPostcodeStep()) {
-            		serviceSearchHeading.setText("Service Near : " + servieDirectoryEdtTxt.getText());
-            		sd_result_list_setp.setVisibility(View.VISIBLE);
-            		sd_category_setp.setVisibility(View.GONE);
+            		sd_category_setp.setVisibility(View.VISIBLE);
+            		sd_result_list_setp.setVisibility(View.GONE);
+            		
         		}
             	
             //}
         });
+		
+		
+		btnSDCategorySelect.setOnClickListener(new OnClickListener() {
+            public void onClick(View v) {
+            	if(isVerifiedCityPostcodeStep()) {
+            		serviceSearchHeading.setText("");
+            		sd_result_list_setp.setVisibility(View.VISIBLE);
+            		sd_category_setp.setVisibility(View.GONE);
+        		}
+            	
+            }
+        });
+		
 		
 		// gets the activity's default ActionBar
 	    ActionBar actionBar = getActivity().getActionBar();

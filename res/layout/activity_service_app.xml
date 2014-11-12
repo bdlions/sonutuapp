@@ -32,19 +32,20 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dip"
                     android:layout_marginTop="5dip"
-                    android:hint="@string/service_directory_postcode"
                     android:lines="5"
-                    android:singleLine="true" />
+                    android:singleLine="true"
+                    android:hint="@string/service_directory_postcode"
+                     />
 
                 <Button
                     android:id="@+id/btnSDPostCode"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_marginBottom="10dip"
                     android:layout_marginTop="20dip"
                     android:background="@drawable/button"
-                    android:onClick="bpRegDescriptionStep"
-                    android:text="@string/button_text_member_reg" />
+                    android:text="@string/button_search" />
             </LinearLayout>
         </FrameLayout>
 
@@ -64,9 +65,18 @@
                 <ListView
                     android:id="@+id/serviceCategoryListview"
                     android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                     >
+                    android:layout_height="wrap_content" >
                 </ListView>
+
+                <!--
+            <LinearLayout
+                android:id="@+id/serviceCategoryListFragmentLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="10dip" >
+            </LinearLayout>
+                -->
 
                 <Button
                     android:id="@+id/btnSDCategorySelect"
@@ -75,8 +85,7 @@
                     android:layout_marginBottom="10dip"
                     android:layout_marginTop="20dip"
                     android:background="@drawable/button"
-                    android:onClick="bpRegDescriptionStep"
-                    android:text="@string/button_text_member_reg" />
+                    android:text="@string/button_search" />
             </LinearLayout>
         </FrameLayout>
 
@@ -92,23 +101,38 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:padding="10dip" >
-                
-                 <TextView
-                    android:id="@+id/serviceSearchHeading"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginTop="5dp"
-                    android:text="Service Near : W4 5es"
-                    android:textColor="#70C77C"
-                    android:textSize="22sp" />
-                
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/serviceSearchHeading"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginTop="5dp"
+                        android:text="Service Near : W4 5es"
+                        android:textColor="#70C77C"
+                        android:textSize="22sp" />
+
+                    <Button
+                        android:id="@+id/rightArrowImgView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="31dp"
+                        android:layout_weight="0.98"
+                        android:background="@drawable/right_arrow"
+                        android:text="@string/EmptyString" />
+
+                </LinearLayout>
+
                 <ListView
                     android:id="@+id/serviceDirectoryResultList"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent" >
                 </ListView>
-                
             </LinearLayout>
         </FrameLayout>
     </FrameLayout>
