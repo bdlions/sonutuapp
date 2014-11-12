@@ -4,6 +4,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.bdlions.load.image.ImageLoader;
+import com.google.gson.Gson;
 import com.sonuto.Config;
 import com.sonuto.rpc.ICallBack;
 import com.sonuto.rpc.register.User;
@@ -71,26 +72,27 @@ public class SettingsFragment extends Fragment {
 			public void callBackResultHandler(Object object) {
 				JSONObject jsonUserObj = (JSONObject) object;
 				try {
-						if(jsonUserObj != null){
-							JSONObject UserObj = jsonUserObj.getJSONObject("user_info");
-		
-							if(UserObj != null && UserObj.getString("first_name") != null) {
-								userProfileNameTxt.setText(UserObj.getString("first_name") +" "+ UserObj.getString("last_name"));
-							}
-						
-							String imagePath = Config.SERVER_ROOT_URL + "resources/uploads/profile_picture/";
-		
-							userImage.setImageResource(R.drawable.upload_img_icon);
-							imageLoader.DisplayImage(imagePath + UserObj.getString("photo"),userImage);
+					if (jsonUserObj != null) {
+						JSONObject UserObj = jsonUserObj.getJSONObject("user_info");
+
+						if (UserObj != null && UserObj.getString("first_name") != null) {
+							userProfileNameTxt.setText(UserObj.getString("first_name") + " " + UserObj.getString("last_name"));
 						}
-					
-				} catch (JSONException e) {
+
+						String imagePath = Config.SERVER_ROOT_URL + "resources/uploads/profile_picture/";
+
+						userImage.setImageResource(R.drawable.upload_img_icon);
+						imageLoader.DisplayImage(imagePath + UserObj.getString("photo"), userImage);
+					}
+
+				}
+				catch (JSONException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				
+
 			}
-			
+
 			@Override
 			public void callBackErrorHandler(Object object) {
 				// TODO Auto-generated method stub
@@ -101,7 +103,7 @@ public class SettingsFragment extends Fragment {
 		
 		lv = (ListView) v.findViewById(R.id.listViewSettings);
 		perform(v);
-		manager = new SessionManager(getActivity().getApplicationContext());
+		manager = new SessionManager(getActivity());
 		// when session active
 		/*if(manager.getUsersBusinessProfileId() > 0){
 			values[0] = manager.getUsersBusinessProfileName();
