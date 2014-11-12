@@ -4,13 +4,12 @@ import java.util.ArrayList;
 
 import com.sportzweb.JSONObjectModel.ServiceCategory;
 
-import android.app.ListFragment;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.ListView;
-import android.support.v4.app.Fragment;
+import android.support.v4.app.ListFragment;
 
 public class ServiceCategoryArrayListFragment extends ListFragment {
 

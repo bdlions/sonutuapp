@@ -71,16 +71,18 @@ public class SettingsFragment extends Fragment {
 			public void callBackResultHandler(Object object) {
 				JSONObject jsonUserObj = (JSONObject) object;
 				try {
-						JSONObject UserObj = jsonUserObj.getJSONObject("user_info");
-	
-						if(UserObj.getString("first_name") != null) {
-							userProfileNameTxt.setText(UserObj.getString("first_name") +" "+ UserObj.getString("last_name"));
+						if(jsonUserObj != null){
+							JSONObject UserObj = jsonUserObj.getJSONObject("user_info");
+		
+							if(UserObj != null && UserObj.getString("first_name") != null) {
+								userProfileNameTxt.setText(UserObj.getString("first_name") +" "+ UserObj.getString("last_name"));
+							}
+						
+							String imagePath = Config.SERVER_ROOT_URL + "resources/uploads/profile_picture/";
+		
+							userImage.setImageResource(R.drawable.upload_img_icon);
+							imageLoader.DisplayImage(imagePath + UserObj.getString("photo"),userImage);
 						}
-					
-						String imagePath = Config.SERVER_ROOT_URL + "resources/uploads/profile_picture/";
-	
-						userImage.setImageResource(R.drawable.upload_img_icon);
-						imageLoader.DisplayImage(imagePath + UserObj.getString("photo"),userImage);
 					
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block

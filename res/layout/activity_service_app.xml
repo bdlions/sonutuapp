@@ -68,7 +68,7 @@
                     android:layout_height="wrap_content" >
                 </ListView>
 
-                <!--
+            
             <LinearLayout
                 android:id="@+id/serviceCategoryListFragmentLayout"
                 android:layout_width="match_parent"
@@ -76,7 +76,7 @@
                 android:orientation="vertical"
                 android:padding="10dip" >
             </LinearLayout>
-                -->
+                
 
                 <Button
                     android:id="@+id/btnSDCategorySelect"

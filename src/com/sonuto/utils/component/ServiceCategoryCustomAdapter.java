@@ -69,19 +69,11 @@ public class ServiceCategoryCustomAdapter extends BaseAdapter {
 			convertView = LayoutInflater.from(context).inflate(R.layout.service_category_row, parent, false);
 			//convertView = LayoutInflater.from(this.context).inflate(R.layout.service_category_row, parent, false);
 		}
-		
 		final ServiceCategory sCategory = serviceCategoryItem.get(position);
-
-		CheckBox categoryCheckBox = (CheckBox) convertView.findViewById(R.id.serviceCategoryCheckBox);
-		TextView blogCategoryTitle = (TextView) convertView.findViewById(R.id.serviceCategoryTitle);
-		blogCategoryTitle.setText(sCategory.getTitle());
-		categoryCheckBox.setTag(Integer.valueOf(position)); // set the tag so we can identify the correct row in the listener
 		
-		//final CheckedTextView categoryCheckBox = (CheckedTextView) convertView.findViewById(R.id.service_category_checkBox);
-		//categoryCheckBox.setText(sCategory.getTitle());
-		//categoryCheckBox.setTag(Integer.valueOf(position));
-		
-		
+		final CheckedTextView serviceCategoryCheckBox = (CheckedTextView) convertView.findViewById(R.id.service_category_checkBox);
+		serviceCategoryCheckBox.setText(sCategory.getTitle());
+		serviceCategoryCheckBox.setTag(Integer.valueOf(position)); 
 		return convertView;
 	}
 	

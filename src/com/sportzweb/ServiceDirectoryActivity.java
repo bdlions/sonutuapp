@@ -76,10 +76,10 @@ public class ServiceDirectoryActivity extends Fragment{
 						ServiceCategory item = gson.fromJson(service_category_list.get(i).toString(), ServiceCategory.class);
 						serviceCategoryItem.add(item);
 					}
-					ServiceCategoryCustomAdapter adapter = new ServiceCategoryCustomAdapter(getActivity(), serviceCategoryItem);
-					serviceCategoryListView.setAdapter(adapter);
+					//ServiceCategoryCustomAdapter adapter = new ServiceCategoryCustomAdapter(getActivity(), serviceCategoryItem);
+					//serviceCategoryListView.setAdapter(adapter);
 
-					/*if (getFragmentManager().findFragmentById(R.id.serviceCategoryListFragmentLayout) == null) {
+					if (getFragmentManager().findFragmentById(R.id.serviceCategoryListFragmentLayout) == null) {
 						
 						ServiceCategoryArrayListFragment sList = new ServiceCategoryArrayListFragment();
 			            sList.setServiceCategoryItem(serviceCategoryItem);
@@ -89,7 +89,7 @@ public class ServiceDirectoryActivity extends Fragment{
 			            ft.commit();
 					    
 			            //getFragmentManager().beginTransaction().add(R.id.serviceCategoryListFragmentLayout, sList).commit();
-			        }*/
+			        }
 					
 					
 					//this portion is for service result
