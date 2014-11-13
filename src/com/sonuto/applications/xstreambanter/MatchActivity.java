@@ -1,4 +1,4 @@
-package com.sportzweb.xtreambanter;
+package com.sonuto.applications.xstreambanter;
 
 import java.text.DateFormat;
 import java.util.ArrayList;
@@ -25,7 +25,6 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.sonuto.rpc.ICallBack;
-import com.sonuto.rpc.register.Matches;
 import com.sportzweb.R;
 import com.sportzweb.JSONObjectModel.Match;
 import com.sportzweb.JSONObjectModel.Tournament;
@@ -52,8 +51,6 @@ public class MatchActivity extends Activity{
 		
 		gS = new Gson();
 		
-		Date date = new Date();
-		
 		matchAsJsonString = getIntent().getStringExtra("selectedMatch");
 		tournamentAsJsonString = getIntent().getStringExtra("selectedTournament");
 		match = gS.fromJson(matchAsJsonString, Match.class);
@@ -76,6 +73,7 @@ public class MatchActivity extends Activity{
 	    		i.putExtra("selectedMatch",matchAsJsonString);	    		
 	    		i.putExtra("selectedTournament",tournamentAsJsonString);
 	    		startActivity(i);
+	    		finish();
 			}
 		});
 		
@@ -87,6 +85,7 @@ public class MatchActivity extends Activity{
 	    		i.putExtra("selectedMatch",matchAsJsonString);		
 	    		i.putExtra("selectedTournament",tournamentAsJsonString);
 	    		startActivity(i);
+	    		finish();
 			}
 		});
 		

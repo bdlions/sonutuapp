@@ -30,6 +30,7 @@ public class AppListFragment extends Fragment {
 			appTitles.add(app.TITLE);
 		}
 
+		
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, appTitles);
 		appListView.setAdapter(adapter);
 

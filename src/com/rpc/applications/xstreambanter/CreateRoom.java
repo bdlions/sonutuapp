@@ -1,4 +1,4 @@
-package com.sonuto.rpc.register;
+package com.rpc.applications.xstreambanter;
 
 import com.sonuto.rpc.ICallBack;
 import com.sonuto.rpc.RPCHandler;

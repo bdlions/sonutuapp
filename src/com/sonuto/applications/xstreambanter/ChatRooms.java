@@ -1,4 +1,4 @@
-package com.sportzweb.xtreambanter;
+package com.sonuto.applications.xstreambanter;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -16,7 +16,7 @@ import com.google.gson.Gson;
 import com.sportzweb.R;
 import com.sportzweb.JSONObjectModel.Match;
 
-public class ChatRoom extends Activity{
+public class ChatRooms extends Activity{
 
 
 	Gson gS;
@@ -59,7 +59,7 @@ public class ChatRoom extends Activity{
 		teams.add(match.getTeam1_title());
 		teams.add(match.getTeam2_title());
 		
-		ArrayAdapter<String> teamAdapter = new ArrayAdapter<String>(ChatRoom.this,android.R.layout.simple_list_item_1, teams);
+		ArrayAdapter<String> teamAdapter = new ArrayAdapter<String>(ChatRooms.this,android.R.layout.simple_list_item_1, teams);
 		// bind adapter and view
 		//getAndSetLiistInSpinner();
 		sendText.setOnClickListener(new View.OnClickListener() {

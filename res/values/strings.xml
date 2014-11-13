@@ -233,6 +233,7 @@
     <!-- End BMI Calculator Application -->
     
     <!-- Xtream banter Application -->
+    <string name="title_activity_xstream_banter">Xstream Banter</string>
     <string name="title_activity_xtream_banter">Xtream Banter</string>
 	<string name="xtream_banter_title">Sports</string>
 	<string name="xtream_banter_tournament_title">Tournaments</string>

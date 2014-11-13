@@ -11,8 +11,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_gravity="center"
+        android:orientation="vertical"
         android:paddingTop="10dp" >
 
         <ImageView
@@ -22,17 +22,14 @@
             android:layout_gravity="center"
             android:paddingBottom="20dp"
             android:src="@drawable/xb_logo" />
-            
-            <com.sonuto.utils.component.CustomSpinner
-                android:id="@+id/spinner_sports"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:minWidth="350dp"
-                android:layout_gravity="center"
-                android:prompt="@string/sports_prompt" />
-                
-            
-            
+
+        <com.sonuto.utils.component.CustomSpinner
+            android:id="@+id/spinner_sports"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:minWidth="350dp"
+            android:prompt="@string/sports_prompt" />
     </LinearLayout>
 
 </ScrollView>

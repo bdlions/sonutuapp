@@ -1,16 +1,16 @@
-package com.sonuto.rpc.register;
+package com.rpc.applications.xstreambanter;
 
 import com.sonuto.rpc.ICallBack;
 import com.sonuto.rpc.RPCHandler;
 import com.sonuto.rpc.RPCReturnType;
 
-public class Sports extends RPCHandler{
+public class JoinRoom extends RPCHandler{
 	
-	public void getSportsList(ICallBack callBack, Object...params){
+	public void getPreviousCode(ICallBack callBack, Object...params){
 		setCallBack(callBack);
 		
 		setControllerName("app_xstream_banter/");
-		setMethod("get_all_sports");
+		setMethod("join_chat_room");
 		
 		setParams(params);
 		setReturnType(RPCReturnType.JSON_OBJECT);

@@ -158,36 +158,36 @@
             android:theme="@style/CustomActionBarTheme"></activity>
         
         <!-- <activity android:name="com.sportzweb.xtreambanter.SportsActivity"
-            android:label="@string/title_activity_news_app"
+            android:label="@string/title_activity_xstream_banter"
             android:theme="@style/CustomActionBarTheme"></activity> -->
         
-        <activity android:name="com.sportzweb.xtreambanter.TournamentActivity"
-            android:label="@string/title_activity_news_app"
+        <activity android:name="com.sonuto.applications.xstreambanter.TournamentActivity"
+            android:label="@string/title_activity_xstream_banter"
             android:theme="@style/CustomActionBarTheme">
         </activity>
         
-        <activity android:name="com.sportzweb.xtreambanter.CreateChatRoom"
-            android:label="@string/title_activity_news_app"
+        <activity android:name="com.sonuto.applications.xstreambanter.CreateChatRoom"
+            android:label="@string/title_activity_xstream_banter"
             android:theme="@style/CustomActionBarTheme">
         </activity>
         
-		<activity android:name="com.sportzweb.xtreambanter.JoinChatRoom"
-            android:label="@string/title_activity_news_app"
+		<activity android:name="com.sonuto.applications.xstreambanter.JoinChatRoom"
+            android:label="@string/title_activity_xstream_banter"
             android:theme="@style/CustomActionBarTheme">
         </activity>
         
-		<activity android:name="com.sportzweb.xtreambanter.ChatRoom"
-            android:label="@string/title_activity_news_app"
+		<activity android:name="com.sonuto.applications.xstreambanter.ChatRooms"
+            android:label="@string/title_activity_xstream_banter"
             android:theme="@style/CustomActionBarTheme">
         </activity>
 		
-		<activity android:name="com.sportzweb.xtreambanter.MatchesActivity"
-            android:label="@string/title_activity_news_app"
+		<activity android:name="com.sonuto.applications.xstreambanter.MatchesActivity"
+            android:label="@string/title_activity_xstream_banter"
             android:theme="@style/CustomActionBarTheme">
         </activity>
         
-		<activity android:name="com.sportzweb.xtreambanter.MatchActivity"
-            android:label="@string/title_activity_news_app"
+		<activity android:name="com.sonuto.applications.xstreambanter.MatchActivity"
+            android:label="@string/title_activity_xstream_banter"
             android:theme="@style/CustomActionBarTheme">
         </activity>
         

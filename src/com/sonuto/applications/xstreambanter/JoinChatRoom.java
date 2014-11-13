@@ -1,9 +1,6 @@
-package com.sportzweb.xtreambanter;
+package com.sonuto.applications.xstreambanter;
 import java.util.ArrayList;
-import java.util.Arrays;
-
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
@@ -13,16 +10,15 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
+import com.sonuto.rpc.AppXstreamBanter;
 import com.sonuto.rpc.ICallBack;
-import com.sonuto.rpc.register.JoinRoom;
-import com.sonuto.rpc.register.Matches;
 import com.sonuto.session.ISessionManager;
 import com.sonuto.session.SessionManager;
 import com.sportzweb.R;
+import com.sportzweb.JSONObjectModel.ChatRoom;
 import com.sportzweb.JSONObjectModel.Match;
 
 public class JoinChatRoom extends Activity{
@@ -36,22 +32,22 @@ public class JoinChatRoom extends Activity{
 	String matchAsJsonString;
 	String tournamentAsJsonString;
 	ListView previousCodes;
-	Spinner teamSelect;
+	//Spinner teamSelect;
 	ISessionManager session;
-	
+	ArrayList<ChatRoom> roomList = new ArrayList<ChatRoom>();
 	
 	ArrayList<String> teams;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_xtream_banter_join_chat_room);
-		String userId;
+		int userId;
 		try{
 			session = new SessionManager(getApplicationContext());
-			userId = Integer.toString(session.getUserId());
+			userId = session.getUserId();
 		}
 		catch(NullPointerException nullEx){
-			userId = "4";
+			userId = 4;
 		}
 		gS = new Gson();
 		
@@ -61,7 +57,7 @@ public class JoinChatRoom extends Activity{
 		tournamentAsJsonString = getIntent().getStringExtra("selectedTournament");
 		
 		generatedCode = (TextView)findViewById(R.id.genCode);
-		teamSelect = (Spinner)findViewById(R.id.spinner_teams);
+		//teamSelect = (Spinner)findViewById(R.id.spinner_teams);
 		enterChatRoom = (Button)findViewById(R.id.btnenterChatRoom);
 		oldCode = (TextView)findViewById(R.id.oldCode);
 		previousCodes = (ListView)findViewById(R.id.previousCodelist);
@@ -73,35 +69,36 @@ public class JoinChatRoom extends Activity{
 		teams.add(match.getTeam1_title());
 		teams.add(match.getTeam2_title());
 		
-		String[] inputs = new String[] {"match_id:"+Integer.toString(match.getMatch_id()), "user_id:"+userId};
-		JSONArray jsonArray = new JSONArray(Arrays.asList(inputs));
-		System.out.println(jsonArray.toString());
-		JoinRoom joinRoom = new JoinRoom();
-		 JSONObject jsonObject = new JSONObject();
-		 joinRoom.getPreviousCode(new ICallBack() {
-				@Override
-				public void callBackResultHandler(final Object object) {
-					JSONObject jsonObject = (JSONObject) object;
-					System.out.println(jsonObject.toString());
+		new AppXstreamBanter().joinChatRoom(new ICallBack() {
+			@Override
+			public void callBackResultHandler(final Object object) {
+				JSONObject jsonObject = (JSONObject) object;
+				JSONArray jsonRoomList;
+				try {
+					jsonRoomList = jsonObject.getJSONArray("previous_chat_rooms");
+					
+					Gson gson = new Gson();
+					int total_rooms = jsonRoomList.length();
+					for (int i = 0; i < total_rooms; i++) {
+						ChatRoom room = gson.fromJson(jsonRoomList.get(i).toString(), ChatRoom.class);
+						roomList.add(room);
+					}					
+					ArrayAdapter<ChatRoom> chatRoomAdapter = new ArrayAdapter<ChatRoom>(JoinChatRoom.this,android.R.layout.simple_list_item_1, roomList);
+					previousCodes.setAdapter(chatRoomAdapter);
+				}catch(Exception ex){
+					ex.printStackTrace();
 				}
-
-				@Override
-				public void callBackErrorHandler(Object object) {
-					// TODO Auto-generated method stub
-					System.out.println(object);
-				}
-			}, jsonArray.toString());
+			}
+			@Override
+			public void callBackErrorHandler(Object object) {
+				System.out.println(object);
+			}
+		},match.getMatch_id(), userId);
 		
-		ArrayAdapter<String> teamAdapter = new ArrayAdapter<String>(JoinChatRoom.this,android.R.layout.simple_list_item_1, teams);
-		// bind adapter and view
-		teamSelect.setAdapter(teamAdapter);
-		//getAndSetLiistInSpinner();
 		enterChatRoom.setOnClickListener(new View.OnClickListener() {
-
 			@Override
 			public void onClick(View v) {
-					
-	    		final Intent i = new Intent(getApplicationContext(), ChatRoom.class);
+				final Intent i = new Intent(getApplicationContext(), ChatRooms.class);
 	    		i.putExtra("selectedMatch",matchAsJsonString);		    		
 	    		i.putExtra("selectedTournament",tournamentAsJsonString);	    		
 	    		startActivity(i);
