@@ -11,7 +11,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:orientation="vertical"
         android:paddingTop="10dp" >
 
@@ -58,14 +58,14 @@
 
        <LinearLayout
            android:layout_width="fill_parent"
-           android:layout_height="wrap_content"
+           android:layout_height="35dp"
            android:gravity="bottom|left" 
            android:orientation="horizontal" >
 
             <EditText
                 android:id="@+id/chat_edt_text"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="fill_parent"
                 android:layout_weight="1"
                 android:layout_marginRight="2dp"
                 android:background="@drawable/back"
@@ -74,7 +74,7 @@
             <Button
                 android:id="@+id/btnSendChatRoom"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="fill_parent"
                 android:layout_weight="2"
                 android:background="@drawable/button"
                 android:text="@string/button_send_chat"

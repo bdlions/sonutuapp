@@ -159,30 +159,35 @@ public class ChatRooms extends Activity{
 			@Override
 			public void callBackResultHandler(final Object object) {				
 				JSONObject jsonObject = (JSONObject) object;
-				JSONArray messagesList;
-				try {
-					messagesList = jsonObject.getJSONArray("chat_room_message_list");
-					Gson gson = new Gson();
-					int total_messages = messagesList.length();
-					for (int i = 0; i < total_messages; i++) {
-						Message message = gson.fromJson(messagesList.get(i).toString(), Message.class);
-						//messageList.add(message);
-						allMessages+=message.toString();
+				if(jsonObject != null){
+					JSONArray messagesList;
+					try {
+						
+						messagesList = jsonObject.getJSONArray("chat_room_message_list");
+						if(messagesList != null){
+							Gson gson = new Gson();
+							int total_messages = messagesList.length();
+							for (int i = 0; i < total_messages; i++) {
+								Message message = gson.fromJson(messagesList.get(i).toString(), Message.class);
+								//messageList.add(message);
+								allMessages+=message.toString();
+							}
+							
+							//ArrayAdapter<Message> matchesAdapter = new ArrayAdapter<Message>(ChatRooms.this,android.R.layout.simple_list_item_1, messageList);
+							messageHistory.setText(allMessages);
+							messageHistory.setMovementMethod(new ScrollingMovementMethod());
+						}
+					
+					} catch (JSONException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
 					}
-					
-					//ArrayAdapter<Message> matchesAdapter = new ArrayAdapter<Message>(ChatRooms.this,android.R.layout.simple_list_item_1, messageList);
-					messageHistory.setText(allMessages);
-					messageHistory.setMovementMethod(new ScrollingMovementMethod());
-				
-				} catch (JSONException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				Iterator iter = jsonObject.keys();
-				while (iter.hasNext()) {
-					String key = (String) iter.next();
-					System.out.println(key);
-					
+					Iterator iter = jsonObject.keys();
+					while (iter.hasNext()) {
+						String key = (String) iter.next();
+						System.out.println(key);
+						
+					}
 				}
 			}
 

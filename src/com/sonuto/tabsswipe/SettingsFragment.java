@@ -14,9 +14,6 @@ import com.sportzweb.BusinessRegistrationActivity;
 import com.sportzweb.LoginActivity;
 import com.sportzweb.R;
 
-
-
-
 import com.sportzweb.UserProfileActivity;
 
 import android.content.Intent;
@@ -35,10 +32,8 @@ import android.widget.TextView;
 
 public class SettingsFragment extends Fragment {
 
-
 	SessionManager manager;
-	String[] values = new String[] { "Create Business Profile",
-			"Account Settings", "Profile Settings", "Log out" };
+	String[] values = new String[]{"Create Business Profile", "Account Settings", "Profile Settings", "Log out"};
 	ListView lv;
 	ImageView userImage;
 	ISessionManager session;
@@ -46,15 +41,14 @@ public class SettingsFragment extends Fragment {
 	TextView userProfileNameTxt;
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.fragment_settings, container, false);
 		session = new SessionManager(getActivity().getApplicationContext());
-		
+
 		userProfileNameTxt = (TextView) v.findViewById(R.id.userProfileNameTxt);
 		userImage = (ImageView) v.findViewById(R.id.userImage);
 		userImage.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View arg0) {
 				Intent i = new Intent(getActivity(), UserProfileActivity.class);
@@ -62,12 +56,12 @@ public class SettingsFragment extends Fragment {
 				startActivity(i);
 			}
 		});
-		
+
 		imageLoader = new ImageLoader(getActivity());
 		User user = new User();
-		
+
 		user.userProfile(new ICallBack() {
-			
+
 			@Override
 			public void callBackResultHandler(Object object) {
 				JSONObject jsonUserObj = (JSONObject) object;
@@ -96,29 +90,29 @@ public class SettingsFragment extends Fragment {
 			@Override
 			public void callBackErrorHandler(Object object) {
 				// TODO Auto-generated method stub
-				
+
 			}
 		}, session.getUserId());
-		
-		
+
 		lv = (ListView) v.findViewById(R.id.listViewSettings);
 		perform(v);
 		manager = new SessionManager(getActivity());
 		// when session active
-		/*if(manager.getUsersBusinessProfileId() > 0){
-			values[0] = manager.getUsersBusinessProfileName();
-		}*/
-		
+		/*
+		 * if(manager.getUsersBusinessProfileId() > 0){ values[0] =
+		 * manager.getUsersBusinessProfileName(); }
+		 */
+
 		lv.setOnItemClickListener(new OnItemClickListener() {
 			@Override
-			public void onItemClick(AdapterView<?> arg0, View arg1,int position, long arg3) {
+			public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
 				String category = values[position];
-				if(position == 0) {
+				if (position == 0) {
 					Intent intent = new Intent(getActivity(), BusinessRegistrationActivity.class);
 					startActivity(intent);
 				}
-				else if(position == 3) {
-					if(manager.logoutUser()){
+				else if (position == 3) {
+					if (manager.logoutUser()) {
 						Intent intent = new Intent(getActivity(), LoginActivity.class);
 						startActivity(intent);
 					}
@@ -131,8 +125,7 @@ public class SettingsFragment extends Fragment {
 	}
 
 	public void perform(View v) {
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
-				android.R.layout.simple_list_item_1, values);
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, values);
 		lv.setAdapter(adapter);
 
 	}
