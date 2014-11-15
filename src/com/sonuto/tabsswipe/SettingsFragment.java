@@ -13,7 +13,6 @@ import com.sonuto.session.SessionManager;
 import com.sportzweb.BusinessRegistrationActivity;
 import com.sportzweb.LoginActivity;
 import com.sportzweb.R;
-
 import com.sportzweb.UserProfileActivity;
 
 import android.content.Intent;
@@ -27,6 +26,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -47,7 +47,8 @@ public class SettingsFragment extends Fragment {
 
 		userProfileNameTxt = (TextView) v.findViewById(R.id.userProfileNameTxt);
 		userImage = (ImageView) v.findViewById(R.id.userImage);
-		userImage.setOnClickListener(new OnClickListener() {
+		LinearLayout linearLayoutUserProfile = (LinearLayout) v.findViewById(R.id.linearLayoutUserProfile);
+		linearLayoutUserProfile.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View arg0) {
