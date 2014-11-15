@@ -1,6 +1,7 @@
 package com.sportzweb;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -13,6 +14,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -35,7 +37,7 @@ import com.sportzweb.JSONObjectModel.ServiceCategory;
 import com.sportzweb.JSONObjectModel.ServiceItem;
 
 
-public class ServiceDirectoryActivity extends Fragment{
+public class ServiceDirectoryActivity extends Fragment {
 	// process dialer
 	ProgressDialog pDialog;
 	View rootView;
@@ -45,6 +47,7 @@ public class ServiceDirectoryActivity extends Fragment{
 	String city_or_postcode = "London";
 	EditText servieDirectoryEdtTxt;
 	TextView serviceSearchHeading;
+	List<Integer> selectedItems = new ArrayList<Integer>();
 	
 	ListView serviceCategoryListView,serviceDirectoryResultList;
 	private ArrayList<ServiceCategory> serviceCategoryItem = new ArrayList<ServiceCategory>();
@@ -82,6 +85,7 @@ public class ServiceDirectoryActivity extends Fragment{
 					if (getFragmentManager().findFragmentById(R.id.serviceCategoryListFragmentLayout) == null) {
 						
 						ServiceCategoryArrayListFragment sList = new ServiceCategoryArrayListFragment();
+						sList.setParentFragment(ServiceDirectoryActivity.this);
 			            sList.setServiceCategoryItem(serviceCategoryItem);
 			            FragmentManager fm = getFragmentManager();
 					    FragmentTransaction ft = fm.beginTransaction();
@@ -99,9 +103,8 @@ public class ServiceDirectoryActivity extends Fragment{
 						ServiceItem serviceItem = gson.fromJson(service_list.get(i).toString(), ServiceItem.class);
 						serviceResultItem.add(serviceItem);
 					}
+					setValueToServiceDirectoryResultList(serviceResultItem);
 					
-					ServiceItemCustomAdapter serviceResultAdapter = new ServiceItemCustomAdapter(getActivity(), serviceResultItem);
-					serviceDirectoryResultList.setAdapter(serviceResultAdapter);
 					
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
@@ -111,6 +114,11 @@ public class ServiceDirectoryActivity extends Fragment{
 				
 			}
 			
+			private void setValueToServiceDirectoryResultList(ArrayList<ServiceItem> serviceResultItem) {
+				ServiceItemCustomAdapter serviceResultAdapter = new ServiceItemCustomAdapter(getActivity(), serviceResultItem);
+				serviceDirectoryResultList.setAdapter(serviceResultAdapter);				
+			}
+
 			@Override
 			public void callBackErrorHandler(Object object) {
 				
@@ -125,7 +133,7 @@ public class ServiceDirectoryActivity extends Fragment{
 		sd_result_list_setp = (FrameLayout) rootView.findViewById(R.id.service_directory_result_list_setp);
 		
 		//ListView
-		serviceCategoryListView = (ListView) rootView.findViewById(R.id.serviceCategoryListview);
+		//serviceCategoryListView = (ListView) rootView.findViewById(R.id.serviceCategoryListview);
 		serviceDirectoryResultList = (ListView) rootView.findViewById(R.id.serviceDirectoryResultList);
 		
 		//button
@@ -143,8 +151,7 @@ public class ServiceDirectoryActivity extends Fragment{
             		serviceSearchHeading.setText("Service Near : " + servieDirectoryEdtTxt.getText());
             		sd_result_list_setp.setVisibility(View.VISIBLE);
             		sd_postcode_setp.setVisibility(View.GONE);
-        		}
-            	
+        		}            	
             }
         });
 		
@@ -160,12 +167,23 @@ public class ServiceDirectoryActivity extends Fragment{
         });
 		
 		
+		
 		btnSDCategorySelect.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
             	if(isVerifiedCityPostcodeStep()) {
+            		ArrayList<ServiceItem> serviceItems = new ArrayList<ServiceItem>();
+            		for(Integer i:selectedItems){
+	        			for(ServiceItem serviceItem: serviceResultItem){
+	        				if(i==serviceItem.getService_category_id()){
+	        					serviceItems.add(serviceItem);
+	        				}
+	        			}
+            		}
+            		setValueToServiceDirectoryResultList(serviceItems);
             		serviceSearchHeading.setText("");
             		sd_result_list_setp.setVisibility(View.VISIBLE);
             		sd_category_setp.setVisibility(View.GONE);
+            		
         		}
             	
             }
@@ -177,6 +195,11 @@ public class ServiceDirectoryActivity extends Fragment{
 	    actionBar.show();
 	    actionBar.setDisplayHomeAsUpEnabled(true);
 		return rootView;
+	}
+	
+	private void setValueToServiceDirectoryResultList(ArrayList<ServiceItem> serviceResultItem) {
+		ServiceItemCustomAdapter serviceResultAdapter = new ServiceItemCustomAdapter(getActivity(), serviceResultItem);
+		serviceDirectoryResultList.setAdapter(serviceResultAdapter);				
 	}
 	
 	/**
@@ -191,6 +214,23 @@ public class ServiceDirectoryActivity extends Fragment{
 		} else {
 			return true;
 		}
+	}
+
+	/*@Override
+	public void someEvent(int s) {
+		Log.i("FragmentList", "Item clicked: plus something " + s);
+		
+	}*/
+
+	public void addItemsToList(int categoryId) {
+		if(selectedItems.contains(categoryId)){
+			Integer integer = categoryId;
+			selectedItems.remove(integer);			
+		}
+		else
+			selectedItems.add(categoryId);
+		Log.i("FragmentList", "Item clicked: "+categoryId);
+		
 	}
 
 }

@@ -51,42 +51,48 @@
 
         <FrameLayout
             android:id="@+id/service_directory_category_setp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
             android:visibility="invisible" >
-
+			
+			<ScrollView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical"
+                android:padding="10dip" >
+            
             <LinearLayout
                 android:id="@+id/service_details_ll"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
                 android:orientation="vertical"
                 android:padding="10dip" >
 
-                <ListView
+                <!-- <ListView
                     android:id="@+id/serviceCategoryListview"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content" >
-                </ListView>
-
+                </ListView> -->
             
-            <LinearLayout
-                android:id="@+id/serviceCategoryListFragmentLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="10dip" >
+	            <LinearLayout
+	                android:id="@+id/serviceCategoryListFragmentLayout"
+	                android:layout_width="fill_parent"
+	                android:layout_height="500dp"
+	                android:orientation="vertical"
+	                android:padding="10dip" >
+	            </LinearLayout>
+	                
+	
+	            <Button
+	                android:id="@+id/btnSDCategorySelect"
+	                android:layout_width="fill_parent"
+	                android:layout_height="wrap_content"
+	                android:layout_marginBottom="10dip"
+	                android:layout_marginTop="20dip"
+	                android:background="@drawable/button"
+	                android:text="@string/button_search" />
             </LinearLayout>
-                
-
-                <Button
-                    android:id="@+id/btnSDCategorySelect"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dip"
-                    android:layout_marginTop="20dip"
-                    android:background="@drawable/button"
-                    android:text="@string/button_search" />
-            </LinearLayout>
+            </ScrollView>
         </FrameLayout>
 
         <FrameLayout
@@ -104,7 +110,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="horizontal" >
 
                     <TextView
@@ -125,14 +131,16 @@
                         android:layout_weight="0.98"
                         android:background="@drawable/right_arrow"
                         android:text="@string/EmptyString" />
-
+                    
                 </LinearLayout>
-
+                
                 <ListView
-                    android:id="@+id/serviceDirectoryResultList"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent" >
+	                    android:id="@+id/serviceDirectoryResultList"
+	                    android:layout_width="fill_parent"
+                    	android:layout_height="fill_parent" >
                 </ListView>
+
+                
             </LinearLayout>
         </FrameLayout>
     </FrameLayout>

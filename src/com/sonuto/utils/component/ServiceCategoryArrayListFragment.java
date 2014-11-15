@@ -2,8 +2,11 @@ package com.sonuto.utils.component;
 
 import java.util.ArrayList;
 
+import com.sonuto.rpc.ICallBack;
+import com.sportzweb.ServiceDirectoryActivity;
 import com.sportzweb.JSONObjectModel.ServiceCategory;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,8 +14,9 @@ import android.widget.AbsListView;
 import android.widget.ListView;
 import android.support.v4.app.ListFragment;
 
-public class ServiceCategoryArrayListFragment extends ListFragment {
-
+public class ServiceCategoryArrayListFragment extends ListFragment{
+	
+	ServiceDirectoryActivity serviceDirectory;
 	private ArrayList<ServiceCategory> serviceCategoryItem;
 
 	public ArrayList<ServiceCategory> getServiceCategoryItem() {
@@ -33,10 +37,20 @@ public class ServiceCategoryArrayListFragment extends ListFragment {
 
 	@Override
 	public void onListItemClick(ListView l, View v, int position, long id) {
-		Log.i("FragmentList", "Item clicked: " + id);
+		int categoryId = this.serviceCategoryItem.get(position).getId();
+		serviceDirectory.addItemsToList(categoryId);		
+		//someEventListener.someEvent(position);
 	}
 
 	public void setServiceCategoryItem(ArrayList<ServiceCategory> serviceCategoryItem) {
 		this.serviceCategoryItem = serviceCategoryItem;
 	}
+
+	public void setParentFragment(ServiceDirectoryActivity serviceDirectoryActivity) {
+		this.serviceDirectory = serviceDirectoryActivity;
+		// TODO Auto-generated method stub
+		
+	}
+
+	
 }
