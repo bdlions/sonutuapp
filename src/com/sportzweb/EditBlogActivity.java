@@ -34,6 +34,10 @@ import com.sonuto.utils.component.ArrayListFragment;
 import com.sportzweb.JSONObjectModel.BlogCategory;
 
 
+
+
+
+
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -43,6 +47,8 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.provider.MediaStore.MediaColumns;
+import android.util.SparseBooleanArray;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.FrameLayout;
@@ -62,7 +68,10 @@ public class EditBlogActivity extends Activity {
 	private String imagepath = null;
 	ImageView blogImageView;
 	public ImageLoader imageLoader;
+	ArrayListFragment list;
+	SessionManager session;
 	
+	ArrayList<Integer> selectedItem = new ArrayList<Integer>();
 	private ArrayList<BlogCategory> blogCategoryItem = new ArrayList<BlogCategory>();
 	
 	@Override
@@ -70,6 +79,7 @@ public class EditBlogActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_edit_blog);
 		mContext = this;
+		session = new SessionManager(mContext);
 		imageLoader = new ImageLoader(mContext);
 		
 		Intent i = getIntent();
@@ -109,25 +119,37 @@ public class EditBlogActivity extends Activity {
 					Gson gson = new Gson();
 					
 					JSONObject blogDetails = blogDetaisJSONObject.getJSONObject("blog_info");
-					//JSONObject blogCategoryIdList = blogDetails.getJSONArray("category_id_list");
 					
+					//JSONObject blogCategoryIdList = blogDetails.getJSONArray("category_id_list");
 					//blogCategory.setText(blog_category_title);
 					//blogCategory.setTextColor(Color.parseColor("#00ACEA"));
 					
 					JSONArray blogCategoryListArray = blogDetails.getJSONArray("blog_category_list");
+					JSONArray selectedBlogCategoryListArray = blogDetails.getJSONArray("selected_blog_category_list");
 					
 					int total_item = blogCategoryListArray.length();
+					
 					for(int i=0;i<total_item;i++) {
 						BlogCategory item = gson.fromJson(blogCategoryListArray.get(i).toString(), BlogCategory.class);
+						
+						int total_selected_item = selectedBlogCategoryListArray.length();
+						for(int j=0;j<total_selected_item;j++) {
+							BlogCategory selectedItem = gson.fromJson(selectedBlogCategoryListArray.get(j).toString(), BlogCategory.class);
+							if(selectedItem.getId() == item.getId() ) {
+								item.setSelected(true);
+							}
+						}
 						blogCategoryItem.add(item);
+						
 					}
 					
 					//BlogCategoryCustomAdapter adapter = new BlogCategoryCustomAdapter(EditBlogActivity.this, blogCategoryItem);
 					//blogCategoryListView.setAdapter(adapter);
 					
 					if (getFragmentManager().findFragmentById(R.id.categoryEditListFragmentLayout) == null) {
-			            ArrayListFragment list = new ArrayListFragment();
+			            list = new ArrayListFragment();
 			            list.setBlogCategoryItem(blogCategoryItem);
+			            
 			            getFragmentManager().beginTransaction().add(R.id.categoryEditListFragmentLayout, list).commit();
 			        }
 					
@@ -162,8 +184,25 @@ public class EditBlogActivity extends Activity {
 	 * @param view
 	 */
 	public void editBlogCategorySelectionStep(View view) {
-		bedit_title_step_layout.setVisibility(View.VISIBLE);
-		bcategory_selection_step_layout.setVisibility(View.GONE);
+		
+		SparseBooleanArray checked = list.getListView().getCheckedItemPositions();
+		int len = checked.size();
+		for (int i = 0; i < len; i++) {
+			int pos = checked.keyAt(i);
+			BlogCategory bc = (BlogCategory) list.getListView().getItemAtPosition(pos);
+			int blogId = bc.getId();
+			selectedItem.add(blogId);
+		}
+		
+		if(selectedItem.isEmpty()) {
+			Toast.makeText(mContext, "Please select atleast one category",Toast.LENGTH_SHORT).show();
+		} else {
+			Toast.makeText(mContext, selectedItem + " ",Toast.LENGTH_SHORT).show();
+			bedit_title_step_layout.setVisibility(View.VISIBLE);
+			bcategory_selection_step_layout.setVisibility(View.GONE);
+		}
+		
+		
 		
 	}
 	
@@ -231,9 +270,9 @@ public class EditBlogActivity extends Activity {
 	}
 	
 	public String getPath(Uri uri) {
-        String[] projection = { MediaStore.Images.Media.DATA };
+        String[] projection = { MediaColumns.DATA };
         Cursor cursor = managedQuery(uri, projection, null, null, null);
-        int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+        int column_index = cursor.getColumnIndexOrThrow(MediaColumns.DATA);
         cursor.moveToFirst();
         return cursor.getString(column_index);
     }
@@ -254,11 +293,11 @@ public class EditBlogActivity extends Activity {
 		dialog = ProgressDialog.show(EditBlogActivity.this, "", "Updating blog and saving data...", true);
 		 //messageText.setText("uploading started.....");
 		 new Thread(new Runnable() {
-           public void run() {  
+           @Override
+		public void run() {  
           	 try {
           		 uploadFile(imagepath);
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
                                         
@@ -286,16 +325,12 @@ public class EditBlogActivity extends Activity {
 
 				builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
 				builder.addPart("userfile", inputStreamBody);
-				//int[] blogCategoryArray = new int[] {4,5,6,7,8};
-//				ArrayList<integer> blogCategoryArray = new ArrayList<>();
-//				blogCategoryArray.add(3, null);
-//				blogCategoryArray.add(5, null);
 				
-				//SessionManager manager = new SessionManager(getApplicationContext());
+				int userId = session.getUserId();
+				JSONArray collection = new JSONArray(selectedItem);
 				
-				builder.addPart("name", new StringBody("Test", ContentType.TEXT_PLAIN));
-				//builder.addPart("blog_category_list", );
-				builder.addPart("user_id", new StringBody(Integer.toString(69), ContentType.TEXT_PLAIN));
+				builder.addPart("blog_category_list", new StringBody(collection.toString(), ContentType.TEXT_PLAIN));
+				builder.addPart("user_id", new StringBody(Integer.toString(userId), ContentType.TEXT_PLAIN));
 				builder.addPart("title", new StringBody(blogTitle.getText().toString(), ContentType.TEXT_PLAIN));
 				builder.addPart("description", new StringBody(blogMainText.getText().toString(), ContentType.TEXT_PLAIN));
 				
@@ -315,6 +350,7 @@ public class EditBlogActivity extends Activity {
 				final String msg = (jsonobject.getString("message"));
 				
 				runOnUiThread(new Runnable() {
+					@Override
 					public void run() {
 						//messageText.setText(msg);
 						TextView textViewMessage = (TextView)findViewById(R.id.textViewMsg);

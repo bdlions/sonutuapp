@@ -8,11 +8,11 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="." >
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="10dip" >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dip" >
 
         <TextView
             android:layout_width="fill_parent"
@@ -23,16 +23,15 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-             >
+            android:layout_height="wrap_content" >
 
             <Button
                 android:id="@+id/btnMale"
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginRight="10dip"
+                android:layout_weight="1"
                 android:text="@string/bmi_male_btn" />
 
             <Button
@@ -43,7 +42,6 @@
                 android:layout_weight="1"
                 android:paddingLeft="20dp"
                 android:text="@string/bmi_female_btn" />
-
         </LinearLayout>
 
         <TextView
@@ -63,8 +61,8 @@
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginRight="10dip"
+                android:layout_weight="1"
                 android:text="@string/bmi_metric_btn" />
 
             <Button
@@ -125,7 +123,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-             android:layout_marginTop="10dip" >
+            android:layout_marginTop="10dip" >
 
             <TextView
                 android:id="@+id/yourBmiCategoryLabel"
@@ -141,16 +139,58 @@
                 android:text="@string/EmptyString"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
         </LinearLayout>
-        
 
-        <!--<Button
-            android:id="@+id/btnCalculate"
-            android:layout_width="fill_parent"
+        <LinearLayout
+            android:id="@+id/bmi_question_ll"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/button"
-            android:layout_marginTop="10dip"
-            android:text="@string/bmi_calculate_btn"
-            android:textColor="#fff1ff" />-->
+            android:orientation="vertical"
+            android:paddingTop="10dp" >
 
-</LinearLayout>
+            <!--<TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dip"
+                android:layout_marginTop="10dip"
+                android:text="What does BMI mean?"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#33CC00" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dip"
+                android:text="15 October 2014 gdfg fdgdf gdfg dfg dfg dfgfdg fd"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dip"
+                android:text="15 October 2014"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#33CC00" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dip"
+                android:layout_marginTop="10dip"
+                android:text="sdfsd sdfsd sdf sd sdf sdf sfds fg hfjfgt ewfsdf sdesrf"
+                android:textAppearance="?android:attr/textAppearanceSmall" />-->
+
+            <!--
+            <Button
+                android:id="@+id/btnenterChatRoom"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button"
+                android:gravity="center"
+                android:text="@string/button_back"
+                android:textSize="20sp" />
+            -->
+
+        </LinearLayout>
+    </LinearLayout>
+
 </ScrollView>

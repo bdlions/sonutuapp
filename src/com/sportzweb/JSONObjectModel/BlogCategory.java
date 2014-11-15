@@ -3,6 +3,14 @@ package com.sportzweb.JSONObjectModel;
 public class BlogCategory {
 	private int id;
 	private String title;
+	private boolean isSelected = false;
+	
+	public boolean isSelected() {
+		return isSelected;
+	}
+	public void setSelected(boolean isSelected) {
+		this.isSelected = isSelected;
+	}
 	public int getId() {
 		return id;
 	}

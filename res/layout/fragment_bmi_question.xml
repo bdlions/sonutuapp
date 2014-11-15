@@ -8,62 +8,62 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="." >
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingTop="10dp" >
+<!--     <LinearLayout -->
+<!--         android:layout_width="match_parent" -->
+<!--         android:layout_height="wrap_content" -->
+<!--         android:orientation="vertical" -->
+<!--         android:paddingTop="10dp" > -->
         
         
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dip"
-            android:layout_marginTop="10dip"
-            android:gravity="center"
-            android:textColor="#33CC00"
-            android:text="What does BMI mean?"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-             />
+<!--         <TextView -->
+<!--             android:layout_width="fill_parent" -->
+<!--             android:layout_height="wrap_content" -->
+<!--             android:layout_marginBottom="10dip" -->
+<!--             android:layout_marginTop="10dip" -->
+<!--             android:gravity="center" -->
+<!--             android:textColor="#33CC00" -->
+<!--             android:text="What does BMI mean?" -->
+<!--             android:textAppearance="?android:attr/textAppearanceMedium" -->
+<!--              /> -->
         
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dip"
-            android:gravity="center"
-            android:text="15 October 2014 gdfg fdgdf gdfg dfg dfg dfgfdg fd"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-             />
+<!--         <TextView -->
+<!--             android:layout_width="fill_parent" -->
+<!--             android:layout_height="wrap_content" -->
+<!--             android:layout_marginTop="10dip" -->
+<!--             android:gravity="center" -->
+<!--             android:text="15 October 2014 gdfg fdgdf gdfg dfg dfg dfgfdg fd" -->
+<!--             android:textAppearance="?android:attr/textAppearanceSmall" -->
+<!--              /> -->
         
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dip"
-            android:gravity="center"
-            android:textColor="#33CC00"
-            android:text="15 October 2014"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-             />
+<!--         <TextView -->
+<!--             android:layout_width="fill_parent" -->
+<!--             android:layout_height="wrap_content" -->
+<!--             android:layout_marginTop="20dip" -->
+<!--             android:gravity="center" -->
+<!--             android:textColor="#33CC00" -->
+<!--             android:text="15 October 2014" -->
+<!--             android:textAppearance="?android:attr/textAppearanceMedium" -->
+<!--              /> -->
         
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="15dip"
-            android:layout_marginTop="10dip"
-            android:gravity="center"
-            android:text="sdfsd sdfsd sdf sd sdf sdf sfds fg hfjfgt ewfsdf sdesrf"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-             />
+<!--         <TextView -->
+<!--             android:layout_width="fill_parent" -->
+<!--             android:layout_height="wrap_content" -->
+<!--             android:layout_marginBottom="15dip" -->
+<!--             android:layout_marginTop="10dip" -->
+<!--             android:gravity="center" -->
+<!--             android:text="sdfsd sdfsd sdf sd sdf sdf sfds fg hfjfgt ewfsdf sdesrf" -->
+<!--             android:textAppearance="?android:attr/textAppearanceSmall" -->
+<!--              /> -->
         
-        <Button
-                android:id="@+id/btnenterChatRoom"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/button"
-                android:gravity="center"
-                android:text="@string/button_back"
-                android:textSize="20sp" />
+<!--         <Button -->
+<!--                 android:id="@+id/btnenterChatRoom" -->
+<!--                 android:layout_width="fill_parent" -->
+<!--                 android:layout_height="wrap_content" -->
+<!--                 android:background="@drawable/button" -->
+<!--                 android:gravity="center" -->
+<!--                 android:text="@string/button_back" -->
+<!--                 android:textSize="20sp" /> -->
         
-    </LinearLayout>
+<!--     </LinearLayout> -->
 
 </ScrollView>

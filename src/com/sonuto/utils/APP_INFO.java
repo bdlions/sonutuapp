@@ -3,11 +3,10 @@ package com.sonuto.utils;
 import android.support.v4.app.Fragment;
 
 import com.sonuto.applications.xstreambanter.SportsActivity;
-import com.sonuto.tabsswipe.*;
 import com.sportzweb.*;
 
 public enum APP_INFO {
-	BMI_CALC("BMI Calculator", new BmiCalculatorFragment()), 
+	BMI_CALC("BMI Calculator", new BmiCalculatorActivity()), 
 	HEALTHY_RECIPE("Healthy Recipe", new HealthyRecipeAppActivity()),
 	NEWS("News", new NewsAppActivity()),
 	SERVICE_DIRECTORY("Service Directory", new ServiceDirectoryActivity()),

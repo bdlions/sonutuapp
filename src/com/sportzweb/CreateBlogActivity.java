@@ -8,6 +8,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
+import javax.net.ssl.ManagerFactoryParameters;
+
 import org.apache.commons.io.IOUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -28,8 +30,17 @@ import com.google.gson.Gson;
 import com.sonuto.Config;
 import com.sonuto.rpc.ICallBack;
 import com.sonuto.rpc.register.BlogsApp;
+import com.sonuto.session.SessionManager;
 import com.sonuto.utils.component.ArrayListFragment;
 import com.sportzweb.JSONObjectModel.BlogCategory;
+
+
+
+
+
+
+
+
 
 
 import android.app.Activity;
@@ -41,10 +52,14 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.SparseBooleanArray;
 import android.view.View;
+import android.widget.CheckedTextView;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -55,9 +70,13 @@ public class CreateBlogActivity extends Activity {
 			bcreate_main_step_layout, bcreate_add_pic_step_layout;
 	// process dialer
 	ProgressDialog pDialog,dialog;
-	//ListView blogCategoryListView;
+	LinearLayout categoryListFragmentLayout;
 	EditText blogTitle,blogMainText;
 	private String imagepath = null;
+	CheckedTextView category_checkBox;
+	ArrayListFragment list;
+	ArrayList<Integer> selectedItem = new ArrayList<Integer>();
+	SessionManager session;
 	
 	private ArrayList<BlogCategory> blogCategoryItem = new ArrayList<BlogCategory>();
 	
@@ -66,6 +85,7 @@ public class CreateBlogActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_create_blog);
 		mContext = this;
+		session = new SessionManager(mContext);
 		initUi();
 	}
 	
@@ -93,7 +113,7 @@ public class CreateBlogActivity extends Activity {
 		bcreate_title_step_layout = (FrameLayout) findViewById(R.id.create_blog_box2);
 		bcreate_main_step_layout = (FrameLayout) findViewById(R.id.create_blog_box3);
 		bcreate_add_pic_step_layout = (FrameLayout) findViewById(R.id.create_blog_box4);
-		//blogCategoryListView = (ListView) findViewById(R.id.blogCategoryListview);
+		categoryListFragmentLayout = (LinearLayout) findViewById(R.id.categoryListFragmentLayout);
 		
 		blogTitle = (EditText) findViewById(R.id.blogTitleEdtTxt);
 		blogMainText = (EditText) findViewById(R.id.blogMainTextEdtTxt);
@@ -121,7 +141,7 @@ public class CreateBlogActivity extends Activity {
 						blogCategoryItem.add(item);
 					}
 					if (getFragmentManager().findFragmentById(R.id.categoryListFragmentLayout) == null) {
-			            ArrayListFragment list = new ArrayListFragment();
+			            list = new ArrayListFragment();
 			            list.setBlogCategoryItem(blogCategoryItem);
 			            getFragmentManager().beginTransaction().add(R.id.categoryListFragmentLayout, list).commit();
 			        }
@@ -145,8 +165,23 @@ public class CreateBlogActivity extends Activity {
 	 * @param view
 	 */
 	public void createBlogCategorySelectionStep(View view) {
-		bcreate_title_step_layout.setVisibility(View.VISIBLE);
-		bcategory_selection_step_layout.setVisibility(View.GONE);
+		SparseBooleanArray checked = list.getListView().getCheckedItemPositions();
+		int len = checked.size();
+		for (int i = 0; i < len; i++) {
+			int pos = checked.keyAt(i);
+			BlogCategory bc = (BlogCategory) list.getListView().getItemAtPosition(pos);
+			int blogId = bc.getId();
+			selectedItem.add(blogId);
+		}
+		
+		if(selectedItem.isEmpty()) {
+			Toast.makeText(mContext, "Please select atleast one category",Toast.LENGTH_SHORT).show();
+		} else {
+			
+			Toast.makeText(mContext, selectedItem + " ",Toast.LENGTH_SHORT).show();
+			bcreate_title_step_layout.setVisibility(View.VISIBLE);
+			bcategory_selection_step_layout.setVisibility(View.GONE);
+		}
 		
 	}
 	
@@ -212,8 +247,7 @@ public class CreateBlogActivity extends Activity {
 		dialog = ProgressDialog.show(CreateBlogActivity.this, "", "Creating blog and saving data...", true);
 		 //messageText.setText("uploading started.....");
 		 new Thread(new Runnable() {
-           public void run() {             
-                //uploadFile(imagepath);
+           public void run() {
           	 try {
           		 uploadFile(imagepath);
 				} catch (Exception e) {
@@ -254,16 +288,12 @@ public class CreateBlogActivity extends Activity {
 
 				builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
 				builder.addPart("userfile", inputStreamBody);
-				//int[] blogCategoryArray = new int[] {4,5,6,7,8};
-//				ArrayList<integer> blogCategoryArray = new ArrayList<>();
-//				blogCategoryArray.add(3, null);
-//				blogCategoryArray.add(5, null);
 				
-				//SessionManager manager = new SessionManager(getApplicationContext());
+				int userId = session.getUserId();
+				JSONArray collection = new JSONArray(selectedItem);
 				
-				builder.addPart("name", new StringBody("Test", ContentType.TEXT_PLAIN));
-				//builder.addPart("blog_category_list", );
-				builder.addPart("user_id", new StringBody(Integer.toString(69), ContentType.TEXT_PLAIN));
+				builder.addPart("blog_category_list", new StringBody(collection.toString(), ContentType.TEXT_PLAIN));
+				builder.addPart("user_id", new StringBody(Integer.toString(userId), ContentType.TEXT_PLAIN));
 				builder.addPart("title", new StringBody(blogTitle.getText().toString(), ContentType.TEXT_PLAIN));
 				builder.addPart("description", new StringBody(blogMainText.getText().toString(), ContentType.TEXT_PLAIN));
 				

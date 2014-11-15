@@ -9,12 +9,15 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AbsListView;
+import android.widget.CheckedTextView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 
 public class ArrayListFragment extends ListFragment {
 
 	private ArrayList<BlogCategory> blogCategoryItem;
+	ArrayList<String> selectedItem = new ArrayList<String>();
 
 	public ArrayList<BlogCategory> getBlogCategoryItem() {
 		return this.blogCategoryItem;
@@ -29,12 +32,16 @@ public class ArrayListFragment extends ListFragment {
 
 		final BlogCategoryCustomAdapter adapter = new BlogCategoryCustomAdapter(getActivity(), this.blogCategoryItem);
 		setListAdapter(adapter);
+		
+		
 
 	}
 
 	@Override
 	public void onListItemClick(ListView l, View v, int position, long id) {
 		Log.i("FragmentList", "Item clicked: " + id);
+		CheckedTextView ctv = (CheckedTextView) v;
+		Toast.makeText(getActivity(), ctv.isSelected() + "", Toast.LENGTH_SHORT).show();
 	}
 
 	public void setBlogCategoryItem(ArrayList<BlogCategory> blogCategoryItem) {

@@ -80,7 +80,7 @@ public class MyBlogActivity extends Activity {
 								.toString(), MyBlog.class);
 
 						tbrow = new TableRow(mComtext);
-						tbrow.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT));
+						tbrow.setLayoutParams(new LayoutParams(android.view.ViewGroup.LayoutParams.FILL_PARENT, android.view.ViewGroup.LayoutParams.WRAP_CONTENT));
 						t1v = new TextView(mComtext);
 						t2v = new TextView(mComtext);
 						t3v = new TextView(mComtext);
@@ -110,6 +110,7 @@ public class MyBlogActivity extends Activity {
 						t3v.setGravity(Gravity.CENTER);
 						tbrow.addView(t3v);
 						t3v.setOnClickListener(new OnClickListener() {
+							@Override
 							public void onClick(View v) {
 								Intent i = new Intent(MyBlogActivity.this,
 										EditBlogActivity.class);
@@ -131,6 +132,7 @@ public class MyBlogActivity extends Activity {
 								alertDialog.setMessage("Are you sure about deleting this blog?");
 								alertDialog.setButton2("YES",
 										new DialogInterface.OnClickListener() {
+											@Override
 											public void onClick(DialogInterface dialog,int which) {
 												//Toast.makeText(getApplicationContext(),"well come", 1).show();
 												deleteBlog(blogId);
