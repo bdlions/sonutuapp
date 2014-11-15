@@ -41,7 +41,8 @@ public class ArrayListFragment extends ListFragment {
 	public void onListItemClick(ListView l, View v, int position, long id) {
 		Log.i("FragmentList", "Item clicked: " + id);
 		CheckedTextView ctv = (CheckedTextView) v;
-		Toast.makeText(getActivity(), ctv.isSelected() + "", Toast.LENGTH_SHORT).show();
+		BlogCategory bc = (BlogCategory)l.getItemAtPosition(position);
+		bc.setSelected(!bc.isSelected());
 	}
 
 	public void setBlogCategoryItem(ArrayList<BlogCategory> blogCategoryItem) {

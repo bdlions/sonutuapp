@@ -83,7 +83,8 @@ public class EditBlogActivity extends Activity {
 		imageLoader = new ImageLoader(mContext);
 		
 		Intent i = getIntent();
-		int blog_id = i.getIntExtra("blog_id", 0);
+		//int blog_id = i.getIntExtra("blog_id", 0);
+		int blog_id = 12;
 		// init UI and process with data
 		initUi(blog_id);
 	}
@@ -185,13 +186,12 @@ public class EditBlogActivity extends Activity {
 	 */
 	public void editBlogCategorySelectionStep(View view) {
 		
-		SparseBooleanArray checked = list.getListView().getCheckedItemPositions();
-		int len = checked.size();
+		int len = blogCategoryItem.size();
 		for (int i = 0; i < len; i++) {
-			int pos = checked.keyAt(i);
-			BlogCategory bc = (BlogCategory) list.getListView().getItemAtPosition(pos);
-			int blogId = bc.getId();
-			selectedItem.add(blogId);
+			BlogCategory bc = (BlogCategory) list.getListView().getItemAtPosition(i);
+			if(bc.isSelected()){
+				selectedItem.add(bc.getId());
+			}
 		}
 		
 		if(selectedItem.isEmpty()) {
