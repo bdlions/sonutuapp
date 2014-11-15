@@ -190,6 +190,10 @@
             android:label="@string/title_activity_xstream_banter"
             android:theme="@style/CustomActionBarTheme">
         </activity>
+        <activity android:name="com.sonuto.applications.xstreambanter.MapTeamChatRoom"
+            android:label="@string/title_activity_xstream_banter"
+            android:theme="@style/CustomActionBarTheme">
+        </activity>
         
 		<activity android:name="com.sportzweb.ServiceDetailsActivity"
             android:label="@string/title_activity_service_details"

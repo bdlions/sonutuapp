@@ -67,6 +67,16 @@ public class AppXstreamBanter extends RPCHandler{
 		setReturnType(RPCReturnType.JSON_OBJECT);
 		execute();
 	}
-
+	
+	public void enterChatRoom(ICallBack callBack, Object...params){
+		setCallBack(callBack);
+		
+		setControllerName("app_xstream_banter/");
+		setMethod("enter_chat_room");
+		
+		setParams(params);
+		setReturnType(RPCReturnType.JSON_OBJECT);
+		execute();
+	}
 }
 

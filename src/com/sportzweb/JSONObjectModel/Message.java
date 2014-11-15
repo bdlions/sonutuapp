@@ -47,7 +47,7 @@ public class Message {
 	}
 	@Override
 	public String toString() {
-		return "(" + time + ")\n" + last_name
+		return "(" + time + ")\n" + first_name+' '+last_name
 				+ "-" + team_name + ":" + message+"\n\n";
 	}
 	
