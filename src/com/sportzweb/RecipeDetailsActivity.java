@@ -1,10 +1,15 @@
 package com.sportzweb;
+
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import com.bdlions.load.image.ImageLoader;
 import com.sonuto.Config;
 import com.sonuto.rpc.ICallBack;
 import com.sonuto.rpc.register.HealthyRecipeApp;
+import com.sonuto.session.SessionManager;
+
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -19,44 +24,83 @@ import android.widget.TextView;
 
 public class RecipeDetailsActivity extends Activity {
 
-	TextView healthyRecipeCategory, recipeTitle, recipeDetail, ingrediant,preparationMethod,duration;
+	TextView healthyRecipeCategory, recipeTitle, recipeDetail, ingrediant,
+			preparationMethod, duration;
 	ImageView recipeImageView;
 	public ImageLoader imageLoader;
 	Context context;
 	// String blog_category_title;
 	// process dialer
 	ProgressDialog pDialog;
-	ImageButton btnlike,btnComment,btnShare;
+	ImageButton btnlike, btnComment, btnShare;
 	Integer recipe_id;
+	JSONArray recipeCommentsArray;
+	SessionManager session;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_healthy_recipes_details);
 		context = this;
+		session = new SessionManager(context);
 		initUI();
 		process();
 	}
-	
-public void initUI(){
-		
-		//ImageButton intitialize
-		btnlike = (ImageButton) findViewById(R.id.btnLikeReipe);
+
+	public void initUI() {
+
+		// ImageButton intitialize
+		// btnlike = (ImageButton) findViewById(R.id.btnLikeReipe);
 		btnComment = (ImageButton) findViewById(R.id.btnCommentReipe);
-		btnComment.setOnClickListener(new OnClickListener(){
+		btnComment.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View arg0) {
-				
-				Intent i =  new Intent(context, RecipeCommentsActivity.class);
+
+				Intent i = new Intent(context, RecipeCommentsActivity.class);
 				i.putExtra("recipe_id", recipe_id);
+				i.putExtra("comments", recipeCommentsArray.toString());
 				startActivity(i);
-				
+
 			}
-			
+
 		});
 		
 		
+		btnShare.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+
+				JSONObject jsonRecipeObj = new JSONObject();
+				
+					try {
+						int userId = session.getUserId();
+						jsonRecipeObj.put("user_id", userId);
+						jsonRecipeObj.put("application_id", 1);
+						jsonRecipeObj.put("item_id", recipe_id);
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+				
+				HealthyRecipeApp healthyRecipeShare = new HealthyRecipeApp();
+				healthyRecipeShare.recipeShare(new ICallBack() {
+					
+					@Override
+					public void callBackResultHandler(Object object) {
+						
+						
+					}
+					
+					@Override
+					public void callBackErrorHandler(Object object) {
+						
+						
+					}
+				}, jsonRecipeObj);
+			}
+		});
+
 		btnShare = (ImageButton) findViewById(R.id.btnShareReipe);
 		imageLoader = new ImageLoader(context);
 		healthyRecipeCategory = (TextView) findViewById(R.id.recipeCategoryText);
@@ -68,17 +112,17 @@ public void initUI(){
 		recipeImageView = (ImageView) findViewById(R.id.recipeImageView);
 
 	}
-	
+
 	public void process() {
 		Intent intent = getIntent();
 		recipe_id = intent.getIntExtra("recipe_id", 0);
-		final String recipe_category_title = intent.getStringExtra("recipe_category_title");
+		final String recipe_category_title = intent
+				.getStringExtra("recipe_category_title");
 
-
-		 pDialog = new ProgressDialog(context);
-		 pDialog.setMessage("Fetching data..");
-		 pDialog.setCancelable(false);
-		 pDialog.show();
+		pDialog = new ProgressDialog(context);
+		pDialog.setMessage("Fetching data..");
+		pDialog.setCancelable(false);
+		pDialog.show();
 
 		HealthyRecipeApp healthyRecipeapp = new HealthyRecipeApp();
 		healthyRecipeapp.getRecipeDetails(new ICallBack() {
@@ -88,22 +132,28 @@ public void initUI(){
 				JSONObject recipeDetaisJSONObject = (JSONObject) object;
 				pDialog.dismiss();
 				try {
-					JSONObject recipeDetails = recipeDetaisJSONObject.getJSONObject("recipe_info");
-					
+					JSONObject recipeDetails = recipeDetaisJSONObject
+							.getJSONObject("recipe_info");
+					recipeCommentsArray = recipeDetaisJSONObject
+							.getJSONArray("comment_list");
+
 					healthyRecipeCategory.setText(recipe_category_title);
-					healthyRecipeCategory.setTextColor(Color.parseColor("#00ACEA"));
-					
+					healthyRecipeCategory.setTextColor(Color
+							.parseColor("#00ACEA"));
+
 					recipeTitle.setText(recipeDetails.getString("title"));
 					recipeDetail.setText(recipeDetails.getString("description"));
 					ingrediant.setText(recipeDetails.getString("ingredients"));
-					preparationMethod.setText(recipeDetails.getString("preparation_method"));
-					
+					preparationMethod.setText(recipeDetails
+							.getString("preparation_method"));
+
 					duration.setText(recipeDetails.getString("duration"));
-					
+
 					String imagePath = Config.SERVER_ROOT_URL
 							+ "resources/images/applications/healthy_recipes/";
 
-					recipeImageView.setImageResource(R.drawable.upload_img_icon);
+					recipeImageView
+							.setImageResource(R.drawable.upload_img_icon);
 					imageLoader.DisplayImage(
 							imagePath + recipeDetails.get("picture"),
 							recipeImageView);

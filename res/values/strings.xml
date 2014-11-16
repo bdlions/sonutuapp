@@ -292,6 +292,7 @@
     <string name="recipe_duration_label">Duration :</string>
     <string name="recipe_ingredient_label">Ingredient :</string>
     <string name="recipe_preparation_method_label">Preparation Method :</string>
+    <string name="recipeCommentRequired">Recipe comment is Required!</string>
     
     <string name="title_activity_recipe_details">Recipe Details</string>
     <string name="title_activity_recipe_comments">Recipe comments</string>

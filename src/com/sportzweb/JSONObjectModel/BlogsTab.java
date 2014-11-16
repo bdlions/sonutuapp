@@ -1,6 +1,5 @@
 package com.sportzweb.JSONObjectModel;
 
-import org.json.JSONArray;
 
 import com.google.gson.JsonArray;
 

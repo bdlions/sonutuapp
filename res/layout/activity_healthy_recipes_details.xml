@@ -113,8 +113,8 @@
             android:baselineAligned="false"
             android:orientation="horizontal" >
 
-            <LinearLayout
-                android:id="@+id/layout243"
+            <!--<LinearLayout
+                android:id="@+id/ll_like_counter"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.3"
@@ -129,7 +129,7 @@
                     android:src="@drawable/like" />
 
                 <TextView
-                    android:id="@+id/text7"
+                    android:id="@+id/likecounterText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -138,7 +138,7 @@
                     android:fontFamily="Bold"
                     android:text="3 Likes"
                     android:textSize="15sp" />
-            </LinearLayout>
+            </LinearLayout>-->
 
             <LinearLayout
                 android:id="@+id/layout2"
@@ -147,7 +147,7 @@
                 android:layout_weight="0.3"
                 android:orientation="horizontal" >
 
-                <ImageButton
+                <!--<ImageButton
                     android:id="@+id/btnLikeReipe"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -155,7 +155,7 @@
                     android:layout_weight="1"
                     android:background="#FFFFFF"
                     android:contentDescription="dd"
-                    android:src="@drawable/like" />
+                    android:src="@drawable/like" />-->
 
                 <ImageButton
                     android:id="@+id/btnCommentReipe"
@@ -176,7 +176,7 @@
             </LinearLayout>
         </LinearLayout>
 
-        <EditText
+        <!--<EditText
             android:id="@+id/txtComment"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -185,7 +185,7 @@
             android:background="@drawable/backwithborder"
             android:hint="Comment"
             android:padding="10dp"
-            android:singleLine="true" />
+            android:singleLine="true" />-->
     </LinearLayout>
 
 </ScrollView>

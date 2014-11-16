@@ -5,16 +5,17 @@
     android:id="@+id/parentLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:padding="10dp"
     android:orientation="vertical" >
 
     <ListView
         android:id="@+id/commentListViewForRecipe"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="300dp" >
     </ListView>
 
     <EditText
-        android:id="@+id/commentText"
+        android:id="@+id/recipeCommentText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -23,55 +24,19 @@
         android:inputType="textMultiLine" >
     </EditText>
 
-    <!--<RadioGroup
-        android:id="@+id/radioGroup"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical" >
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" >
-
-            <RadioButton
-                android:id="@+id/positive"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Positive"
-                android:textSize="13sp" />
-
-            <RadioButton
-                android:id="@+id/negitive"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Negative"
-                android:textSize="13sp" />
-
-            <RadioButton
-                android:id="@+id/neutral"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Neutral"
-                android:textSize="13sp" />
-        </LinearLayout>
-    </RadioGroup>-->
     <LinearLayout
         android:id="@+id/linearLayout3"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal" >
 		
-        <TextView
+        <!--<TextView
             android:id="@+id/commentType"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.04"
             android:text="Comment Nature :"
-            android:textSize="18sp" />
+            android:textSize="18sp" />-->
         
         <RadioGroup
             android:id="@+id/myRadioGroup"
@@ -107,7 +72,7 @@
 
 
     <Button
-        android:id="@+id/btnRegContinue4"
+        android:id="@+id/recipeCommentPostBtn"
         android:layout_width="fill_parent"
         android:layout_height="34dp"
         android:layout_marginBottom="10dip"
