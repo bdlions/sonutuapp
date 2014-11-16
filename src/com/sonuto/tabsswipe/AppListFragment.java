@@ -43,7 +43,8 @@ public class AppListFragment extends Fragment {
 				getActivity().setTitle(APP_INFO.class.getEnumConstants()[position].TITLE);
 				FragmentTransaction transaction = getFragmentManager().beginTransaction();
 				transaction.replace(R.id.fragment_container, APP_INFO.class.getEnumConstants()[position].INSTANCE);
-				transaction.addToBackStack(null);
+				transaction.addToBackStack("APP_LIST");
+				
 				// Commit the transaction
 				transaction.commit();
 

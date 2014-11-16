@@ -1,6 +1,8 @@
 package com.sportzweb;
 
+import com.sonuto.tabsswipe.ApplicationsFragment;
 import com.sonuto.tabsswipe.adapter.TabsPagerAdapter;
+import com.sonuto.utils.APP_INFO;
 import com.sonuto.utils.TAB_INFO;
 
 import android.app.ActionBar;
@@ -32,6 +34,7 @@ public class NewsFeedActivity extends FragmentActivity {
 		viewPager.setAdapter(mAdapter);
 		actionBar.setHomeButtonEnabled(false);
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+		
 
 		// Adding Tabs
 		for (final TAB_INFO tab_info : TAB_INFO.class.getEnumConstants()) {
@@ -40,6 +43,8 @@ public class NewsFeedActivity extends FragmentActivity {
 
 			Tab tab = actionBar.newTab();
 			tab.setIcon(drawableIcon);
+			viewPager.setOffscreenPageLimit(TAB_INFO.class.getEnumConstants().length);
+			
 			tab.setTabListener(new TabListener() {
 
 				@Override
@@ -57,7 +62,9 @@ public class NewsFeedActivity extends FragmentActivity {
 				@Override
 				public void onTabReselected(Tab tab, FragmentTransaction fgt) {
 					// TODO Auto-generated method stub
-
+					if(tab.getPosition() == 3){
+						((ApplicationsFragment)TAB_INFO.APPLICATION.INSTANCE).reload();
+					}
 				}
 			});
 			actionBar.addTab(tab);
