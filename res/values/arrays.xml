@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="image_ids">
+        <item>@drawable/fail</item>
+        <item>@drawable/gear</item>
+        <item>@drawable/like</item>
+    </string-array>
+
+</resources>

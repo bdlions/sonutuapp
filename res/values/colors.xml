@@ -3,4 +3,6 @@
     <color name="image_border_start">#40990000</color>
 	<color name="image_border_end">#FF660000</color>
 	<color name="image_border_center">#FFFF3333</color>
+	<color name="blue">#00abea</color>
+    <color name="white">#ffffff</color>
 </resources>
