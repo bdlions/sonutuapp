@@ -39,4 +39,26 @@ public class NewsApp extends RPCHandler{
 		execute();
 	}
 	
+	public void postNewsComments(ICallBack callBack, Object...params){
+		setCallBack(callBack);
+		
+		setControllerName("app_comments/");
+		setMethod("post_comment");
+
+		setParams(params);
+		setReturnType(RPCReturnType.JSON_OBJECT);
+		execute();
+	}
+	
+	public void newsShare(ICallBack callBack, Object...params){
+		setCallBack(callBack);
+		
+		setControllerName("app_comments/");
+		setMethod("share_recipe");
+
+		setParams(params);
+		setReturnType(RPCReturnType.JSON_OBJECT);
+		execute();
+	}
+	
 }

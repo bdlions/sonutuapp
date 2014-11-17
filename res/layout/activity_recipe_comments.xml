@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:layout_marginTop="15dp"
-        android:hint="Type your comment"
+        android:hint="@string/comment_hint"
         android:inputType="textMultiLine" >
     </EditText>
 
@@ -40,9 +40,8 @@
         
         <RadioGroup
             android:id="@+id/myRadioGroup"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/text"
             android:layout_weight="0.67"
             android:checkedButton="@+id/sound" >
 
@@ -51,21 +50,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Positive" />
+                android:text="@string/positive" />
 
             <RadioButton
                 android:id="@+id/negitive"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Negitive" />
+                android:text="@string/negitive" />
 
             <RadioButton
                 android:id="@+id/neutral"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Neutral" />
+                android:text="@string/neutral" />
         </RadioGroup>
     </LinearLayout>
 

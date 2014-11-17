@@ -16,7 +16,7 @@ public class ServiceDetailsMoreActivity extends Activity {
 
 	TextView sdMoreHeading, sdMoreStoreAddress,sdMoreAddress,sdMoreOpeningHour, sdMoreTelephone, sdMoreWWevsite,sdMoreProfile;
 	Context context;
-	Integer service_id;
+	Integer service_id = 2;
 	String title,phone,distance,address;
 	Button serviceMoreDetailsBackBtn;
 	LinearLayout ll_service_recomments, ll_service_comments;
@@ -38,6 +38,10 @@ public class ServiceDetailsMoreActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				Toast.makeText(getApplicationContext(), "Clicked in comment", Toast.LENGTH_LONG).show();
+				Intent i = new Intent(context, ServiceCommentsActivity.class);
+				i.putExtra("service_id", service_id);
+				i.putExtra("comments", "gg");
+				startActivity(i);
 				
 			}
 		});

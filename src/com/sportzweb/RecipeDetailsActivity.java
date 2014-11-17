@@ -9,6 +9,7 @@ import com.sonuto.Config;
 import com.sonuto.rpc.ICallBack;
 import com.sonuto.rpc.register.HealthyRecipeApp;
 import com.sonuto.session.SessionManager;
+import com.sonuto.users.AppID;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -20,16 +21,17 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class RecipeDetailsActivity extends Activity {
 
 	TextView healthyRecipeCategory, recipeTitle, recipeDetail, ingrediant,
 			preparationMethod, duration;
+	LinearLayout llShareReipe,llCommentReipe;
 	ImageView recipeImageView;
 	public ImageLoader imageLoader;
 	Context context;
-	// String blog_category_title;
 	// process dialer
 	ProgressDialog pDialog;
 	ImageButton btnlike, btnComment, btnShare;
@@ -42,7 +44,7 @@ public class RecipeDetailsActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_healthy_recipes_details);
 		context = this;
-		session = new SessionManager(context);
+		session = new SessionManager(getApplicationContext());
 		initUI();
 		process();
 	}
@@ -51,8 +53,11 @@ public class RecipeDetailsActivity extends Activity {
 
 		// ImageButton intitialize
 		// btnlike = (ImageButton) findViewById(R.id.btnLikeReipe);
+		llShareReipe = (LinearLayout) findViewById(R.id.llShareReipe);
+		llCommentReipe = (LinearLayout) findViewById(R.id.llCommentReipe);
+		btnShare = (ImageButton) findViewById(R.id.btnShareReipe);
 		btnComment = (ImageButton) findViewById(R.id.btnCommentReipe);
-		btnComment.setOnClickListener(new OnClickListener() {
+		llCommentReipe.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View arg0) {
@@ -67,7 +72,7 @@ public class RecipeDetailsActivity extends Activity {
 		});
 		
 		
-		btnShare.setOnClickListener(new OnClickListener() {
+		llShareReipe.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View arg0) {
@@ -77,7 +82,7 @@ public class RecipeDetailsActivity extends Activity {
 					try {
 						int userId = session.getUserId();
 						jsonRecipeObj.put("user_id", userId);
-						jsonRecipeObj.put("application_id", 1);
+						jsonRecipeObj.put("application_id", AppID.HEALTHY_RECIPE.getValue());
 						jsonRecipeObj.put("item_id", recipe_id);
 					} catch (JSONException e) {
 						e.printStackTrace();
@@ -100,8 +105,7 @@ public class RecipeDetailsActivity extends Activity {
 				}, jsonRecipeObj);
 			}
 		});
-
-		btnShare = (ImageButton) findViewById(R.id.btnShareReipe);
+		
 		imageLoader = new ImageLoader(context);
 		healthyRecipeCategory = (TextView) findViewById(R.id.recipeCategoryText);
 		recipeTitle = (TextView) findViewById(R.id.recipeTitletext);

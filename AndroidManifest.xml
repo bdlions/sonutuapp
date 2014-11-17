@@ -153,6 +153,10 @@
             android:label="@string/title_activity_news_app"
             android:theme="@style/CustomActionBarTheme"></activity>-->
             
+            <activity android:name="com.sportzweb.NewsCommentsActivity"
+            android:label="@string/title_activity_news_comments"
+            android:theme="@style/CustomActionBarTheme"></activity>
+            
             <activity android:name="com.sportzweb.NewsDetailsActivity"
             android:label="@string/title_activity_news_details"
             android:theme="@style/CustomActionBarTheme"></activity>
@@ -205,6 +209,12 @@
             android:theme="@style/CustomActionBarTheme">
         </activity>
         
+
+		<activity android:name="com.sportzweb.ServiceCommentsActivity"
+            android:label="@string/title_activity_service_comments"
+            android:theme="@style/CustomActionBarTheme">
+        </activity>
+		
 		<activity android:name="com.sportzweb.MyPhotos"
             android:label="@string/title_activity_service_details"
             android:theme="@style/CustomActionBarTheme">

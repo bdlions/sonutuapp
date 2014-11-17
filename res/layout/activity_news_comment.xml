@@ -9,13 +9,13 @@
     android:orientation="vertical" >
 
     <ListView
-        android:id="@+id/commentListViewForBlog"
+        android:id="@+id/commentListViewForNews"
         android:layout_width="match_parent"
         android:layout_height="300dp" >
     </ListView>
 
     <EditText
-        android:id="@+id/blogCommentText"
+        android:id="@+id/newsCommentText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -107,7 +107,7 @@
 
 
     <Button
-        android:id="@+id/blogCommentPostBtn"
+        android:id="@+id/newsCommentPostBtn"
         android:layout_width="fill_parent"
         android:layout_height="34dp"
         android:layout_marginBottom="10dip"

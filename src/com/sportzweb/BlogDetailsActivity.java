@@ -1,5 +1,6 @@
 package com.sportzweb;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -8,6 +9,8 @@ import com.google.gson.JsonObject;
 import com.sonuto.Config;
 import com.sonuto.rpc.ICallBack;
 import com.sonuto.rpc.register.BlogsApp;
+import com.sonuto.session.SessionManager;
+import com.sonuto.users.AppID;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -20,6 +23,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,19 +31,23 @@ public class BlogDetailsActivity extends Activity {
 
 	TextView blogCategory, blogTitle, blogDetail, imageDescription,
 			blogDateTime;
+	LinearLayout ll_comment_blog,ll_share_blog;
 	ImageView blogImageView;
 	public ImageLoader imageLoader;
 	Context context;
 	String blog_category_title;
 	// process dialer
 	ProgressDialog pDialog;
-	ImageButton btnlike,btnComment,btnShare;
+	ImageButton btnComment,btnShare;
 	Integer blog_id;
-
+	JSONArray blogCommentsArray;
+	SessionManager session;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_blog_details);
+		session = new SessionManager(getApplicationContext());
 		context = this;
 		initUI();
 		process();
@@ -49,6 +57,9 @@ public class BlogDetailsActivity extends Activity {
 	public void initUI(){
 		
 		imageLoader = new ImageLoader(context);
+		ll_comment_blog = (LinearLayout) findViewById(R.id.ll_comment_blog);
+		ll_share_blog = (LinearLayout) findViewById(R.id.ll_share_blog);
+		
 		blogCategory = (TextView) findViewById(R.id.blogCategoryText);
 		blogTitle = (TextView) findViewById(R.id.blogTitleText);
 		blogDetail = (TextView) findViewById(R.id.blogDetailsText);
@@ -56,24 +67,57 @@ public class BlogDetailsActivity extends Activity {
 		blogDateTime = (TextView) findViewById(R.id.blogPostedTimeDatetext);
 		blogImageView = (ImageView) findViewById(R.id.BlogImageView);
 		
-		//ImageButton intitialize
-		btnlike = (ImageButton) findViewById(R.id.btnLikeBlog);
-		btnComment = (ImageButton) findViewById(R.id.btnCommentBlog);
-		btnComment.setOnClickListener(new OnClickListener(){
+
+		ll_comment_blog.setOnClickListener(new OnClickListener(){
 
 			@Override
 			public void onClick(View arg0) {
 				
 				Intent i =  new Intent(context, BlogCommentsActivity.class);
 				i.putExtra("blog_id", blog_id);
+				i.putExtra("comments", blogCommentsArray.toString());
 				startActivity(i);
 				
 			}
 			
 		});
 		
+		ll_share_blog.setOnClickListener(new OnClickListener(){
+
+			@Override
+			public void onClick(View arg0) {
+				
+				JSONObject jsonRecipeObj = new JSONObject();
+				
+				try {
+					int userId = session.getUserId();
+					jsonRecipeObj.put("user_id", userId);
+					jsonRecipeObj.put("application_id", AppID.BLOG.getValue());
+					jsonRecipeObj.put("item_id", blog_id);
+				} catch (JSONException e) {
+					e.printStackTrace();
+				}
+			
+				BlogsApp blogApp = new BlogsApp();
+				blogApp.blogShare(new ICallBack() {
+				
+				@Override
+				public void callBackResultHandler(Object object) {
+					
+					
+				}
+				
+				@Override
+				public void callBackErrorHandler(Object object) {
+					
+					
+				}
+			}, jsonRecipeObj);
+				
+			}
+			
+		});
 		
-		btnShare = (ImageButton) findViewById(R.id.btnShareBlog);
 		
 	}
 
@@ -96,13 +140,24 @@ public class BlogDetailsActivity extends Activity {
 				pDialog.dismiss();
 				try {
 					JSONObject blogDetails = blogDetaisJSONObject.getJSONObject("blog_info");
-					JSONObject blogCategoryIdList = blogDetaisJSONObject.getJSONObject("category_id_list");
+					//JSONObject blogCategoryIdList = blogDetaisJSONObject.getJSONObject("category_id_list");
+					//JSONObject blogCategoryIdList = blogDetails.getJSONObject("blog_category_list");
+					blogCommentsArray = blogDetaisJSONObject.getJSONArray("comment_list");
 					
 					blogCategory.setText(blog_category_title);
 					blogCategory.setTextColor(Color.parseColor("#00ACEA"));
+					if(blogDetails.getString("title") != null) {
+						blogTitle.setText(blogDetails.getString("title"));
+					} else {
+						blogTitle.setText("");
+					}
 					
-					blogTitle.setText(blogDetails.getString("title"));
-					blogDetail.setText(blogDetails.getString("description"));
+					if(blogDetails.getString("description") != null) {
+						blogDetail.setText(blogDetails.getString("description"));
+					} else {
+						blogDetail.setText("");
+					}
+					
 					imageDescription.setText(blogDetails.getString("picture_description"));
 					String imagePath = Config.SERVER_ROOT_URL + "resources/images/applications/blog_app/";
 
@@ -123,11 +178,6 @@ public class BlogDetailsActivity extends Activity {
 
 			}
 		}, blog_id);
-	}
-	
-	public void comment(View view) {
-		
-		
 	}
 
 }

@@ -65,7 +65,7 @@
             android:layout_marginTop="5dp"
             android:textSize="12sp" />
 
-        <LinearLayout
+        <!--<LinearLayout
             android:id="@+id/layout23"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -134,7 +134,57 @@
                     android:background="#FFFFFF"
                     android:src="@drawable/share" />
             </LinearLayout>
+        </LinearLayout> -->
+        
+        <LinearLayout
+            android:id="@+id/layout24"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/custom_border"
+            android:baselineAligned="false"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <LinearLayout
+                android:id="@+id/ll_comment_blog"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/right_border"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <ImageButton
+                    android:id="@+id/btnCommentBlog"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:background="#FFFFFF"
+                    android:contentDescription="@string/EmptyString"
+                    android:src="@drawable/comment" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_share_blog"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <ImageButton
+                    android:id="@+id/btnShareBlog"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:background="#FFFFFF"
+                    android:contentDescription="@string/EmptyString"
+                    android:src="@drawable/share" />
+            </LinearLayout>
         </LinearLayout>
+        
     </LinearLayout>
 
 </ScrollView>

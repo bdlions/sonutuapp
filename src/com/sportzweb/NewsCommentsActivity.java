@@ -1,5 +1,4 @@
 package com.sportzweb;
-
 import java.util.ArrayList;
 
 import org.json.JSONArray;
@@ -12,6 +11,7 @@ import com.sonuto.rpc.ICallBack;
 import com.sonuto.rpc.register.HealthyRecipeApp;
 import com.sonuto.session.SessionManager;
 import com.sonuto.users.AppID;
+import com.sonuto.utils.custom.adapter.NewsCommentsCustomAdapter;
 import com.sonuto.utils.custom.adapter.RCommentsCustomAdapter;
 import com.sportzweb.JSONObjectModel.NewsComment;
 import com.sportzweb.JSONObjectModel.RecipeComment;
@@ -26,72 +26,74 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
-public class RecipeCommentsActivity extends Activity {
 
-	EditText recipeCommentText;
+public class NewsCommentsActivity extends Activity {
 	ImageView blogImageView;
-	ListView commentListViewForRecipe;
+	ListView commentListViewForNews;
 	public ImageLoader imageLoader;
 	Context context;
 	String blog_category_title;
 	// process dialer
 	ProgressDialog pDialog;
-	Button recipeCommentPostBtn;
+	EditText newsCommentText;
+	Button newsCommentPostBtn;
+	
 	private RadioGroup radioGroup;
 	private RadioButton positive, negitive, neutral;
-	int recipe_id,rate_id = 0;
+	int news_id,rate_id = 0;
 	String comments,userComments;
 	JSONArray commentsJSONArr;
 	SessionManager session;
-	private ArrayList<RecipeComment> recipeCommentObjList = new ArrayList<RecipeComment>();
-	RCommentsCustomAdapter adapter;
+	private NewsCommentsCustomAdapter adapter;
+	private ArrayList<NewsComment> newsCommentObjList = new ArrayList<NewsComment>();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_recipe_comments);
+		setContentView(R.layout.activity_news_comment);
+		session = new SessionManager(getApplicationContext());
 		context = this;
-		session = new SessionManager(context);
-		initUI();
-		Process();
+		initUi();
+		process();
 	}
-
-	private void initUI() {
-
+	
+	
+	private void initUi() {
 		radioGroup = (RadioGroup) findViewById(R.id.myRadioGroup);
 		positive = (RadioButton) findViewById(R.id.positive);
 		negitive = (RadioButton) findViewById(R.id.negitive);
 		neutral = (RadioButton) findViewById(R.id.neutral);
 		
-		recipeCommentText = (EditText) findViewById(R.id.recipeCommentText);
-		recipeCommentPostBtn = (Button) findViewById(R.id.recipeCommentPostBtn);
-		commentListViewForRecipe = (ListView) findViewById(R.id.commentListViewForRecipe);
-
+		newsCommentText = (EditText) findViewById(R.id.newsCommentText);
+		newsCommentPostBtn = (Button) findViewById(R.id.newsCommentPostBtn);
+		commentListViewForNews = (ListView) findViewById(R.id.commentListViewForNews);
 	}
-
-	private void Process() {
+	
+	
+	private void process() {
 		Intent intent = getIntent();
-		recipe_id = intent.getIntExtra("recipe_id", 0);
+		news_id = intent.getIntExtra("news_id", 0);
 		comments = intent.getStringExtra("comments");
 		try {
 			commentsJSONArr = new JSONArray(comments);
 			Gson gson = new Gson();
 			int total_comments = commentsJSONArr.length();
 			for (int i = 0; i < total_comments; i++) {
-				RecipeComment comment = gson.fromJson(commentsJSONArr.get(i).toString(), RecipeComment.class);
-				recipeCommentObjList.add(comment);
+				NewsComment comment = gson.fromJson(commentsJSONArr.get(i).toString(), NewsComment.class);
+				newsCommentObjList.add(comment);
 			}
 			
-			adapter = new RCommentsCustomAdapter(this, recipeCommentObjList);
-			commentListViewForRecipe.setAdapter(adapter);
+			adapter = new NewsCommentsCustomAdapter(this, newsCommentObjList);
+			commentListViewForNews.setAdapter(adapter);
 
-			//System.out.print(recipeCommentObjList);
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
@@ -114,19 +116,19 @@ public class RecipeCommentsActivity extends Activity {
 
 		});
 
-		recipeCommentPostBtn.setOnClickListener(new OnClickListener() {
+		newsCommentPostBtn.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View arg0) {
 
 				JSONObject jsonRecipeCommentObj = new JSONObject();
-				userComments = recipeCommentText.getText().toString();
+				userComments = newsCommentText.getText().toString();
 				if(isVerifiedCommentTextStep()) {
 					try {
 						int userId = session.getUserId();
 						jsonRecipeCommentObj.put("user_id", userId);
-						jsonRecipeCommentObj.put("application_id", AppID.HEALTHY_RECIPE.getValue());
-						jsonRecipeCommentObj.put("item_id", recipe_id);
+						jsonRecipeCommentObj.put("application_id", AppID.NEWS.getValue());
+						jsonRecipeCommentObj.put("item_id", news_id);
 						jsonRecipeCommentObj.put("comment", userComments);
 						jsonRecipeCommentObj.put("rate_id", rate_id);
 					} catch (JSONException e) {
@@ -135,7 +137,7 @@ public class RecipeCommentsActivity extends Activity {
 					
 					
 					pDialog = new ProgressDialog(context);
-					pDialog.setMessage("Fetching data..");
+					pDialog.setMessage("Submitting comment and Fetching data..");
 					pDialog.setCancelable(false);
 					pDialog.show();
 					
@@ -145,18 +147,18 @@ public class RecipeCommentsActivity extends Activity {
 						@Override
 						public void callBackResultHandler(Object object) {
 							pDialog.dismiss();
-							JSONObject recipeCommentJSONObject = (JSONObject) object;
-							
-							try {
-								JSONObject recipeInfoObj = recipeCommentJSONObject.getJSONObject("comment_info");
-								Gson gson = new Gson();
-								
-								RecipeComment recipeInfo = gson.fromJson(recipeInfoObj.toString(), RecipeComment.class);
-								recipeCommentObjList.add(recipeInfo);
-								adapter.notifyDataSetChanged();
-							} catch (JSONException e) {
-								e.printStackTrace();
-							}
+							JSONObject newsCommentJSONObject = (JSONObject) object;
+								JSONObject newsCommentInfoArray;
+								try {
+									newsCommentInfoArray = newsCommentJSONObject.getJSONObject("comment_info");
+									Gson gson = new Gson();
+									
+									NewsComment newsInfo = gson.fromJson(newsCommentInfoArray.toString(), NewsComment.class);
+									newsCommentObjList.add(newsInfo);
+									adapter.notifyDataSetChanged();
+								} catch (JSONException e) {
+									e.printStackTrace();
+								}
 						}
 
 						@Override
@@ -169,7 +171,8 @@ public class RecipeCommentsActivity extends Activity {
 			}
 		});
 	}
-	
+
+
 	/**
 	 * isVerifiedCommentTextStep validation method
 	 * @return boolean value
