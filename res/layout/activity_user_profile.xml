@@ -18,9 +18,8 @@
 
             <ImageView
                 android:id="@+id/userProfileImage"
-                android:layout_width="120dp"
-                android:layout_height="170dp"
-                android:background="@drawable/gear" />
+                android:layout_width="50dp"
+                android:layout_height="50dp" />
 
             <LinearLayout
                 android:layout_width="fill_parent"

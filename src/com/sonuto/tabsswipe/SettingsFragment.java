@@ -74,7 +74,7 @@ public class SettingsFragment extends Fragment {
 							userProfileNameTxt.setText(UserObj.getString("first_name") + " " + UserObj.getString("last_name"));
 						}
 
-						String imagePath = Config.SERVER_ROOT_URL + "resources/uploads/profile_picture/";
+						String imagePath = Config.SERVER_ROOT_URL + "resources/uploads/profile_picture/32x32/";
 
 						userImage.setImageResource(R.drawable.upload_img_icon);
 						imageLoader.DisplayImage(imagePath + UserObj.getString("photo"), userImage);

@@ -130,7 +130,7 @@ public class UserProfileActivity extends Activity {
 						UserProfileActivity.this.userProfession.setText(" ");
 					}
 
-					final String imagePath = Config.SERVER_ROOT_URL + "resources/uploads/profile_picture/";
+					final String imagePath = Config.SERVER_ROOT_URL + "resources/uploads/profile_picture/50x50/";
 
 					UserProfileActivity.this.userProfileImage.setImageResource(R.drawable.upload_img_icon);
 					if ((UserObj.getString("photo") != null) | (UserObj.getString("photo").length() != 0)) {
