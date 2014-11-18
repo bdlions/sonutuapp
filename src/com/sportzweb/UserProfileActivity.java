@@ -10,6 +10,7 @@ import com.sonuto.rpc.ICallBack;
 import com.sonuto.rpc.register.User;
 import com.sonuto.session.ISessionManager;
 import com.sonuto.session.SessionManager;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -32,21 +33,6 @@ public class UserProfileActivity extends Activity {
 			myInfoImageView;
 	TextView userProfileName, userAddress, userProfession;
 
-	private void initUI() {
-		this.imageLoader = new ImageLoader(this.mContext);
-
-		this.userProfileImage = (ImageView) findViewById(R.id.userProfileImage);
-		this.myInfoImageView = (ImageView) findViewById(R.id.myInfoImageView);
-		this.myPhotosImageView = (ImageView) findViewById(R.id.myPhotosImageView);
-		this.myFollowingsImageView = (ImageView) findViewById(R.id.myFollowingsImageView);
-		this.btnEditProfile = (Button) findViewById(R.id.btnEditProfile);
-
-		this.userProfileName = (TextView) findViewById(R.id.userProfileName);
-		this.userAddress = (TextView) findViewById(R.id.userAddress);
-		this.userProfession = (TextView) findViewById(R.id.userProfession);
-
-	}
-
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -66,6 +52,40 @@ public class UserProfileActivity extends Activity {
 				
 			}
 		 });
+	}
+	
+	private void initUI() {
+		this.imageLoader = new ImageLoader(this.mContext);
+
+		this.userProfileImage = (ImageView) findViewById(R.id.userProfileImage);
+		this.myInfoImageView = (ImageView) findViewById(R.id.myInfoImageView);
+		this.myPhotosImageView = (ImageView) findViewById(R.id.myPhotosImageView);
+		this.myFollowingsImageView = (ImageView) findViewById(R.id.myFollowingsImageView);
+		this.btnEditProfile = (Button) findViewById(R.id.btnEditProfile);
+
+		this.userProfileName = (TextView) findViewById(R.id.userProfileName);
+		this.userAddress = (TextView) findViewById(R.id.userAddress);
+		this.userProfession = (TextView) findViewById(R.id.userProfession);
+		
+		btnEditProfile.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				
+				
+			}
+		});
+		
+		myInfoImageView.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent i = new Intent(mContext, UserInfoActivity.class);
+				i.putExtra("user_id", userId);
+				startActivity(i);
+			}
+		});
+
 	}
 
 	private void process() {

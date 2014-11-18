@@ -13,8 +13,10 @@ import com.sonuto.session.SessionManager;
 import com.sonuto.users.AppID;
 import com.sonuto.utils.custom.adapter.NewsCommentsCustomAdapter;
 import com.sonuto.utils.custom.adapter.RCommentsCustomAdapter;
+import com.sonuto.utils.custom.adapter.ServiceCommentsCustomAdapter;
 import com.sportzweb.JSONObjectModel.NewsComment;
 import com.sportzweb.JSONObjectModel.RecipeComment;
+import com.sportzweb.JSONObjectModel.ServiceComment;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -48,10 +50,12 @@ public class ServiceCommentsActivity extends Activity {
 	
 	private RadioGroup radioGroup;
 	private RadioButton positive, negitive, neutral;
-	int news_id,rate_id = 0;
+	int service_id,rate_id = 0;
 	String comments,userComments;
 	JSONArray commentsJSONArr;
 	SessionManager session;
+	private ServiceCommentsCustomAdapter adapter;
+	private ArrayList<ServiceComment> serviceCommentObjList = new ArrayList<ServiceComment>();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -70,16 +74,31 @@ public class ServiceCommentsActivity extends Activity {
 		negitive = (RadioButton) findViewById(R.id.negitive);
 		neutral = (RadioButton) findViewById(R.id.neutral);
 		
-		serviceCommentText = (EditText) findViewById(R.id.newsCommentText);
-		serviceCommentPostBtn = (Button) findViewById(R.id.newsCommentPostBtn);
+		serviceCommentText = (EditText) findViewById(R.id.serviceCommentText);
+		serviceCommentPostBtn = (Button) findViewById(R.id.serviceCommentPostBtn);
 		commentListViewForService = (ListView) findViewById(R.id.commentListViewForService);
 	}
 	
 	
 	private void process() {
 		Intent intent = getIntent();
-		news_id = intent.getIntExtra("service_id", 0);
+		service_id = intent.getIntExtra("service_id", 0);
 		comments = intent.getStringExtra("comments");
+		try {
+			commentsJSONArr = new JSONArray(comments);
+			Gson gson = new Gson();
+			int total_comments = commentsJSONArr.length();
+			for (int i = 0; i < total_comments; i++) {
+				ServiceComment comment = gson.fromJson(commentsJSONArr.get(i).toString(), ServiceComment.class);
+				serviceCommentObjList.add(comment);
+			}
+			
+			adapter = new ServiceCommentsCustomAdapter(this, serviceCommentObjList);
+			commentListViewForService.setAdapter(adapter);
+
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
 
 		radioGroup.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
@@ -98,6 +117,62 @@ public class ServiceCommentsActivity extends Activity {
 			}
 
 		});
+		
+		serviceCommentPostBtn.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+
+				JSONObject jsonServiceCommentObj = new JSONObject();
+				userComments = serviceCommentText.getText().toString();
+				if(isVerifiedCommentTextStep()) {
+					try {
+						int userId = session.getUserId();
+						jsonServiceCommentObj.put("user_id", userId);
+						jsonServiceCommentObj.put("application_id", AppID.SERVICE_DIRECTORY.getValue());
+						jsonServiceCommentObj.put("item_id", service_id);
+						jsonServiceCommentObj.put("comment", userComments);
+						jsonServiceCommentObj.put("rate_id", rate_id);
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+					
+					
+					pDialog = new ProgressDialog(context);
+					pDialog.setMessage("Submitting comment and Fetching data..");
+					pDialog.setCancelable(false);
+					pDialog.show();
+					
+					HealthyRecipeApp healthyRecipeapp = new HealthyRecipeApp();
+					healthyRecipeapp.postrecipeComments(new ICallBack() {
+
+						@Override
+						public void callBackResultHandler(Object object) {
+							pDialog.dismiss();
+							JSONObject serviceCommentJSONObject = (JSONObject) object;
+								JSONObject commentCommentInfoArray;
+								try {
+									commentCommentInfoArray = serviceCommentJSONObject.getJSONObject("comment_info");
+									Gson gson = new Gson();
+									
+									ServiceComment serviceInfo = gson.fromJson(commentCommentInfoArray.toString(), ServiceComment.class);
+									serviceCommentObjList.add(serviceInfo);
+									adapter.notifyDataSetChanged();
+									serviceCommentText.setText("");
+								} catch (JSONException e) {
+									e.printStackTrace();
+								}
+						}
+
+						@Override
+						public void callBackErrorHandler(Object object) {
+
+						}
+					}, jsonServiceCommentObj.toString());
+				}
+				
+			}
+		});
 
 	}
 
@@ -108,7 +183,7 @@ public class ServiceCommentsActivity extends Activity {
 	 */
 	public boolean isVerifiedCommentTextStep() {
 		if (userComments.length() == 0) {
-			Toast.makeText(context, getString(R.string.recipeCommentRequired),
+			Toast.makeText(context, getString(R.string.commentRequired),
 					Toast.LENGTH_SHORT).show();
 			return false;
 		} else {

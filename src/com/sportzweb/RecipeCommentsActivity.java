@@ -154,6 +154,7 @@ public class RecipeCommentsActivity extends Activity {
 								RecipeComment recipeInfo = gson.fromJson(recipeInfoObj.toString(), RecipeComment.class);
 								recipeCommentObjList.add(recipeInfo);
 								adapter.notifyDataSetChanged();
+								recipeCommentText.setText("");
 							} catch (JSONException e) {
 								e.printStackTrace();
 							}
@@ -176,7 +177,7 @@ public class RecipeCommentsActivity extends Activity {
 	 */
 	public boolean isVerifiedCommentTextStep() {
 		if (userComments.length() == 0) {
-			Toast.makeText(context, getString(R.string.recipeCommentRequired),
+			Toast.makeText(context, getString(R.string.commentRequired),
 					Toast.LENGTH_SHORT).show();
 			return false;
 		} else {

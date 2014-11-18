@@ -98,4 +98,15 @@ public class User extends RPCHandler{
 		execute();
 	}
 	
+	public void getUserInfo(ICallBack callBack, Object...params){
+		setCallBack(callBack);
+		
+		setControllerName("Member_profile/");
+		setMethod("info");
+		
+		setParams(params);
+		setReturnType(RPCReturnType.JSON_OBJECT);
+		execute();
+	}
+	
 }

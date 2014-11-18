@@ -1,4 +1,5 @@
 package com.sportzweb;
+
 import java.util.ArrayList;
 
 import org.json.JSONArray;
@@ -36,7 +37,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
-
 public class BlogCommentsActivity extends Activity {
 
 	TextView blogCategory, blogTitle, blogDetail, imageDescription,
@@ -50,11 +50,11 @@ public class BlogCommentsActivity extends Activity {
 	String blog_category_title;
 	// process dialer
 	ProgressDialog pDialog;
-	int blog_id,rate_id = 0;
-	String comments,userComments;
+	int blog_id, rate_id = 0;
+	String comments, userComments;
 	JSONArray commentsJSONArr;
 	SessionManager session;
-	
+
 	private RadioGroup radioGroup;
 	private RadioButton positive, negitive, neutral;
 	private ArrayList<BlogComment> blogCommentObjList = new ArrayList<BlogComment>();
@@ -70,8 +70,7 @@ public class BlogCommentsActivity extends Activity {
 		initUI();
 		Process();
 	}
-	
-	
+
 	private void initUI() {
 
 		radioGroup = (RadioGroup) findViewById(R.id.myRadioGroup);
@@ -83,9 +82,9 @@ public class BlogCommentsActivity extends Activity {
 		commentListViewForBlog = (ListView) findViewById(R.id.commentListViewForBlog);
 
 	}
-	
+
 	private void Process() {
-		
+
 		Intent intent = getIntent();
 		blog_id = intent.getIntExtra("blog_id", 0);
 		comments = intent.getStringExtra("comments");
@@ -93,23 +92,19 @@ public class BlogCommentsActivity extends Activity {
 			commentsJSONArr = new JSONArray(comments);
 			Gson gson = new Gson();
 			int total_comments = commentsJSONArr.length();
-			if(total_comments>0){
-				for (int i = 0; i < total_comments; i++) {
-					BlogComment comment = gson.fromJson(commentsJSONArr.get(i).toString(), BlogComment.class);
-					blogCommentObjList.add(comment);
-				}
-				
-				adapter = new BlogCommentsCustomAdapter(this, blogCommentObjList);
-				commentListViewForBlog.setAdapter(adapter);
+			for (int i = 0; i < total_comments; i++) {
+				BlogComment comment = gson.fromJson(commentsJSONArr.get(i)
+						.toString(), BlogComment.class);
+				blogCommentObjList.add(comment);
 			}
-			
 
-			//System.out.print(recipeCommentObjList);
+			adapter = new BlogCommentsCustomAdapter(this, blogCommentObjList);
+			commentListViewForBlog.setAdapter(adapter);
+
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
-		
-		
+
 		radioGroup = (RadioGroup) findViewById(R.id.myRadioGroup);
 		radioGroup.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
@@ -117,13 +112,16 @@ public class BlogCommentsActivity extends Activity {
 			public void onCheckedChanged(RadioGroup group, int checkedId) {
 				// find which radio button is selected
 				if (checkedId == R.id.positive) {
-					Toast.makeText(getApplicationContext(), "choice: positive",Toast.LENGTH_SHORT).show();
+					Toast.makeText(getApplicationContext(), "choice: positive",
+							Toast.LENGTH_SHORT).show();
 					rate_id = 1;
 				} else if (checkedId == R.id.negitive) {
-					Toast.makeText(getApplicationContext(), "choice: negitive",Toast.LENGTH_SHORT).show();
+					Toast.makeText(getApplicationContext(), "choice: negitive",
+							Toast.LENGTH_SHORT).show();
 					rate_id = 2;
 				} else {
-					Toast.makeText(getApplicationContext(), "choice: neutral",Toast.LENGTH_SHORT).show();
+					Toast.makeText(getApplicationContext(), "choice: neutral",
+							Toast.LENGTH_SHORT).show();
 				}
 			}
 
@@ -136,19 +134,19 @@ public class BlogCommentsActivity extends Activity {
 
 				JSONObject jsonBlogCommentObj = new JSONObject();
 				userComments = blogCommentText.getText().toString();
-				if(isVerifiedCommentTextStep()) {
+				if (isVerifiedCommentTextStep()) {
 					try {
 						int userId = session.getUserId();
 						jsonBlogCommentObj.put("user_id", userId);
-						jsonBlogCommentObj.put("application_id", AppID.BLOG.getValue());
+						jsonBlogCommentObj.put("application_id",
+								AppID.BLOG.getValue());
 						jsonBlogCommentObj.put("item_id", blog_id);
 						jsonBlogCommentObj.put("comment", userComments);
 						jsonBlogCommentObj.put("rate_id", rate_id);
 					} catch (JSONException e) {
 						e.printStackTrace();
 					}
-					
-					
+
 					pDialog = new ProgressDialog(context);
 					pDialog.setMessage("Submitting comments and Fetching data..");
 					pDialog.setCancelable(false);
@@ -161,46 +159,48 @@ public class BlogCommentsActivity extends Activity {
 						public void callBackResultHandler(Object object) {
 							pDialog.dismiss();
 							JSONObject blogCommentJSONObject = (JSONObject) object;
-							
+
 							Gson gson = new Gson();
 							try {
-								JSONObject blogInfoObj = blogCommentJSONObject.getJSONObject("comment_info");
-								BlogComment blogComment = gson.fromJson(blogInfoObj.toString(), BlogComment.class);
+								JSONObject blogInfoObj = blogCommentJSONObject
+										.getJSONObject("comment_info");
+								BlogComment blogComment = gson.fromJson(
+										blogInfoObj.toString(),
+										BlogComment.class);
 								blogCommentObjList.add(blogComment);
 								adapter.notifyDataSetChanged();
+								blogCommentText.setText("");
 							} catch (JSONException e) {
 								e.printStackTrace();
 							}
-							
 
 						}
 
 						@Override
 						public void callBackErrorHandler(Object object) {
-							
+
 						}
 					}, jsonBlogCommentObj.toString());
 				}
-				
+
 			}
 		});
 
 	}
-	
+
 	/**
 	 * isVerifiedCommentTextStep validation method
+	 * 
 	 * @return boolean value
 	 */
 	public boolean isVerifiedCommentTextStep() {
 		if (userComments.length() == 0) {
-			Toast.makeText(context, getString(R.string.recipeCommentRequired),
+			Toast.makeText(context, getString(R.string.commentRequired),
 					Toast.LENGTH_SHORT).show();
 			return false;
 		} else {
 			return true;
 		}
 	}
-
-	
 
 }

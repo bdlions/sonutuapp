@@ -156,6 +156,7 @@ public class NewsCommentsActivity extends Activity {
 									NewsComment newsInfo = gson.fromJson(newsCommentInfoArray.toString(), NewsComment.class);
 									newsCommentObjList.add(newsInfo);
 									adapter.notifyDataSetChanged();
+									newsCommentText.setText("");
 								} catch (JSONException e) {
 									e.printStackTrace();
 								}
@@ -179,7 +180,7 @@ public class NewsCommentsActivity extends Activity {
 	 */
 	public boolean isVerifiedCommentTextStep() {
 		if (userComments.length() == 0) {
-			Toast.makeText(context, getString(R.string.recipeCommentRequired),
+			Toast.makeText(context, getString(R.string.commentRequired),
 					Toast.LENGTH_SHORT).show();
 			return false;
 		} else {

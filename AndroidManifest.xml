@@ -53,6 +53,18 @@
         </activity>
         
         <activity
+            android:name="com.sportzweb.UserInfoActivity"
+            android:theme="@style/CustomActionBarTheme"
+            android:label="@string/title_activity_user_info" >
+        </activity>
+        
+        <activity
+            android:name="com.sportzweb.EditUserProfileActivity"
+            android:theme="@style/CustomActionBarTheme"
+            android:label="@string/title_activity_edit_user_profile" >
+        </activity>
+        
+        <activity
             android:name="com.sportzweb.RegistrationActivity"
             android:theme="@style/CustomActionBarTheme"
             android:label="@string/title_activity_registration" >

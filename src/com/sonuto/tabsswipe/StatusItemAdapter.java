@@ -3,7 +3,12 @@ package com.sonuto.tabsswipe;
 import java.util.ArrayList;
 
 import com.bdlions.load.image.ImageLoader;
+
 import com.sonuto.Config;
+
+import com.sonuto.rpc.ICallBack;
+import com.sonuto.rpc.register.StatusFeed;
+
 import com.sportzweb.R;
 import com.sportzweb.StatusCommentsActivity;
 import com.sportzweb.JSONObjectModel.StatusInfo;
@@ -16,6 +21,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class StatusItemAdapter extends BaseAdapter{
@@ -23,6 +29,7 @@ public class StatusItemAdapter extends BaseAdapter{
 	private Context context;
 	public ImageLoader imageLoader;
 	StatusInfo statusInfo;
+	int status_id;
 	
 	public StatusItemAdapter(Context context, ArrayList<StatusInfo> list){
 		this.list = list;
@@ -60,21 +67,48 @@ public class StatusItemAdapter extends BaseAdapter{
 		}
 
 		statusInfo = (StatusInfo)getItem(index);
+		status_id = statusInfo.getStatus_id();
 		
 		TextView textViewNameOfUser = (TextView)convertView.findViewById(R.id.textViewNameOfUser);
+		TextView textViewTotalLike = (TextView)convertView.findViewById(R.id.textViewTotalLike);
 		TextView textViewpostedStatusTime = (TextView)convertView.findViewById(R.id.textViewpostedStatusTime);
 		TextView textViewDescription = (TextView)convertView.findViewById(R.id.textViewDescription);
 		ImageView imgViewOfUsers = (ImageView) convertView.findViewById(R.id.imageOfUser);
 		ImageView commentStatusBtn = (ImageView) convertView.findViewById(R.id.commentStatusBtn);
+		LinearLayout llComment = (LinearLayout) convertView.findViewById(R.id.llComment);
+		LinearLayout llShare = (LinearLayout) convertView.findViewById(R.id.llShare);
+		LinearLayout llLike = (LinearLayout) convertView.findViewById(R.id.llLike);
 		
-		commentStatusBtn.setOnClickListener(new OnClickListener() {
+		llLike.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				// increment the value of like counter by one and call the rpc to update
+				StatusFeed statusFeed = new StatusFeed();
+				statusFeed.update_status_like(new ICallBack() {
+					
+					@Override
+					public void callBackResultHandler(Object object) {
+						
+					}
+					
+					@Override
+					public void callBackErrorHandler(Object object) {
+						
+					}
+				}, status_id);
+			}
+		});
+		
+		llComment.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View arg0) {
 				
-				int status_id = statusInfo.getStatus_id();
+				//int status_id = statusInfo.getStatus_id();
 				Intent i = new Intent(context, StatusCommentsActivity.class);
 				i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				i.putExtra("status_id", status_id);
 				context.startActivity(i);
 			}
 		});
