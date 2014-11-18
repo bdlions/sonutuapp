@@ -3,6 +3,7 @@ package com.sonuto.tabsswipe;
 import java.util.ArrayList;
 
 import com.bdlions.load.image.ImageLoader;
+import com.sonuto.Config;
 import com.sportzweb.R;
 import com.sportzweb.StatusCommentsActivity;
 import com.sportzweb.JSONObjectModel.StatusInfo;
@@ -84,7 +85,7 @@ public class StatusItemAdapter extends BaseAdapter{
 		textViewpostedStatusTime.setText(statusInfo.getStatus_created_on());
 		
 		//imgViewOfUsers.setImageResource(R.drawable.upload_img_icon);
-        //imageLoader.DisplayImage(img_path+statusInfo.getPhoto(), imgViewOfUsers);
+        imageLoader.DisplayImage(Config.SERVER_ROOT_URL + img_path + statusInfo.getPhoto(), imgViewOfUsers);
 		
 		return convertView;
 	}

@@ -9,6 +9,8 @@ import org.json.JSONObject;
 import com.google.gson.Gson;
 import com.sonuto.rpc.ICallBack;
 import com.sonuto.rpc.register.StatusFeed;
+import com.sonuto.session.ISessionManager;
+import com.sonuto.session.SessionManager;
 import com.sportzweb.JSONObjectModel.StatusInfo;
 
 import android.content.Context;
@@ -26,7 +28,8 @@ public class ScrollableLoadingList implements OnScrollListener {
 	private int currentPage = 0;
 	private int previousTotal = 0;
 	private boolean loading = true;
-
+	private ISessionManager session;
+	private int userId;
 	public ScrollableLoadingList(Context rootContext, ListView listViewStatusItems, ArrayList<StatusInfo> statusInfoList) {
 		this.rootContext = rootContext;
 		this.listViewStatusItems = listViewStatusItems;
@@ -51,6 +54,24 @@ public class ScrollableLoadingList implements OnScrollListener {
 		}
 		if (!loading && (totalItemCount - visibleItemCount) <= (firstVisibleItem + visibleThreshold)) {
 			final int scrollPosition = firstVisibleItem + visibleItemCount;
+			JSONObject params = new JSONObject();
+			try {
+				session = new SessionManager(rootContext);
+				userId = session.getUserId();
+				params.put("user_id", userId);
+				params.put("status_list_id", 1);
+				params.put("mapping_id", 0);
+				params.put("limit", 5);
+				params.put("offset", previousTotal);
+				params.put("hashtag", "");
+			} catch (JSONException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			catch (NullPointerException nullEx) {
+				nullEx.printStackTrace();
+			}
+			
 			// I load the next page of gigs using a background task,
 			// but you can call any function here.
 			new StatusFeed().get_statuses(new ICallBack() {
@@ -88,7 +109,7 @@ public class ScrollableLoadingList implements OnScrollListener {
 					// TODO Auto-generated method stub
 
 				}
-			});
+			},params.toString());
 			loading = true;
 		}
 	}

@@ -11,6 +11,8 @@ import org.json.JSONObject;
 import com.google.gson.Gson;
 import com.sonuto.rpc.ICallBack;
 import com.sonuto.rpc.register.StatusFeed;
+import com.sonuto.session.ISessionManager;
+import com.sonuto.session.SessionManager;
 import com.sportzweb.R;
 import com.sportzweb.JSONObjectModel.Blogs;
 import com.sportzweb.JSONObjectModel.StatusInfo;
@@ -25,12 +27,30 @@ import android.widget.ListView;
 import android.widget.AbsListView.OnScrollListener;
 
 public class TopRatedFragment extends Fragment {
-
+	private ISessionManager session;
+	private int userId;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
 		final View rootView = inflater.inflate(R.layout.fragment_top_rated, container, false);
+		JSONObject params = new JSONObject();
+		try {
+			session = new SessionManager(getActivity());
+			userId = session.getUserId();
+			params.put("user_id", userId);
+			params.put("status_list_id", 1);
+			params.put("mapping_id", 0);
+			params.put("limit", 5);
+			params.put("offset", 0);
+			params.put("hashtag", "");
+		} catch (JSONException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		catch (NullPointerException nullEx) {
+			nullEx.printStackTrace();
+		}
 		
 		new StatusFeed().get_statuses(new ICallBack() {
 			
@@ -68,9 +88,9 @@ public class TopRatedFragment extends Fragment {
 			@Override
 			public void callBackErrorHandler(Object object) {
 				// TODO Auto-generated method stub
-				
+				System.out.println();
 			}
-		});
+		},params.toString());
 		
 		
 
