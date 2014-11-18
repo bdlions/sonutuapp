@@ -2,8 +2,6 @@ package com.sportzweb;
 
 import java.util.ArrayList;
 
-import org.json.JSONArray;
-
 import android.app.Activity;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
@@ -39,19 +37,17 @@ public class MyPhotos extends Activity{
 	}
 
 	private ArrayList getData() {
-		final ArrayList<String> imagesPath = new ArrayList<String>();
-		
-		imagesPath.add("http://10.0.2.2/sportzweb/resources/images/applications/blog_app/1.jpg");
-		imagesPath.add("http://10.0.2.2/sportzweb/resources/images/applications/blog_app/5.jpg");
-		imagesPath.add("http://10.0.2.2/sportzweb/resources/images/applications/blog_app/4.jpg");
-		imagesPath.add("http://10.0.2.2/sportzweb/resources/images/applications/blog_app/1.jpg");
-		imagesPath.add("http://10.0.2.2/sportzweb/resources/images/applications/blog_app/5.jpg");
-		imagesPath.add("http://10.0.2.2/sportzweb/resources/images/applications/blog_app/4.jpg");
-		imagesPath.add("http://10.0.2.2/sportzweb/resources/images/applications/blog_app/1.jpg");
-		imagesPath.add("http://10.0.2.2/sportzweb/resources/images/applications/blog_app/5.jpg");
-		imagesPath.add("http://10.0.2.2/sportzweb/resources/images/applications/blog_app/4.jpg");
-			
-		return imagesPath;
+		final ArrayList imageItems = new ArrayList();
+		// retrieve String drawable array
+		TypedArray imgs = getResources().obtainTypedArray(R.array.image_ids);
+		for (int i = 0; i < imgs.length(); i++) {
+			Bitmap bitmap = BitmapFactory.decodeResource(this.getResources(),
+					imgs.getResourceId(i, -1));
+			imageItems.add(new ImageItem(bitmap, "Image#" + i));
+		}
+
+		return imageItems;
+
 	}
 
 }
