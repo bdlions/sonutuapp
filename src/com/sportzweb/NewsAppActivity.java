@@ -55,12 +55,12 @@ public class NewsAppActivity extends Fragment{
 				JSONObject jsonObject = (JSONObject) object;
 
 				try {
-					JSONArray jsonTabs = jsonObject.getJSONArray("news_category_list");
+					JSONArray news_category_list = jsonObject.getJSONArray("news_category_list");
 					
 					Gson gson = new Gson();
-					int tabCount = jsonTabs.length();
+					int tabCount = news_category_list.length();
 					for (int i = 0; i < tabCount; i++) {
-						NewsTab tab = gson.fromJson(jsonTabs.get(i).toString(),
+						NewsTab tab = gson.fromJson(news_category_list.get(i).toString(),
 								NewsTab.class);
 						tabList.add(tab);
 					}

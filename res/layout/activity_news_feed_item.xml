@@ -108,8 +108,18 @@
                 android:gravity="center"
                 android:background="@drawable/right_border"
                 android:orientation="horizontal" >
-
+                
                 <ImageButton
+                    android:id="@+id/likeStatusBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="3dp"
+                    android:background="#FFFFFF"
+                    android:contentDescription="@string/EmptyString"
+                    android:src="@drawable/like_icon" />
+
+                <!-- <ImageButton
                     android:id="@+id/likeStatusBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -128,7 +138,7 @@
                     android:layout_marginBottom="2dp"
                     android:fontFamily="Bold"
                     android:text="@string/newsfeed_like"
-                    android:textSize="15sp" />
+                    android:textSize="15sp" /> -->
             </LinearLayout>
 
             <LinearLayout
@@ -139,8 +149,19 @@
                 android:layout_weight="0.3"
                 android:background="@drawable/right_border"
                 android:orientation="horizontal" >
-
+                
                 <ImageButton
+                    android:id="@+id/commentStatusBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="3dp"
+                    android:background="#FFFFFF"
+                    android:contentDescription="@string/EmptyString"
+                    android:src="@drawable/comment_icon" />
+
+                <!--<ImageButton
                     android:id="@+id/commentStatusBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -161,7 +182,7 @@
                     android:layout_marginBottom="2dp"
                     android:fontFamily="Bold"
                     android:text="@string/newsfeed_comment"
-                    android:textSize="15sp" />
+                    android:textSize="15sp" /> -->
             </LinearLayout>
 
             <LinearLayout
@@ -171,8 +192,19 @@
                 android:gravity="center"
                 android:layout_weight="0.3"
                 android:orientation="horizontal" >
-
+                
                 <ImageButton
+                    android:id="@+id/shareStatusBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="3dp"
+                    android:background="#FFFFFF"
+                    android:layout_marginBottom="3dp"
+                    android:contentDescription="@string/EmptyString"
+                    android:src="@drawable/share_icon" />
+
+                <!--<ImageButton
                     android:id="@+id/shareStatusBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -193,7 +225,7 @@
                     android:layout_marginBottom="2dp"
                     android:fontFamily="Bold"
                     android:text="@string/newsfeed_share"
-                    android:textSize="15sp" />
+                    android:textSize="15sp" /> -->
             </LinearLayout>
         </LinearLayout>
 

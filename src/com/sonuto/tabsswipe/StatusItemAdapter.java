@@ -3,12 +3,10 @@ package com.sonuto.tabsswipe;
 import java.util.ArrayList;
 
 import com.bdlions.load.image.ImageLoader;
-
+import com.google.gson.JsonArray;
 import com.sonuto.Config;
-
 import com.sonuto.rpc.ICallBack;
 import com.sonuto.rpc.register.StatusFeed;
-
 import com.sportzweb.R;
 import com.sportzweb.StatusCommentsActivity;
 import com.sportzweb.JSONObjectModel.StatusInfo;
@@ -30,6 +28,7 @@ public class StatusItemAdapter extends BaseAdapter{
 	public ImageLoader imageLoader;
 	StatusInfo statusInfo;
 	int status_id;
+	JsonArray statusComments;
 	
 	public StatusItemAdapter(Context context, ArrayList<StatusInfo> list){
 		this.list = list;
@@ -69,8 +68,15 @@ public class StatusItemAdapter extends BaseAdapter{
 		statusInfo = (StatusInfo)getItem(index);
 		status_id = statusInfo.getStatus_id();
 		
+		
+		statusComments = statusInfo.getFeedbacks();
+		JsonArray liked_user_list = statusInfo.getLiked_user_list();
+		int likeCounter = liked_user_list.size();
+		int commentCounter = statusComments.size();
+		
 		TextView textViewNameOfUser = (TextView)convertView.findViewById(R.id.textViewNameOfUser);
 		TextView textViewTotalLike = (TextView)convertView.findViewById(R.id.textViewTotalLike);
+		TextView textViewTotalcomments = (TextView)convertView.findViewById(R.id.textViewTotalcomments);
 		TextView textViewpostedStatusTime = (TextView)convertView.findViewById(R.id.textViewpostedStatusTime);
 		TextView textViewDescription = (TextView)convertView.findViewById(R.id.textViewDescription);
 		ImageView imgViewOfUsers = (ImageView) convertView.findViewById(R.id.imageOfUser);
@@ -109,9 +115,13 @@ public class StatusItemAdapter extends BaseAdapter{
 				Intent i = new Intent(context, StatusCommentsActivity.class);
 				i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 				i.putExtra("status_id", status_id);
+				i.putExtra("statusComments", statusComments.toString());
 				context.startActivity(i);
 			}
 		});
+		
+		textViewTotalLike.setText(likeCounter + " Likes");
+		textViewTotalcomments.setText(commentCounter + " Comments");
 		
 		String img_path = "resources/uploads/profile_picture/50x50/";
 		textViewNameOfUser.setText(statusInfo.getFirst_name() + " " + statusInfo.getLast_name());

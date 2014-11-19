@@ -148,7 +148,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="5dp"
                 android:layout_weight="1"
-                android:src="@drawable/my_info" />
+                android:src="@drawable/info_icon" />
 
             <ImageView
                 android:id="@+id/myPhotosImageView"
@@ -156,14 +156,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="5dp"
                 android:layout_weight="1"
-                android:src="@drawable/my_photo" />
+                android:src="@drawable/myphotos_icon" />
 
             <ImageView
                 android:id="@+id/myFollowingsImageView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:src="@drawable/my_followers" />
+                android:src="@drawable/following_icon" />
         </LinearLayout>
 
         <RelativeLayout
@@ -264,9 +264,9 @@
                         android:layout_marginTop="3dp"
                         android:background="#FFFFFF"
                         android:contentDescription="@string/EmptyString"
-                        android:src="@drawable/like" />
+                        android:src="@drawable/like_icon" />
 
-                    <TextView
+                    <!-- <TextView
                         android:id="@+id/newsfeedLikeText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -275,7 +275,7 @@
                         android:layout_marginTop="2dp"
                         android:fontFamily="Bold"
                         android:text="@string/newsfeed_like"
-                        android:textSize="15sp" />
+                        android:textSize="15sp" /> -->
                 </LinearLayout>
 
                 <LinearLayout
@@ -296,9 +296,9 @@
                         android:layout_marginTop="3dp"
                         android:background="#FFFFFF"
                         android:contentDescription="@string/EmptyString"
-                        android:src="@drawable/comment" />
+                        android:src="@drawable/comment_icon" />
 
-                    <TextView
+                    <!--<TextView
                         android:id="@+id/newsfeedCommentText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -308,7 +308,7 @@
                         android:layout_marginTop="3dp"
                         android:fontFamily="Bold"
                         android:text="@string/newsfeed_comment"
-                        android:textSize="15sp" />
+                        android:textSize="15sp" /> -->
                 </LinearLayout>
 
                 <LinearLayout
@@ -328,9 +328,9 @@
                         android:layout_marginTop="3dp"
                         android:background="#FFFFFF"
                         android:contentDescription="@string/EmptyString"
-                        android:src="@drawable/share" />
+                        android:src="@drawable/share_icon" />
 
-                    <TextView
+                    <!--<TextView
                         android:id="@+id/newsfeedShareText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -340,7 +340,7 @@
                         android:layout_marginTop="3dp"
                         android:fontFamily="Bold"
                         android:text="@string/newsfeed_share"
-                        android:textSize="15sp" />
+                        android:textSize="15sp" /> -->
                 </LinearLayout>
             </LinearLayout>
 

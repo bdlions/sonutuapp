@@ -1,5 +1,9 @@
 package com.sportzweb.JSONObjectModel;
 
+import org.json.JSONArray;
+
+import com.google.gson.JsonArray;
+
 public class StatusInfo {
 
 	private int status_id;
@@ -8,6 +12,8 @@ public class StatusInfo {
 	private String last_name;
 	private String status_created_on;
 	private String photo;
+	private JsonArray feedbacks;
+	private JsonArray liked_user_list;
 	
 	public String getPhoto() {
 		return photo;
@@ -17,6 +23,19 @@ public class StatusInfo {
 	}
 	public String getStatus_created_on() {
 		return status_created_on;
+	}
+	
+	public JsonArray getFeedbacks() {
+		return feedbacks;
+	}
+	public void setFeedbacks(JsonArray feedbacks) {
+		this.feedbacks = feedbacks;
+	}
+	public JsonArray getLiked_user_list() {
+		return liked_user_list;
+	}
+	public void setLiked_user_list(JsonArray liked_user_list) {
+		this.liked_user_list = liked_user_list;
 	}
 	public void setStatus_created_on(String status_created_on) {
 		this.status_created_on = status_created_on;
@@ -44,6 +63,12 @@ public class StatusInfo {
 	}
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return super.toString();
 	}
 	
 	

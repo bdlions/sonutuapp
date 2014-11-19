@@ -64,6 +64,7 @@ public class TopRatedFragment extends Fragment {
 				final ArrayList<StatusInfo> statusInfoList = new ArrayList<StatusInfo>();
 				try {
 					JSONArray newsFeeds = statusFeed.getJSONArray("newsfeeds");
+					
 					int statusCount = newsFeeds.length();
 					for (int i = 0; i < statusCount; i++) {
 						JSONObject status = (JSONObject) newsFeeds.get(i);

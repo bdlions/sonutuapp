@@ -9,6 +9,7 @@ import com.bdlions.load.image.ImageLoader;
 import com.google.gson.Gson;
 import com.sonuto.rpc.ICallBack;
 import com.sonuto.rpc.register.HealthyRecipeApp;
+import com.sonuto.rpc.register.ServiceDirectoryApp;
 import com.sonuto.session.SessionManager;
 import com.sonuto.users.AppID;
 import com.sonuto.utils.custom.adapter.NewsCommentsCustomAdapter;
@@ -143,8 +144,8 @@ public class ServiceCommentsActivity extends Activity {
 					pDialog.setCancelable(false);
 					pDialog.show();
 					
-					HealthyRecipeApp healthyRecipeapp = new HealthyRecipeApp();
-					healthyRecipeapp.postrecipeComments(new ICallBack() {
+					ServiceDirectoryApp serviceDirectoryapp = new ServiceDirectoryApp();
+					serviceDirectoryapp.postServiceComments(new ICallBack() {
 
 						@Override
 						public void callBackResultHandler(Object object) {
