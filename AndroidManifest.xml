@@ -6,52 +6,54 @@
 
     <uses-sdk
         android:minSdkVersion="17"
-        android:targetSdkVersion="18" />
+        android:targetSdkVersion="19" />
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-	
-	
-	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-	<uses-permission android:name="android.permission.INTERNET" />
-	<uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
-	
-	<!--Google MAP API key-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
 
-<meta-data
-   android:name="com.google.android.maps.v2.API_KEY"
-   android:value="AIzaSyDKymeBXNeiFWY5jRUejv6zItpmr2MVyQ0" /> 
-	
+    <!-- The following two permissions are not required to use Google Maps Android API v2, but are recommended. -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/logo"
         android:label="@string/app_name"
-        android:theme="@android:style/Theme.NoTitleBar">
+        android:theme="@android:style/Theme.NoTitleBar" >
         <activity
-            android:name="com.sportzweb.LoginActivity"
-            android:theme="@style/CustomActionBarTheme"
-            android:label="@string/app_name" >
+            android:name="com.sportzweb.MapTestActivity"
+            android:label="@string/app_name"
+            android:theme="@style/CustomActionBarTheme" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
-	<!--<activity android:name="com.sportzweb.LoginActivity"
-           android:theme="@style/CustomActionBarTheme"></activity>-->
-        
-        <activity
-            android:name="com.sportzweb.MainActivity"
-            android:theme="@style/CustomActionBarTheme"
-            android:label="@string/title_activity_main" >
-        </activity>
-        
+
+        <!--
+        <activity android:name="com.sportzweb.LoginActivity"
+           android:theme="@style/CustomActionBarTheme"></activity>
+        -->
+
+<!--         <activity -->
+<!--             android:name="com.sportzweb.MapTestActivity" -->
+<!--             android:label="@string/title_activity_main" -->
+<!--             android:theme="@style/CustomActionBarTheme" > -->
+<!--         </activity> -->
         <activity
             android:name="com.sportzweb.UserProfileActivity"
-            android:theme="@style/CustomActionBarTheme"
-            android:label="@string/title_activity_user_profile" >
+            android:label="@string/title_activity_user_profile"
+            android:theme="@style/CustomActionBarTheme" >
         </activity>
-        
         <activity
             android:name="com.sportzweb.UserInfoActivity"
             android:theme="@style/CustomActionBarTheme"
@@ -66,102 +68,120 @@
         
         <activity
             android:name="com.sportzweb.RegistrationActivity"
-            android:theme="@style/CustomActionBarTheme"
-            android:label="@string/title_activity_registration" >
+            android:label="@string/title_activity_registration"
+            android:theme="@style/CustomActionBarTheme" >
         </activity>
-        
         <activity
             android:name="com.sportzweb.MemberSettingActivity"
-            android:theme="@style/CustomActionBarTheme"
-            android:label="@string/title_activity_member_setting" >
+            android:label="@string/title_activity_member_setting"
+            android:theme="@style/CustomActionBarTheme" >
         </activity>
-        
         <activity
             android:name="com.sportzweb.GenderSelectionActivity"
-            android:theme="@style/CustomActionBarTheme"
-            android:label="@string/title_activity_genger_selection" >
+            android:label="@string/title_activity_genger_selection"
+            android:theme="@style/CustomActionBarTheme" >
         </activity>
-        
         <activity
             android:name="com.sportzweb.ProfileInformationActivity"
             android:label="@string/title_activity_profile_information"
-            android:theme="@style/CustomActionBarTheme">
+            android:theme="@style/CustomActionBarTheme" >
         </activity>
-        
-        <activity android:name="com.sportzweb.BirthDaySettingActivity"
-            android:theme="@style/CustomActionBarTheme"></activity>
-        
-        <activity android:name="com.sportzweb.AddProfilePictureActivity"
+        <activity
+            android:name="com.sportzweb.BirthDaySettingActivity"
+            android:theme="@style/CustomActionBarTheme" >
+        </activity>
+        <activity
+            android:name="com.sportzweb.AddProfilePictureActivity"
             android:label="@string/title_activity_add_photo"
-            android:theme="@style/CustomActionBarTheme"></activity> 
-        
-        <activity android:name="com.sportzweb.NewsFeedActivity"
+            android:theme="@style/CustomActionBarTheme" >
+        </activity>
+        <activity
+            android:name="com.sportzweb.NewsFeedActivity"
             android:label="@string/title_activity_news_feed"
-            android:theme="@style/CustomActionBarTheme"></activity>
-        
-        <activity android:name="com.sportzweb.StatusCommentsActivity"
+            android:theme="@style/CustomActionBarTheme" >
+        </activity>
+        <activity
+            android:name="com.sportzweb.StatusCommentsActivity"
             android:label="@string/title_activity_news_feed"
-            android:theme="@style/CustomActionBarTheme"></activity>
-        
-        <activity android:name="com.sportzweb.BusinessRegistrationActivity"
+            android:theme="@style/CustomActionBarTheme" >
+        </activity>
+        <activity
+            android:name="com.sportzweb.BusinessRegistrationActivity"
             android:label="@string/title_activity_business_profile_registration"
-            android:theme="@style/CustomActionBarTheme"></activity>
+            android:theme="@style/CustomActionBarTheme" >
+        </activity>
+        <activity
+            android:name="com.sportzweb.BmiCalculatorActivity"
+            android:label="@string/title_activity_bmi_calculator"
+            android:theme="@style/CustomActionBarTheme" >
+        </activity>
+        <activity
+            android:name="com.sportzweb.BlogActivity"
+            android:label="@string/title_activity_bmi_calculator"
+            android:theme="@style/CustomActionBarTheme" >
+        </activity>
+        <activity
+            android:name="com.sportzweb.XtreamBanterActivity"
+            android:label="@string/title_activity_bmi_calculator"
+            android:theme="@style/CustomActionBarTheme" >
+        </activity>
+        <activity
+            android:name="com.sportzweb.XtreamBanterTournamentActivity"
+            android:label="@string/title_activity_bmi_calculator"
+            android:theme="@style/CustomActionBarTheme" >
+        </activity>
 
-        <activity android:name="com.sportzweb.BmiCalculatorActivity"
-            android:label="@string/title_activity_bmi_calculator"
-            android:theme="@style/CustomActionBarTheme"></activity>
-
-        
-        <activity android:name="com.sportzweb.BlogActivity"
-            android:label="@string/title_activity_bmi_calculator"
-            android:theme="@style/CustomActionBarTheme"></activity>
-        
-        <activity android:name="com.sportzweb.XtreamBanterActivity"
-            android:label="@string/title_activity_bmi_calculator"
-            android:theme="@style/CustomActionBarTheme"></activity>
-        
-        <activity android:name="com.sportzweb.XtreamBanterTournamentActivity"
-            android:label="@string/title_activity_bmi_calculator"
-            android:theme="@style/CustomActionBarTheme"></activity>
-        
-        
-        <!--<activity android:name="com.sportzweb.BlogAppActivity"
+        <!--
+            <activity android:name="com.sportzweb.BlogAppActivity"
             android:label="@string/title_activity_blog_app"
-            android:theme="@style/CustomActionBarTheme"></activity>-->
-        
-        <activity android:name="com.sportzweb.BlogDetailsActivity"
+            android:theme="@style/CustomActionBarTheme"></activity>
+        -->
+
+        <activity
+            android:name="com.sportzweb.BlogDetailsActivity"
             android:label="@string/title_activity_blog_details"
-            android:theme="@style/CustomActionBarTheme"></activity>
-        
-        <activity android:name="com.sportzweb.BlogCommentsActivity"
+            android:theme="@style/CustomActionBarTheme" >
+        </activity>
+        <activity
+            android:name="com.sportzweb.BlogCommentsActivity"
             android:label="@string/title_activity_blog_comments"
-            android:theme="@style/CustomActionBarTheme"></activity>
-        
-        <activity android:name="com.sportzweb.MyBlogActivity"
+            android:theme="@style/CustomActionBarTheme" >
+        </activity>
+        <activity
+            android:name="com.sportzweb.MyBlogActivity"
             android:label="@string/title_activity_my_blog"
-            android:theme="@style/CustomActionBarTheme"></activity>
-        
-        <activity android:name="com.sportzweb.CreateBlogActivity"
+            android:theme="@style/CustomActionBarTheme" >
+        </activity>
+        <activity
+            android:name="com.sportzweb.CreateBlogActivity"
             android:label="@string/title_activity_create_blog"
-            android:theme="@style/CustomActionBarTheme"></activity>
-        
-        <activity android:name="com.sportzweb.EditBlogActivity"
+            android:theme="@style/CustomActionBarTheme" >
+        </activity>
+        <activity
+            android:name="com.sportzweb.EditBlogActivity"
             android:label="@string/title_activity_edit_blog"
-            android:theme="@style/CustomActionBarTheme"></activity>
-        
-        <!--<activity android:name="com.sportzweb.HealthyRecipeAppActivity"
+            android:theme="@style/CustomActionBarTheme" >
+        </activity>
+
+        <!--
+            <activity android:name="com.sportzweb.HealthyRecipeAppActivity"
             android:label="@string/title_activity_healthy_recipe_app"
-            android:theme="@style/CustomActionBarTheme"></activity>-->
-        
-        <activity android:name="com.sportzweb.RecipeDetailsActivity"
+            android:theme="@style/CustomActionBarTheme"></activity>
+        -->
+
+        <activity
+            android:name="com.sportzweb.RecipeDetailsActivity"
             android:label="@string/title_activity_recipe_details"
-            android:theme="@style/CustomActionBarTheme"></activity>
-        
-        <activity android:name="com.sportzweb.RecipeCommentsActivity"
+            android:theme="@style/CustomActionBarTheme" >
+        </activity>
+        <activity
+            android:name="com.sportzweb.RecipeCommentsActivity"
             android:label="@string/title_activity_recipe_comments"
-            android:theme="@style/CustomActionBarTheme"></activity>
-        
-        <!--<activity android:name="com.sportzweb.NewsAppActivity"
+            android:theme="@style/CustomActionBarTheme" >
+        </activity>
+
+        <!--
+            <activity android:name="com.sportzweb.NewsAppActivity"
             android:label="@string/title_activity_news_app"
             android:theme="@style/CustomActionBarTheme"></activity>-->
             
@@ -173,38 +193,41 @@
             android:label="@string/title_activity_news_details"
             android:theme="@style/CustomActionBarTheme"></activity>
         
-        <!-- <activity android:name="com.sportzweb.xtreambanter.SportsActivity"
+        <!--
+             <activity android:name="com.sportzweb.xtreambanter.SportsActivity"
             android:label="@string/title_activity_xstream_banter"
-            android:theme="@style/CustomActionBarTheme"></activity> -->
-        
-        <activity android:name="com.sonuto.applications.xstreambanter.TournamentActivity"
+            android:theme="@style/CustomActionBarTheme"></activity>
+        -->
+
+        <activity
+            android:name="com.sonuto.applications.xstreambanter.TournamentActivity"
             android:label="@string/title_activity_xstream_banter"
-            android:theme="@style/CustomActionBarTheme">
+            android:theme="@style/CustomActionBarTheme" >
         </activity>
-        
-        <activity android:name="com.sonuto.applications.xstreambanter.CreateChatRoom"
+        <activity
+            android:name="com.sonuto.applications.xstreambanter.CreateChatRoom"
             android:label="@string/title_activity_xstream_banter"
-            android:theme="@style/CustomActionBarTheme">
+            android:theme="@style/CustomActionBarTheme" >
         </activity>
-        
-		<activity android:name="com.sonuto.applications.xstreambanter.JoinChatRoom"
+        <activity
+            android:name="com.sonuto.applications.xstreambanter.JoinChatRoom"
             android:label="@string/title_activity_xstream_banter"
-            android:theme="@style/CustomActionBarTheme">
+            android:theme="@style/CustomActionBarTheme" >
         </activity>
-        
-		<activity android:name="com.sonuto.applications.xstreambanter.ChatRooms"
+        <activity
+            android:name="com.sonuto.applications.xstreambanter.ChatRooms"
             android:label="@string/title_activity_xstream_banter"
-            android:theme="@style/CustomActionBarTheme">
+            android:theme="@style/CustomActionBarTheme" >
         </activity>
-		
-		<activity android:name="com.sonuto.applications.xstreambanter.MatchesActivity"
+        <activity
+            android:name="com.sonuto.applications.xstreambanter.MatchesActivity"
             android:label="@string/title_activity_xstream_banter"
-            android:theme="@style/CustomActionBarTheme">
+            android:theme="@style/CustomActionBarTheme" >
         </activity>
-        
-		<activity android:name="com.sonuto.applications.xstreambanter.MatchActivity"
+        <activity
+            android:name="com.sonuto.applications.xstreambanter.MatchActivity"
             android:label="@string/title_activity_xstream_banter"
-            android:theme="@style/CustomActionBarTheme">
+            android:theme="@style/CustomActionBarTheme" >
         </activity>
         <activity android:name="com.sonuto.applications.xstreambanter.MapTeamChatRoom"
             android:label="@string/title_activity_xstream_banter"
@@ -213,12 +236,7 @@
         
 		<activity android:name="com.sportzweb.ServiceDetailsActivity"
             android:label="@string/title_activity_service_details"
-            android:theme="@style/CustomActionBarTheme">
-        </activity>
-        
-		<activity android:name="com.sportzweb.ServiceDetailsMoreActivity"
-            android:label="@string/title_activity_service_details"
-            android:theme="@style/CustomActionBarTheme">
+            android:theme="@style/CustomActionBarTheme" >
         </activity>
         
 
@@ -232,6 +250,13 @@
             android:theme="@style/CustomActionBarTheme">
         </activity>
                 
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyCe-FVUSTFiX8DrSujvwKPq7zt0u0wbCt0" />
     </application>
 
 </manifest>
