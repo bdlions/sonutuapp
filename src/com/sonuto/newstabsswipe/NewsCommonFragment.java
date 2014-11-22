@@ -29,6 +29,7 @@ import com.sportzweb.JSONObjectModel.SubNews;
 import com.sportzweb.JSONObjectModel.SubNewsTab;
 
 import android.app.ActionBar;
+import android.app.Activity;
 import android.app.FragmentTransaction;
 import android.app.ActionBar.LayoutParams;
 import android.app.ActionBar.Tab;
@@ -52,7 +53,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class NewsCommonFragment extends Fragment  {
+public class NewsCommonFragment extends Activity  {
 	
 	ArrayList<String> item;
 	ListView listView;
@@ -74,14 +75,19 @@ public class NewsCommonFragment extends Fragment  {
 	TextView tv;
 	private JSONObject firstNews;
 	
+
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_all_news);
+		
 		//call server to get information/data for this tabid
 		//and set news in the fragment
-		imageLoader=new ImageLoader(getActivity().getApplicationContext());
-		int tabId = getArguments().getInt("tabId");
-		String newsList = getArguments().getString("newsList");
+		imageLoader=new ImageLoader(getApplicationContext());
+		int tabId = getIntent().getIntExtra("tabId", 0);
+		String newsList =  getIntent().getStringExtra("newsList");
 		
+		//setHasOptionsMenu(true);
 		
 		
 
@@ -89,11 +95,12 @@ public class NewsCommonFragment extends Fragment  {
 		
 		
 		if(tabId == 0){
-			rootView = inflater.inflate(R.layout.activity_all_news, container, false);
+			//rootView = inflater.inflate(R.layout.activity_all_news, container, false);
+			setContentView(R.layout.activity_all_news);
 			
-			listView = (ListView) rootView.findViewById(R.id.listViewNews);
-			firstNewsHeading = (TextView) rootView.findViewById(R.id.firstNewsHeadline);
-			firstNewsImage = (ImageView) rootView.findViewById(R.id.firstNewsImage);
+			listView = (ListView) findViewById(R.id.listViewNews);
+			firstNewsHeading = (TextView) findViewById(R.id.firstNewsHeadline);
+			firstNewsImage = (ImageView) findViewById(R.id.firstNewsImage);
 			try {
 				newsJsonList = new JSONArray(newsList);
 				processNews(newsJsonList);
@@ -103,7 +110,8 @@ public class NewsCommonFragment extends Fragment  {
 			}
 		}
 		else {
-			rootView = inflater.inflate(R.layout.news_sub_category, container, false);
+			//rootView = inflater.inflate(R.layout.news_sub_category, container, false);
+			setContentView(R.layout.news_sub_category);
 			
 			NewsApp newsApp = new NewsApp();
 			newsApp.getNewsList(new ICallBack() {
@@ -121,9 +129,9 @@ public class NewsCommonFragment extends Fragment  {
 						String newsCategory = categoryNews.getTitle();
 						
 						if(categoryNews !=null) {
-							parentLayout = (LinearLayout) rootView.findViewById(R.id.parentLayoutForNews);
+							parentLayout = (LinearLayout) findViewById(R.id.parentLayoutForNews);
 							
-							tv = new TextView(getActivity().getApplicationContext());
+							tv = new TextView(getApplicationContext());
 							tv.setText(newsCategory);
 							tv.setTextColor(Color.parseColor("#00ACEA"));
 							tv.setTypeface(null, Typeface.BOLD);
@@ -138,7 +146,7 @@ public class NewsCommonFragment extends Fragment  {
 							int total_news = newsJsonList.size();
 							
 							// this is for news category horizontal list view
-							HListView hListView = new HListView(getActivity().getApplicationContext(), attributes);
+							HListView hListView = new HListView(getApplicationContext(), attributes);
 							hListView.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, 200));
 							
 							SubNews news = new SubNews();
@@ -152,7 +160,7 @@ public class NewsCommonFragment extends Fragment  {
 								news.setPicture(imagePath + news.getPicture());
 								items.add(news);
 							}
-							NewsAdapter adapter = new NewsAdapter(getActivity().getApplicationContext(), items);
+							NewsAdapter adapter = new NewsAdapter(getApplicationContext(), items);
 							hListView.setAdapter(adapter);
 							
 							parentLayout.addView(hListView);
@@ -168,7 +176,7 @@ public class NewsCommonFragment extends Fragment  {
 							SubNewsTab subNewsCategory = gson.fromJson(jsonNewsSubTabs.get(i).toString(),SubNewsTab.class);
 							subCategoryNewsList.add(subNewsCategory);
 							
-							tv = new TextView(getActivity().getApplicationContext());
+							tv = new TextView(getApplicationContext());
 							
 							subNewsHeading = subNewsCategory.getTitle();
 							
@@ -187,7 +195,7 @@ public class NewsCommonFragment extends Fragment  {
 							
 							
 							// this is for Sub news category horizontal list view
-							HListView hListView = new HListView(getActivity().getApplicationContext(), attributes);
+							HListView hListView = new HListView(getApplicationContext(), attributes);
 							hListView.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, 200));
 							
 							
@@ -203,7 +211,7 @@ public class NewsCommonFragment extends Fragment  {
 								
 								items.add(blogs);
 							}
-							NewsAdapter adapter = new NewsAdapter(getActivity().getApplicationContext(), items);
+							NewsAdapter adapter = new NewsAdapter(getApplicationContext(), items);
 							hListView.setAdapter(adapter);
 							
 							
@@ -233,10 +241,10 @@ public class NewsCommonFragment extends Fragment  {
 
 		
 		
-		//TextView tv = (TextView) rootView.findViewById(R.id.textViewSample);
+		//TextView tv = (TextView) findViewById(R.id.textViewSample);
 		//tv.setText("Tab Id: " + tabId);
 		
-		return rootView;
+		//return rootView;
 	}
 	
 	private void processNews(JSONArray newsList){
@@ -259,11 +267,11 @@ public class NewsCommonFragment extends Fragment  {
 				@Override
 				public void onClick(View v) {
 					try {
-						Intent intent = new Intent(getActivity(), NewsDetailsActivity.class);
+						Intent intent = new Intent(getApplicationContext(), NewsDetailsActivity.class);
 						intent.putExtra("news_id", Integer.parseInt(firstNews.get("news_id").toString()));
 						intent.putExtra("news_category_title","Home");
 						
-						getActivity().startActivity(intent);
+						startActivity(intent);
 					} catch (JSONException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -290,7 +298,7 @@ public class NewsCommonFragment extends Fragment  {
 				item.add(newsObj);
 			}
 			
-			CustomAdapter adapter = new CustomAdapter(getActivity(), item);
+			CustomAdapter adapter = new CustomAdapter(this, item);
 			listView.setAdapter(adapter);
 			
 		} catch (JSONException ie) {

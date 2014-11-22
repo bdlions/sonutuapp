@@ -106,7 +106,7 @@ public class StatusItemAdapter extends BaseAdapter{
 			}
 		});
 		
-		llComment.setOnClickListener(new OnClickListener() {
+		commentStatusBtn.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View arg0) {

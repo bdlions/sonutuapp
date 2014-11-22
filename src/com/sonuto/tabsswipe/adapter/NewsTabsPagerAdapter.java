@@ -27,8 +27,9 @@ public class NewsTabsPagerAdapter extends FragmentPagerAdapter {
 		Bundle bundle = new Bundle();
 		bundle.putInt("tabId", tabList.get(index).getId());
 		bundle.putString("newsList", newsList);
-		newsCommonFragment.setArguments(bundle);
-		return newsCommonFragment;
+		//newsCommonFragment.setArguments(bundle);
+		//return newsCommonFragment;
+		return null;
 	}
 
 	@Override
