@@ -27,6 +27,17 @@ public class StatusFeed extends RPCHandler{
 		setReturnType(RPCReturnType.JSON_OBJECT);
 		execute();
 	}
+	
+	public void postStatusComment(ICallBack callBack, Object...params){
+		setCallBack(callBack);
+		
+		setControllerName("status_feed/");
+		setMethod("post_feedback");
+
+		setParams(params);
+		setReturnType(RPCReturnType.JSON_OBJECT);
+		execute();
+	}
 
 	
 }

@@ -166,6 +166,13 @@
                 android:src="@drawable/following_icon" />
         </LinearLayout>
 
+        <TextView
+            android:id="@+id/statusPosttextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="Status" />
+
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"

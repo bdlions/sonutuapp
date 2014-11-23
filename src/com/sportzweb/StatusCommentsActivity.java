@@ -9,6 +9,11 @@ import org.json.JSONObject;
 import com.bdlions.load.image.ImageLoader;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
+import com.sonuto.rpc.ICallBack;
+import com.sonuto.rpc.register.HealthyRecipeApp;
+import com.sonuto.rpc.register.StatusFeed;
+import com.sonuto.session.SessionManager;
+import com.sonuto.users.AppID;
 import com.sonuto.utils.custom.adapter.BlogCommentsCustomAdapter;
 import com.sonuto.utils.custom.adapter.NewsCommentsCustomAdapter;
 import com.sonuto.utils.custom.adapter.StatusCommentsCustomAdapter;
@@ -22,6 +27,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -44,6 +51,7 @@ public class StatusCommentsActivity extends Activity {
 	int status_id;
 	String comments, userComments;
 	JSONArray commentsJSONArr;
+	SessionManager session;
 	private StatusCommentsCustomAdapter adapter;
 	private ArrayList<StatusComment> statusCommentObjList = new ArrayList<StatusComment>();
 
@@ -52,6 +60,7 @@ public class StatusCommentsActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_status_comments);
 		adapter = new StatusCommentsCustomAdapter(this, statusCommentObjList);
+		session = new SessionManager(getApplicationContext());
 		context = this;
 		initUi();
 		Process();
@@ -82,7 +91,76 @@ public class StatusCommentsActivity extends Activity {
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
+		
+		
+		btnForCommentInStatus.setOnClickListener(new OnClickListener() {
 
+			@Override
+			public void onClick(View arg0) {
+
+				JSONObject jsonStatusCommentObj = new JSONObject();
+				userComments = commentForStatusText.getText().toString();
+				if(isVerifiedCommentTextStep()) {
+					try {
+						int userId = session.getUserId();
+						jsonStatusCommentObj.put("user_id", userId);
+						jsonStatusCommentObj.put("status_id", status_id);
+						jsonStatusCommentObj.put("feedback", userComments);
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+					
+					
+					pDialog = new ProgressDialog(context);
+					pDialog.setMessage("Submitting comment and Fetching data..");
+					pDialog.setCancelable(false);
+					pDialog.show();
+					
+					StatusFeed statusFeed = new StatusFeed();	
+					statusFeed.postStatusComment(new ICallBack() {
+
+						@Override
+						public void callBackResultHandler(Object object) {
+							pDialog.dismiss();
+							JSONObject statusCommentJSONObject = (JSONObject) object;
+								JSONObject statusCommentInfoArray;
+//								try {
+//									statusCommentInfoArray = statusCommentJSONObject.getJSONObject("comment_info");
+//									Gson gson = new Gson();
+//									
+//									StatusComment statusInfo = gson.fromJson(statusCommentInfoArray.toString(), StatusComment.class);
+//									statusCommentObjList.add(statusInfo);
+//									adapter.notifyDataSetChanged();
+//									commentForStatusText.setText("");
+//								} catch (JSONException e) {
+//									e.printStackTrace();
+//								}
+						}
+
+						@Override
+						public void callBackErrorHandler(Object object) {
+
+						}
+					}, jsonStatusCommentObj.toString()); 
+				}
+				
+			}
+		});
+
+	}
+	
+	/**
+	 * isVerifiedCommentTextStep validation method
+	 * @return boolean value
+	 */
+	public boolean isVerifiedCommentTextStep() {
+		if (userComments.length() == 0) {
+			Toast.makeText(context, getString(R.string.commentRequired),
+					Toast.LENGTH_SHORT).show();
+			return false;
+		} else {
+			return true;
+		}
 	}
 
 }

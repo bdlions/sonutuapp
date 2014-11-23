@@ -11,7 +11,7 @@
     <ListView
         android:id="@+id/commentListViewForService"
         android:layout_width="match_parent"
-        android:layout_height="300dp" >
+        android:layout_height="150dp" >
     </ListView>
 
     <EditText
@@ -68,7 +68,7 @@
         android:layout_width="fill_parent"
         android:layout_height="34dp"
         android:layout_marginBottom="10dip"
-        android:layout_marginTop="20dip"
+        android:layout_marginTop="5dip"
         android:background="@drawable/button"
         android:text="@string/save_and_continue"
         android:textColor="#fff1ff"

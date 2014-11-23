@@ -187,6 +187,8 @@
     <string name="title_activity_genger_selection">Select Gender</string>
     <string name="title_activity_google_apitest">GoogleAPITestActivity</string>
     
+    <string name="title_activity_user_status_post">Post Status</string>
+    
     <string name="title_activity_profile_information">Profile Information</string>
     <string name="countyRequired">Country Required!</string>
     <string name="institutionRequired">Educational Institution Required!</string>
@@ -352,6 +354,8 @@
 	<string name="neutral">Neutral</string>
 	
 	<string name="comment_hint">Type your comments here</string>
+	<string name="post_hint">Type your post here</string>
 	
+	<string name="post">Post</string>
 	
 </resources>

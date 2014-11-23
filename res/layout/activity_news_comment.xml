@@ -11,7 +11,7 @@
     <ListView
         android:id="@+id/commentListViewForNews"
         android:layout_width="match_parent"
-        android:layout_height="300dp" >
+        android:layout_height="150dp" >
     </ListView>
 
     <EditText
@@ -24,43 +24,6 @@
         android:inputType="textMultiLine" >
     </EditText>
 
-    <!--<RadioGroup
-        android:id="@+id/radioGroup"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical" >
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" >
-
-            <RadioButton
-                android:id="@+id/positive"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Positive"
-                android:textSize="13sp" />
-
-            <RadioButton
-                android:id="@+id/negitive"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Negative"
-                android:textSize="13sp" />
-
-            <RadioButton
-                android:id="@+id/neutral"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Neutral"
-                android:textSize="13sp" />
-        </LinearLayout>
-    </RadioGroup> -->
-    
     <LinearLayout
         android:id="@+id/ll_radio_for_rg"
         android:layout_width="fill_parent"
@@ -111,7 +74,7 @@
         android:layout_width="fill_parent"
         android:layout_height="34dp"
         android:layout_marginBottom="10dip"
-        android:layout_marginTop="20dip"
+        android:layout_marginTop="5dip"
         android:background="@drawable/button"
         android:text="@string/save_and_continue"
         android:textColor="#fff1ff"

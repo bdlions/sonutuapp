@@ -214,7 +214,6 @@ public class NewsCommonFragment extends Activity  {
 							NewsAdapter adapter = new NewsAdapter(getApplicationContext(), items);
 							hListView.setAdapter(adapter);
 							
-							
 							parentLayout.addView(hListView);
 						}
 						

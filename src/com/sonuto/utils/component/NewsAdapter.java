@@ -3,10 +3,12 @@ package com.sonuto.utils.component;
 import java.util.ArrayList;
 
 import com.bdlions.load.image.ImageLoader;
+import com.sportzweb.NewsDetailsActivity;
 import com.sportzweb.R;
 import com.sportzweb.JSONObjectModel.SubNews;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -62,13 +64,11 @@ public class NewsAdapter extends BaseAdapter {
 		OnClickListener listerner = new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				
-//				Intent intent = new Intent(context, RecipeDetailsActivity.class);
-//				intent.putExtra("recipe_id",healthyRecipes.getId());
-//				intent.putExtra("recipe_category_title",healthyRecipes.getRecipe_category());
-				
-				//context.startActivity(intent);
+				Intent intent = new Intent(context, NewsDetailsActivity.class);
+				intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				intent.putExtra("news_id",subNews.getId());
+				intent.putExtra("news_category_title",subNews.getHeadline());
+				context.startActivity(intent);
 			}
 		};
 		
@@ -79,7 +79,7 @@ public class NewsAdapter extends BaseAdapter {
 		
 		
 		ImageView imageView = (ImageView) convertView.findViewById(R.id.sub_news_image);
-		//imageView.setOnClickListener(listerner);
+		imageView.setOnClickListener(listerner);
 		
 		newsTitle.setText(subNews.getHeadline());
 		newsTitle.setTextColor(Color.BLACK);

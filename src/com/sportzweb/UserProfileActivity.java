@@ -31,7 +31,7 @@ public class UserProfileActivity extends Activity {
 	int userId;
 	ImageView userProfileImage, myFollowingsImageView, myPhotosImageView,
 			myInfoImageView;
-	TextView userProfileName, userAddress, userProfession;
+	TextView userProfileName, userAddress, userProfession,statusPosttextView;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -62,7 +62,18 @@ public class UserProfileActivity extends Activity {
 		this.myPhotosImageView = (ImageView) findViewById(R.id.myPhotosImageView);
 		this.myFollowingsImageView = (ImageView) findViewById(R.id.myFollowingsImageView);
 		this.btnEditProfile = (Button) findViewById(R.id.btnEditProfile);
-
+		this.statusPosttextView = (TextView) findViewById(R.id.statusPosttextView);
+		
+		statusPosttextView.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				Intent i = new Intent(mContext, PostStatusActivity.class);
+				i.putExtra("user_id", userId);
+				startActivity(i);
+			}
+		});
+		
 		this.userProfileName = (TextView) findViewById(R.id.userProfileName);
 		this.userAddress = (TextView) findViewById(R.id.userAddress);
 		this.userProfession = (TextView) findViewById(R.id.userProfession);
