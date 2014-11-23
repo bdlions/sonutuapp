@@ -40,6 +40,10 @@ public class ServiceCategoryCustomAdapter extends BaseAdapter {
 		// TODO Auto-generated constructor stub
 		this.context = context;
 		this.serviceCategoryItem = serviceCategory;
+		
+		if(serviceCategory == null){
+			serviceCategory =  new ArrayList<ServiceCategory>();
+		}
 
 	}
 

@@ -17,7 +17,8 @@ public class MapTestActivity extends Activity {
 		setContentView(R.layout.activity_map_test);
 		// Get a handle to the Map Fragment
         GoogleMap map = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
-		LatLng dhaka = new LatLng(23.709921000000000000, 90.407143000000020000);
+		//LatLng dhaka = new LatLng(23.709921000000000000, 90.407143000000020000);
+		LatLng dhaka = new LatLng(51.494566, -0.275827);
 
 		LatLng mohakhali = new LatLng( 23.777628200000000000, 90.405449800000040000);
         map.setMyLocationEnabled(true);

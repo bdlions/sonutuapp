@@ -10,8 +10,8 @@
 
     <LinearLayout
         android:id="@+id/service_details_ll"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
         android:orientation="vertical"
         android:padding="10dip" >
 
@@ -64,31 +64,11 @@
             android:text="Distance : 1069.32 miles"
             android:textSize="14sp" />
 
-        <TextView
-            android:id="@+id/serviceDetailsAddressDetails"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:text="Details"
-            android:textColor="#93D2FB"
-            android:textSize="15sp" />
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
-        </RelativeLayout>
-        
-        <Button
-                android:id="@+id/serviceDetailsBackBtn"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dip"
-                android:layout_marginTop="5dip"
-                android:gravity="center"
-                android:text="Back"
-                android:textColor="#000000"
-                android:background="@drawable/button"
-                android:textSize="20sp" />
+        <fragment
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.MapFragment"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" />
     </LinearLayout>
 
 </ScrollView>
