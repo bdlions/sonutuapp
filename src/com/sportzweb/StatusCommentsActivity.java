@@ -81,7 +81,11 @@ public class StatusCommentsActivity extends Activity {
 			Gson gson = new Gson();
 			int total_comments = commentsJSONArr.length();
 			for (int i = 0; i < total_comments; i++) {
-				StatusComment comment = gson.fromJson(commentsJSONArr.get(i).toString(), StatusComment.class);
+				String commentObj = commentsJSONArr.get(i).toString();
+				StatusComment comment = gson.fromJson(commentObj, StatusComment.class);
+				JSONObject userInfo = new JSONObject( commentObj).getJSONObject("user_info");
+				comment.setUser_info(userInfo);
+				
 				statusCommentObjList.add(comment);
 			}
 

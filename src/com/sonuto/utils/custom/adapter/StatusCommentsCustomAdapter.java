@@ -72,12 +72,18 @@ public class StatusCommentsCustomAdapter extends BaseAdapter {
 		Log.d("My App", userInfo.toString());
 //		Gson gson = new Gson();
 
+		final String imagePath = Config.SERVER_ROOT_URL + "resources/uploads/profile_picture/";
+		
+		commentUserImg.setImageResource(R.drawable.upload_img_icon);
 
-//		try {
-//			userNameInStatusComments.setText(userInfo.get("first_name") + " " + userInfo.get("last_name"));
-//		} catch (JSONException e) {
-//			e.printStackTrace();
-//		}
+		try {
+			userNameInStatusComments.setText(userInfo.get("first_name") + " " + userInfo.get("last_name"));
+			if ((userInfo.get("photo") != null) ) {
+				 imageLoader.DisplayImage(imagePath + userInfo.get("photo"), commentUserImg);
+			}
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
 		userStatusComments.setText(statusCommentObject.getDescription());
 		userStatusCommentsTime.setText(statusCommentObject.getCreated_on());
 		
@@ -87,17 +93,6 @@ public class StatusCommentsCustomAdapter extends BaseAdapter {
 				
 			}
 		});
-		
-		final String imagePath = Config.SERVER_ROOT_URL + "resources/uploads/profile_picture/";
-		
-		commentUserImg.setImageResource(R.drawable.upload_img_icon);
-//		try {
-//			if ((userInfo.get("photo") != null) ) {
-//				 imageLoader.DisplayImage(imagePath + userInfo.get("photo"), commentUserImg);
-//			}
-//		} catch (JSONException e) {
-//			e.printStackTrace();
-//		}
 		
 		return convertView;
 	}
