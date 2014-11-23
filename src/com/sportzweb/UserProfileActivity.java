@@ -40,7 +40,11 @@ public class UserProfileActivity extends Activity {
 		this.mContext = this;
 		// Session Manager
 		this.session = new SessionManager(getApplicationContext());
-		this.userId = this.session.getUserId();
+		this.userId = getIntent().getIntExtra("user_id",0);
+		
+		if(userId == 0){
+			this.userId = this.session.getUserId();
+		}
 
 		initUI();
 		process();
