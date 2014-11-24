@@ -82,6 +82,14 @@ public class MessageChat extends Activity {
 		btnSendChatMessage = (Button) findViewById(R.id.btnSendChatMessage);
 		et_chat_message = (EditText) findViewById(R.id.et_chat_message);
 		tv_chat_message_list = (TextView) findViewById(R.id.tv_chat_message_list);
+		
+		try {
+			receiverId = getIntent().getIntExtra("receiverId", 0);
+		} catch (NullPointerException nullEx) {
+			
+		}
+		
+		
 		try {
 			session = new SessionManager(getApplicationContext());
 			senderId = session.getUserId();
@@ -122,7 +130,7 @@ public class MessageChat extends Activity {
 				public void onConnect() {
 					UserInfoMC userInfoMC = new UserInfoMC();
 					userInfoMC.setSenderId(senderId);
-					userInfoMC.setReceiverId(3);
+					userInfoMC.setReceiverId(receiverId);
 					Gson gson = new Gson();
 					socket.emit("messagechatinitialize", gson.toJson(userInfoMC));
 					
@@ -253,7 +261,7 @@ public class MessageChat extends Activity {
 				if (senderId > 0) {
 					MessageInfoMC messageInfoMC = new MessageInfoMC();
 					messageInfoMC.setSenderId(senderId);
-					messageInfoMC.setReceiverId(3);
+					messageInfoMC.setReceiverId(receiverId);
 					messageInfoMC.setMessage(et_chat_message.getText().toString());
 					Gson gson = new Gson();
 					socket.emit("sendmessagechat", gson.toJson(messageInfoMC));

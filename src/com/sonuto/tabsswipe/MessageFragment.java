@@ -29,7 +29,7 @@ public class MessageFragment extends Fragment {
 
 	private ListView listViewFriends;
 	private View rootView;
-	private int selectedUserId = 0;
+	//private int selectedUserId = 0;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -92,7 +92,7 @@ public class MessageFragment extends Fragment {
 	    @Override
 	    public View getView(int position, View convertView, ViewGroup parent) {
 
-	    	
+	    	int selectedUserId =0;
 	        if(convertView==null){
 	            // inflate the layout
 	            LayoutInflater inflater = LayoutInflater.from(mContext);
@@ -122,16 +122,16 @@ public class MessageFragment extends Fragment {
 				e.printStackTrace();
 			}
 
+	        final Intent intent = new Intent(getContext(), MessageChat.class);
+			Bundle bundle = new Bundle();
+			bundle.putInt("receiverId", selectedUserId);
+			intent.putExtras(bundle);
 	        convertView.setOnClickListener(new OnClickListener() {
 				
 				@Override
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
 					//Toast.makeText(mContext, "add the message activity like xtreambanter", Toast.LENGTH_SHORT).show();
-					Intent intent = new Intent(getContext(), MessageChat.class);
-					Bundle bundle = new Bundle();
-					bundle.putInt("user_id", 4);
-					intent.putExtras(bundle);
 			        startActivity(intent);
 				}
 			});
