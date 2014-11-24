@@ -4,11 +4,15 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import com.bdlions.load.image.ImageLoader;
 import com.sonuto.Config;
+import com.sonuto.message.MessageChat;
 import com.sonuto.rpc.Followers;
 import com.sonuto.rpc.ICallBack;
 import com.sonuto.session.SessionManager;
 import com.sportzweb.R;
+import com.sportzweb.UserProfileActivity;
+
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -123,7 +127,12 @@ public class MessageFragment extends Fragment {
 				@Override
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
-					Toast.makeText(mContext, "add the message activity like xtreambanter", Toast.LENGTH_SHORT).show();
+					//Toast.makeText(mContext, "add the message activity like xtreambanter", Toast.LENGTH_SHORT).show();
+					Intent intent = new Intent(getContext(), MessageChat.class);
+					Bundle bundle = new Bundle();
+					bundle.putInt("user_id", 4);
+					intent.putExtras(bundle);
+			        startActivity(intent);
 				}
 			});
 	        

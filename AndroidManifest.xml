@@ -261,6 +261,11 @@
             android:label="@string/title_activity_service_details"
             android:theme="@style/CustomActionBarTheme">
         </activity>
+        
+		<activity android:name="com.sonuto.message.MessageChat"
+            android:label="@string/title_activity_message_chat"
+            android:theme="@style/CustomActionBarTheme">
+        </activity>
                 
 
         <meta-data

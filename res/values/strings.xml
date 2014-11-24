@@ -358,4 +358,7 @@
 	
 	<string name="post">Post</string>
 	
+	<!--  Message Chat -->
+	<string name="title_activity_message_chat">Message</string>
+	
 </resources>
