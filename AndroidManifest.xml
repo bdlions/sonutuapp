@@ -113,7 +113,7 @@
             android:theme="@style/CustomActionBarTheme" >
         </activity>
         <activity
-            android:name="com.sportzweb.BusinessRegistrationActivity"
+            android:name="com.sonuto.businessprofile.BusinessRegistrationActivity"
             android:label="@string/title_activity_business_profile_registration"
             android:theme="@style/CustomActionBarTheme" >
         </activity>

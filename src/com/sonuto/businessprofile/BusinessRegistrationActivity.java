@@ -1,4 +1,4 @@
-package com.sportzweb;
+package com.sonuto.businessprofile;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +16,11 @@ import com.sonuto.session.ISessionManager;
 import com.sonuto.session.SessionManager;
 import com.sonuto.users.BusinessCategory;
 import com.sonuto.users.Country;
+import com.sportzweb.LoginActivity;
+import com.sportzweb.R;
+import com.sportzweb.R.id;
+import com.sportzweb.R.layout;
+import com.sportzweb.R.string;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
