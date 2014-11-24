@@ -90,7 +90,7 @@ public class User extends RPCHandler{
 	public void userProfile(ICallBack callBack, Object...params){
 		setCallBack(callBack);
 		
-		setControllerName("Member_profile/");
+		setControllerName("member_profile/");
 		setMethod("show");
 		
 		setParams(params);
@@ -101,7 +101,7 @@ public class User extends RPCHandler{
 	public void getUserInfo(ICallBack callBack, Object...params){
 		setCallBack(callBack);
 		
-		setControllerName("Member_profile/");
+		setControllerName("member_profile/");
 		setMethod("info");
 		
 		setParams(params);
