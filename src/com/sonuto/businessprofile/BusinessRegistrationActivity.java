@@ -10,6 +10,7 @@ import org.json.JSONObject;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.sampanit.sonutoapp.utils.AlertDialogManager;
+import com.sampanit.sonutoapp.utils.AlertMessage;
 import com.sonuto.rpc.ICallBack;
 import com.sonuto.rpc.register.BusinessProfile;
 import com.sonuto.session.ISessionManager;
@@ -427,14 +428,18 @@ public class BusinessRegistrationActivity extends Activity {
 						JSONObject jsonObject = (JSONObject)object;
 						try {
 							if(jsonObject.get("status").toString().equalsIgnoreCase("1")) {
-								alert.showAlertDialog(BusinessRegistrationActivity.this, "Business Profile Registration complete..",
-										"Registration successfull", false);
-								
+								//alert.showAlertDialog(mContext, "Business Profile Registration complete..","Registration successfull", false);
+								//AlertMessage.showMessage(mContext, "Business Profile Registration complete..","Registration successfull");
+								JSONObject bObject = jsonObject.getJSONObject("business_profile_info");
+								Intent i = new Intent(mContext, BusinessProfileActivity.class);
+								i.putExtra("business_profile_info", bObject.toString());
+								startActivity(i);
+								finish();
 							} else {
 
 								// Registration unsuccessful
-								alert.showAlertDialog(BusinessRegistrationActivity.this, "Business Profile Registration failed..",
-										"Registration unsuccessfull", false);
+								//alert.showAlertDialog(BusinessRegistrationActivity.this, "Business Profile Registration failed..","Registration unsuccessfull", false);
+								AlertMessage.showMessage(mContext, "Business Profile Registration failed..","Registration unsuccessfull");
 							}
 						} catch (JSONException e) {
 							e.printStackTrace();

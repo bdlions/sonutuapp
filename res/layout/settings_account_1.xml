@@ -201,7 +201,7 @@
 		            </TextView>
 
 		            <EditText
-		                android:id="@+id/setting_account_storeAddress"
+		                android:id="@+id/setting_account_storeAddressee"
 		                android:layout_width="match_parent"
 		                android:layout_height="wrap_content"
 		                android:ems="10"

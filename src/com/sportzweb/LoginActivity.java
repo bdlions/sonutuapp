@@ -3,7 +3,9 @@ package com.sportzweb;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+
 import com.sampanit.sonutoapp.utils.AlertDialogManager;
+import com.sampanit.sonutoapp.utils.AlertMessage;
 import com.sampanit.sonutoapp.utils.WebUtil;
 import com.sonuto.rpc.ICallBack;
 import com.sonuto.rpc.register.User;
@@ -30,7 +32,7 @@ public class LoginActivity extends Activity {
 	// login button
 	Button btnLogin;
 	// Alert Dialog Manager
-	AlertDialogManager alert = new AlertDialogManager();
+	AlertDialogManager alert;
 	// Session Manager Class
 	ISessionManager session;
 	String email, password;
@@ -42,6 +44,7 @@ public class LoginActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
 		mContext = this;
+		alert = new AlertDialogManager();
 
 		// Session Manager
 		session = new SessionManager(getApplicationContext());
@@ -79,7 +82,7 @@ public class LoginActivity extends Activity {
 		email = mEmail.getText().toString();
 		password = mPassword.getText().toString();
 		if (isVerified()) {
-			
+			//Toast.makeText(mContext, "Yes", Toast.LENGTH_SHORT).show();
 			User user = new User();
 			user.loginUser(new ICallBack() {
 				
@@ -101,17 +104,16 @@ public class LoginActivity extends Activity {
 								
 							} else {
 								// Login unsuccessful
-								alert.showAlertDialog(LoginActivity.this, "Login failed..",
-										"Username/Password is incorrect", false);
+								//alert.showAlertDialog(mContext, "Login failed..","Username/Password is incorrect", false);
+								AlertMessage.showMessage(mContext, "Login failed...","Username/Password is incorrect");
 							}
 
 						}else{
 							 // Login unsuccessful
-							alert.showAlertDialog(LoginActivity.this, "Login failed..",
-									"Username/Password is incorrect", false);
+							//alert.showAlertDialog(mContext, "Login failed..","Username/Password is incorrect", false);
+							AlertMessage.showMessage(mContext, "Login failed...","Username/Password is incorrect");
 						}
 					} catch (JSONException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 				
@@ -120,10 +122,9 @@ public class LoginActivity extends Activity {
 				
 				@Override
 				public void callBackErrorHandler(Object object) {
-					//System.out.println(object);
 					// email / password doesn't match
-					alert.showAlertDialog(LoginActivity.this, "Login failed..",
-							"Username/Password is incorrect", false);
+					//alert.showAlertDialog(mContext, "Login failed..","Username/Password is incorrect", false);
+					AlertMessage.showMessage(mContext, "Login failed...","Username/Password is incorrect");
 					
 				}
 			}, email.toString(),password.toString());

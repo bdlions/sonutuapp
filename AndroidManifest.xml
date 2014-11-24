@@ -24,6 +24,7 @@
         android:required="true" />
 
     <application
+        android:largeHeap="true"
         android:allowBackup="true"
         android:icon="@drawable/logo"
         android:label="@string/app_name"
@@ -117,6 +118,12 @@
             android:label="@string/title_activity_business_profile_registration"
             android:theme="@style/CustomActionBarTheme" >
         </activity>
+        <activity
+            android:name="com.sonuto.businessprofile.BusinessProfileActivity"
+            android:label="@string/title_activity_business_profile"
+            android:theme="@style/CustomActionBarTheme" >
+        </activity>
+        
         <activity
             android:name="com.sportzweb.BmiCalculatorActivity"
             android:label="@string/title_activity_bmi_calculator"

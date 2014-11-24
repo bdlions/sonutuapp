@@ -71,7 +71,7 @@
 				</LinearLayout>
 				
             	<LinearLayout 
-            	    android:id="@+id/LinearLayout01" 
+            	    android:id="@+id/LinearLayout013" 
             	    android:layout_width="fill_parent"
 				    android:layout_height="fill_parent"
 				    android:layout_marginBottom="10dip">
@@ -105,7 +105,7 @@
          		
             	
             	<LinearLayout 
-            	    android:id="@+id/LinearLayout01" 
+            	    android:id="@+id/LinearLayout017" 
             	    android:layout_width="fill_parent"
 				    android:layout_height="fill_parent"
 				    android:layout_marginBottom="10dip">
@@ -128,7 +128,7 @@
 				    </TextView>
 				    <TextView 
 				        android:layout_width="wrap_content" 
-				        android:id="@+id/textView6"
+				        android:id="@+id/textView666"
 				        android:layout_height="wrap_content" 
 				        android:text="Edit"
 				        android:textColor="#00acea"
@@ -138,7 +138,7 @@
          		</LinearLayout>
          		
             	<LinearLayout 
-            	    android:id="@+id/LinearLayout01" 
+            	    android:id="@+id/LinearLayout0166" 
             	    android:layout_width="fill_parent"
 				    android:layout_height="fill_parent"
 				    android:layout_marginBottom="10dip">
@@ -161,7 +161,7 @@
 				    </TextView>
 				    <TextView 
 				        android:layout_width="wrap_content" 
-				        android:id="@+id/textView6"
+				        android:id="@+id/textView6ee"
 				        android:layout_height="wrap_content" 
 				        android:text="Edit"
 				        android:textColor="#00acea"

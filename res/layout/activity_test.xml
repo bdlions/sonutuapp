@@ -104,13 +104,13 @@
                 android:layout_alignParentTop="true" >
 
                 <ImageView
-                    android:id="@+id/imageView1"
+                    android:id="@+id/imageView12"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/gear" />
 
                 <TextView
-                    android:id="@+id/textView4"
+                    android:id="@+id/textView42"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="Followings"
@@ -125,13 +125,13 @@
                 android:layout_toLeftOf="@+id/linearLayout2" >
 
                 <ImageView
-                    android:id="@+id/imageView1"
+                    android:id="@+id/imageView14"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/gear" />
 
                 <TextView
-                    android:id="@+id/textView4"
+                    android:id="@+id/textView44"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="My Profile"

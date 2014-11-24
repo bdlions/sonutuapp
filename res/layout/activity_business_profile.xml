@@ -16,7 +16,7 @@
         android:padding="10dip" >
 
         <ImageView
-            android:id="@+id/BlogImageView"
+            android:id="@+id/BusinessProfileImageView"
             android:layout_width="264dp"
             android:layout_height="0dp"
             android:layout_marginRight="10dp"
@@ -31,7 +31,7 @@
             android:orientation="horizontal" >
 
             <Button
-                android:id="@+id/btn2"
+                android:id="@+id/btnTotalBConnection"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
@@ -43,7 +43,7 @@
                 android:textSize="8sp" />
 
             <Button
-                android:id="@+id/btn23"
+                android:id="@+id/btnBConnection"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
@@ -56,7 +56,7 @@
                 android:textSize="8sp" />
 
             <Button
-                android:id="@+id/btn2d"
+                android:id="@+id/btnBInfo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
@@ -69,7 +69,7 @@
                 android:textSize="8sp" />
 
             <Button
-                android:id="@+id/text7"
+                android:id="@+id/btnBMore"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
@@ -83,7 +83,7 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/blogPostedTimeDatetext"
+            android:id="@+id/BAddresstext"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
@@ -92,7 +92,7 @@
             android:textColor="#7f7f7f"
             android:textSize="12sp" />
 
-        <RelativeLayout
+        <!--<RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/ll2"
@@ -150,7 +150,7 @@
                     android:src="@drawable/thumb_up" />
 
                 <TextView
-                    android:id="@+id/text7"
+                    android:id="@+id/text744"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
@@ -212,6 +212,161 @@
                 android:layout_above="@+id/text5"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="5dp"
+                android:src="@drawable/cross" />
+        </RelativeLayout>-->
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/custom_border" >
+
+            <ImageView
+                android:id="@+id/imageOfBusiness"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginLeft="5dp"
+                android:contentDescription="@string/EmptyString"
+                android:src="@drawable/followers" />
+
+            <TextView
+                android:id="@+id/bNameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/imageOfBusiness"
+                android:fontFamily="Bold"
+                android:text="Sampan Auto"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/textViewpostedBStatusTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/bNameTextView"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="3dp"
+                android:layout_toRightOf="@id/imageOfBusiness"
+                android:text="40 minites age"
+                android:textColor="#9B9EA3"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/textViewBDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/imageOfBusiness"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="3dp"
+                android:text="Good morning. this is my first status in mobile apps"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textViewBTotalLike"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewBDescription"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="3dp"
+                android:fontFamily="Bold"
+                android:text="15782 Likes"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/textViewBTotalcomments"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewBDescription"
+                android:layout_gravity="center"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="3dp"
+                android:layout_toRightOf="@id/textViewBTotalLike"
+                android:text="56989 Comments"
+                android:textColor="#9B9EA3"
+                android:textSize="15sp" />
+
+            <LinearLayout
+                android:id="@+id/bLLCommentLikeShareSection"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewBDescription"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/border_for_linear_layout"
+                android:baselineAligned="false"
+                android:orientation="horizontal" >
+
+                <LinearLayout
+                    android:id="@+id/bLLLike"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="0.3"
+                    android:background="@drawable/right_border"
+                    android:gravity="center"
+                    android:orientation="horizontal" >
+
+                    <ImageButton
+                        android:id="@+id/bLikeStatusBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="3dp"
+                        android:layout_marginTop="3dp"
+                        android:background="#FFFFFF"
+                        android:contentDescription="@string/EmptyString"
+                        android:src="@drawable/like_icon" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/bLLComment"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="0.3"
+                    android:background="@drawable/right_border"
+                    android:gravity="center"
+                    android:orientation="horizontal" >
+
+                    <ImageButton
+                        android:id="@+id/bCommentStatusBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="3dp"
+                        android:layout_marginTop="3dp"
+                        android:background="#FFFFFF"
+                        android:contentDescription="@string/EmptyString"
+                        android:src="@drawable/comment_icon" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/bLLShare"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="0.3"
+                    android:gravity="center"
+                    android:orientation="horizontal" >
+
+                    <ImageButton
+                        android:id="@+id/bShareStatusBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="3dp"
+                        android:layout_marginTop="3dp"
+                        android:background="#FFFFFF"
+                        android:contentDescription="@string/EmptyString"
+                        android:src="@drawable/share_icon" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/bCrossView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginBottom="5dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:contentDescription="@string/EmptyString"
                 android:src="@drawable/cross" />
         </RelativeLayout>
     </LinearLayout>

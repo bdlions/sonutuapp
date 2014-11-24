@@ -219,7 +219,7 @@
     <!-- End of the business profile required filed notification message -->
     
     <string name="title_activity_business_profile_registration">Business Profile Registration</string>
-    
+    <string name="title_activity_business_profile">Business Profile</string>
     <string name="business_category">Business Category</string>
     <string name="business_type">Business Type</string>
     
