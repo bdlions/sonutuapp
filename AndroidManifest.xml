@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="17"
+        android:minSdkVersion="11"
         android:targetSdkVersion="19" />
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -24,26 +24,25 @@
         android:required="true" />
 
     <application
-        android:largeHeap="true"
         android:allowBackup="true"
+        android:largeHeap="true"
         android:icon="@drawable/logo"
         android:label="@string/app_name"
         android:theme="@android:style/Theme.NoTitleBar" >
         <activity
-            android:name="com.sportzweb.LoginActivity"
-            android:label="@string/app_name"
-            android:theme="@style/CustomActionBarTheme" >
+            android:name="com.sportzweb.ActivitySplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <!--
-        <activity android:name="com.sportzweb.LoginActivity"
-           android:theme="@style/CustomActionBarTheme"></activity>
-        -->
+       
+        <activity
+            android:label="@string/app_name"
+            android:name="com.sportzweb.LoginActivity"
+           	android:theme="@style/CustomActionBarTheme"></activity>
+       
 
 <!--         <activity -->
 <!--             android:name="com.sportzweb.MapTestActivity" -->
