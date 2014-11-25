@@ -105,31 +105,34 @@ public class SettingsFragment extends Fragment {
 		perform(v);
 		manager = new SessionManager(getActivity());
 		// when session active
-		  if(manager.getUsersBusinessProfileId() > 0){ 
-			  values[0] = manager.getUsersBusinessProfileName();
-			  
-			  BusinessProfile bprofile = new BusinessProfile();
-			  bprofile.getBusinessProfileData(new ICallBack() {
-				
-				@Override
-				public void callBackResultHandler(Object object) {
-					JSONObject jsonObject = (JSONObject)object;
+		if(manager.getIsBusinessProfile()){
+			if(manager.getUsersBusinessProfileId() > 0){
+				  values[0] = manager.getUsersBusinessProfileName();
+				  
+				  BusinessProfile bprofile = new BusinessProfile();
+				  bprofile.getBusinessProfileInfo(new ICallBack() {
 					
-					try {
-						bObject = jsonObject.getJSONObject("business_profile_info");
-					} catch (JSONException e) {
-						e.printStackTrace();
+					@Override
+					public void callBackResultHandler(Object object) {
+						JSONObject jsonObject = (JSONObject)object;
+						
+						try {
+							bObject = jsonObject.getJSONObject("business_profile_info");
+						} catch (JSONException e) {
+							e.printStackTrace();
+						}
+						
 					}
 					
-				}
-				
-				@Override
-				public void callBackErrorHandler(Object object) {
-					// TODO Auto-generated method stub
-					
-				}
-			}, session.getUserId());
-		  }
+					@Override
+					public void callBackErrorHandler(Object object) {
+						// TODO Auto-generated method stub
+						
+					}
+				}, session.getUserId());
+			  }
+		}
+		  
 
 
 		lv.setOnItemClickListener(new OnItemClickListener() {
@@ -137,7 +140,7 @@ public class SettingsFragment extends Fragment {
 			public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
 				String category = values[position];
 				if (position == 0) {
-					if(manager.getUsersBusinessProfileId()>0){
+					if(manager.getIsBusinessProfile() && manager.getUsersBusinessProfileId()>0){
 						Intent i = new Intent(getActivity(), BusinessProfileActivity.class);
 						i.putExtra("business_profile_info", bObject.toString());
 						startActivity(i);

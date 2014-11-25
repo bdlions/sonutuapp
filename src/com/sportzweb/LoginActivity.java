@@ -95,7 +95,10 @@ public class LoginActivity extends Activity {
 
 							if(session.logInUser(jsonObject.getJSONObject("user_info"))){
 								if(jsonObject.get("is_bp_exists").toString().equalsIgnoreCase("1")){
+									session.isBusinessProfileExist(true);
 									session.logInUserBusinessProfile(jsonObject.getJSONObject("business_profile_info"));
+								} else {
+									session.isBusinessProfileExist(false);
 								}
 								
 								Intent i = new Intent(getApplicationContext(),NewsFeedActivity.class);

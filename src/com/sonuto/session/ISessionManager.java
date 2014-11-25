@@ -17,6 +17,7 @@ public interface ISessionManager {
 	public int getUserId();
 	
 	public boolean logInUserBusinessProfile(JSONObject userBpobj);
+	public void isBusinessProfileExist(boolean value);
 	public BusinessProfileInfo getUsersBusinessProfileInfo();
 	public int getUsersBusinessProfileId();
 	

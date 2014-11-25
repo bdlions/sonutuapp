@@ -19,6 +19,7 @@ public class SessionManager implements ISessionManager {
 	private final String PREF_NAME = "SONUTO_SESSION_PREFERENCE";
 	private final String USER_INFO = "USER_INFO";
 	private final String BP_INFO = "BP_INFO";
+	private final String BP_EXIST = "BP_EXIST";
 	
 	
 	private Context appContext;
@@ -168,5 +169,23 @@ public class SessionManager implements ISessionManager {
 		return userBPInfo.getBusinessProfileName();
 	}
 	
+	@Override
+	public void isBusinessProfileExist(boolean value) {
+		setIsBusinessProfile(value);
+	}
+	
+	
+	public void setIsBusinessProfile(boolean value) {
+
+		Editor editor = sharedPreferences.edit();	
+		editor.putBoolean(BP_EXIST, value);	
+		// commit changes
+		editor.commit();
+	}
+	
+	public boolean getIsBusinessProfile() {
+		boolean flag = sharedPreferences.getBoolean(BP_EXIST, false);
+		return flag;
+	}
 
 }
