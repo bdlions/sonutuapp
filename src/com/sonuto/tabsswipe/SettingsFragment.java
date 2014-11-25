@@ -7,11 +7,14 @@ import com.bdlions.load.image.ImageLoader;
 import com.google.gson.Gson;
 import com.sonuto.Config;
 import com.sonuto.businessprofile.BusinessRegistrationActivity;
+import com.sonuto.businessprofile.EditBusinessProfileActivity;
 import com.sonuto.rpc.ICallBack;
 import com.sonuto.rpc.register.User;
 import com.sonuto.session.ISessionManager;
 import com.sonuto.session.SessionManager;
+import com.sportzweb.AccountingSettingsActivity;
 import com.sportzweb.LoginActivity;
+import com.sportzweb.PrivecySettingsActivity;
 import com.sportzweb.R;
 import com.sportzweb.UserProfileActivity;
 
@@ -99,18 +102,33 @@ public class SettingsFragment extends Fragment {
 		perform(v);
 		manager = new SessionManager(getActivity());
 		// when session active
-		/*
-		 * if(manager.getUsersBusinessProfileId() > 0){ values[0] =
-		 * manager.getUsersBusinessProfileName(); }
-		 */
+		  if(manager.getUsersBusinessProfileId() > 0){ 
+			  values[0] = manager.getUsersBusinessProfileName(); 
+		  }
+
 
 		lv.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
 				String category = values[position];
 				if (position == 0) {
-					Intent intent = new Intent(getActivity(), BusinessRegistrationActivity.class);
-					startActivity(intent);
+					if(manager.getUsersBusinessProfileId()>0){
+						Intent intent = new Intent(getActivity(), EditBusinessProfileActivity.class);
+						startActivity(intent);
+					} else {
+						Intent intent = new Intent(getActivity(), BusinessRegistrationActivity.class);
+						startActivity(intent);
+					}
+					
+				}
+				else if (position == 1) {
+						Intent i = new Intent(getActivity(), AccountingSettingsActivity.class);
+						i.putExtra("user_id", manager.getUserId());
+						startActivity(i);
+				}else if (position == 2) {
+					Intent i = new Intent(getActivity(), PrivecySettingsActivity.class);
+					i.putExtra("user_id", manager.getUserId());
+					startActivity(i);
 				}
 				else if (position == 3) {
 					if (manager.logoutUser()) {

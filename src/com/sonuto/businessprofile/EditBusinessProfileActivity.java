@@ -1,4 +1,4 @@
-package com.sportzweb;
+package com.sonuto.businessprofile;
 
 
 
@@ -7,12 +7,14 @@ import com.sampanit.sonutoapp.utils.AlertDialogManager;
 
 import com.sonuto.session.ISessionManager;
 import com.sonuto.session.SessionManager;
+import com.sportzweb.R;
+
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.widget.Button;
 
-public class EditUserProfileActivity extends Activity {
+public class EditBusinessProfileActivity extends Activity {
 	// Alert Dialog Manager
 	AlertDialogManager alert = new AlertDialogManager();
 	Button btnEditProfile;
@@ -24,7 +26,7 @@ public class EditUserProfileActivity extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_user_profile);
+		setContentView(R.layout.activity_edit_business_profile);
 		this.mContext = this;
 		// Session Manager
 		this.session = new SessionManager(getApplicationContext());

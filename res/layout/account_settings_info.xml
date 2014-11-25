@@ -13,8 +13,6 @@
         android:layout_height="wrap_content"
         android:paddingTop="0dp"
         android:orientation="vertical">
-        
-        <include layout="@layout/partial_layout_header"/>
 
         <LinearLayout
             android:id="@+id/setting__profile_box2"
@@ -52,7 +50,7 @@
 				        android:layout_weight="1" />
 				    <TextView 
 				        android:layout_width="wrap_content" 
-				        android:id="@+id/nametextView"
+				        android:id="@+id/userNametextView"
 				        android:layout_height="wrap_content" 
 				        android:text="Nazmul Hasan"
 				        android:gravity="" 
@@ -60,7 +58,7 @@
 				    </TextView>
 				    <TextView 
 				        android:layout_width="wrap_content" 
-				        android:id="@+id/textView3"
+				        android:id="@+id/editUserName"
 				        android:layout_height="wrap_content" 
 				        android:text="Edit"
 				        android:textColor="#00acea"
@@ -86,7 +84,7 @@
 				        android:layout_weight="1" />
 				    <TextView 
 				        android:layout_width="wrap_content" 
-				        android:id="@+id/emailtextView"
+				        android:id="@+id/UserEmailtextView"
 				        android:layout_height="wrap_content" 
 				        android:text="Omar@yahoo.com"
 				        android:gravity="" 
@@ -94,7 +92,7 @@
 				    </TextView>
 				    <TextView 
 				        android:layout_width="wrap_content" 
-				        android:id="@+id/textView6"
+				        android:id="@+id/editUserEmail"
 				        android:layout_height="wrap_content" 
 				        android:text="Edit"
 				        android:textColor="#00acea"
@@ -120,7 +118,7 @@
 				        android:layout_weight="1" />
 				    <TextView 
 				        android:layout_width="wrap_content" 
-				        android:id="@+id/passwordtextView"
+				        android:id="@+id/UserPasswordtextView"
 				        android:layout_height="wrap_content" 
 				        android:text="*********"
 				        android:gravity="" 
@@ -128,7 +126,7 @@
 				    </TextView>
 				    <TextView 
 				        android:layout_width="wrap_content" 
-				        android:id="@+id/textView666"
+				        android:id="@+id/editUserPass"
 				        android:layout_height="wrap_content" 
 				        android:text="Edit"
 				        android:textColor="#00acea"
@@ -153,7 +151,7 @@
 				        android:layout_weight="1" />
 				    <TextView 
 				        android:layout_width="wrap_content" 
-				        android:id="@+id/langtextView"
+				        android:id="@+id/userLangtextView"
 				        android:layout_height="wrap_content" 
 				        android:text="English(UK)"
 				        android:gravity="" 
@@ -161,7 +159,7 @@
 				    </TextView>
 				    <TextView 
 				        android:layout_width="wrap_content" 
-				        android:id="@+id/textView6ee"
+				        android:id="@+id/editUserLanguage"
 				        android:layout_height="wrap_content" 
 				        android:text="Edit"
 				        android:textColor="#00acea"
@@ -169,16 +167,6 @@
 				        android:layout_weight="1">
 				    </TextView>
          		</LinearLayout>
-            
-            <!-- Ok button -->
-            <Button
-                android:id="@+id/btnok"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dip"
-                android:layout_marginBottom="10dip"
-                android:background="@drawable/button"
-                android:text="@string/settings_account_ok_btn" />
            
         </LinearLayout>
     </LinearLayout>

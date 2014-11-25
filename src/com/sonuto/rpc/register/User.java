@@ -109,4 +109,15 @@ public class User extends RPCHandler{
 		execute();
 	}
 	
+	public void updateGeneralUserInfo(ICallBack callBack, Object...params){
+		setCallBack(callBack);
+		
+		setControllerName("member_profile/");
+		setMethod("info");
+		
+		setParams(params);
+		setReturnType(RPCReturnType.JSON_OBJECT);
+		execute();
+	}
+	
 }

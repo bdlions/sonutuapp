@@ -9,7 +9,6 @@ import com.sonuto.rpc.register.User;
 import com.sonuto.session.ISessionManager;
 import com.sonuto.session.SessionManager;
 import com.sonuto.users.Gender;
-import com.sonuto.users.UserInfo;
 
 import android.app.Activity;
 import android.content.Context;

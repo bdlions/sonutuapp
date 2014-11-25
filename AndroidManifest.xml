@@ -56,6 +56,24 @@
         </activity>
         
         <activity
+            android:name="com.sportzweb.AccountingSettingsActivity"
+            android:label="@string/title_activity_account_settings"
+            android:theme="@style/CustomActionBarTheme" >
+        </activity>
+        
+        <activity
+            android:name="com.sportzweb.AccountingSettingsInfoActivity"
+            android:label="@string/title_activity_account_settings"
+            android:theme="@style/CustomActionBarTheme" >
+        </activity>
+        
+        <activity
+            android:name="com.sportzweb.PrivecySettingsActivity"
+            android:label="@string/title_activity_privecy_settings"
+            android:theme="@style/CustomActionBarTheme" >
+        </activity>
+        
+        <activity
             android:name="com.sportzweb.UserInfoActivity"
             android:theme="@style/CustomActionBarTheme"
             android:label="@string/title_activity_user_info" >
@@ -117,6 +135,12 @@
             android:label="@string/title_activity_business_profile_registration"
             android:theme="@style/CustomActionBarTheme" >
         </activity>
+        <activity
+            android:name="com.sonuto.businessprofile.EditBusinessProfileActivity"
+            android:label="@string/title_activity_edit_business_profile"
+            android:theme="@style/CustomActionBarTheme" >
+        </activity>
+        
         <activity
             android:name="com.sonuto.businessprofile.BusinessProfileActivity"
             android:label="@string/title_activity_business_profile"

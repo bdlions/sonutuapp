@@ -6,13 +6,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.bdlions.load.image.ImageLoader;
-import com.google.gson.Gson;
 import com.sonuto.Config;
-import com.sportzweb.GoogleAPITestActivity;
 import com.sportzweb.R;
-import com.sportzweb.UserProfileActivity;
-import com.sportzweb.JSONObjectModel.NewsComment;
-import com.sportzweb.JSONObjectModel.RecipeComment;
 import com.sportzweb.JSONObjectModel.StatusComment;
 
 import android.app.Activity;

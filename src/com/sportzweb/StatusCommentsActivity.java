@@ -8,17 +8,10 @@ import org.json.JSONObject;
 
 import com.bdlions.load.image.ImageLoader;
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
 import com.sonuto.rpc.ICallBack;
-import com.sonuto.rpc.register.HealthyRecipeApp;
 import com.sonuto.rpc.register.StatusFeed;
 import com.sonuto.session.SessionManager;
-import com.sonuto.users.AppID;
-import com.sonuto.utils.custom.adapter.BlogCommentsCustomAdapter;
-import com.sonuto.utils.custom.adapter.NewsCommentsCustomAdapter;
 import com.sonuto.utils.custom.adapter.StatusCommentsCustomAdapter;
-import com.sportzweb.JSONObjectModel.BlogComment;
-import com.sportzweb.JSONObjectModel.NewsComment;
 import com.sportzweb.JSONObjectModel.StatusComment;
 
 import android.app.Activity;
@@ -26,18 +19,13 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.RadioGroup.OnCheckedChangeListener;
 
 public class StatusCommentsActivity extends Activity {
 	EditText commentForStatusText;
@@ -128,17 +116,17 @@ public class StatusCommentsActivity extends Activity {
 							pDialog.dismiss();
 							JSONObject statusCommentJSONObject = (JSONObject) object;
 								JSONObject statusCommentInfoArray;
-//								try {
-//									statusCommentInfoArray = statusCommentJSONObject.getJSONObject("comment_info");
-//									Gson gson = new Gson();
-//									
-//									StatusComment statusInfo = gson.fromJson(statusCommentInfoArray.toString(), StatusComment.class);
-//									statusCommentObjList.add(statusInfo);
-//									adapter.notifyDataSetChanged();
-//									commentForStatusText.setText("");
-//								} catch (JSONException e) {
-//									e.printStackTrace();
-//								}
+								try {
+									statusCommentInfoArray = statusCommentJSONObject.getJSONObject("comment_info");
+									Gson gson = new Gson();
+									
+									StatusComment statusInfo = gson.fromJson(statusCommentInfoArray.toString(), StatusComment.class);
+									statusCommentObjList.add(statusInfo);
+									adapter.notifyDataSetChanged();
+									commentForStatusText.setText("");
+								} catch (JSONException e) {
+									e.printStackTrace();
+								}
 						}
 
 						@Override

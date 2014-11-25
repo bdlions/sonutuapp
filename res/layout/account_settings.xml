@@ -1,0 +1,290 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="." >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="0dp" >
+
+        <LinearLayout
+            android:id="@+id/setting__profile_box1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dip" >
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dip"
+                android:layout_marginTop="30dip"
+                android:gravity="center"
+                android:text="@string/seettings_account_title"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#00acea" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal" >
+                <!-- Gender Label -->
+                <TextView
+                    android:id="@+id/txtGender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dip"
+                    android:layout_marginTop="5dip"
+                    android:text="@string/settings_account_gender_label"
+                    android:textColor="#00acea" >
+                </TextView>
+
+                <EditText
+                    android:id="@+id/userGender"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.19"
+                    android:text="Male"
+                    android:focusable="false"
+                    android:gravity="center"
+			        android:cursorVisible="true" >
+                </EditText>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="56dp"
+                android:orientation="horizontal" >
+
+                <!-- settings_account Date Of birth Label -->
+                <TextView
+                    android:id="@+id/txtDoB"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dip"
+                    android:layout_marginTop="5dip"
+                    android:text="@string/settings_account_dob_label"
+                    android:textColor="#00acea" >
+                </TextView>
+
+                <EditText
+                    android:id="@+id/userEditDOB"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:focusable="false"
+			        android:gravity="center"
+			        android:cursorVisible="true"
+                    android:text="01-12-1988" >
+                </EditText>
+            </LinearLayout>
+
+            <!-- <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="56dp"
+                android:orientation="horizontal" >
+                <TextView
+                    android:id="@+id/txtcountry"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dip"
+                    android:layout_marginTop="5dip"
+                    android:text="@string/settings_account_Country_label"
+                    android:textColor="#00acea" >
+                </TextView>
+
+                <EditText
+                    android:id="@+id/editUserCountry"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="text" >
+                </EditText>
+            </LinearLayout>-->
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="56dp"
+                android:orientation="horizontal" >
+
+                <!-- settings_account Country Label -->
+                <TextView
+                    android:id="@+id/txtTown"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dip"
+                    android:layout_marginTop="5dip"
+                    android:text="@string/settings_account_tome_town_label"
+                    android:textColor="#00acea" >
+                </TextView>
+
+                <EditText
+                    android:id="@+id/editUserTown"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:inputType="text">
+                </EditText>
+            </LinearLayout>
+
+<!--             <LinearLayout -->
+<!--                 android:layout_width="fill_parent" -->
+<!--                 android:layout_height="56dp" -->
+<!--                 android:orientation="horizontal" > -->
+
+<!--                 settings_account Country Label -->
+<!--                 <TextView -->
+<!--                     android:id="@+id/txtstoreAddress" -->
+<!--                     android:layout_width="wrap_content" -->
+<!--                     android:layout_height="wrap_content" -->
+<!--                     android:layout_marginBottom="5dip" -->
+<!--                     android:layout_marginTop="5dip" -->
+<!--                     android:text="@string/settings_account_store_address_label" -->
+<!--                     android:textColor="#00acea" > -->
+<!--                 </TextView> -->
+
+<!--                 <EditText -->
+<!--                     android:id="@+id/setting_account_storeAddress" -->
+<!--                     android:layout_width="match_parent" -->
+<!--                     android:layout_height="wrap_content" -->
+<!--                     android:ems="10" -->
+<!--                     android:inputType="text" -->
+<!--                     android:maxLength="6" > -->
+
+<!--                     <requestFocus /> -->
+<!--                 </EditText> -->
+<!--             </LinearLayout> -->
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="56dp"
+                android:orientation="horizontal" >
+
+                <!-- settings_account College/Uni Label -->
+                <TextView
+                    android:id="@+id/txtClgUni"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dip"
+                    android:layout_marginTop="5dip"
+                    android:text="@string/settings_account_clg_uni_label"
+                    android:textColor="#00acea" >
+                </TextView>
+
+                <EditText
+                    android:id="@+id/editUserSCU"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:inputType="text">
+
+                    <requestFocus />
+                </EditText>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="56px"
+                android:orientation="horizontal" >
+
+                <!-- settings_account employee Label -->
+                <TextView
+                    android:id="@+id/txtemp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dip"
+                    android:layout_marginTop="5dip"
+                    android:text="@string/settings_account_emp_label"
+                    android:textColor="#00acea" >
+                </TextView>
+
+                <EditText
+                    android:id="@+id/editUserEmp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:gravity="center">
+                </EditText>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="56dp"
+                android:orientation="horizontal" >
+
+                <!-- settings_account Occupation Label -->
+                <TextView
+                    android:id="@+id/txtOccupation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dip"
+                    android:layout_marginTop="5dip"
+                    android:text="@string/settings_account_occupation_label"
+                    android:textColor="#00acea" >
+                </TextView>
+
+                <EditText
+                    android:id="@+id/editUserOccupation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="text"
+					android:gravity="center">
+
+                    <requestFocus />
+                </EditText>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="100px"
+                android:orientation="horizontal" >
+
+                <!-- settings_account About Me Label -->
+                <TextView
+                    android:id="@+id/txtAboutme"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dip"
+                    android:layout_marginTop="5dip"
+                    android:inputType="textMultiLine"
+                    android:lines="5"
+                    android:text="@string/settings_account_aboutme_label"
+                    android:textColor="#00acea" >
+                </TextView>
+
+                <EditText
+                    android:id="@+id/editUserAboutMe"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="text"
+					android:gravity="center">
+
+                    <requestFocus />
+                </EditText>
+            </LinearLayout>
+
+            <!-- Ok button -->
+            <Button
+                android:id="@+id/btnok"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dip"
+                android:layout_marginTop="20dip"
+                android:background="@drawable/button"
+                android:text="@string/settings_account_ok_btn" />
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>
