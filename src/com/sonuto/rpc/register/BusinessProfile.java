@@ -21,10 +21,12 @@ public class BusinessProfile extends RPCHandler{
 		setCallBack(callBack);
 		
 		setControllerName("business_profile/");
-		setMethod("get_business_profile_registration_data");
+		setMethod("get_business_profile_info");
 		
 		setParams(params);
 		setReturnType(RPCReturnType.JSON_OBJECT);
 		execute();
 	}
+	
+	
 }

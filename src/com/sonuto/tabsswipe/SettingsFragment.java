@@ -6,9 +6,11 @@ import org.json.JSONObject;
 import com.bdlions.load.image.ImageLoader;
 import com.google.gson.Gson;
 import com.sonuto.Config;
+import com.sonuto.businessprofile.BusinessProfileActivity;
 import com.sonuto.businessprofile.BusinessRegistrationActivity;
 import com.sonuto.businessprofile.EditBusinessProfileActivity;
 import com.sonuto.rpc.ICallBack;
+import com.sonuto.rpc.register.BusinessProfile;
 import com.sonuto.rpc.register.User;
 import com.sonuto.session.ISessionManager;
 import com.sonuto.session.SessionManager;
@@ -42,6 +44,7 @@ public class SettingsFragment extends Fragment {
 	ISessionManager session;
 	ImageLoader imageLoader;
 	TextView userProfileNameTxt;
+	JSONObject bObject;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -103,7 +106,29 @@ public class SettingsFragment extends Fragment {
 		manager = new SessionManager(getActivity());
 		// when session active
 		  if(manager.getUsersBusinessProfileId() > 0){ 
-			  values[0] = manager.getUsersBusinessProfileName(); 
+			  values[0] = manager.getUsersBusinessProfileName();
+			  
+			  BusinessProfile bprofile = new BusinessProfile();
+			  bprofile.getBusinessProfileData(new ICallBack() {
+				
+				@Override
+				public void callBackResultHandler(Object object) {
+					JSONObject jsonObject = (JSONObject)object;
+					
+					try {
+						bObject = jsonObject.getJSONObject("business_profile_info");
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+					
+				}
+				
+				@Override
+				public void callBackErrorHandler(Object object) {
+					// TODO Auto-generated method stub
+					
+				}
+			}, session.getUserId());
 		  }
 
 
@@ -113,8 +138,9 @@ public class SettingsFragment extends Fragment {
 				String category = values[position];
 				if (position == 0) {
 					if(manager.getUsersBusinessProfileId()>0){
-						Intent intent = new Intent(getActivity(), EditBusinessProfileActivity.class);
-						startActivity(intent);
+						Intent i = new Intent(getActivity(), BusinessProfileActivity.class);
+						i.putExtra("business_profile_info", bObject.toString());
+						startActivity(i);
 					} else {
 						Intent intent = new Intent(getActivity(), BusinessRegistrationActivity.class);
 						startActivity(intent);
@@ -136,7 +162,6 @@ public class SettingsFragment extends Fragment {
 						startActivity(intent);
 					}
 				}
-
 			}
 		});
 
