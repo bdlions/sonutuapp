@@ -19,6 +19,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.media.TimedText;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
@@ -145,13 +146,13 @@ public class BlogDetailsActivity extends Activity {
 					blogCategory.setText(blog_category_title);
 					blogCategory.setTextColor(Color.parseColor("#00ACEA"));
 					if(blogDetails.getString("title") != null) {
-						blogTitle.setText(blogDetails.getString("title"));
+						blogTitle.setText(Html.fromHtml(blogDetails.getString("title")));
 					} else {
 						blogTitle.setText("");
 					}
 					
 					if(blogDetails.getString("description") != null) {
-						blogDetail.setText(blogDetails.getString("description"));
+						blogDetail.setText(Html.fromHtml(blogDetails.getString("description")));
 					} else {
 						blogDetail.setText("");
 					}

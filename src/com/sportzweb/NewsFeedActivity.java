@@ -5,7 +5,6 @@ import com.sonuto.nodejs.notification.NodeConnector;
 import com.sonuto.nodejs.notification.NodeEvent;
 import com.sonuto.tabsswipe.ApplicationsFragment;
 import com.sonuto.tabsswipe.adapter.TabsPagerAdapter;
-import com.sonuto.utils.APP_INFO;
 import com.sonuto.utils.TAB_INFO;
 
 import android.app.ActionBar;

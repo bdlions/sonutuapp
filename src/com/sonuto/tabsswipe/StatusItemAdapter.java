@@ -13,6 +13,7 @@ import com.sportzweb.JSONObjectModel.StatusInfo;
 
 import android.content.Context;
 import android.content.Intent;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -125,7 +126,7 @@ public class StatusItemAdapter extends BaseAdapter{
 		
 		String img_path = "resources/uploads/profile_picture/50x50/";
 		textViewNameOfUser.setText(statusInfo.getFirst_name() + " " + statusInfo.getLast_name());
-		textViewDescription.setText(statusInfo.getDescription());
+		textViewDescription.setText(Html.fromHtml(statusInfo.getDescription()));
 		textViewpostedStatusTime.setText(statusInfo.getStatus_created_on());
 		
 		//imgViewOfUsers.setImageResource(R.drawable.upload_img_icon);

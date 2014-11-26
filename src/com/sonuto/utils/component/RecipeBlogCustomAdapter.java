@@ -11,6 +11,7 @@ import com.sportzweb.JSONObjectModel.News;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -87,7 +88,7 @@ public class RecipeBlogCustomAdapter extends BaseAdapter {
 			}
 		});
 		
-		newsTitle.setText(blogs.getTitle());
+		newsTitle.setText(Html.fromHtml(blogs.getTitle()));
 		imageView.setImageResource(R.drawable.upload_img_icon);
         imageLoader.DisplayImage(blogs.getPicture(), imageView);
         
