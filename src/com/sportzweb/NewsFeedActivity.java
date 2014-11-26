@@ -1,5 +1,8 @@
 package com.sportzweb;
 
+import com.sonuto.nodejs.notification.MessageObserver;
+import com.sonuto.nodejs.notification.NodeConnector;
+import com.sonuto.nodejs.notification.NodeEvent;
 import com.sonuto.tabsswipe.ApplicationsFragment;
 import com.sonuto.tabsswipe.adapter.TabsPagerAdapter;
 import com.sonuto.utils.APP_INFO;
@@ -16,7 +19,7 @@ import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.app.ActionBar.TabListener;
 ;
 
-public class NewsFeedActivity extends FragmentActivity {
+public class NewsFeedActivity extends FragmentActivity implements MessageObserver{
 	private ViewPager viewPager;
 	private TabsPagerAdapter mAdapter;
 	private ActionBar actionBar;
@@ -25,7 +28,8 @@ public class NewsFeedActivity extends FragmentActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_tab);
-
+		NodeConnector.getInstance().registerObserver(this);
+		
 		// Initilization
 		viewPager = (ViewPager) findViewById(R.id.pager);
 		actionBar = getActionBar();
@@ -91,6 +95,12 @@ public class NewsFeedActivity extends FragmentActivity {
 			}
 		});
 
+	}
+
+	@Override
+	public void onUpdate(NodeEvent event, String from, String message) {
+		// TODO Auto-generated method stub
+		System.out.println(message);
 	}
 
 }
