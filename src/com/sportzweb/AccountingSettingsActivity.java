@@ -33,7 +33,6 @@ public class AccountingSettingsActivity extends Activity {
 	Button btnEditProfile;
 	public ImageLoader imageLoader;
 	private Context mContext;
-	ISessionManager session;
 	ProgressDialog pDialog;
 	int userId;
 	TextView userGender, userEditDOB, editUserCountry,editUserTown,
@@ -47,11 +46,10 @@ public class AccountingSettingsActivity extends Activity {
 		setContentView(R.layout.account_settings);
 		this.mContext = this;
 		// Session Manager
-		this.session = new SessionManager(getApplicationContext());
 		this.userId = getIntent().getIntExtra("user_id",0);
 		
 		if(userId == 0){
-			this.userId = this.session.getUserId();
+			this.userId = SessionManager.getInstance().getUserId();
 		}
 
 		initUI();

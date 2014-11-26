@@ -20,7 +20,6 @@ public class EditBusinessProfileActivity extends Activity {
 	Button btnEditProfile;
 	public ImageLoader imageLoader;
 	private Context mContext;
-	ISessionManager session;
 	int userId;
 
 	@Override
@@ -29,8 +28,7 @@ public class EditBusinessProfileActivity extends Activity {
 		setContentView(R.layout.activity_edit_business_profile);
 		this.mContext = this;
 		// Session Manager
-		this.session = new SessionManager(getApplicationContext());
-		this.userId = this.session.getUserId();
+		this.userId = SessionManager.getInstance().getUserId();
 		
 	}
 	

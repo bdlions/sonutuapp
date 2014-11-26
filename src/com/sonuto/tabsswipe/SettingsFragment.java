@@ -101,9 +101,9 @@ public class SettingsFragment extends Fragment {
 		lv = (ListView) v.findViewById(R.id.listViewSettings);
 		perform(v);
 		// when session active
-		if(manager.getIsBusinessProfile()){
-			if(manager.getUsersBusinessProfileId() > 0){
-				  values[0] = manager.getUsersBusinessProfileName();
+		if(SessionManager.getInstance().getIsBusinessProfile()){
+			if(SessionManager.getInstance().getUsersBusinessProfileId() > 0){
+				  values[0] = SessionManager.getInstance().getUsersBusinessProfileName();
 				  
 				  BusinessProfile bprofile = new BusinessProfile();
 				  bprofile.getBusinessProfileInfo(new ICallBack() {
@@ -125,7 +125,7 @@ public class SettingsFragment extends Fragment {
 						// TODO Auto-generated method stub
 						
 					}
-				}, session.getUserId());
+				}, SessionManager.getInstance().getUserId());
 			  }
 		}
 		  
@@ -136,7 +136,7 @@ public class SettingsFragment extends Fragment {
 			public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
 				String category = values[position];
 				if (position == 0) {
-					if(manager.getIsBusinessProfile() && manager.getUsersBusinessProfileId()>0){
+					if(SessionManager.getInstance().getIsBusinessProfile() && SessionManager.getInstance().getUsersBusinessProfileId()>0){
 						Intent i = new Intent(getActivity(), BusinessProfileActivity.class);
 						i.putExtra("business_profile_info", bObject.toString());
 						startActivity(i);
@@ -148,11 +148,11 @@ public class SettingsFragment extends Fragment {
 				}
 				else if (position == 1) {
 						Intent i = new Intent(getActivity(), AccountingSettingsActivity.class);
-						i.putExtra("user_id", manager.getUserId());
+						i.putExtra("user_id", SessionManager.getInstance().getUserId());
 						startActivity(i);
 				}else if (position == 2) {
 					Intent i = new Intent(getActivity(), PrivecySettingsActivity.class);
-					i.putExtra("user_id", manager.getUserId());
+					i.putExtra("user_id", SessionManager.getInstance().getUserId());
 					startActivity(i);
 				}
 				else if (position == 3) {

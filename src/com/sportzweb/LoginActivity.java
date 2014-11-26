@@ -93,14 +93,13 @@ public class LoginActivity extends Activity {
 
 							if(SessionManager.getInstance().logInUser(jsonObject.getJSONObject("user_info"))){
 								if(jsonObject.get("is_bp_exists").toString().equalsIgnoreCase("1")){
-<<<<<<< Updated upstream
-									session.isBusinessProfileExist(true);
-									session.logInUserBusinessProfile(jsonObject.getJSONObject("business_profile_info"));
-								} else {
-									session.isBusinessProfileExist(false);
-=======
+									SessionManager.getInstance().isBusinessProfileExist(true);
 									SessionManager.getInstance().logInUserBusinessProfile(jsonObject.getJSONObject("business_profile_info"));
->>>>>>> Stashed changes
+								} else {
+									SessionManager.getInstance().isBusinessProfileExist(false);
+
+									SessionManager.getInstance().logInUserBusinessProfile(jsonObject.getJSONObject("business_profile_info"));
+
 								}
 								
 								Intent i = new Intent(getApplicationContext(),NewsFeedActivity.class);
