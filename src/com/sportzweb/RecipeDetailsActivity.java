@@ -37,14 +37,12 @@ public class RecipeDetailsActivity extends Activity {
 	ImageButton btnlike, btnComment, btnShare;
 	Integer recipe_id;
 	JSONArray recipeCommentsArray;
-	SessionManager session;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_healthy_recipes_details);
 		context = this;
-		session = new SessionManager(getApplicationContext());
 		initUI();
 		process();
 	}
@@ -80,7 +78,7 @@ public class RecipeDetailsActivity extends Activity {
 				JSONObject jsonRecipeObj = new JSONObject();
 				
 					try {
-						int userId = session.getUserId();
+						int userId = SessionManager.getInstance().getUserId();
 						jsonRecipeObj.put("user_id", userId);
 						jsonRecipeObj.put("application_id", AppID.HEALTHY_RECIPE.getValue());
 						jsonRecipeObj.put("item_id", recipe_id);

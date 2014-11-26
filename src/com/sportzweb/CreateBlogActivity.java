@@ -76,7 +76,6 @@ public class CreateBlogActivity extends Activity {
 	CheckedTextView category_checkBox;
 	ArrayListFragment list;
 	ArrayList<Integer> selectedItem = new ArrayList<Integer>();
-	SessionManager session;
 	
 	private ArrayList<BlogCategory> blogCategoryItem = new ArrayList<BlogCategory>();
 	
@@ -85,7 +84,6 @@ public class CreateBlogActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_create_blog);
 		mContext = this;
-		session = new SessionManager(mContext);
 		initUi();
 	}
 	
@@ -289,7 +287,7 @@ public class CreateBlogActivity extends Activity {
 				builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
 				builder.addPart("userfile", inputStreamBody);
 				
-				int userId = session.getUserId();
+				int userId = SessionManager.getInstance().getUserId();
 				JSONArray collection = new JSONArray(selectedItem);
 				
 				builder.addPart("blog_category_list", new StringBody(collection.toString(), ContentType.TEXT_PLAIN));

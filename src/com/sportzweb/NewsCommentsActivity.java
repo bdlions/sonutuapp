@@ -51,7 +51,6 @@ public class NewsCommentsActivity extends Activity {
 	int news_id,rate_id = 0;
 	String comments,userComments;
 	JSONArray commentsJSONArr;
-	SessionManager session;
 	private NewsCommentsCustomAdapter adapter;
 	private ArrayList<NewsComment> newsCommentObjList = new ArrayList<NewsComment>();
 
@@ -59,7 +58,6 @@ public class NewsCommentsActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_news_comment);
-		session = new SessionManager(getApplicationContext());
 		context = this;
 		initUi();
 		process();
@@ -125,7 +123,7 @@ public class NewsCommentsActivity extends Activity {
 				userComments = newsCommentText.getText().toString();
 				if(isVerifiedCommentTextStep()) {
 					try {
-						int userId = session.getUserId();
+						int userId = SessionManager.getInstance().getUserId();
 						jsonRecipeCommentObj.put("user_id", userId);
 						jsonRecipeCommentObj.put("application_id", AppID.NEWS.getValue());
 						jsonRecipeCommentObj.put("item_id", news_id);

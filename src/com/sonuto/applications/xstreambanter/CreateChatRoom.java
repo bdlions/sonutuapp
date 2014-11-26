@@ -42,7 +42,6 @@ public class CreateChatRoom extends Activity {
 	String matchAsJsonString;
 	String tournamentAsJsonString;
 	Spinner teamSelect;
-	ISessionManager session;
 	ArrayList<String> teams;
 	ProgressDialog pDialog;
 	String groupAccessCode;
@@ -54,8 +53,7 @@ public class CreateChatRoom extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_xtream_banter_create_chat_room);
 		try {
-			session = new SessionManager(getApplicationContext());
-			userId = session.getUserId();
+			userId = SessionManager.getInstance().getUserId();
 		} catch (NullPointerException nullEx) {
 			userId = 4;
 		}

@@ -48,7 +48,6 @@ public class RecipeCommentsActivity extends Activity {
 	int recipe_id,rate_id = 0;
 	String comments,userComments;
 	JSONArray commentsJSONArr;
-	SessionManager session;
 	private ArrayList<RecipeComment> recipeCommentObjList = new ArrayList<RecipeComment>();
 	RCommentsCustomAdapter adapter;
 
@@ -57,7 +56,6 @@ public class RecipeCommentsActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_recipe_comments);
 		context = this;
-		session = new SessionManager(context);
 		initUI();
 		Process();
 	}
@@ -123,7 +121,7 @@ public class RecipeCommentsActivity extends Activity {
 				userComments = recipeCommentText.getText().toString();
 				if(isVerifiedCommentTextStep()) {
 					try {
-						int userId = session.getUserId();
+						int userId = SessionManager.getInstance().getUserId();
 						jsonRecipeCommentObj.put("user_id", userId);
 						jsonRecipeCommentObj.put("application_id", AppID.HEALTHY_RECIPE.getValue());
 						jsonRecipeCommentObj.put("item_id", recipe_id);

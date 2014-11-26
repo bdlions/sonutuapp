@@ -62,7 +62,6 @@ public class ChatRooms extends Activity {
 
 	ArrayList<String> teams;
 	ArrayList<Message> messageList;
-	ISessionManager session;
 	int userId;
 	int roomId;
 
@@ -71,8 +70,7 @@ public class ChatRooms extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_xtream_banter_chat_history);
 		try {
-			session = new SessionManager(getApplicationContext());
-			userId = session.getUserId();
+			userId = SessionManager.getInstance().getUserId();
 		} catch (NullPointerException nullEx) {
 			userId = 4;
 		}

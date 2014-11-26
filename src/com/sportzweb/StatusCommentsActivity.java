@@ -39,7 +39,6 @@ public class StatusCommentsActivity extends Activity {
 	int status_id;
 	String comments, userComments;
 	JSONArray commentsJSONArr;
-	SessionManager session;
 	private StatusCommentsCustomAdapter adapter;
 	private ArrayList<StatusComment> statusCommentObjList = new ArrayList<StatusComment>();
 
@@ -48,7 +47,6 @@ public class StatusCommentsActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_status_comments);
 		adapter = new StatusCommentsCustomAdapter(this, statusCommentObjList);
-		session = new SessionManager(getApplicationContext());
 		context = this;
 		initUi();
 		Process();
@@ -94,7 +92,7 @@ public class StatusCommentsActivity extends Activity {
 				userComments = commentForStatusText.getText().toString();
 				if(isVerifiedCommentTextStep()) {
 					try {
-						int userId = session.getUserId();
+						int userId = SessionManager.getInstance().getUserId();
 						jsonStatusCommentObj.put("user_id", userId);
 						jsonStatusCommentObj.put("status_id", status_id);
 						jsonStatusCommentObj.put("feedback", userComments);

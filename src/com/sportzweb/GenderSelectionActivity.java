@@ -29,14 +29,12 @@ public class GenderSelectionActivity extends Activity {
 	private int selectedColor;
 	// Alert Dialog Manager
 	AlertDialogManager alert = new AlertDialogManager();
-	ISessionManager session;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_gender_selection);
 		// Session Manager
-		session = new SessionManager(getApplicationContext());
 		
 		selectedColor = 0xFFB5B5B5;
 		
@@ -82,7 +80,7 @@ public class GenderSelectionActivity extends Activity {
 				JSONObject jsonUser = new JSONObject();
 				
 				
-				jsonUser.put("user_id", session.getUserInfo().getUserId());
+				jsonUser.put("user_id", SessionManager.getInstance().getUserInfo().getUserId());
 				jsonUser.put("gender_id", genderValue.getValue());
 				
 				

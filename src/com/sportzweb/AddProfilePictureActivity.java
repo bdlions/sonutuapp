@@ -122,10 +122,9 @@ public class AddProfilePictureActivity extends Activity {
 				builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
 				builder.addPart("userfile", inputStreamBody);
 
-				SessionManager manager = new SessionManager(getApplicationContext());
 				
 				builder.addPart("name", new StringBody("Test", ContentType.TEXT_PLAIN));
-				builder.addPart("user_id", new StringBody(Integer.toString(manager.getUserId()), ContentType.TEXT_PLAIN));
+				builder.addPart("user_id", new StringBody(Integer.toString(SessionManager.getInstance().getUserId()), ContentType.TEXT_PLAIN));
 				builder.addPart("data", new StringBody("This is test report", ContentType.TEXT_PLAIN));
 		        
 				HttpEntity entity = builder.build();

@@ -18,7 +18,6 @@ public class EditUserProfileActivity extends Activity {
 	Button btnEditProfile;
 	public ImageLoader imageLoader;
 	private Context mContext;
-	ISessionManager session;
 	int userId;
 
 	@Override
@@ -27,8 +26,7 @@ public class EditUserProfileActivity extends Activity {
 		setContentView(R.layout.activity_user_profile);
 		this.mContext = this;
 		// Session Manager
-		this.session = new SessionManager(getApplicationContext());
-		this.userId = this.session.getUserId();
+		this.userId = SessionManager.getInstance().getUserId();
 		
 	}
 	

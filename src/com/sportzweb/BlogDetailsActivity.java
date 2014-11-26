@@ -41,13 +41,11 @@ public class BlogDetailsActivity extends Activity {
 	ImageButton btnComment,btnShare;
 	Integer blog_id;
 	JSONArray blogCommentsArray;
-	SessionManager session;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_blog_details);
-		session = new SessionManager(getApplicationContext());
 		context = this;
 		initUI();
 		process();
@@ -90,7 +88,7 @@ public class BlogDetailsActivity extends Activity {
 				JSONObject jsonRecipeObj = new JSONObject();
 				
 				try {
-					int userId = session.getUserId();
+					int userId = SessionManager.getInstance().getUserId();
 					jsonRecipeObj.put("user_id", userId);
 					jsonRecipeObj.put("application_id", AppID.BLOG.getValue());
 					jsonRecipeObj.put("item_id", blog_id);

@@ -34,7 +34,6 @@ public class LoginActivity extends Activity {
 	// Alert Dialog Manager
 	AlertDialogManager alert;
 	// Session Manager Class
-	ISessionManager session;
 	String email, password;
 	
 	ProgressDialog pd;
@@ -47,8 +46,7 @@ public class LoginActivity extends Activity {
 		alert = new AlertDialogManager();
 
 		// Session Manager
-		session = new SessionManager(getApplicationContext());
-		if (session.isLoggedIn()) {
+		if (SessionManager.getInstance().isLoggedIn()) {
 			// Staring MainActivity
 			Intent i = new Intent(getApplicationContext(), NewsFeedActivity.class);
 			startActivity(i);
@@ -93,12 +91,16 @@ public class LoginActivity extends Activity {
 						
 						if(jsonObject.get("msg").toString().equalsIgnoreCase("SIGNIN_SUCCESSFULLY")){
 
-							if(session.logInUser(jsonObject.getJSONObject("user_info"))){
+							if(SessionManager.getInstance().logInUser(jsonObject.getJSONObject("user_info"))){
 								if(jsonObject.get("is_bp_exists").toString().equalsIgnoreCase("1")){
+<<<<<<< Updated upstream
 									session.isBusinessProfileExist(true);
 									session.logInUserBusinessProfile(jsonObject.getJSONObject("business_profile_info"));
 								} else {
 									session.isBusinessProfileExist(false);
+=======
+									SessionManager.getInstance().logInUserBusinessProfile(jsonObject.getJSONObject("business_profile_info"));
+>>>>>>> Stashed changes
 								}
 								
 								Intent i = new Intent(getApplicationContext(),NewsFeedActivity.class);

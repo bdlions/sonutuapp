@@ -61,7 +61,7 @@ public class MessageFragment extends Fragment {
 				// TODO Auto-generated method stub
 				
 			}
-		}, new SessionManager(getActivity()).getUserId());
+		}, SessionManager.getInstance().getUserId());
 
 		
 		

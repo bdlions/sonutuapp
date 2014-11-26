@@ -30,7 +30,6 @@ public class RegistrationActivity extends Activity {
 	FrameLayout reg_step_1_layout, reg_step_2_layout, reg_step_3_layout;
 	
 	String fname,lname,password,email;
-	ISessionManager session;
 	
 	// Alert Dialog Manager
 	AlertDialogManager alert = new AlertDialogManager();
@@ -42,7 +41,6 @@ public class RegistrationActivity extends Activity {
 
 		mContext = this;
 		// Session Manager
-		session = new SessionManager(getApplicationContext());
 		
 		// Initialize UI method
 		initUi();
@@ -113,9 +111,9 @@ public class RegistrationActivity extends Activity {
 							try {
 								if(jsonObject.get("msg").toString().equalsIgnoreCase("SIGNUP_COMPLETED")){
 									
-									if(session.logInUser(jsonObject.getJSONObject("user_info"))){
+									if(SessionManager.getInstance().logInUser(jsonObject.getJSONObject("user_info"))){
 										if(jsonObject.get("is_bp_exists").toString().equalsIgnoreCase("1")){
-											session.logInUserBusinessProfile(jsonObject.getJSONObject("business_profile_info"));
+											SessionManager.getInstance().logInUserBusinessProfile(jsonObject.getJSONObject("business_profile_info"));
 										}
 										 Intent intent = new Intent(mContext,MemberSettingActivity.class);
 										 startActivity(intent);

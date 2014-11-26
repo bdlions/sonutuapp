@@ -47,7 +47,6 @@ public class MyBlogActivity extends Activity {
 		setContentView(R.layout.activity_my_blogs);
 		mComtext = this;
 		// Session Manager
-		session = new SessionManager(getApplicationContext());
 		
 		initUi();
 	}

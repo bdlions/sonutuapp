@@ -27,7 +27,6 @@ public class UserProfileActivity extends Activity {
 	Button btnEditProfile;
 	public ImageLoader imageLoader;
 	private Context mContext;
-	ISessionManager session;
 	int userId;
 	ImageView userProfileImage, myFollowingsImageView, myPhotosImageView,
 			myInfoImageView;
@@ -39,11 +38,10 @@ public class UserProfileActivity extends Activity {
 		setContentView(R.layout.activity_user_profile);
 		this.mContext = this;
 		// Session Manager
-		this.session = new SessionManager(getApplicationContext());
 		this.userId = getIntent().getIntExtra("user_id",0);
 		
 		if(userId == 0){
-			this.userId = this.session.getUserId();
+			this.userId = SessionManager.getInstance().getUserId();
 		}
 
 		initUI();

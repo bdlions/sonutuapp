@@ -58,7 +58,7 @@ public class FriendsFragment extends Fragment {
 				// TODO Auto-generated method stub
 				
 			}
-		}, new SessionManager(getActivity()).getUserId());
+		}, SessionManager.getInstance().getUserId());
 
 		
 		

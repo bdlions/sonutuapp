@@ -41,7 +41,6 @@ public class NewsDetailsActivity extends Activity {
 	ProgressDialog pDialog;
 	ImageButton btnlike, btnComment, btnShare;
 	Integer news_id;
-	SessionManager session;
 	JSONArray newsCommentsArray;
 
 	@Override
@@ -49,7 +48,6 @@ public class NewsDetailsActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_news_details);
 		context = this;
-		session = new SessionManager(getApplicationContext());
 		initUI();
 		process();
 	}
@@ -86,7 +84,7 @@ public class NewsDetailsActivity extends Activity {
 				JSONObject jsonNewsObj = new JSONObject();
 
 				try {
-					int userId = session.getUserId();
+					int userId = SessionManager.getInstance().getUserId();
 					jsonNewsObj.put("user_id", userId);
 					jsonNewsObj.put("application_id", AppID.NEWS.getValue());
 					jsonNewsObj.put("item_id", news_id);

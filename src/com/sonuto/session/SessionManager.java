@@ -1,13 +1,10 @@
 package com.sonuto.session;
-
-import org.json.JSONException;
 import org.json.JSONObject;
-
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-
 import com.google.gson.Gson;
+import com.sonuto.SonutoApp;
 import com.sonuto.users.BusinessProfileInfo;
 import com.sonuto.users.UserInfo;
 
@@ -21,13 +18,22 @@ public class SessionManager implements ISessionManager {
 	private final String BP_INFO = "BP_INFO";
 	private final String BP_EXIST = "BP_EXIST";
 	
+	private static SessionManager instance = null;
+	
 	
 	private Context appContext;
 	private SharedPreferences sharedPreferences;
 	
-	public SessionManager(Context context){
-		appContext = context;
+	protected SessionManager(){
+		appContext = SonutoApp.getAppContext();
 		sharedPreferences = appContext.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+	}
+	
+	public static SessionManager getInstance(){
+		if(instance == null){
+			instance = new SessionManager();
+		}
+		return instance; 
 	}
 	
 	@Override

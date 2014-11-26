@@ -24,13 +24,11 @@ public class BirthDaySettingActivity extends Activity {
 	private DatePicker dp;
 	// Alert Dialog Manager
 	AlertDialogManager alert = new AlertDialogManager();
-	ISessionManager session;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_birth_day_setting);
-		session = new SessionManager(getApplicationContext());
 		dp = (DatePicker) findViewById(R.id.dpDOB);
 		mContext = this;
 	}
@@ -53,7 +51,7 @@ public class BirthDaySettingActivity extends Activity {
 			JSONObject jsonUser = new JSONObject();
 
 
-			jsonUser.put("user_id", session.getUserId());
+			jsonUser.put("user_id", SessionManager.getInstance().getUserId());
 			jsonUser.put("dob", year + "/" + (month + 1) + "/" + day);
 
 			user.updateDateOfBirth(new ICallBack() {

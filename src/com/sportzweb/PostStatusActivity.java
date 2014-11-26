@@ -31,7 +31,6 @@ public class PostStatusActivity extends Activity {
 	Button btnForStatusPost;
 	public ImageLoader imageLoader;
 	private Context mContext;
-	ISessionManager session;
 	int userId;
 	String userStatus;
 
@@ -41,8 +40,7 @@ public class PostStatusActivity extends Activity {
 		setContentView(R.layout.activity_post_status);
 		this.mContext = this;
 		// Session Manager
-		this.session = new SessionManager(getApplicationContext());
-		this.userId = this.session.getUserId();
+		this.userId = SessionManager.getInstance().getUserId();
 		initUI();
 		
 	}
@@ -60,7 +58,7 @@ public class PostStatusActivity extends Activity {
 				userStatus = statusText.getText().toString();
 				if(isVerifiedPostStatusTextStep()) {
 					try {
-						int userId = session.getUserId();
+						int userId = SessionManager.getInstance().getUserId();
 						jsonStatusCommentObj.put("user_id", userId);
 						jsonStatusCommentObj.put("mapping_id", userId);
 						jsonStatusCommentObj.put("status_type_id", 1);

@@ -30,7 +30,6 @@ public class ProfileInformationActivity extends Activity {
 	private Context mContext;
 	private EditText mInstituiton, mOccupation, mEmployee;
 	String country, occupation, institution, employee;
-	ISessionManager session;
 
 	private AutoCompleteTextView actCounties;
 	ArrayAdapter<String> countriesAdapter;
@@ -51,7 +50,6 @@ public class ProfileInformationActivity extends Activity {
 		mContext = this;
 
 		// Session Manager
-		session = new SessionManager(getApplicationContext());
 
 		initUi();
 	}
@@ -162,7 +160,7 @@ public class ProfileInformationActivity extends Activity {
 			User user = new User();
 			try {
 				JSONObject jsonUser = new JSONObject();
-				jsonUser.put("user_id", session.getUserId());
+				jsonUser.put("user_id", SessionManager.getInstance().getUserId());
 				jsonUser.put("country_id", countryId);
 				jsonUser.put("occupation", occupation);
 				jsonUser.put("clg_or_uni", institution);

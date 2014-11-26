@@ -54,7 +54,6 @@ public class ServiceCommentsActivity extends Activity {
 	int service_id,rate_id = 0;
 	String comments,userComments;
 	JSONArray commentsJSONArr;
-	SessionManager session;
 	private ServiceCommentsCustomAdapter adapter;
 	private ArrayList<ServiceComment> serviceCommentObjList = new ArrayList<ServiceComment>();
 
@@ -62,7 +61,6 @@ public class ServiceCommentsActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_service_comment);
-		session = new SessionManager(getApplicationContext());
 		context = this;
 		initUi();
 		process();
@@ -128,7 +126,7 @@ public class ServiceCommentsActivity extends Activity {
 				userComments = serviceCommentText.getText().toString();
 				if(isVerifiedCommentTextStep()) {
 					try {
-						int userId = session.getUserId();
+						int userId = SessionManager.getInstance().getUserId();
 						jsonServiceCommentObj.put("user_id", userId);
 						jsonServiceCommentObj.put("application_id", AppID.SERVICE_DIRECTORY.getValue());
 						jsonServiceCommentObj.put("item_id", service_id);

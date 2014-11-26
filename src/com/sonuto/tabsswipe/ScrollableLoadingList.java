@@ -28,7 +28,6 @@ public class ScrollableLoadingList implements OnScrollListener {
 	private int currentPage = 0;
 	private int previousTotal = 0;
 	private boolean loading = true;
-	private ISessionManager session;
 	private int userId;
 	public ScrollableLoadingList(Context rootContext, ListView listViewStatusItems, ArrayList<StatusInfo> statusInfoList) {
 		this.rootContext = rootContext;
@@ -56,8 +55,7 @@ public class ScrollableLoadingList implements OnScrollListener {
 			final int scrollPosition = firstVisibleItem + visibleItemCount;
 			JSONObject params = new JSONObject();
 			try {
-				session = new SessionManager(rootContext);
-				userId = session.getUserId();
+				userId = SessionManager.getInstance().getUserId();
 				params.put("user_id", userId);
 				params.put("status_list_id", 1);
 				params.put("mapping_id", 0);

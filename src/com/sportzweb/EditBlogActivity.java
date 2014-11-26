@@ -69,7 +69,6 @@ public class EditBlogActivity extends Activity {
 	ImageView blogImageView;
 	public ImageLoader imageLoader;
 	ArrayListFragment list;
-	SessionManager session;
 	
 	ArrayList<Integer> selectedItem = new ArrayList<Integer>();
 	private ArrayList<BlogCategory> blogCategoryItem = new ArrayList<BlogCategory>();
@@ -79,7 +78,6 @@ public class EditBlogActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_edit_blog);
 		mContext = this;
-		session = new SessionManager(mContext);
 		imageLoader = new ImageLoader(mContext);
 		
 		Intent i = getIntent();
@@ -326,7 +324,7 @@ public class EditBlogActivity extends Activity {
 				builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
 				builder.addPart("userfile", inputStreamBody);
 				
-				int userId = session.getUserId();
+				int userId = SessionManager.getInstance().getUserId();
 				JSONArray collection = new JSONArray(selectedItem);
 				
 				builder.addPart("blog_category_list", new StringBody(collection.toString(), ContentType.TEXT_PLAIN));

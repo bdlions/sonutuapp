@@ -24,7 +24,6 @@ import android.widget.TextView;
 public class BusinessProfileActivity extends Activity {
 	
 	private Context mContext;
-	ISessionManager session;
 	Button btnTotalBConnection,btnBConnection,btnBInfo,btnBMore;
 	ImageView BusinessProfileImageView,imageOfBusiness,bCrossView;
 	TextView bNameTextView,textViewpostedBStatusTime,textViewBDescription,textViewBTotalcomments,textViewBTotalLike;
@@ -35,8 +34,6 @@ public class BusinessProfileActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_business_profile);
-		// Session Manager
-		session = new SessionManager(getApplicationContext());
 		mContext = this;
 		initUi();
 	}

@@ -27,7 +27,6 @@ import android.widget.ListView;
 import android.widget.AbsListView.OnScrollListener;
 
 public class TopRatedFragment extends Fragment {
-	private ISessionManager session;
 	private int userId;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -36,8 +35,7 @@ public class TopRatedFragment extends Fragment {
 		final View rootView = inflater.inflate(R.layout.fragment_top_rated, container, false);
 		JSONObject params = new JSONObject();
 		try {
-			session = new SessionManager(getActivity());
-			userId = session.getUserId();
+			userId = SessionManager.getInstance().getUserId();
 			params.put("user_id", userId);
 			params.put("status_list_id", 1);
 			params.put("mapping_id", 0);

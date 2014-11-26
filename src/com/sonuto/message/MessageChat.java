@@ -49,7 +49,6 @@ public class MessageChat extends Activity {
 	Button btnSendChatMessage;
 	EditText et_chat_message;
 	TextView tv_chat_message_list;
-	ISessionManager session;
 	int senderId;
 	int receiverId;
 	
@@ -91,8 +90,7 @@ public class MessageChat extends Activity {
 		
 		
 		try {
-			session = new SessionManager(getApplicationContext());
-			senderId = session.getUserId();
+			senderId = SessionManager.getInstance().getUserId();
 		} catch (NullPointerException nullEx) {
 			
 		}

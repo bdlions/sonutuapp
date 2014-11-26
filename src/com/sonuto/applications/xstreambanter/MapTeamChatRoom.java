@@ -44,7 +44,6 @@ public class MapTeamChatRoom extends Activity {
 	String matchAsJsonString;
 	String tournamentAsJsonString;
 	Spinner teamSelect;
-	ISessionManager session;
 	ArrayList<String> teams;
 	ProgressDialog pDialog;
 	String groupAccessCode;
@@ -56,8 +55,7 @@ public class MapTeamChatRoom extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_xstream_banter_map_team_chat_room);
 		try {
-			session = new SessionManager(getApplicationContext());
-			userId = session.getUserId();
+			userId = SessionManager.getInstance().getUserId();
 		} catch (NullPointerException nullEx) {
 			userId = 4;
 		}

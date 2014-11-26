@@ -53,7 +53,6 @@ public class BlogCommentsActivity extends Activity {
 	int blog_id, rate_id = 0;
 	String comments, userComments;
 	JSONArray commentsJSONArr;
-	SessionManager session;
 
 	private RadioGroup radioGroup;
 	private RadioButton positive, negitive, neutral;
@@ -65,7 +64,6 @@ public class BlogCommentsActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		adapter = new BlogCommentsCustomAdapter(this, blogCommentObjList);
 		setContentView(R.layout.activity_blog_comments);
-		session = new SessionManager(getApplicationContext());
 		context = this;
 		initUI();
 		Process();
@@ -136,7 +134,7 @@ public class BlogCommentsActivity extends Activity {
 				userComments = blogCommentText.getText().toString();
 				if (isVerifiedCommentTextStep()) {
 					try {
-						int userId = session.getUserId();
+						int userId = SessionManager.getInstance().getUserId();
 						jsonBlogCommentObj.put("user_id", userId);
 						jsonBlogCommentObj.put("application_id",
 								AppID.BLOG.getValue());

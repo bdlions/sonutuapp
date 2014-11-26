@@ -38,8 +38,6 @@ public class JoinChatRoom extends Activity{
 	String matchAsJsonString;
 	String tournamentAsJsonString;
 	ListView previousCodes;
-	//Spinner teamSelect;
-	ISessionManager session;
 	ArrayList<ChatRoom> roomList = new ArrayList<ChatRoom>();
 	ProgressDialog pDialog;
 	ArrayList<String> teams;
@@ -50,8 +48,7 @@ public class JoinChatRoom extends Activity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_xtream_banter_join_chat_room);		
 		try{
-			session = new SessionManager(getApplicationContext());
-			userId = session.getUserId();
+			userId = SessionManager.getInstance().getUserId();
 		}
 		catch(NullPointerException nullEx){
 			userId = 4;

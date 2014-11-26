@@ -37,11 +37,9 @@ import android.widget.TextView;
 
 public class SettingsFragment extends Fragment {
 
-	SessionManager manager;
 	String[] values = new String[]{"Create Business Profile", "Account Settings", "Profile Settings", "Log out"};
 	ListView lv;
 	ImageView userImage;
-	ISessionManager session;
 	ImageLoader imageLoader;
 	TextView userProfileNameTxt;
 	JSONObject bObject;
@@ -49,8 +47,7 @@ public class SettingsFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.fragment_settings, container, false);
-		session = new SessionManager(getActivity().getApplicationContext());
-
+		
 		userProfileNameTxt = (TextView) v.findViewById(R.id.userProfileNameTxt);
 		userImage = (ImageView) v.findViewById(R.id.userImage);
 		LinearLayout linearLayoutUserProfile = (LinearLayout) v.findViewById(R.id.linearLayoutUserProfile);
@@ -59,7 +56,7 @@ public class SettingsFragment extends Fragment {
 			@Override
 			public void onClick(View arg0) {
 				Intent i = new Intent(getActivity(), UserProfileActivity.class);
-				i.putExtra("userId", session.getUserId());
+				i.putExtra("userId", SessionManager.getInstance().getUserId());
 				startActivity(i);
 			}
 		});
@@ -99,11 +96,10 @@ public class SettingsFragment extends Fragment {
 				// TODO Auto-generated method stub
 
 			}
-		}, session.getUserId());
+		}, SessionManager.getInstance().getUserId());
 
 		lv = (ListView) v.findViewById(R.id.listViewSettings);
 		perform(v);
-		manager = new SessionManager(getActivity());
 		// when session active
 		if(manager.getIsBusinessProfile()){
 			if(manager.getUsersBusinessProfileId() > 0){
@@ -160,7 +156,7 @@ public class SettingsFragment extends Fragment {
 					startActivity(i);
 				}
 				else if (position == 3) {
-					if (manager.logoutUser()) {
+					if (SessionManager.getInstance().logoutUser()) {
 						Intent intent = new Intent(getActivity(), LoginActivity.class);
 						startActivity(intent);
 					}

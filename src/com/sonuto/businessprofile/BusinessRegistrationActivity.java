@@ -80,14 +80,12 @@ public class BusinessRegistrationActivity extends Activity {
 	AlertDialogManager alert = new AlertDialogManager();
 
 	JSONArray business_categories,countries;
-	ISessionManager session;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_business_resigtration);
 		// Session Manager
-		session = new SessionManager(getApplicationContext());
 		mContext = this;
 		initUi();
 	}
@@ -404,7 +402,7 @@ public class BusinessRegistrationActivity extends Activity {
 			JSONObject jsonBusinessProfile = new JSONObject();
 			
 			try {
-				jsonBusinessProfile.put("user_id", session.getUserId());
+				jsonBusinessProfile.put("user_id", SessionManager.getInstance().getUserId());
 				//jsonBusinessProfile.put("user_id", 5);
 				jsonBusinessProfile.put("business_profile_type", businessCategory);
 				jsonBusinessProfile.put("business_profile_sub_type", businessType);
