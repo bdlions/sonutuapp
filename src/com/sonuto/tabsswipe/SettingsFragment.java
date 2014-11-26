@@ -6,15 +6,14 @@ import org.json.JSONObject;
 import com.bdlions.load.image.ImageLoader;
 import com.google.gson.Gson;
 import com.sonuto.Config;
+import com.sonuto.accountsettings.AccountSettingsActivity;
 import com.sonuto.businessprofile.BusinessProfileActivity;
 import com.sonuto.businessprofile.BusinessRegistrationActivity;
-import com.sonuto.businessprofile.EditBusinessProfileActivity;
 import com.sonuto.rpc.ICallBack;
 import com.sonuto.rpc.register.BusinessProfile;
 import com.sonuto.rpc.register.User;
 import com.sonuto.session.ISessionManager;
 import com.sonuto.session.SessionManager;
-import com.sportzweb.AccountingSettingsActivity;
 import com.sportzweb.LoginActivity;
 import com.sportzweb.PrivecySettingsActivity;
 import com.sportzweb.R;
@@ -147,9 +146,10 @@ public class SettingsFragment extends Fragment {
 					
 				}
 				else if (position == 1) {
-						Intent i = new Intent(getActivity(), AccountingSettingsActivity.class);
-						i.putExtra("user_id", SessionManager.getInstance().getUserId());
-						startActivity(i);
+					Intent i = new Intent(getActivity(), AccountSettingsActivity.class);
+					i.putExtra("user_id", SessionManager.getInstance().getUserId());
+					startActivity(i);
+
 				}else if (position == 2) {
 					Intent i = new Intent(getActivity(), PrivecySettingsActivity.class);
 					i.putExtra("user_id", SessionManager.getInstance().getUserId());

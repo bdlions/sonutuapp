@@ -31,6 +31,8 @@
 	<string name="signIn">Sign In</string>
     <!-- Member registration step 1 -->
     <string name="member_reg_Title"><u><b>"What's your name?"</b></u></string>
+    <string name="name_setting"><u><b>"Change your name?"</b></u></string>
+    <string name="email_setting"><u><b>"Change your email?"</b></u></string>
     <string name="reg_Title">Using your real name allows friends to connect and provides a better experience</string>
     <string name="reg_first_name">First Name</string>
     <string name="reg_last_name">Last Name</string>
@@ -53,7 +55,9 @@
 
     <!-- Member registration step 5 -->
     <string name="member_reg_Title_for_gender"><u>"What's your gender?"</u></string>
+    <string name="title_for_gender"><u>"Change your gender?"</u></string>
     <string name="save_and_continue">Save and Continue</string>
+    <string name="save">Save</string>
 
     <!-- Member registration step 6 -->
     <string name="member_reg_profile_info"><u>"Enter your profile information"</u></string>
@@ -193,6 +197,10 @@
     
     <string name="title_activity_user_status_post">Post Status</string>
     <string name="title_activity_account_settings">Account Settings</string>
+    <string name="title_activity_general_settings">General Settings</string>
+    <string name="title_activity_name_settings">Name Settings</string>
+    <string name="title_activity_email_settings">Email Settings</string>
+    <string name="title_activity_account_info_settings">Account Information</string>
     <string name="title_activity_privecy_settings">Privecy Settings</string>
     
     <string name="title_activity_profile_information">Profile Information</string>

@@ -60,13 +60,49 @@
             android:name="com.sportzweb.AccountingSettingsActivity"
             android:label="@string/title_activity_account_settings"
             android:theme="@style/CustomActionBarTheme" >
+        </activity> 
+        
+        <activity
+            android:name="com.sonuto.accountsettings.AccountSettingsActivity"
+            android:label="@string/title_activity_account_settings"
+            android:theme="@style/CustomActionBarTheme" >
+        </activity>
+        
+        <activity
+            android:name="com.sonuto.accountsettings.AccountInfoSettingsActivity"
+            android:label="@string/title_activity_account_info_settings"
+            android:theme="@style/CustomActionBarTheme" >
+        </activity>
+        
+        <activity
+            android:name="com.sonuto.accountsettings.GeneralSettingsActivity"
+            android:label="@string/title_activity_general_settings"
+            android:theme="@style/CustomActionBarTheme" >
+        </activity>
+        
+        <activity
+            android:name="com.sonuto.accountsettings.GenderSettingsActivity"
+            android:label="@string/title_activity_general_settings"
+            android:theme="@style/CustomActionBarTheme" >
+        </activity>
+        
+        <activity
+            android:name="com.sonuto.accountsettings.NameSettingsActivity"
+            android:label="@string/title_activity_name_settings"
+            android:theme="@style/CustomActionBarTheme" >
+        </activity>
+        
+        <activity
+            android:name="com.sonuto.accountsettings.EmailSettingsActivity"
+            android:label="@string/title_activity_email_settings"
+            android:theme="@style/CustomActionBarTheme" >
         </activity>
         
         <activity
             android:name="com.sportzweb.AccountingSettingsInfoActivity"
             android:label="@string/title_activity_account_settings"
             android:theme="@style/CustomActionBarTheme" >
-        </activity>
+        </activity> 
         
         <activity
             android:name="com.sportzweb.PrivecySettingsActivity"

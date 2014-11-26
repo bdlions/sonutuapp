@@ -1,0 +1,69 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="." >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dip" >
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dip"
+            android:layout_marginTop="10dip"
+            android:gravity="center"
+            android:text="@string/name_setting"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#00acea" />
+
+        <EditText
+            android:id="@+id/fNameChangeEdtTxt"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dip"
+            android:layout_marginTop="5dip"
+            android:background="@drawable/backwithborder"
+            android:hint="@string/reg_first_name"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:textColorHint="#0a000a"
+            android:textSize="15sp" >
+
+            <requestFocus />
+        </EditText>
+
+        <EditText
+            android:id="@+id/lNameChangeEdtTxt"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dip"
+            android:layout_marginTop="5dip"
+            android:background="@drawable/backwithborder"
+            android:hint="@string/reg_last_name"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:textColorHint="#0a000a"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/btnNameChange"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dip"
+            android:layout_marginTop="60dip"
+            android:background="@drawable/button"
+            android:onClick="regStep1"
+            android:text="@string/save"
+            android:textColor="#fff1ff"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+</ScrollView>
