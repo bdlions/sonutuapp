@@ -52,14 +52,14 @@ public class GenderSettingsActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_gender_setteing);
 		this.mContext = this;
-		this.session = new SessionManager(getApplicationContext());
+		
 		Intent intent = getIntent();
 		Bundle b = getIntent().getExtras();
 		this.userId = getIntent().getIntExtra("user_id",0);
 		this.genderId = intent.getIntExtra("gender_id", 0);
 		
 		if(userId == 0){
-			this.userId = this.session.getUserId();
+			this.userId = SessionManager.getInstance().getUserId();
 		}
 		selectedColor = 0xFFB5B5B5;
 

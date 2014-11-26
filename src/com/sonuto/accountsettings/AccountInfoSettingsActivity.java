@@ -44,11 +44,11 @@ public class AccountInfoSettingsActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_account_info_settings);
 		this.mContext = this;
-		this.session = new SessionManager(getApplicationContext());
+		//this.session = new SessionManager(getApplicationContext());
 		this.userId = getIntent().getIntExtra("user_id",0);
 		
 		if(userId == 0){
-			this.userId = this.session.getUserId();
+			this.userId = SessionManager.getInstance().getUserId();
 		}
 
 		initUI();

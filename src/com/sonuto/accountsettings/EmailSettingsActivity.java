@@ -50,7 +50,7 @@ public class EmailSettingsActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_email_setteing);
 		this.mContext = this;
-		this.session = new SessionManager(getApplicationContext());
+		//this.session = new SessionManager(getApplicationContext());
 		Intent intent = getIntent();
 		Bundle b = getIntent().getExtras();
 		this.userId = getIntent().getIntExtra("user_id",0);
@@ -64,7 +64,7 @@ public class EmailSettingsActivity extends Activity {
 			e.printStackTrace();
 		}
 		if(userId == 0){
-			this.userId = this.session.getUserId();
+			this.userId = SessionManager.getInstance().getUserId();
 		}
 		initUI();
 	}
