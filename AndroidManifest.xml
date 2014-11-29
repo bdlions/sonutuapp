@@ -24,110 +24,118 @@
         android:required="true" />
 
     <application
+        android:name="com.sonuto.SonutoApp"
         android:allowBackup="true"
-        android:largeHeap="true"
         android:icon="@drawable/logo"
         android:label="@string/app_name"
-        android:name="com.sonuto.SonutoApp"
+        android:largeHeap="true"
         android:theme="@android:style/Theme.NoTitleBar" >
-        <activity
-            android:name="com.sportzweb.ActivitySplashScreen">
+        <activity android:name="com.sportzweb.ActivitySplashScreen" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-       
         <activity
-            android:label="@string/app_name"
             android:name="com.sportzweb.LoginActivity"
-           	android:theme="@style/CustomActionBarTheme"></activity>
-       
+            android:label="@string/app_name"
+            android:theme="@style/CustomActionBarTheme" >
+        </activity>
 
-<!--         <activity -->
-<!--             android:name="com.sportzweb.MapTestActivity" -->
-<!--             android:label="@string/title_activity_main" -->
-<!--             android:theme="@style/CustomActionBarTheme" > -->
-<!--         </activity> -->
+        <!-- <activity -->
+        <!-- android:name="com.sportzweb.MapTestActivity" -->
+        <!-- android:label="@string/title_activity_main" -->
+        <!-- android:theme="@style/CustomActionBarTheme" > -->
+        <!-- </activity> -->
+
+        <activity
+            android:name="com.sportzweb.ForgetPasswordActivity"
+            android:label="@string/title_activity_forget_pass"
+            android:theme="@style/CustomActionBarTheme" >
+        </activity>
+        
+        <activity
+            android:name="com.sportzweb.ForgetPasswordEmailActivity"
+            android:label="@string/title_activity_forget_pass_email"
+            android:theme="@style/CustomActionBarTheme" >
+        </activity>
+        
         <activity
             android:name="com.sportzweb.UserProfileActivity"
             android:label="@string/title_activity_user_profile"
             android:theme="@style/CustomActionBarTheme" >
         </activity>
-        
         <activity
             android:name="com.sportzweb.AccountingSettingsActivity"
             android:label="@string/title_activity_account_settings"
             android:theme="@style/CustomActionBarTheme" >
-        </activity> 
-        
+        </activity>
         <activity
             android:name="com.sonuto.accountsettings.AccountSettingsActivity"
             android:label="@string/title_activity_account_settings"
             android:theme="@style/CustomActionBarTheme" >
         </activity>
-        
         <activity
             android:name="com.sonuto.accountsettings.AccountInfoSettingsActivity"
             android:label="@string/title_activity_account_info_settings"
             android:theme="@style/CustomActionBarTheme" >
         </activity>
-        
         <activity
             android:name="com.sonuto.accountsettings.GeneralSettingsActivity"
             android:label="@string/title_activity_general_settings"
             android:theme="@style/CustomActionBarTheme" >
         </activity>
-        
         <activity
             android:name="com.sonuto.accountsettings.GenderSettingsActivity"
             android:label="@string/title_activity_general_settings"
             android:theme="@style/CustomActionBarTheme" >
         </activity>
-        
         <activity
             android:name="com.sonuto.accountsettings.NameSettingsActivity"
             android:label="@string/title_activity_name_settings"
             android:theme="@style/CustomActionBarTheme" >
         </activity>
-        
         <activity
             android:name="com.sonuto.accountsettings.EmailSettingsActivity"
             android:label="@string/title_activity_email_settings"
             android:theme="@style/CustomActionBarTheme" >
         </activity>
-        
         <activity
             android:name="com.sportzweb.AccountingSettingsInfoActivity"
             android:label="@string/title_activity_account_settings"
             android:theme="@style/CustomActionBarTheme" >
-        </activity> 
-        
+        </activity>
         <activity
             android:name="com.sportzweb.PrivecySettingsActivity"
             android:label="@string/title_activity_privecy_settings"
             android:theme="@style/CustomActionBarTheme" >
         </activity>
-        
+        <activity
+            android:name="com.sonuto.privecysettings.PrivecySettingsActivity"
+            android:label="@string/title_activity_privecy_settings"
+            android:theme="@style/CustomActionBarTheme" >
+        </activity>
+        <activity
+            android:name="com.sonuto.privecysettings.SeePostPrivecyActivity"
+            android:label="@string/title_activity_privecy_settings"
+            android:theme="@style/CustomActionBarTheme" >
+        </activity>
         <activity
             android:name="com.sportzweb.UserInfoActivity"
-            android:theme="@style/CustomActionBarTheme"
-            android:label="@string/title_activity_user_info" >
+            android:label="@string/title_activity_user_info"
+            android:theme="@style/CustomActionBarTheme" >
         </activity>
-        
         <activity
             android:name="com.sportzweb.PostStatusActivity"
-            android:theme="@style/CustomActionBarTheme"
-            android:label="@string/title_activity_user_status_post" >
+            android:label="@string/title_activity_user_status_post"
+            android:theme="@style/CustomActionBarTheme" >
         </activity>
-        
         <activity
             android:name="com.sportzweb.EditUserProfileActivity"
-            android:theme="@style/CustomActionBarTheme"
-            android:label="@string/title_activity_edit_user_profile" >
+            android:label="@string/title_activity_edit_user_profile"
+            android:theme="@style/CustomActionBarTheme" >
         </activity>
-        
         <activity
             android:name="com.sportzweb.RegistrationActivity"
             android:label="@string/title_activity_registration"
@@ -177,13 +185,11 @@
             android:label="@string/title_activity_edit_business_profile"
             android:theme="@style/CustomActionBarTheme" >
         </activity>
-        
         <activity
             android:name="com.sonuto.businessprofile.BusinessProfileActivity"
             android:label="@string/title_activity_business_profile"
             android:theme="@style/CustomActionBarTheme" >
         </activity>
-        
         <activity
             android:name="com.sportzweb.BmiCalculatorActivity"
             android:label="@string/title_activity_bmi_calculator"
@@ -208,7 +214,7 @@
         <!--
             <activity android:name="com.sportzweb.BlogAppActivity"
             android:label="@string/title_activity_blog_app"
-            android:theme="@style/CustomActionBarTheme"></activity>
+            android:theme="@style/CustomActionBarTheme"></activity>
         -->
 
         <activity
@@ -240,7 +246,7 @@
         <!--
             <activity android:name="com.sportzweb.HealthyRecipeAppActivity"
             android:label="@string/title_activity_healthy_recipe_app"
-            android:theme="@style/CustomActionBarTheme"></activity>
+            android:theme="@style/CustomActionBarTheme"></activity>
         -->
 
         <activity
@@ -257,25 +263,29 @@
         <!--
             <activity android:name="com.sportzweb.NewsAppActivity"
             android:label="@string/title_activity_news_app"
-            android:theme="@style/CustomActionBarTheme"></activity>-->
-            
-            
-            <activity android:name="com.sonuto.newstabsswipe.NewsCommonFragment"
+            android:theme="@style/CustomActionBarTheme"></activity>
+        -->
+
+        <activity
+            android:name="com.sonuto.newstabsswipe.NewsCommonFragment"
             android:label="@string/title_activity_news_app"
-            android:theme="@style/CustomActionBarTheme"></activity>
-            
-            <activity android:name="com.sportzweb.NewsCommentsActivity"
+            android:theme="@style/CustomActionBarTheme" >
+        </activity>
+        <activity
+            android:name="com.sportzweb.NewsCommentsActivity"
             android:label="@string/title_activity_news_comments"
-            android:theme="@style/CustomActionBarTheme"></activity>
-            
-            <activity android:name="com.sportzweb.NewsDetailsActivity"
+            android:theme="@style/CustomActionBarTheme" >
+        </activity>
+        <activity
+            android:name="com.sportzweb.NewsDetailsActivity"
             android:label="@string/title_activity_news_details"
-            android:theme="@style/CustomActionBarTheme"></activity>
-        
+            android:theme="@style/CustomActionBarTheme" >
+        </activity>
+
         <!--
              <activity android:name="com.sportzweb.xtreambanter.SportsActivity"
             android:label="@string/title_activity_xstream_banter"
-            android:theme="@style/CustomActionBarTheme"></activity>
+            android:theme="@style/CustomActionBarTheme"></activity>
         -->
 
         <activity
@@ -308,32 +318,31 @@
             android:label="@string/title_activity_xstream_banter"
             android:theme="@style/CustomActionBarTheme" >
         </activity>
-        <activity android:name="com.sonuto.applications.xstreambanter.MapTeamChatRoom"
+        <activity
+            android:name="com.sonuto.applications.xstreambanter.MapTeamChatRoom"
             android:label="@string/title_activity_xstream_banter"
-            android:theme="@style/CustomActionBarTheme">
+            android:theme="@style/CustomActionBarTheme" >
         </activity>
-        
-		<activity android:name="com.sportzweb.ServiceDetailsActivity"
+        <activity
+            android:name="com.sportzweb.ServiceDetailsActivity"
             android:label="@string/title_activity_service_details"
             android:theme="@style/CustomActionBarTheme" >
         </activity>
-        
-
-		<activity android:name="com.sportzweb.ServiceCommentsActivity"
+        <activity
+            android:name="com.sportzweb.ServiceCommentsActivity"
             android:label="@string/title_activity_service_comments"
-            android:theme="@style/CustomActionBarTheme">
+            android:theme="@style/CustomActionBarTheme" >
         </activity>
-		
-		<activity android:name="com.sportzweb.MyPhotos"
+        <activity
+            android:name="com.sportzweb.MyPhotos"
             android:label="@string/title_activity_service_details"
-            android:theme="@style/CustomActionBarTheme">
+            android:theme="@style/CustomActionBarTheme" >
         </activity>
-        
-		<activity android:name="com.sonuto.message.MessageChat"
+        <activity
+            android:name="com.sonuto.message.MessageChat"
             android:label="@string/title_activity_message_chat"
-            android:theme="@style/CustomActionBarTheme">
+            android:theme="@style/CustomActionBarTheme" >
         </activity>
-                
 
         <meta-data
             android:name="com.google.android.gms.version"

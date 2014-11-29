@@ -9,13 +9,13 @@ import com.sonuto.Config;
 import com.sonuto.accountsettings.AccountSettingsActivity;
 import com.sonuto.businessprofile.BusinessProfileActivity;
 import com.sonuto.businessprofile.BusinessRegistrationActivity;
+import com.sonuto.privecysettings.PrivecySettingsActivity;
 import com.sonuto.rpc.ICallBack;
 import com.sonuto.rpc.register.BusinessProfile;
 import com.sonuto.rpc.register.User;
 import com.sonuto.session.ISessionManager;
 import com.sonuto.session.SessionManager;
 import com.sportzweb.LoginActivity;
-import com.sportzweb.PrivecySettingsActivity;
 import com.sportzweb.R;
 import com.sportzweb.UserProfileActivity;
 

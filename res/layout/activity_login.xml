@@ -65,6 +65,7 @@
             android:background="#ffffff"
             android:gravity="center"
             android:minHeight="30dp"
+            android:onClick="forgetPassword"
             android:text="@string/forgot_password_text"
             android:textColor="#00acea"
             android:textSize="20sp" />

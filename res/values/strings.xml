@@ -153,6 +153,13 @@
         <item>La League</item>
         <item>Premier</item>
     </string-array>
+    
+    <string name="group_prompt">Select Group</string>
+    <string-array name="group_list">
+        <item>Followers</item>
+        <item>Anyone</item>
+        <item>Selected group</item>
+    </string-array>
 
     <!-- seettings account -->
 
@@ -190,6 +197,9 @@
     <string name="title_activity_member_setting">Add Your Interest</string>
     <string name="title_activity_genger_selection">Select Gender</string>
     <string name="title_activity_google_apitest">GoogleAPITestActivity</string>
+    
+    <string name="title_activity_forget_pass">Forget Password</string>
+    <string name="title_activity_forget_pass_email">Check User Email</string>
     
     <!-- Edit Account Settings -->
     <string name="hometwonRequired">Hometwon Required!</string>

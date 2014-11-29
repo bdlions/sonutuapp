@@ -166,4 +166,15 @@ public class LoginActivity extends Activity {
 		startActivity(intent);
 		finish();
 	}
+	
+	/*
+	 * forget password click action
+	 */
+	public void forgetPassword(View view) {
+		Intent intent = new Intent(mContext, ForgetPasswordActivity.class);
+		startActivity(intent);
+		finish();
+	}
+	
+	
 }
