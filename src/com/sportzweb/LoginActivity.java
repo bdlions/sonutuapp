@@ -9,7 +9,6 @@ import com.sampanit.sonutoapp.utils.AlertMessage;
 import com.sampanit.sonutoapp.utils.WebUtil;
 import com.sonuto.rpc.ICallBack;
 import com.sonuto.rpc.register.User;
-import com.sonuto.session.ISessionManager;
 import com.sonuto.session.SessionManager;
 
 import android.os.Bundle;
@@ -44,14 +43,6 @@ public class LoginActivity extends Activity {
 		setContentView(R.layout.activity_login);
 		mContext = this;
 		alert = new AlertDialogManager();
-
-		// Session Manager
-		if (SessionManager.getInstance().isLoggedIn()) {
-			// Staring MainActivity
-			Intent i = new Intent(getApplicationContext(), NewsFeedActivity.class);
-			startActivity(i);
-			finish();
-		}
 
 		// Email, Password input text
 		mEmail = (EditText) findViewById(R.id.txtInpEmail);
@@ -175,6 +166,4 @@ public class LoginActivity extends Activity {
 		startActivity(intent);
 		finish();
 	}
-	
-	
 }

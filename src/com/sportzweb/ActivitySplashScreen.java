@@ -3,6 +3,8 @@ package com.sportzweb;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import com.sonuto.session.SessionManager;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
@@ -32,22 +34,38 @@ public class ActivitySplashScreen extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_splash_screen);
-
-		ImageView imageviewLogo = (ImageView) findViewById(R.id.imageviewLogo);
-		AnimationDrawable logoAnimation = new AnimationDrawable();
-
-		for (int i = 0; i < images.length; i++) {
-			logoAnimation.addFrame(getResources().getDrawable(images[i]), 12);
+		
+		/*
+		 * if this user has an active session go to the newsfeed activity
+		 * otherwise show the splash screen and then go to the login activity
+		 * */ 
+		
+		if (SessionManager.getInstance().isLoggedIn()) {
+			/*
+			 * has an active session go to the newsfeed activity
+			 * */
+			Intent i = new Intent(getApplicationContext(), NewsFeedActivity.class);
+			startActivity(i);
+			finish();
 		}
-
-		imageviewLogo.setImageDrawable(logoAnimation);
-		logoAnimation.setOneShot(true);
-		logoAnimation.start();
-
-		timer = new Timer();
-		LoginActivityLanucher loginActivityLanucher = new LoginActivityLanucher();
-		timer.schedule(loginActivityLanucher, 2000);
+		else{
+			setContentView(R.layout.activity_splash_screen);
+	
+			ImageView imageviewLogo = (ImageView) findViewById(R.id.imageviewLogo);
+			AnimationDrawable logoAnimation = new AnimationDrawable();
+	
+			for (int i = 0; i < images.length; i++) {
+				logoAnimation.addFrame(getResources().getDrawable(images[i]), 12);
+			}
+	
+			imageviewLogo.setImageDrawable(logoAnimation);
+			logoAnimation.setOneShot(true);
+			logoAnimation.start();
+	
+			timer = new Timer();
+			LoginActivityLanucher loginActivityLanucher = new LoginActivityLanucher();
+			timer.schedule(loginActivityLanucher, 2000);
+		}
 
 	}
 
