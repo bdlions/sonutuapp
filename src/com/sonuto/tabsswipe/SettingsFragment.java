@@ -3,6 +3,7 @@ package com.sonuto.tabsswipe;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.bdlions.helper.ListViewHelper;
 import com.bdlions.load.image.ImageLoader;
 import com.google.gson.Gson;
 import com.sonuto.Config;
@@ -98,7 +99,9 @@ public class SettingsFragment extends Fragment {
 		}, SessionManager.getInstance().getUserId());
 
 		lv = (ListView) v.findViewById(R.id.listViewSettings);
-		perform(v);
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, values);
+		lv.setAdapter(adapter);
+		ListViewHelper.setFullHeightListView(lv);
 		// when session active
 		if(SessionManager.getInstance().getIsBusinessProfile()){
 			if(SessionManager.getInstance().getUsersBusinessProfileId() > 0){
@@ -139,9 +142,11 @@ public class SettingsFragment extends Fragment {
 						Intent i = new Intent(getActivity(), BusinessProfileActivity.class);
 						i.putExtra("business_profile_info", bObject.toString());
 						startActivity(i);
+						getActivity().finish();
 					} else {
 						Intent intent = new Intent(getActivity(), BusinessRegistrationActivity.class);
 						startActivity(intent);
+						getActivity().finish();
 					}
 					
 				}
@@ -149,16 +154,19 @@ public class SettingsFragment extends Fragment {
 					Intent i = new Intent(getActivity(), AccountSettingsActivity.class);
 					i.putExtra("user_id", SessionManager.getInstance().getUserId());
 					startActivity(i);
+					getActivity().finish();
 
 				}else if (position == 2) {
 					Intent i = new Intent(getActivity(), PrivecySettingsActivity.class);
 					i.putExtra("user_id", SessionManager.getInstance().getUserId());
 					startActivity(i);
+					getActivity().finish();
 				}
 				else if (position == 3) {
 					if (SessionManager.getInstance().logoutUser()) {
 						Intent intent = new Intent(getActivity(), LoginActivity.class);
 						startActivity(intent);
+						getActivity().finish();
 					}
 				}
 			}
@@ -167,9 +175,4 @@ public class SettingsFragment extends Fragment {
 		return v;
 	}
 
-	public void perform(View v) {
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, values);
-		lv.setAdapter(adapter);
-
-	}
 }
