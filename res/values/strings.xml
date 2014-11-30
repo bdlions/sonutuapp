@@ -29,6 +29,8 @@
     <string name="about_me">About me:</string>
     
 	<string name="signIn">Sign In</string>
+	<string name="change_pass">Change Password</string>
+	<string name="label_confirmation_code"><u>Confirmation Code</u></string>
     <!-- Member registration step 1 -->
     <string name="member_reg_Title"><u><b>"What's your name?"</b></u></string>
     <string name="name_setting"><u><b>"Change your name?"</b></u></string>
@@ -200,6 +202,7 @@
     
     <string name="title_activity_forget_pass">Forget Password</string>
     <string name="title_activity_forget_pass_email">Check User Email</string>
+    <string name="title_activity_change_pass">Change Password</string>
     
     <!-- Edit Account Settings -->
     <string name="hometwonRequired">Hometwon Required!</string>

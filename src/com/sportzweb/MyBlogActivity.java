@@ -53,7 +53,7 @@ public class MyBlogActivity extends Activity {
 
 	public void initUi() {
 		
-		userId = session.getUserId();
+		userId = SessionManager.getInstance().getUserId();
 		
 		stk = (TableLayout) findViewById(R.id.table_main);
 		pDiler = new ProgressDialog(mComtext);

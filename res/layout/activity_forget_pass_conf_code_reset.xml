@@ -82,7 +82,7 @@
             android:textSize="15sp" />
 
         <Button
-            android:id="@+id/btnforgetPass"
+            android:id="@+id/btnNotMyAcc"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_marginTop="10dip"
@@ -92,7 +92,7 @@
             android:textSize="15sp" />
 
         <Button
-            android:id="@+id/link_to_signin"
+            android:id="@+id/btnBackToLogin"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"

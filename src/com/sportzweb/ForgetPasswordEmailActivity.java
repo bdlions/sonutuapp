@@ -24,7 +24,7 @@ import android.widget.Toast;
 
 public class ForgetPasswordEmailActivity extends Activity {
 	private Context mContext;
-	Button btnforgetPass;
+	Button btnforgetPassContinue,btnforgetPassCancel;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -35,15 +35,27 @@ public class ForgetPasswordEmailActivity extends Activity {
 	}
 
 	private void initUI() {
-//		btnforgetPass = (Button) findViewById(R.id.btnforgetPass);
-//		btnforgetPass.setOnClickListener(new OnClickListener() {
-//			
-//			@Override
-//			public void onClick(View v) {
-//				Intent i = new Intent(getApplicationContext(), SeePostPrivecyActivity.class);
-//				startActivity(i);
-//			}
-//		});
+		btnforgetPassContinue = (Button) findViewById(R.id.btnforgetPassContinue);
+		btnforgetPassContinue.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent i = new Intent(getApplicationContext(), ForgetPasswordEmailVarifyActivity.class);
+				startActivity(i);
+				finish();
+			}
+		});
+		
+		btnforgetPassCancel = (Button) findViewById(R.id.btnforgetPassCancel);
+		btnforgetPassCancel.setOnClickListener(new  OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent i = new Intent(getApplicationContext(), LoginActivity.class);
+				startActivity(i);
+				finish();
+			}
+		});
 	}
 
 }

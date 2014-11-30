@@ -22,36 +22,49 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.Toast;
 
-public class ForgetPasswordActivity extends Activity {
+public class ForgetPasswordEmailVarifyActivity extends Activity {
 	private Context mContext;
-	Button btnforgetPass,btnBackLogin;
+	Button btnforgetPassContinue,btnNotMyAcc,btnBackToLogin;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_forget_password);
+		setContentView(R.layout.activity_forget_pass_conf_code_reset);
 		mContext = this;
 		initUI();
 	}
 
 	private void initUI() {
-		btnforgetPass = (Button) findViewById(R.id.btnforgetPass);
-		btnforgetPass.setOnClickListener(new OnClickListener() {
+		btnforgetPassContinue = (Button) findViewById(R.id.btnforgetPassContinue);
+		btnforgetPassContinue.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent i = new Intent(getApplicationContext(), ChangePasswordConfirmationActivity.class);
+				startActivity(i);
+				finish();
+			}
+		});
+		
+		btnNotMyAcc = (Button) findViewById(R.id.btnNotMyAcc);
+		btnNotMyAcc.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
 				Intent i = new Intent(getApplicationContext(), ForgetPasswordEmailActivity.class);
 				startActivity(i);
+				finish();
 			}
 		});
 		
-		btnBackLogin = (Button) findViewById(R.id.btnBackLogin);
-		btnBackLogin.setOnClickListener(new OnClickListener() {
+		btnBackToLogin = (Button) findViewById(R.id.btnBackToLogin);
+		btnBackToLogin.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
 				Intent i = new Intent(getApplicationContext(), LoginActivity.class);
 				startActivity(i);
+				finish();
 			}
 		});
 		
