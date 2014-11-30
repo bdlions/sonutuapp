@@ -1,5 +1,6 @@
 package com.sportzweb;
 
+import com.bdlions.components.ViewPagerWithHList;
 import com.sonuto.nodejs.notification.MessageObserver;
 import com.sonuto.nodejs.notification.NodeConnector;
 import com.sonuto.nodejs.notification.NodeEvent;
@@ -8,18 +9,21 @@ import com.sonuto.tabsswipe.adapter.TabsPagerAdapter;
 import com.sonuto.utils.TAB_INFO;
 
 import android.app.ActionBar;
+import android.app.SearchManager;
 import android.app.ActionBar.Tab;
 import android.app.FragmentTransaction;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.widget.SearchView;
 import android.app.ActionBar.TabListener;
+import android.content.Context;
 ;
 
 public class NewsFeedActivity extends FragmentActivity implements MessageObserver{
-	private ViewPager viewPager;
+	private ViewPagerWithHList viewPager;
 	private TabsPagerAdapter mAdapter;
 	private ActionBar actionBar;
 
@@ -30,7 +34,8 @@ public class NewsFeedActivity extends FragmentActivity implements MessageObserve
 		NodeConnector.getInstance().registerObserver(this);
 		
 		// Initilization
-		viewPager = (ViewPager) findViewById(R.id.pager);
+		viewPager = (ViewPagerWithHList) findViewById(R.id.pager);
+		viewPager.setPagingEnabled(false);
 		actionBar = getActionBar();
 		mAdapter = new TabsPagerAdapter(getSupportFragmentManager());
 
@@ -76,23 +81,23 @@ public class NewsFeedActivity extends FragmentActivity implements MessageObserve
 		/**
 		 * on swiping the viewpager make respective tab selected
 		 * */
-		viewPager.setOnPageChangeListener(new OnPageChangeListener() {
-
-			@Override
-			public void onPageSelected(int position) {
-				// on changing the page
-				// make respected tab selected
-				actionBar.setSelectedNavigationItem(position);
-			}
-
-			@Override
-			public void onPageScrolled(int arg0, float arg1, int arg2) {
-			}
-
-			@Override
-			public void onPageScrollStateChanged(int arg0) {
-			}
-		});
+//		viewPager.setOnPageChangeListener(new OnPageChangeListener() {
+//
+//			@Override
+//			public void onPageSelected(int position) {
+//				// on changing the page
+//				// make respected tab selected
+//				actionBar.setSelectedNavigationItem(position);
+//			}
+//
+//			@Override
+//			public void onPageScrolled(int arg0, float arg1, int arg2) {
+//			}
+//
+//			@Override
+//			public void onPageScrollStateChanged(int arg0) {
+//			}
+//		});
 
 	}
 
@@ -101,5 +106,19 @@ public class NewsFeedActivity extends FragmentActivity implements MessageObserve
 		// TODO Auto-generated method stub
 		System.out.println(message);
 	}
-
+	
+	@Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.activity_main_actions, menu);
+ 
+        // Associate searchable configuration with the SearchView
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        SearchView searchView = (SearchView) menu.findItem(R.id.action_search)
+                .getActionView();
+        searchView.setSearchableInfo(searchManager
+                .getSearchableInfo(getComponentName()));
+ 
+        return super.onCreateOptionsMenu(menu);
+    }
 }
