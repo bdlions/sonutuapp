@@ -154,7 +154,7 @@ public class AddProfilePictureActivity extends Activity {
 				// Close the connection
 				httpClient.getConnectionManager().shutdown();
 				
-				Intent intent = new Intent(mContext, NewsFeedActivity.class);
+				Intent intent = new Intent(mContext, ApplicationPane.class);
 				startActivity(intent);
 				finish();
 			} catch (IOException e) {

@@ -26,7 +26,7 @@ import android.widget.AbsListView;
 import android.widget.ListView;
 import android.widget.AbsListView.OnScrollListener;
 
-public class TopRatedFragment extends Fragment {
+public class ActivityNewsFeed extends Fragment {
 	private int userId;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,

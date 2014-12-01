@@ -44,7 +44,7 @@ public class ActivitySplashScreen extends Activity {
 			/*
 			 * has an active session go to the newsfeed activity
 			 * */
-			Intent i = new Intent(getApplicationContext(), NewsFeedActivity.class);
+			Intent i = new Intent(getApplicationContext(), ApplicationPane.class);
 			startActivity(i);
 			finish();
 		}

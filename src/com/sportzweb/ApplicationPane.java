@@ -22,7 +22,7 @@ import android.app.ActionBar.TabListener;
 import android.content.Context;
 ;
 
-public class NewsFeedActivity extends FragmentActivity implements MessageObserver{
+public class ApplicationPane extends FragmentActivity implements MessageObserver{
 	private ViewPagerWithHList viewPager;
 	private TabsPagerAdapter mAdapter;
 	private ActionBar actionBar;
@@ -47,7 +47,7 @@ public class NewsFeedActivity extends FragmentActivity implements MessageObserve
 		// Adding Tabs
 		for (final TAB_INFO tab_info : TAB_INFO.class.getEnumConstants()) {
 			
-			Drawable drawableIcon = NewsFeedActivity.this.getResources().getDrawable(tab_info.ICON);
+			Drawable drawableIcon = ApplicationPane.this.getResources().getDrawable(tab_info.ICON);
 
 			Tab tab = actionBar.newTab();
 			tab.setIcon(drawableIcon);
@@ -77,27 +77,6 @@ public class NewsFeedActivity extends FragmentActivity implements MessageObserve
 			});
 			actionBar.addTab(tab);
 		}// endfor
-
-		/**
-		 * on swiping the viewpager make respective tab selected
-		 * */
-//		viewPager.setOnPageChangeListener(new OnPageChangeListener() {
-//
-//			@Override
-//			public void onPageSelected(int position) {
-//				// on changing the page
-//				// make respected tab selected
-//				actionBar.setSelectedNavigationItem(position);
-//			}
-//
-//			@Override
-//			public void onPageScrolled(int arg0, float arg1, int arg2) {
-//			}
-//
-//			@Override
-//			public void onPageScrollStateChanged(int arg0) {
-//			}
-//		});
 
 	}
 

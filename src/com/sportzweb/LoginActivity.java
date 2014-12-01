@@ -93,7 +93,7 @@ public class LoginActivity extends Activity {
 
 								}
 								
-								Intent i = new Intent(getApplicationContext(),NewsFeedActivity.class);
+								Intent i = new Intent(getApplicationContext(),ApplicationPane.class);
 								startActivity(i);
 								finish();
 								

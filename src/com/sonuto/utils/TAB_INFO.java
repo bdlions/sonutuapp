@@ -6,11 +6,11 @@ import com.sonuto.tabsswipe.ApplicationsFragment;
 import com.sonuto.tabsswipe.FriendsFragment;
 import com.sonuto.tabsswipe.MessageFragment;
 import com.sonuto.tabsswipe.SettingsFragment;
-import com.sonuto.tabsswipe.TopRatedFragment;
+import com.sonuto.tabsswipe.ActivityNewsFeed;
 import com.sportzweb.R;
 
 public enum TAB_INFO {
-	NEWS_FEED("News Feed", R.drawable.chat_bubble, new TopRatedFragment()), 
+	NEWS_FEED("News Feed", R.drawable.chat_bubble, new ActivityNewsFeed()), 
 	FRIEND("Friend", R.drawable.followers, new FriendsFragment()), 
 	MESSAGE("Message", R.drawable.message, new MessageFragment()), 
 	APPLICATION("Application", R.drawable.application, new ApplicationsFragment()), 

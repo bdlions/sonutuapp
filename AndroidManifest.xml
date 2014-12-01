@@ -141,7 +141,7 @@
             android:label="@string/title_activity_add_photo" >
         </activity>
         <activity
-            android:name="com.sportzweb.NewsFeedActivity"
+            android:name="com.sportzweb.ApplicationPane"
             android:label="@string/title_activity_news_feed" >
         </activity>
         <activity
