@@ -89,10 +89,8 @@ public class ScrollableLoadingList implements OnScrollListener {
 							Gson gson = new Gson();
 							statusInfoList.add(gson.fromJson(status.toString(), StatusInfo.class));
 						}
-
 						StatusItemAdapter adapter = new StatusItemAdapter(rootContext, statusInfoList);
 						listViewStatusItems.setAdapter(adapter);
-						listViewStatusItems.setSelection(scrollPosition);
 
 					}
 					catch (JSONException e) {
