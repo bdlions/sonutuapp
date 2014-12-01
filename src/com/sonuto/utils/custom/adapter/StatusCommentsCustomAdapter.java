@@ -67,7 +67,7 @@ public class StatusCommentsCustomAdapter extends BaseAdapter {
 		Log.d("My App", userInfo.toString());
 //		Gson gson = new Gson();
 
-		final String imagePath = Config.SERVER_ROOT_URL + "resources/uploads/profile_picture/";
+		final String imagePath = Config.SERVER_ROOT_URL + "resources/uploads/profile_picture/50x50/";
 		
 		commentUserImg.setImageResource(R.drawable.upload_img_icon);
 

@@ -14,8 +14,8 @@
 
         <ImageView
             android:id="@+id/statusCommentUserImg"
-            android:layout_width="69dp"
-            android:layout_height="match_parent"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:background="@drawable/upload_img_icon" />
 
         <LinearLayout
