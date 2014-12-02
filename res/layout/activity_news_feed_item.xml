@@ -55,7 +55,7 @@
                 </LinearLayout>
 
                 <ImageView
-                    android:id="@+id/imageView2"
+                    android:id="@+id/imageViewRemove"
                     android:layout_width="10dp"
                     android:layout_height="10dp"
                     android:layout_alignParentRight="true"

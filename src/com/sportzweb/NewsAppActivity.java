@@ -100,20 +100,20 @@ public class NewsAppActivity extends Fragment {
 				try {
 					final JSONArray news_category_list = jsonObject.getJSONArray("news_category_list");
 
-					final Gson gson = new Gson();
-					final int tabCount = news_category_list.length();
+					Gson gson = new Gson();
+					int tabCount = news_category_list.length();
 					for (int i = 0; i < tabCount; i++) {
-						final NewsTab tab = gson.fromJson(news_category_list.get(i).toString(), NewsTab.class);
-						NewsAppActivity.this.tabList.add(tab);
+						NewsTab tab = gson.fromJson(news_category_list.get(i).toString(), NewsTab.class);
+						tabList.add(tab);
 					}
-					NewsAppActivity.this.newsList = jsonObject.getJSONArray("news_list").toString();
+					newsList = jsonObject.getJSONArray("news_list").toString();
 
-					NewsAppActivity.this.listView = (ListView) NewsAppActivity.this.rootView.findViewById(R.id.listViewNews);
-					NewsAppActivity.this.firstNewsHeading = (TextView) NewsAppActivity.this.rootView.findViewById(R.id.firstNewsHeadline);
-					NewsAppActivity.this.firstNewsImage = (ImageView) NewsAppActivity.this.rootView.findViewById(R.id.firstNewsImage);
+					listView = (ListView) rootView.findViewById(R.id.listViewNews);
+					firstNewsHeading = (TextView) rootView.findViewById(R.id.firstNewsHeadline);
+					firstNewsImage = (ImageView) rootView.findViewById(R.id.firstNewsImage);
 					try {
-						NewsAppActivity.this.newsJsonList = new JSONArray(NewsAppActivity.this.newsList);
-						processNews(NewsAppActivity.this.newsJsonList);
+						newsJsonList = new JSONArray(newsList);
+						processNews(newsJsonList);
 					}
 					catch (final JSONException e) {
 						// TODO Auto-generated catch block

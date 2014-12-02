@@ -87,6 +87,8 @@ public class StatusItemAdapter extends ArrayAdapter<StatusInfo>{
 		LinearLayout llComment = (LinearLayout) convertView.findViewById(R.id.llComment);
 		LinearLayout llShare = (LinearLayout) convertView.findViewById(R.id.llShare);
 		LinearLayout llLike = (LinearLayout) convertView.findViewById(R.id.llLike);
+	
+		
 		
 		llLike.setOnClickListener(new OnClickListener() {
 			
@@ -133,6 +135,17 @@ public class StatusItemAdapter extends ArrayAdapter<StatusInfo>{
 		//imgViewOfUsers.setImageResource(R.drawable.upload_img_icon);
         imageLoader.DisplayImage(Config.PROFILE_PIC_DIR_LG + statusInfo.getPhoto(), imgViewOfUsers);
 		
+        ImageView imageViewRemove = (ImageView) convertView.findViewById(R.id.imageViewRemove);
+		imageViewRemove.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				remove(statusInfo);
+				notifyDataSetChanged();
+			}
+		});
+        
 		return convertView;
 	}
 
