@@ -131,8 +131,21 @@ public class FragmentNewsFeed extends Fragment {
 		}
 		else if(item.getItemId() == R.id.action_post_status){
 			Intent postStatusIntent = new Intent(getActivity(), ActivityPostStatus.class);
-			startActivity(postStatusIntent);
+			startActivityForResult(postStatusIntent, 1);
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if(requestCode == 1 && getActivity().RESULT_OK == resultCode){
+			Gson gson = new Gson();
+			
+			StatusInfo statusInfo = gson.fromJson(data.getStringExtra("statusInfo"), StatusInfo.class);
+			
+			adapter.addItemAt(0,statusInfo);
+			adapter.notifyDataSetChanged();
+		}
+		super.onActivityResult(requestCode, resultCode, data);
 	}
 }

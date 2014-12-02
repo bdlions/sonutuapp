@@ -19,7 +19,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -37,6 +36,10 @@ public class StatusItemAdapter extends ArrayAdapter<StatusInfo>{
 		this.list = list;
 		this.context = context;
 		imageLoader=new ImageLoader(context);
+	}
+	
+	public void addItemAt(int index, StatusInfo statusInfo){
+		this.list.add(index, statusInfo);
 	}
 	
 	@Override
