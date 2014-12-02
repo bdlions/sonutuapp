@@ -8,6 +8,7 @@ import com.sonuto.message.MessageChat;
 import com.sonuto.rpc.Followers;
 import com.sonuto.rpc.ICallBack;
 import com.sonuto.session.SessionManager;
+import com.sportzweb.ActivitySearch;
 import com.sportzweb.R;
 import com.sportzweb.UserProfileActivity;
 
@@ -16,6 +17,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -36,6 +40,7 @@ public class MessageFragment extends Fragment {
 			Bundle savedInstanceState) {
 
 		rootView = inflater.inflate(R.layout.fragment_friends, container, false);
+		setHasOptionsMenu(true);
 		
 		listViewFriends = (ListView)rootView.findViewById(R.id.listViewFriends);
 		new Followers().show(new ICallBack() {
@@ -143,6 +148,19 @@ public class MessageFragment extends Fragment {
 	    }
 
 	}
+	@Override 
+	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+		inflater.inflate(R.menu.activity_main_actions, menu);
+	    menu.findItem(R.id.action_post_status).setVisible(false);
+	    super.onCreateOptionsMenu(menu, inflater);
+	}
 
-
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		if(item.getItemId() == R.id.action_search){
+			Intent searchIntent = new Intent(getActivity(), ActivitySearch.class);
+			startActivity(searchIntent);
+		}
+		return super.onOptionsItemSelected(item);
+	}
 }

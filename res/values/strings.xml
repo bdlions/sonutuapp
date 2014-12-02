@@ -4,6 +4,7 @@
     <string name="app_name">Sonuto</string>
     <string name="action_settings">Settings</string>
     <string name="action_search">Search</string>
+    <string name="action_post_status">Post Status</string>
     
     <string name="basic">Basics</string>
     <string name="info">Info</string>
@@ -388,5 +389,7 @@
 	
 	<!--  Message Chat -->
 	<string name="title_activity_message_chat">Message</string>
+	<string name="title_activity_search">Search</string>
+	<string name="title_post_status">Post Status</string>
 	
 </resources>

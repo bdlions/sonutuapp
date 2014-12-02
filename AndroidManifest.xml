@@ -260,7 +260,14 @@
             android:name="com.sonuto.message.MessageChat"
             android:label="@string/title_activity_message_chat" >
         </activity>
+        <activity android:name="com.sportzweb.ActivitySearch"
+            android:label="@string/title_activity_search" >
+        </activity>
 
+        <activity android:name="com.sportzweb.ActivityPostStatus"
+            android:label="@string/title_post_status" >
+        </activity>
+        
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />

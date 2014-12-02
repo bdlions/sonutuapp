@@ -17,9 +17,11 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.SearchView;
 import android.app.ActionBar.TabListener;
 import android.content.Context;
+import android.content.Intent;
 ;
 
 public class ApplicationPane extends FragmentActivity implements MessageObserver{
@@ -86,18 +88,18 @@ public class ApplicationPane extends FragmentActivity implements MessageObserver
 		System.out.println(message);
 	}
 	
-	@Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.activity_main_actions, menu);
- 
-        // Associate searchable configuration with the SearchView
-        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-        SearchView searchView = (SearchView) menu.findItem(R.id.action_search)
-                .getActionView();
-        searchView.setSearchableInfo(searchManager
-                .getSearchableInfo(getComponentName()));
- 
-        return super.onCreateOptionsMenu(menu);
-    }
+//	@Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        MenuInflater inflater = getMenuInflater();
+//        inflater.inflate(R.menu.activity_main_actions, menu);
+// 
+//        // Associate searchable configuration with the SearchView
+//        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+//        SearchView searchView = (SearchView) menu.findItem(R.id.action_search)
+//                .getActionView();
+//        searchView.setSearchableInfo(searchManager
+//                .getSearchableInfo(getComponentName()));
+// 
+//        return super.onCreateOptionsMenu(menu);
+//    }
 }

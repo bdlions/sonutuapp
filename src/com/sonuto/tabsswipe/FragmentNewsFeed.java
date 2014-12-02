@@ -1,7 +1,4 @@
 package com.sonuto.tabsswipe;
-
-
-
 import java.util.ArrayList;
 
 import org.json.JSONArray;
@@ -12,20 +9,23 @@ import com.bdlions.components.EndlessScroller;
 import com.google.gson.Gson;
 import com.sonuto.rpc.ICallBack;
 import com.sonuto.rpc.register.StatusFeed;
-import com.sonuto.session.ISessionManager;
 import com.sonuto.session.SessionManager;
+import com.sportzweb.ActivityPostStatus;
+import com.sportzweb.ActivitySearch;
 import com.sportzweb.R;
-import com.sportzweb.JSONObjectModel.Blogs;
 import com.sportzweb.JSONObjectModel.StatusInfo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AbsListView;
 import android.widget.ListView;
-import android.widget.AbsListView.OnScrollListener;
+import android.view.MenuItem.OnMenuItemClickListener;;
 
 public class FragmentNewsFeed extends Fragment {
 	private int userId;
@@ -37,6 +37,7 @@ public class FragmentNewsFeed extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View rootView = inflater.inflate(R.layout.fragment_top_rated, container, false);
+		setHasOptionsMenu(true);
 		
 		ArrayList<StatusInfo> statusInfoList = new ArrayList<StatusInfo>();
 		listViewStatusItems = (ListView) rootView.findViewById(R.id.listViewStatusItems);
@@ -54,7 +55,7 @@ public class FragmentNewsFeed extends Fragment {
 			}
 		});
 		
-
+		
 		
 		return rootView;
 	}
@@ -113,5 +114,25 @@ public class FragmentNewsFeed extends Fragment {
 			}
 		},params.toString());
 		
+	}
+	
+	@Override 
+	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+		inflater.inflate(R.menu.activity_main_actions, menu);
+		
+	    super.onCreateOptionsMenu(menu, inflater);
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		if(item.getItemId() == R.id.action_search){
+			Intent searchIntent = new Intent(getActivity(), ActivitySearch.class);
+			startActivity(searchIntent);
+		}
+		else if(item.getItemId() == R.id.action_post_status){
+			Intent postStatusIntent = new Intent(getActivity(), ActivityPostStatus.class);
+			startActivity(postStatusIntent);
+		}
+		return super.onOptionsItemSelected(item);
 	}
 }
