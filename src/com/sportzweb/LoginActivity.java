@@ -93,8 +93,7 @@ public class LoginActivity extends Activity {
 									SessionManager.getInstance().logInUserBusinessProfile(jsonObject.getJSONObject("business_profile_info"));
 								} else {
 									SessionManager.getInstance().isBusinessProfileExist(false);
-
-									SessionManager.getInstance().logInUserBusinessProfile(jsonObject.getJSONObject("business_profile_info"));
+									//SessionManager.getInstance().logInUserBusinessProfile(jsonObject.getJSONObject("business_profile_info"));
 
 								}
 								

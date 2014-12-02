@@ -78,19 +78,6 @@
                     android:textColorHint="#0a000a"
                     android:textSize="15sp" />
 
-                <EditText
-                    android:id="@+id/businessStreetNameInputEdtTxt"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dip"
-                    android:layout_marginTop="5dip"
-                    android:background="@drawable/backwithborder"
-                    android:hint="@string/business_street_label"
-                    android:padding="10dp"
-                    android:singleLine="true"
-                    android:textColorHint="#0a000a"
-                    android:textSize="15sp" />
-
                 <!-- Business Profile Registration continue button -->
 
                 <Button
@@ -149,7 +136,7 @@
                 </AutoCompleteTextView>
 
                 <EditText
-                    android:id="@+id/businessStreetEdtTxt"
+                    android:id="@+id/etStreetName"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dip"

@@ -47,13 +47,13 @@ public class BusinessRegistrationActivity extends Activity {
 			business_reg_info_step_layout, business_reg_extra_info_step_layout,
 			business_reg_desc_step_layout;
 
-	private EditText bName, bStreet, bStreetName,
+	private EditText bName, etStreetName,
 			bCity, bPostcode, bTelephone, bEmail, bWebsite, bOpeningTime,
 			bRegisteredCompNo, bDescription;
 
-	String businessName, businessStreet,
+	String businessName, businessStreet, streetName,
 			businessCity, businessPostalcode,
-			businessSreetName, businessDescription, businessEmail,
+			businessDescription, businessEmail,
 			businessTelephone, businessWebsite, businessOpeningTime,
 			businessRegisteredCompNo;
 	int businessType, businessCategory, businessCountry;
@@ -80,7 +80,7 @@ public class BusinessRegistrationActivity extends Activity {
 	AlertDialogManager alert = new AlertDialogManager();
 
 	JSONArray business_categories,countries;
-
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -208,9 +208,8 @@ public class BusinessRegistrationActivity extends Activity {
 			 
 		
 		bName = (EditText) findViewById(R.id.businessNameInputEdtTxt);
-		bStreet = (EditText) findViewById(R.id.businessStreetNameInputEdtTxt);
 		
-		bStreetName = (EditText) findViewById(R.id.businessStreetEdtTxt);
+		etStreetName = (EditText) findViewById(R.id.etStreetName);
 		bCity = (EditText) findViewById(R.id.businessCityEdtTxt);
 		bPostcode = (EditText) findViewById(R.id.businessPostEdtTxt);
 		
@@ -258,10 +257,9 @@ public class BusinessRegistrationActivity extends Activity {
 		businessType = businessTypeValue == null ? 0 : businessTypeValue.getId();
 		
 		businessName = bName.getText().toString().trim();
-		businessStreet = bStreet.getText().toString().trim();
 		
 		businessCountry = selectedCountry == null ? 0 : selectedCountry.getId();
-		businessSreetName = bStreetName.getText().toString().trim();
+		streetName = etStreetName.getText().toString().trim();
 		businessCity = bCity.getText().toString().trim();
 		businessPostalcode = bPostcode.getText().toString().trim();
 
@@ -301,11 +299,6 @@ public class BusinessRegistrationActivity extends Activity {
 			Toast.makeText(mContext, getString(R.string.businessNameRequired),
 					Toast.LENGTH_SHORT).show();
 			return false;
-		} else if (businessName.length() == 0) {
-			Toast.makeText(mContext,
-					getString(R.string.businessStreetRequired),
-					Toast.LENGTH_SHORT).show();
-			return false;
 		} else {
 			return true;
 		}
@@ -330,7 +323,7 @@ public class BusinessRegistrationActivity extends Activity {
 					getString(R.string.businessCountryRequired),
 					Toast.LENGTH_SHORT).show();
 			return false;
-		} else if (businessSreetName.length() == 0) {
+		} else if (streetName.length() == 0) {
 			Toast.makeText(mContext,
 					getString(R.string.businessStreetNameRequired),
 					Toast.LENGTH_SHORT).show();
@@ -407,7 +400,7 @@ public class BusinessRegistrationActivity extends Activity {
 				jsonBusinessProfile.put("business_profile_type", businessCategory);
 				jsonBusinessProfile.put("business_profile_sub_type", businessType);
 				jsonBusinessProfile.put("business_name", businessName);
-				jsonBusinessProfile.put("street_name", businessStreet);
+				jsonBusinessProfile.put("street_name", streetName);
 				jsonBusinessProfile.put("business_country", businessCountry);
 				jsonBusinessProfile.put("business_city", businessCity);
 				jsonBusinessProfile.put("post_code", businessPostalcode);
@@ -418,6 +411,11 @@ public class BusinessRegistrationActivity extends Activity {
 				jsonBusinessProfile.put("registered_company_number", businessRegisteredCompNo);
 				jsonBusinessProfile.put("business_description", businessDescription);
 				
+				pDialog = new ProgressDialog(mContext);
+				pDialog.setMessage("Creating Business Profile..");
+				pDialog.setCancelable(false);
+				pDialog.show();
+				
 				BusinessProfile bprofile = new BusinessProfile();
 				bprofile.regiserBusinessProfile(new ICallBack() {
 					
@@ -426,20 +424,25 @@ public class BusinessRegistrationActivity extends Activity {
 						JSONObject jsonObject = (JSONObject)object;
 						try {
 							if(jsonObject.get("status").toString().equalsIgnoreCase("1")) {
+								SessionManager.getInstance().isBusinessProfileExist(true);
+								SessionManager.getInstance().logInUserBusinessProfile(jsonObject.getJSONObject("business_profile_info"));
+								
 								//alert.showAlertDialog(mContext, "Business Profile Registration complete..","Registration successfull", false);
 								//AlertMessage.showMessage(mContext, "Business Profile Registration complete..","Registration successfull");
 								JSONObject bObject = jsonObject.getJSONObject("business_profile_info");
 								Intent i = new Intent(mContext, BusinessProfileActivity.class);
 								i.putExtra("business_profile_info", bObject.toString());
 								startActivity(i);
-								finish();
+								finish();								
 							} else {
 
 								// Registration unsuccessful
 								//alert.showAlertDialog(BusinessRegistrationActivity.this, "Business Profile Registration failed..","Registration unsuccessfull", false);
 								AlertMessage.showMessage(mContext, "Business Profile Registration failed..","Registration unsuccessfull");
 							}
+							pDialog.dismiss();
 						} catch (JSONException e) {
+							pDialog.dismiss();
 							e.printStackTrace();
 						}
 					}

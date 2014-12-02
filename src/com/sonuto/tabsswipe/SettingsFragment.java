@@ -16,7 +16,6 @@ import com.sonuto.rpc.register.BusinessProfile;
 import com.sonuto.rpc.register.User;
 import com.sonuto.session.ISessionManager;
 import com.sonuto.session.SessionManager;
-import com.sportzweb.ActivitySearch;
 import com.sportzweb.LoginActivity;
 import com.sportzweb.R;
 import com.sportzweb.UserProfileActivity;
@@ -25,9 +24,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -51,7 +47,6 @@ public class SettingsFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.fragment_settings, container, false);
-		setHasOptionsMenu(true);
 		
 		userProfileNameTxt = (TextView) v.findViewById(R.id.userProfileNameTxt);
 		userImage = (ImageView) v.findViewById(R.id.userImage);
@@ -147,11 +142,11 @@ public class SettingsFragment extends Fragment {
 						Intent i = new Intent(getActivity(), BusinessProfileActivity.class);
 						i.putExtra("business_profile_info", bObject.toString());
 						startActivity(i);
-						getActivity().finish();
+						//getActivity().finish();
 					} else {
 						Intent intent = new Intent(getActivity(), BusinessRegistrationActivity.class);
 						startActivity(intent);
-						getActivity().finish();
+						//getActivity().finish();
 					}
 					
 				}
@@ -159,13 +154,13 @@ public class SettingsFragment extends Fragment {
 					Intent i = new Intent(getActivity(), AccountSettingsActivity.class);
 					i.putExtra("user_id", SessionManager.getInstance().getUserId());
 					startActivity(i);
-					getActivity().finish();
+					//getActivity().finish();
 
 				}else if (position == 2) {
 					Intent i = new Intent(getActivity(), PrivecySettingsActivity.class);
 					i.putExtra("user_id", SessionManager.getInstance().getUserId());
 					startActivity(i);
-					getActivity().finish();
+					//getActivity().finish();
 				}
 				else if (position == 3) {
 					if (SessionManager.getInstance().logoutUser()) {
@@ -179,20 +174,5 @@ public class SettingsFragment extends Fragment {
 
 		return v;
 	}
-	
-	@Override 
-	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-		inflater.inflate(R.menu.activity_main_actions, menu);
-	    menu.findItem(R.id.action_post_status).setVisible(false);
-	    super.onCreateOptionsMenu(menu, inflater);
-	}
 
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		if(item.getItemId() == R.id.action_search){
-			Intent searchIntent = new Intent(getActivity(), ActivitySearch.class);
-			startActivity(searchIntent);
-		}
-		return super.onOptionsItemSelected(item);
-	}
 }
