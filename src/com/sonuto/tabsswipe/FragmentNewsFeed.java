@@ -8,6 +8,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.bdlions.components.EndlessScroller;
 import com.google.gson.Gson;
 import com.sonuto.rpc.ICallBack;
 import com.sonuto.rpc.register.StatusFeed;
@@ -28,11 +29,37 @@ import android.widget.AbsListView.OnScrollListener;
 
 public class FragmentNewsFeed extends Fragment {
 	private int userId;
+	private ListView listViewStatusItems;
+	private StatusItemAdapter adapter;
+	
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
+		View rootView = inflater.inflate(R.layout.fragment_top_rated, container, false);
+		
+		ArrayList<StatusInfo> statusInfoList = new ArrayList<StatusInfo>();
+		listViewStatusItems = (ListView) rootView.findViewById(R.id.listViewStatusItems);
+		adapter = new StatusItemAdapter(getActivity().getApplicationContext(), statusInfoList);
+	    listViewStatusItems.setAdapter(adapter);
+	    
+	    updateNewsFeedList(1);
 
-		final View rootView = inflater.inflate(R.layout.fragment_top_rated, container, false);
+		listViewStatusItems.setOnScrollListener(new EndlessScroller() {
+			
+			@Override
+			public void onLoadMore(int page, int totalItemsCount) {
+				// TODO Auto-generated method stub
+				updateNewsFeedList(page);
+			}
+		});
+		
+
+		
+		return rootView;
+	}
+	
+	private void updateNewsFeedList(int page){
 		JSONObject params = new JSONObject();
 		try {
 			userId = SessionManager.getInstance().getUserId();
@@ -40,7 +67,7 @@ public class FragmentNewsFeed extends Fragment {
 			params.put("status_list_id", 1);
 			params.put("mapping_id", 0);
 			params.put("limit", 5);
-			params.put("offset", 0);
+			params.put("offset", (page - 1) * 5);
 			params.put("hashtag", "");
 		} catch (JSONException e1) {
 			// TODO Auto-generated catch block
@@ -59,7 +86,7 @@ public class FragmentNewsFeed extends Fragment {
 				if(statusFeed == null){
 					return;
 				}
-				final ArrayList<StatusInfo> statusInfoList = new ArrayList<StatusInfo>();
+				ArrayList<StatusInfo> statusInfoList = new ArrayList<StatusInfo>();
 				try {
 					JSONArray newsFeeds = statusFeed.getJSONArray("newsfeeds");
 					
@@ -69,13 +96,8 @@ public class FragmentNewsFeed extends Fragment {
 						Gson gson = new Gson();
 						statusInfoList.add(gson.fromJson(status.toString(), StatusInfo.class));
 					}
-					
-					final ListView listViewStatusItems = (ListView) rootView.findViewById(R.id.listViewStatusItems);
-					listViewStatusItems.setOnScrollListener(new ScrollableLoadingList(getActivity().getApplicationContext(), listViewStatusItems, statusInfoList));
-				    
-				    StatusItemAdapter adapter = new StatusItemAdapter(getActivity().getApplicationContext(), statusInfoList);
-				    listViewStatusItems.setAdapter(adapter);
-				    
+					adapter.addAll(statusInfoList);
+					adapter.notifyDataSetChanged();
 				}
 				catch (JSONException e) {
 					// TODO Auto-generated catch block
@@ -91,8 +113,5 @@ public class FragmentNewsFeed extends Fragment {
 			}
 		},params.toString());
 		
-		
-
-		return rootView;
 	}
 }

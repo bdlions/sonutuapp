@@ -18,12 +18,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class StatusItemAdapter extends BaseAdapter{
+public class StatusItemAdapter extends ArrayAdapter<StatusInfo>{
 	private ArrayList<StatusInfo> list;
 	private Context context;
 	public ImageLoader imageLoader;
@@ -32,6 +33,7 @@ public class StatusItemAdapter extends BaseAdapter{
 	JsonArray statusComments;
 	
 	public StatusItemAdapter(Context context, ArrayList<StatusInfo> list){
+		super(context, R.layout.activity_news_feed_item, list);
 		this.list = list;
 		this.context = context;
 		imageLoader=new ImageLoader(context);
@@ -44,7 +46,7 @@ public class StatusItemAdapter extends BaseAdapter{
 	}
 
 	@Override
-	public Object getItem(int index) {
+	public StatusInfo getItem(int index) {
 		// TODO Auto-generated method stub
 		if(index < list.size()){
 			return list.get(index);
