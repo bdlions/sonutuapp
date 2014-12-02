@@ -35,7 +35,7 @@ public class LoginActivity extends Activity {
 	// Session Manager Class
 	String email, password;
 	
-	ProgressDialog pd;
+	ProgressDialog pDialog;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -71,12 +71,17 @@ public class LoginActivity extends Activity {
 		email = mEmail.getText().toString();
 		password = mPassword.getText().toString();
 		if (isVerified()) {
+			pDialog = new ProgressDialog(this);
+			pDialog.setMessage("Processing login..");
+			pDialog.setCancelable(false);
+			pDialog.show();
 			//Toast.makeText(mContext, "Yes", Toast.LENGTH_SHORT).show();
 			User user = new User();
 			user.loginUser(new ICallBack() {
 				
 				@Override
 				public void callBackResultHandler(final Object object) {
+					
 					JSONObject jsonObject = (JSONObject)object;
 					try {
 						
@@ -95,6 +100,7 @@ public class LoginActivity extends Activity {
 								
 								Intent i = new Intent(getApplicationContext(),ApplicationPane.class);
 								startActivity(i);
+								pDialog.dismiss();
 								finish();
 								
 							} else {
@@ -117,6 +123,7 @@ public class LoginActivity extends Activity {
 				
 				@Override
 				public void callBackErrorHandler(Object object) {
+					pDialog.dismiss();
 					// email / password doesn't match
 					//alert.showAlertDialog(mContext, "Login failed..","Username/Password is incorrect", false);
 					AlertMessage.showMessage(mContext, "Login failed...","Username/Password is incorrect");
