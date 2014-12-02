@@ -126,13 +126,12 @@ public class StatusItemAdapter extends ArrayAdapter<StatusInfo>{
 		textViewTotalLike.setText(likeCounter + " Likes");
 		textViewTotalcomments.setText(commentCounter + " Comments");
 		
-		String img_path = "resources/uploads/profile_picture/50x50/";
 		textViewNameOfUser.setText(statusInfo.getFirst_name() + " " + statusInfo.getLast_name());
 		textViewDescription.setText(Html.fromHtml(statusInfo.getDescription()));
 		textViewpostedStatusTime.setText(statusInfo.getStatus_created_on());
 		
 		//imgViewOfUsers.setImageResource(R.drawable.upload_img_icon);
-        imageLoader.DisplayImage(Config.SERVER_ROOT_URL + img_path + statusInfo.getPhoto(), imgViewOfUsers);
+        imageLoader.DisplayImage(Config.PROFILE_PIC_DIR_LG + statusInfo.getPhoto(), imgViewOfUsers);
 		
 		return convertView;
 	}

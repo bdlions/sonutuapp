@@ -9,4 +9,6 @@ public class Config {
 	public final static String PROFILE_PIC_DIR 				= "@CONFIG.PROFILE_PIC_DIR@";
 	public final static String CREATE_BLOG_DIR 				= "@CONFIG.CREATE_BLOG_DIR@";
 	public final static String SOCKET_SERVER_URL 			= "@CONFIG.SOCKET_SERVER_URL@";
+	public final static String PROFILE_PIC_DIR_MD 			= "@CONFIG.PROFILE_PIC_DIR_MD@";
+	public final static String PROFILE_PIC_DIR_LG 			= "@CONFIG.PROFILE_PIC_DIR_LG@";
 }

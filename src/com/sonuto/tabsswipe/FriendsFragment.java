@@ -113,7 +113,7 @@ public class FriendsFragment extends Fragment {
 					
 					ImageView imageViewProfilePic = (ImageView) convertView.findViewById(R.id.imageViewProfilePic);
 					ImageLoader imageLoader = new ImageLoader(mContext);
-					String imagePath = Config.SERVER_ROOT_URL + "resources/uploads/profile_picture/50x50/";
+					String imagePath = Config.PROFILE_PIC_DIR_LG;
 					imageLoader.DisplayImage(imagePath + follower.getString("photo"), imageViewProfilePic);
 					
 					selectedUserId = follower.getInt("user_id");
