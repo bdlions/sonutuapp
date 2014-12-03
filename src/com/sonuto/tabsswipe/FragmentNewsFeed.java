@@ -8,10 +8,11 @@ import org.json.JSONObject;
 import com.bdlions.components.EndlessScroller;
 import com.google.gson.Gson;
 import com.sonuto.rpc.ICallBack;
-import com.sonuto.rpc.register.StatusFeed;
+import com.sonuto.rpc.StatusFeed;
 import com.sonuto.session.SessionManager;
 import com.sportzweb.ActivityPostStatus;
 import com.sportzweb.ActivitySearch;
+import com.sportzweb.PostStatusActivity;
 import com.sportzweb.R;
 import com.sportzweb.JSONObjectModel.StatusInfo;
 
@@ -130,7 +131,13 @@ public class FragmentNewsFeed extends Fragment {
 			startActivity(searchIntent);
 		}
 		else if(item.getItemId() == R.id.action_post_status){
-			Intent postStatusIntent = new Intent(getActivity(), ActivityPostStatus.class);
+			Intent postStatusIntent = new Intent(getActivity(), PostStatusActivity.class);
+			
+			Bundle params = new Bundle();
+			params.putInt("status_type_id", 1);
+			params.putInt("status_category_id", 1);
+			postStatusIntent.putExtras(params);
+			
 			startActivityForResult(postStatusIntent, 1);
 		}
 		return super.onOptionsItemSelected(item);

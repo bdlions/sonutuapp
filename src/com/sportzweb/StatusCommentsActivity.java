@@ -9,7 +9,7 @@ import org.json.JSONObject;
 import com.bdlions.load.image.ImageLoader;
 import com.google.gson.Gson;
 import com.sonuto.rpc.ICallBack;
-import com.sonuto.rpc.register.StatusFeed;
+import com.sonuto.rpc.StatusFeed;
 import com.sonuto.session.SessionManager;
 import com.sonuto.utils.custom.adapter.StatusCommentsCustomAdapter;
 import com.sportzweb.JSONObjectModel.StatusComment;

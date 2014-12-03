@@ -1,7 +1,4 @@
 package com.sportzweb.JSONObjectModel;
-
-import org.json.JSONArray;
-
 import com.google.gson.JsonArray;
 
 public class StatusInfo {
@@ -14,6 +11,7 @@ public class StatusInfo {
 	private String photo;
 	private JsonArray feedbacks;
 	private JsonArray liked_user_list;
+	private boolean allow_to_delete;
 	
 	public String getPhoto() {
 		return photo;
@@ -64,7 +62,12 @@ public class StatusInfo {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
+	public Boolean getAllow_to_delete() {
+		return allow_to_delete;
+	}
+	public void setAllow_to_delete(Boolean allow_to_delete) {
+		this.allow_to_delete = allow_to_delete;
+	}
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub

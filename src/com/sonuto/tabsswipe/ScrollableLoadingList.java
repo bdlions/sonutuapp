@@ -8,7 +8,7 @@ import org.json.JSONObject;
 
 import com.google.gson.Gson;
 import com.sonuto.rpc.ICallBack;
-import com.sonuto.rpc.register.StatusFeed;
+import com.sonuto.rpc.StatusFeed;
 import com.sonuto.session.ISessionManager;
 import com.sonuto.session.SessionManager;
 import com.sportzweb.JSONObjectModel.StatusInfo;

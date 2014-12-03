@@ -26,12 +26,12 @@ public class ActivityPostStatus extends Activity {
 				statusInfo.setDescription("Serialization is a marker interface, which implies the user cannot marshal the data according to their requirements");
 				statusInfo.setFirst_name("First");
 				statusInfo.setLast_name("kabir");
-				statusInfo.setStatus_id(100);
+				statusInfo.setStatus_id(12);
 				statusInfo.setLiked_user_list(new JsonArray());
 				statusInfo.setPhoto("");
 				statusInfo.setStatus_created_on("one seconds ago");
 				statusInfo.setFeedbacks(new JsonArray());
-				
+				statusInfo.setAllow_to_delete(true);
 				Gson gson = new Gson();
 				
 				

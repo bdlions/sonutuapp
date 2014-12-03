@@ -2,11 +2,14 @@ package com.sonuto.tabsswipe;
 
 import java.util.ArrayList;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import com.bdlions.load.image.ImageLoader;
 import com.google.gson.JsonArray;
 import com.sonuto.Config;
 import com.sonuto.rpc.ICallBack;
-import com.sonuto.rpc.register.StatusFeed;
+import com.sonuto.rpc.StatusFeed;
 import com.sportzweb.R;
 import com.sportzweb.StatusCommentsActivity;
 import com.sportzweb.JSONObjectModel.StatusInfo;
@@ -14,6 +17,7 @@ import com.sportzweb.JSONObjectModel.StatusInfo;
 import android.content.Context;
 import android.content.Intent;
 import android.text.Html;
+import android.transition.Visibility;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -27,7 +31,7 @@ public class StatusItemAdapter extends ArrayAdapter<StatusInfo>{
 	private ArrayList<StatusInfo> list;
 	private Context context;
 	public ImageLoader imageLoader;
-	StatusInfo statusInfo;
+	
 	int status_id;
 	JsonArray statusComments;
 	
@@ -71,7 +75,7 @@ public class StatusItemAdapter extends ArrayAdapter<StatusInfo>{
 					parent, false);
 		}
 
-		statusInfo = (StatusInfo)getItem(index);
+		final StatusInfo statusInfo = (StatusInfo)getItem(index);
 		status_id = statusInfo.getStatus_id();
 		
 		
@@ -139,13 +143,38 @@ public class StatusItemAdapter extends ArrayAdapter<StatusInfo>{
         imageLoader.DisplayImage(Config.PROFILE_PIC_DIR_LG + statusInfo.getPhoto(), imgViewOfUsers);
 		
         ImageView imageViewRemove = (ImageView) convertView.findViewById(R.id.imageViewRemove);
+        imageViewRemove.setVisibility(statusInfo.getAllow_to_delete() == true? View.VISIBLE : View.INVISIBLE);
 		imageViewRemove.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				remove(statusInfo);
-				notifyDataSetChanged();
+				new StatusFeed().deleteStatus(new ICallBack() {
+					
+					@Override
+					public void callBackResultHandler(Object object) {
+						JSONObject jsonObject = (JSONObject)object;
+						try
+						{
+							if(jsonObject.get("status").toString().equalsIgnoreCase("true"))
+							{
+								remove(statusInfo);
+								notifyDataSetChanged();
+							}
+						}
+						catch(JSONException e)
+						{
+							
+						}
+						
+					}
+					
+					@Override
+					public void callBackErrorHandler(Object object) {
+						// TODO Auto-generated method stub
+						
+					}
+				}, statusInfo.getStatus_id());
 			}
 		});
         
