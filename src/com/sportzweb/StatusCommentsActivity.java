@@ -1,44 +1,40 @@
 package com.sportzweb;
 
 import java.util.ArrayList;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import com.bdlions.load.image.ImageLoader;
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.sonuto.rpc.ICallBack;
 import com.sonuto.rpc.StatusFeed;
 import com.sonuto.session.SessionManager;
 import com.sonuto.utils.custom.adapter.StatusCommentsCustomAdapter;
 import com.sportzweb.JSONObjectModel.StatusComment;
+import com.sportzweb.JSONObjectModel.StatusInfo;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
 public class StatusCommentsActivity extends Activity {
-	EditText commentForStatusText;
-	ImageView blogImageView;
+	private EditText commentForStatusText;
 	public ImageLoader imageLoader;
-	Button btnForCommentInStatus;
-	Context context;
+	private Button btnForCommentInStatus;
 	// process dialer
-	ProgressDialog pDialog;
-	ListView commentListViewForStatus;
-	int status_id;
-	String comments, userComments;
-	JSONArray commentsJSONArr;
+	private ProgressDialog pDialog;
+	private ListView commentListViewForStatus;
+
+	private String userComments;
+	private JSONArray commentsJSONArr;
 	private StatusCommentsCustomAdapter adapter;
 	private ArrayList<StatusComment> statusCommentObjList = new ArrayList<StatusComment>();
 
@@ -46,8 +42,6 @@ public class StatusCommentsActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_status_comments);
-		adapter = new StatusCommentsCustomAdapter(this, statusCommentObjList);
-		context = this;
 		initUi();
 		Process();
 	}
@@ -60,8 +54,10 @@ public class StatusCommentsActivity extends Activity {
 
 	private void Process() {
 		Intent intent = getIntent();
-		status_id = intent.getIntExtra("status_id", 0);
-		comments = intent.getStringExtra("statusComments");
+		
+		final int status_id = intent.getIntExtra("status_id", 0);
+		final String comments = intent.getStringExtra("statusComments");
+		
 		try {
 			commentsJSONArr = new JSONArray(comments);
 			Gson gson = new Gson();
@@ -101,7 +97,7 @@ public class StatusCommentsActivity extends Activity {
 					}
 					
 					
-					pDialog = new ProgressDialog(context);
+					pDialog = new ProgressDialog(StatusCommentsActivity.this);
 					pDialog.setMessage("Submitting comment and Fetching data..");
 					pDialog.setCancelable(false);
 					pDialog.show();
@@ -115,11 +111,21 @@ public class StatusCommentsActivity extends Activity {
 							JSONObject statusCommentJSONObject = (JSONObject) object;
 								JSONObject statusCommentInfoArray;
 								try {
-									statusCommentInfoArray = statusCommentJSONObject.getJSONObject("comment_info");
+									//JSONArray feedbacks = statusCommentJSONObject.getJSONArray("feedbacks");
 									Gson gson = new Gson();
 									
-									StatusComment statusInfo = gson.fromJson(statusCommentInfoArray.toString(), StatusComment.class);
-									statusCommentObjList.add(statusInfo);
+									//StatusComment statusInfo = gson.fromJson(feedbacks.get(feedbacks.length() - 1).toString(), StatusComment.class);
+									StatusComment comment = new StatusComment();
+									comment.setCreated_on("today");
+									comment.setDescription(userComments);
+									
+									String s = gson.toJson(SessionManager.getInstance().getUserInfo());
+									comment.setUser_info(new JSONObject(s));
+									comment.setId("sdjfksdfj");
+									
+									//statusCommentObjList.add(statusInfo);
+									adapter.add(comment);
+									
 									adapter.notifyDataSetChanged();
 									commentForStatusText.setText("");
 								} catch (JSONException e) {
@@ -145,7 +151,7 @@ public class StatusCommentsActivity extends Activity {
 	 */
 	public boolean isVerifiedCommentTextStep() {
 		if (userComments.length() == 0) {
-			Toast.makeText(context, getString(R.string.commentRequired),
+			Toast.makeText(StatusCommentsActivity.this, getString(R.string.commentRequired),
 					Toast.LENGTH_SHORT).show();
 			return false;
 		} else {

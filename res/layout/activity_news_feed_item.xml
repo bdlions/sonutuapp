@@ -102,18 +102,19 @@
                 android:layout_height="fill_parent"
                 android:layout_weight="0.3"
                 android:background="@drawable/right_border"
-                android:gravity="center"
+                android:padding="2dp"
                 android:orientation="horizontal" >
 
                 <ImageButton
                     android:id="@+id/likeStatusBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
                     android:layout_marginBottom="3dp"
                     android:layout_marginTop="3dp"
+                    android:duplicateParentState="true"
                     android:background="#FFFFFF"
                     android:contentDescription="@string/EmptyString"
-                    android:src="@drawable/like_icon" />
+                    android:src="@drawable/unlike_icon" />
             </LinearLayout>
 
             <LinearLayout
@@ -133,6 +134,7 @@
                     android:layout_marginBottom="3dp"
                     android:layout_marginTop="3dp"
                     android:background="#FFFFFF"
+                    android:duplicateParentState="true"
                     android:contentDescription="@string/EmptyString"
                     android:src="@drawable/comment_icon" />
             </LinearLayout>
@@ -153,6 +155,7 @@
                     android:layout_marginBottom="3dp"
                     android:layout_marginTop="3dp"
                     android:background="#FFFFFF"
+                    android:duplicateParentState="true"
                     android:contentDescription="@string/EmptyString"
                     android:src="@drawable/share_icon" />
             </LinearLayout>

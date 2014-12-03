@@ -10,7 +10,8 @@ import com.google.gson.Gson;
 import com.sonuto.rpc.ICallBack;
 import com.sonuto.rpc.StatusFeed;
 import com.sonuto.session.SessionManager;
-import com.sportzweb.ActivityPostStatus;
+import com.sonutu.constants.STATUS_CATEGORY;
+import com.sonutu.constants.STATUS_TYPE;
 import com.sportzweb.ActivitySearch;
 import com.sportzweb.PostStatusActivity;
 import com.sportzweb.R;
@@ -26,7 +27,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import android.view.MenuItem.OnMenuItemClickListener;;
 
 public class FragmentNewsFeed extends Fragment {
 	private int userId;
@@ -134,8 +134,8 @@ public class FragmentNewsFeed extends Fragment {
 			Intent postStatusIntent = new Intent(getActivity(), PostStatusActivity.class);
 			
 			Bundle params = new Bundle();
-			params.putInt("status_type_id", 1);
-			params.putInt("status_category_id", 1);
+			params.putInt("status_type_id", STATUS_TYPE.GENERAL.getValue());
+			params.putInt("status_category_id", STATUS_CATEGORY.NEWSFEED.getValue());
 			postStatusIntent.putExtras(params);
 			
 			startActivityForResult(postStatusIntent, 1);

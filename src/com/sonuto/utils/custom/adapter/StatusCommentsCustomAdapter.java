@@ -15,17 +15,19 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class StatusCommentsCustomAdapter extends BaseAdapter {
+public class StatusCommentsCustomAdapter extends ArrayAdapter<StatusComment> {
 
 	ArrayList<StatusComment> statusCommentItem;
 	private Activity context;
 	public ImageLoader imageLoader; 
 
 	public StatusCommentsCustomAdapter(Activity context, ArrayList<StatusComment> statusComment) {
+		super(context, R.layout.status_comment_row,statusComment);
 		this.context = context;
 		this.statusCommentItem = statusComment;
 		imageLoader=new ImageLoader(context);
@@ -37,7 +39,7 @@ public class StatusCommentsCustomAdapter extends BaseAdapter {
 	}
 
 	@Override
-	public Object getItem(int arg0) {
+	public StatusComment getItem(int arg0) {
 		return null;
 	}
 

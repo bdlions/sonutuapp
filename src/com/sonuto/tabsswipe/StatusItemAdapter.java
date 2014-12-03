@@ -23,17 +23,17 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class StatusItemAdapter extends ArrayAdapter<StatusInfo>{
+	
 	private ArrayList<StatusInfo> list;
 	private Context context;
-	public ImageLoader imageLoader;
+	private ImageLoader imageLoader;
 	
-	int status_id;
-	JsonArray statusComments;
 	
 	public StatusItemAdapter(Context context, ArrayList<StatusInfo> list){
 		super(context, R.layout.activity_news_feed_item, list);
@@ -76,11 +76,11 @@ public class StatusItemAdapter extends ArrayAdapter<StatusInfo>{
 		}
 
 		final StatusInfo statusInfo = (StatusInfo)getItem(index);
-		status_id = statusInfo.getStatus_id();
+		final int status_id = statusInfo.getStatus_id();
 		
 		
-		statusComments = statusInfo.getFeedbacks();
-		JsonArray liked_user_list = statusInfo.getLiked_user_list();
+		final JsonArray statusComments = statusInfo.getFeedbacks();
+		final JsonArray liked_user_list = statusInfo.getLiked_user_list();
 		int likeCounter = liked_user_list.size();
 		int commentCounter = statusComments.size();
 		
@@ -93,21 +93,21 @@ public class StatusItemAdapter extends ArrayAdapter<StatusInfo>{
 		ImageView commentStatusBtn = (ImageView) convertView.findViewById(R.id.commentStatusBtn);
 		LinearLayout llComment = (LinearLayout) convertView.findViewById(R.id.llComment);
 		LinearLayout llShare = (LinearLayout) convertView.findViewById(R.id.llShare);
-		LinearLayout llLike = (LinearLayout) convertView.findViewById(R.id.llLike);
+		ImageView likeStatusBtn = (ImageView) convertView.findViewById(R.id.likeStatusBtn);
 	
 		
 		
-		llLike.setOnClickListener(new OnClickListener() {
+		likeStatusBtn.setOnClickListener(new OnClickListener() {
 			
 			@Override
-			public void onClick(View arg0) {
+			public void onClick(final View button) {
 				// increment the value of like counter by one and call the rpc to update
 				StatusFeed statusFeed = new StatusFeed();
 				statusFeed.update_status_like(new ICallBack() {
 					
 					@Override
 					public void callBackResultHandler(Object object) {
-						
+						((ImageButton)button).setImageResource(R.drawable.like_icon);
 					}
 					
 					@Override
@@ -115,6 +115,8 @@ public class StatusItemAdapter extends ArrayAdapter<StatusInfo>{
 						
 					}
 				}, status_id);
+				
+				
 			}
 		});
 		

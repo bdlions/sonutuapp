@@ -14,6 +14,8 @@ import com.sonuto.rpc.register.User;
 import com.sonuto.session.ISessionManager;
 import com.sonuto.session.SessionManager;
 import com.sonuto.users.AppID;
+import com.sonutu.constants.STATUS_CATEGORY;
+import com.sonutu.constants.STATUS_TYPE;
 import com.sportzweb.JSONObjectModel.StatusInfo;
 
 import android.app.Activity;
@@ -64,8 +66,9 @@ public class PostStatusActivity extends Activity {
 				pDialog.setCancelable(false);
 				pDialog.show();
 				
-				int status_type_id = getIntent().getIntExtra("status_type_id", 1);
-				int status_category_id = getIntent().getIntExtra("status_category_id", 1);
+				int status_type_id = getIntent().getIntExtra("status_type_id", STATUS_TYPE.GENERAL.getValue());
+				int status_category_id = getIntent().getIntExtra("status_category_id", STATUS_CATEGORY.NEWSFEED.getValue());
+				
 				StatusFeed postStatus = new StatusFeed();
 				JSONObject jsonStatusCommentObj = new JSONObject();
 				userStatus = statusText.getText().toString();
