@@ -68,6 +68,7 @@ public class PostStatusActivity extends Activity {
 				
 				int status_type_id = getIntent().getIntExtra("status_type_id", STATUS_TYPE.GENERAL.getValue());
 				int status_category_id = getIntent().getIntExtra("status_category_id", STATUS_CATEGORY.NEWSFEED.getValue());
+				int mapping_id = getIntent().getIntExtra("mapping_id", 0);
 				
 				StatusFeed postStatus = new StatusFeed();
 				JSONObject jsonStatusCommentObj = new JSONObject();
@@ -76,7 +77,7 @@ public class PostStatusActivity extends Activity {
 					try {
 						int userId = SessionManager.getInstance().getUserId();
 						jsonStatusCommentObj.put("user_id", userId);
-						jsonStatusCommentObj.put("mapping_id", userId);
+						jsonStatusCommentObj.put("mapping_id", mapping_id);
 						jsonStatusCommentObj.put("status_type_id", status_type_id);
 						jsonStatusCommentObj.put("status_category_id", status_category_id);
 						jsonStatusCommentObj.put("description", userStatus);
@@ -92,11 +93,26 @@ public class PostStatusActivity extends Activity {
 					
 					@Override
 					public void callBackResultHandler(Object object) {
+						JSONObject jsonObject = (JSONObject) object;
+						Gson gson = new Gson();
+						StatusInfo statusInfo = new StatusInfo();
+						try
+					    {
+							if(jsonObject.get("status").toString().equalsIgnoreCase("1"))
+							{
+								statusInfo = gson.fromJson(jsonObject.get("status_info").toString(), StatusInfo.class);
+							}
+					    }
+						catch(JSONException jsonException)
+					    {
+							System.out.println(jsonException.toString());
+					    }
+						
 						
 						//final JSONObject jsonUserObj = (JSONObject) object;
 						//System.out.println(jsonUserObj);
 						
-						StatusInfo statusInfo = new StatusInfo();
+						/*StatusInfo statusInfo = new StatusInfo();
 						statusInfo.setDescription(userStatus);
 						statusInfo.setFirst_name("First");
 						statusInfo.setLast_name("kabir");
@@ -105,8 +121,8 @@ public class PostStatusActivity extends Activity {
 						statusInfo.setPhoto("");
 						statusInfo.setStatus_created_on("one seconds ago");
 						statusInfo.setFeedbacks(new JsonArray());
-						statusInfo.setAllow_to_delete(true);
-						Gson gson = new Gson();
+						statusInfo.setAllow_to_delete(true);*/
+						//Gson gson = new Gson();
 						
 						
 						getIntent().putExtra("statusInfo", gson.toJson(statusInfo));

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <EditText 
+        android:id="@+id/etStatusShareText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/status_share_hint"
+        android:inputType="textMultiLine">
+    </EditText>
+    <Button 
+        android:id="@+id/btnStatusShare"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button"
+        android:text="@string/status_share"
+        >
+        
+    </Button>
+
+</LinearLayout>

@@ -1,367 +1,98 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fillViewport="true" >
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_gravity="center"
+    android:orientation="vertical"
+    android:padding="2dp" >
 
     <LinearLayout
+        android:id="@+id/top"
         android:layout_width="fill_parent"
-        android:layout_height="0dp"
-        android:layout_gravity="center"
-        android:orientation="vertical"
-        android:padding="10dp" >
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp" >
+
+        <ImageView
+            android:id="@+id/userProfileImage"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:paddingRight="10dp" />
 
         <LinearLayout
-            android:id="@+id/top"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal" >
+            android:layout_gravity="left"
+            android:orientation="vertical" >
 
-            <ImageView
-                android:id="@+id/userProfileImage"
-                android:layout_width="50dp"
-                android:layout_height="50dp" />
+			<TextView
+			    android:id="@+id/userProfileName"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:text=""
+			    android:textAppearance="?android:attr/textAppearanceMedium"
+			    android:textSize="18sp" />
 
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:orientation="vertical"
-                android:padding="10dp" >
-
-                <TextView
-                    android:id="@+id/userProfession"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="IT Professional"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
-
-                <TextView
-                    android:id="@+id/userAddress"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="Bangladesh, Dhaka"
-                    android:textAppearance="?android:attr/textAppearanceSmall" />
-
-                <Button
-                    android:id="@+id/btnEditProfile"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/button"
-                    android:text="Edit Profile"
-                    android:textSize="15sp" />
-
-                <TextView
-                    android:id="@+id/userProfileName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="14dp"
-                    android:text="Tanveer Ahmed Mizan"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/ll2"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingBottom="20dp"
-            android:paddingTop="20dp" >
-
-            <!--
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_weight="0.3"
-                android:gravity="center"
-                android:layout_toLeftOf="@+id/linearLayout1" >
-
-                <ImageView
-                    android:id="@+id/imageView1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/message" />
-
-                <TextView
-                    android:id="@+id/textView4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="Info"
-                    android:textAlignment="center"
-                    android:textAppearance="?android:attr/textAppearanceSmall" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/linearLayout2"
-               android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_weight="0.3"
-                android:gravity="center"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentTop="true" >
-
-                <ImageView
-                    android:id="@+id/imageView1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/gear" />
-
-                <TextView
-                    android:id="@+id/textView4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="Followings"
-                    android:textAlignment="center"
-                    android:textAppearance="?android:attr/textAppearanceSmall" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/linearLayout1"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_weight="0.3"
-                android:gravity="center"
-                android:layout_toLeftOf="@+id/linearLayout2" >
-
-                <ImageView
-                    android:id="@+id/imageView1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/user_followers" />
-
-                <TextView
-                    android:id="@+id/textView4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="My Profile"
-                    android:textAlignment="center"
-                    android:textAppearance="?android:attr/textAppearanceSmall" />
-            </LinearLayout>
-            -->
-
-            <ImageView
-                android:id="@+id/myInfoImageView"
+            <TextView
+                android:id="@+id/userProfession"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="5dp"
-                android:layout_weight="1"
-                android:src="@drawable/info_icon" />
+                android:text=""
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
-            <ImageView
-                android:id="@+id/myPhotosImageView"
+            <TextView
+                android:id="@+id/userAddress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="5dp"
-                android:layout_weight="1"
-                android:src="@drawable/myphotos_icon" />
+                android:text=""
+                android:textAppearance="?android:attr/textAppearanceSmall" />
 
-            <ImageView
-                android:id="@+id/myFollowingsImageView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:src="@drawable/following_icon" />
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/statusPosttextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:text="Status" />
-
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/custom_border" >
-
-            <ImageView
-                android:id="@+id/imageOfUser"
+            <Button
+                android:id="@+id/btnEditProfile"
                 android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_marginLeft="5dp"
-                android:contentDescription="@string/EmptyString"
-                android:src="@drawable/followers" />
-
-            <TextView
-                android:id="@+id/textViewNameOfUser"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="10dp"
-                android:layout_toRightOf="@id/imageOfUser"
-                android:fontFamily="Bold"
-                android:text="Tanveer Ahmed"
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/textViewpostedStatusTime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/textViewNameOfUser"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="3dp"
-                android:layout_toRightOf="@id/imageOfUser"
-                android:text="40 minites age"
-                android:textColor="#9B9EA3"
-                android:textSize="12sp" />
-
-            <TextView
-                android:id="@+id/textViewDescription"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/imageOfUser"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="3dp"
-                android:text="Good morning. this is my first status in mobile apps"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/textViewTotalLike"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/textViewDescription"
-                android:layout_gravity="center"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="3dp"
-                android:fontFamily="Bold"
-                android:text="15782 Likes"
-                android:textSize="15sp" />
-
-            <TextView
-                android:id="@+id/textViewTotalcomments"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/textViewDescription"
-                android:layout_gravity="center"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="3dp"
-                android:layout_toRightOf="@id/textViewTotalLike"
-                android:text="56989 Comments"
-                android:textColor="#9B9EA3"
-                android:textSize="15sp" />
-
-            <LinearLayout
-                android:id="@+id/llCommentLikeShareSection"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/textViewDescription"
-                android:layout_marginTop="30dp"
-                android:background="@drawable/border_for_linear_layout"
-                android:baselineAligned="false"
-                android:orientation="horizontal" >
-
-                <LinearLayout
-                    android:id="@+id/llLike"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:layout_weight="0.3"
-                    android:background="@drawable/right_border"
-                    android:gravity="center"
-                    android:orientation="horizontal" >
-
-                    <ImageButton
-                        android:id="@+id/likeStatusBtn"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="3dp"
-                        android:layout_marginTop="3dp"
-                        android:background="#FFFFFF"
-                        android:contentDescription="@string/EmptyString"
-                        android:src="@drawable/like_icon" />
-
-                    <!-- <TextView
-                        android:id="@+id/newsfeedLikeText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="2dp"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginTop="2dp"
-                        android:fontFamily="Bold"
-                        android:text="@string/newsfeed_like"
-                        android:textSize="15sp" /> -->
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/llComment"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:layout_weight="0.3"
-                    android:background="@drawable/right_border"
-                    android:gravity="center"
-                    android:orientation="horizontal" >
-
-                    <ImageButton
-                        android:id="@+id/commentStatusBtn"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginBottom="3dp"
-                        android:layout_marginTop="3dp"
-                        android:background="#FFFFFF"
-                        android:contentDescription="@string/EmptyString"
-                        android:src="@drawable/comment_icon" />
-
-                    <!--<TextView
-                        android:id="@+id/newsfeedCommentText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginBottom="2dp"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginTop="3dp"
-                        android:fontFamily="Bold"
-                        android:text="@string/newsfeed_comment"
-                        android:textSize="15sp" /> -->
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/llShare"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:layout_weight="0.3"
-                    android:gravity="center"
-                    android:orientation="horizontal" >
-
-                    <ImageButton
-                        android:id="@+id/shareStatusBtn"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginBottom="3dp"
-                        android:layout_marginTop="3dp"
-                        android:background="#FFFFFF"
-                        android:contentDescription="@string/EmptyString"
-                        android:src="@drawable/share_icon" />
-
-                    <!--<TextView
-                        android:id="@+id/newsfeedShareText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginBottom="2dp"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginTop="3dp"
-                        android:fontFamily="Bold"
-                        android:text="@string/newsfeed_share"
-                        android:textSize="15sp" /> -->
-                </LinearLayout>
-            </LinearLayout>
-
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_marginBottom="5dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp"
-                android:contentDescription="@string/EmptyString"
-                android:src="@drawable/cross" />
-        </RelativeLayout>
+                android:layout_height="25dp"
+                android:background="@drawable/button"
+                android:text="Edit Profile"
+                android:textSize="14sp" />            
+        </LinearLayout>
     </LinearLayout>
 
-</ScrollView>
+    <LinearLayout
+        android:id="@+id/ll2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp" >
+
+        <ImageView
+            android:id="@+id/myInfoImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:src="@drawable/info_icon" />
+
+        <ImageView
+            android:id="@+id/myPhotosImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:src="@drawable/myphotos_icon" />
+
+        <ImageView
+            android:id="@+id/myFollowingsImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/following_icon" />
+    </LinearLayout>
+    <ListView
+        android:id="@+id/listViewMemberProfileStatusItems"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="fill_parent" >
+    </ListView>
+
+</LinearLayout>

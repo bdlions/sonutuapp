@@ -10,6 +10,7 @@ import com.google.gson.Gson;
 import com.sonuto.rpc.ICallBack;
 import com.sonuto.rpc.StatusFeed;
 import com.sonuto.session.SessionManager;
+import com.sonuto.utils.IActivityResultFromAdapter;
 import com.sonutu.constants.STATUS_CATEGORY;
 import com.sonutu.constants.STATUS_TYPE;
 import com.sportzweb.ActivitySearch;
@@ -28,7 +29,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-public class FragmentNewsFeed extends Fragment {
+public class FragmentNewsFeed extends Fragment implements IActivityResultFromAdapter{
 	private int userId;
 	private ListView listViewStatusItems;
 	private StatusItemAdapter adapter;
@@ -42,7 +43,8 @@ public class FragmentNewsFeed extends Fragment {
 		
 		ArrayList<StatusInfo> statusInfoList = new ArrayList<StatusInfo>();
 		listViewStatusItems = (ListView) rootView.findViewById(R.id.listViewStatusItems);
-		adapter = new StatusItemAdapter(getActivity().getApplicationContext(), statusInfoList);
+		adapter = new StatusItemAdapter(this, getActivity(), statusInfoList);
+		//adapter.setResultCallback(this);
 	    listViewStatusItems.setAdapter(adapter);
 	    
 	    updateNewsFeedList(1);
@@ -134,8 +136,11 @@ public class FragmentNewsFeed extends Fragment {
 			Intent postStatusIntent = new Intent(getActivity(), PostStatusActivity.class);
 			
 			Bundle params = new Bundle();
+
 			params.putInt("status_type_id", STATUS_TYPE.GENERAL.getValue());
 			params.putInt("status_category_id", STATUS_CATEGORY.NEWSFEED.getValue());
+			params.putInt("mapping_id", SessionManager.getInstance().getUserId());
+
 			postStatusIntent.putExtras(params);
 			
 			startActivityForResult(postStatusIntent, 1);
@@ -145,7 +150,7 @@ public class FragmentNewsFeed extends Fragment {
 	
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
-		if(requestCode == 1 && getActivity().RESULT_OK == resultCode){
+		if( (requestCode == 1 || requestCode == 2) && getActivity().RESULT_OK == resultCode){
 			Gson gson = new Gson();
 			
 			StatusInfo statusInfo = gson.fromJson(data.getStringExtra("statusInfo"), StatusInfo.class);
@@ -154,5 +159,11 @@ public class FragmentNewsFeed extends Fragment {
 			adapter.notifyDataSetChanged();
 		}
 		super.onActivityResult(requestCode, resultCode, data);
+	}
+
+	@Override
+	public void startActivityResultFromAdapter(Intent intent, int requestCode) {
+		// TODO Auto-generated method stub
+		startActivityForResult(intent, requestCode);
 	}
 }

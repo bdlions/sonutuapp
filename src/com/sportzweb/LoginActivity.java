@@ -98,8 +98,7 @@ public class LoginActivity extends Activity {
 								}
 								
 								Intent i = new Intent(getApplicationContext(),ApplicationPane.class);
-								startActivity(i);
-								pDialog.dismiss();
+								startActivity(i);								
 								finish();
 								
 							} else {
@@ -107,12 +106,14 @@ public class LoginActivity extends Activity {
 								//alert.showAlertDialog(mContext, "Login failed..","Username/Password is incorrect", false);
 								AlertMessage.showMessage(mContext, "Login failed...","Username/Password is incorrect");
 							}
+							
 
 						}else{
 							 // Login unsuccessful
 							//alert.showAlertDialog(mContext, "Login failed..","Username/Password is incorrect", false);
 							AlertMessage.showMessage(mContext, "Login failed...","Username/Password is incorrect");
 						}
+						pDialog.dismiss();
 					} catch (JSONException e) {
 						e.printStackTrace();
 					}

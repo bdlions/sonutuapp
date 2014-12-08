@@ -430,9 +430,11 @@ public class BusinessRegistrationActivity extends Activity {
 								//alert.showAlertDialog(mContext, "Business Profile Registration complete..","Registration successfull", false);
 								//AlertMessage.showMessage(mContext, "Business Profile Registration complete..","Registration successfull");
 								JSONObject bObject = jsonObject.getJSONObject("business_profile_info");
-								Intent i = new Intent(mContext, BusinessProfileActivity.class);
+								/*Intent i = new Intent(mContext, BusinessProfileActivity.class);
 								i.putExtra("business_profile_info", bObject.toString());
-								startActivity(i);
+								startActivity(i);*/
+								getIntent().putExtra("statusInfo", 1);
+								setResult(RESULT_OK, getIntent());  
 								finish();								
 							} else {
 

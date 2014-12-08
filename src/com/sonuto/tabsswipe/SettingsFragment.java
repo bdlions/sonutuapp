@@ -20,7 +20,9 @@ import com.sportzweb.ActivitySearch;
 import com.sportzweb.LoginActivity;
 import com.sportzweb.R;
 import com.sportzweb.UserProfileActivity;
+import com.sportzweb.JSONObjectModel.StatusInfo;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -42,11 +44,13 @@ import android.widget.TextView;
 public class SettingsFragment extends Fragment {
 
 	String[] values = new String[]{"Create Business Profile", "Account Settings", "Profile Settings", "Log out"};
-	ListView lv;
+	ListView lvSettings;
 	ImageView userImage;
 	ImageLoader imageLoader;
 	TextView userProfileNameTxt;
 	JSONObject bObject;
+	private ArrayAdapter<String> adapter;
+	ProgressDialog pDialog;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -103,55 +107,55 @@ public class SettingsFragment extends Fragment {
 			}
 		}, SessionManager.getInstance().getUserId());
 
-		lv = (ListView) v.findViewById(R.id.listViewSettings);
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, values);
-		lv.setAdapter(adapter);
-		ListViewHelper.setFullHeightListView(lv);
+		lvSettings = (ListView) v.findViewById(R.id.listViewSettings);
+		adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, values);
+		lvSettings.setAdapter(adapter);
+		ListViewHelper.setFullHeightListView(lvSettings);
 		// when session active
 		if(SessionManager.getInstance().getIsBusinessProfile()){
 			if(SessionManager.getInstance().getUsersBusinessProfileId() > 0){
 				  values[0] = SessionManager.getInstance().getUsersBusinessProfileName();
-				  
-				  BusinessProfile bprofile = new BusinessProfile();
-				  bprofile.getBusinessProfileInfo(new ICallBack() {
-					
-					@Override
-					public void callBackResultHandler(Object object) {
-						JSONObject jsonObject = (JSONObject)object;
-						
-						try {
-							bObject = jsonObject.getJSONObject("business_profile_info");
-						} catch (JSONException e) {
-							e.printStackTrace();
-						}
-						
-					}
-					
-					@Override
-					public void callBackErrorHandler(Object object) {
-						// TODO Auto-generated method stub
-						
-					}
-				}, SessionManager.getInstance().getUserId());
-			  }
+			}
 		}
-		  
 
-
-		lv.setOnItemClickListener(new OnItemClickListener() {
+		lvSettings.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
-				String category = values[position];
 				if (position == 0) {
 					if(SessionManager.getInstance().getIsBusinessProfile() && SessionManager.getInstance().getUsersBusinessProfileId()>0){
-						Intent i = new Intent(getActivity(), BusinessProfileActivity.class);
-						i.putExtra("business_profile_info", bObject.toString());
-						startActivity(i);
-						//getActivity().finish();
-					} else {
+						pDialog = new ProgressDialog(getActivity());
+						pDialog.setMessage("Loading Business Profile Info..");
+						pDialog.setCancelable(false);
+						pDialog.show();
+						new BusinessProfile().getBusinessProfileInfo(new ICallBack() {						
+							@Override
+							public void callBackResultHandler(Object object) {
+								JSONObject jsonObject = (JSONObject)object;
+								
+								try {
+									bObject = jsonObject.getJSONObject("business_profile_info");
+									Intent i = new Intent(getActivity(), BusinessProfileActivity.class);
+									i.putExtra("business_profile_info", bObject.toString());
+									startActivity(i);
+								} catch (JSONException e) {
+									e.printStackTrace();
+								}
+								pDialog.dismiss();
+							}
+							
+							@Override
+							public void callBackErrorHandler(Object object) {
+								// TODO Auto-generated method stub
+								pDialog.dismiss();
+							}
+						}, SessionManager.getInstance().getUserId());
+					} 
+					else {
 						Intent intent = new Intent(getActivity(), BusinessRegistrationActivity.class);
-						startActivity(intent);
+						//startActivity(intent);
 						//getActivity().finish();
+						
+						startActivityForResult(intent, 1);
 					}
 					
 				}
@@ -192,6 +196,20 @@ public class SettingsFragment extends Fragment {
 			startActivity(searchIntent);
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if(requestCode == 1 && getActivity().RESULT_OK == resultCode){
+			values[0] = SessionManager.getInstance().getUsersBusinessProfileName();
+			//Gson gson = new Gson();
+			
+			//StatusInfo statusInfo = gson.fromJson(data.getStringExtra("statusInfo"), StatusInfo.class);
+			
+			//adapter.addItemAt(0,statusInfo);
+			adapter.notifyDataSetChanged();
+		}
+		super.onActivityResult(requestCode, resultCode, data);
 	}
 
 }

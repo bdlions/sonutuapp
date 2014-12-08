@@ -10,12 +10,20 @@ import com.google.gson.JsonArray;
 import com.sonuto.Config;
 import com.sonuto.rpc.ICallBack;
 import com.sonuto.rpc.StatusFeed;
+import com.sonuto.session.SessionManager;
+import com.sonuto.share.StatusShareActivity;
+import com.sonuto.utils.IActivityResultFromAdapter;
+import com.sonutu.constants.SHARE_TYPE;
+import com.sonutu.constants.STATUS_CATEGORY;
+import com.sonutu.constants.STATUS_TYPE;
 import com.sportzweb.R;
 import com.sportzweb.StatusCommentsActivity;
 import com.sportzweb.JSONObjectModel.StatusInfo;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.text.Html;
 import android.transition.Visibility;
 import android.view.LayoutInflater;
@@ -32,13 +40,17 @@ public class StatusItemAdapter extends ArrayAdapter<StatusInfo>{
 	
 	private ArrayList<StatusInfo> list;
 	private Context context;
+	private Activity activity;
 	private ImageLoader imageLoader;
 	
+	private IActivityResultFromAdapter resultFromAdapter; 
 	
-	public StatusItemAdapter(Context context, ArrayList<StatusInfo> list){
-		super(context, R.layout.activity_news_feed_item, list);
+	public StatusItemAdapter(IActivityResultFromAdapter resultFromAdapter, Activity activity, ArrayList<StatusInfo> list){
+		super(activity.getApplicationContext(), R.layout.activity_news_feed_item, list);
 		this.list = list;
-		this.context = context;
+		context = activity.getApplicationContext();
+		this.activity = activity;
+		this.resultFromAdapter = resultFromAdapter;
 		imageLoader=new ImageLoader(context);
 	}
 	
@@ -94,7 +106,7 @@ public class StatusItemAdapter extends ArrayAdapter<StatusInfo>{
 		LinearLayout llComment = (LinearLayout) convertView.findViewById(R.id.llComment);
 		LinearLayout llShare = (LinearLayout) convertView.findViewById(R.id.llShare);
 		ImageView likeStatusBtn = (ImageView) convertView.findViewById(R.id.likeStatusBtn);
-	
+		ImageView shareStatusBtn = (ImageView) convertView.findViewById(R.id.shareStatusBtn);
 		
 		
 		likeStatusBtn.setOnClickListener(new OnClickListener() {
@@ -131,6 +143,34 @@ public class StatusItemAdapter extends ArrayAdapter<StatusInfo>{
 				i.putExtra("status_id", status_id);
 				i.putExtra("statusComments", statusComments.toString());
 				context.startActivity(i);
+			}
+		});
+		
+		shareStatusBtn.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				
+				//int status_id = statusInfo.getStatus_id();
+				Intent i = new Intent(activity.getApplicationContext(), StatusShareActivity.class);
+				
+				Bundle params = new Bundle();
+
+				params.putInt("status_type_id", STATUS_TYPE.GENERAL.getValue());
+				params.putInt("status_category_id", STATUS_CATEGORY.NEWSFEED.getValue());
+				params.putInt("mapping_id", SessionManager.getInstance().getUserId());
+				params.putInt("reference_id", status_id);
+				params.putInt("shared_type_id", SHARE_TYPE.OTHER_STATUS.getValue());
+				
+				
+				//i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				i.putExtras(params);
+				
+				//context.startActivity(i);
+				
+				//activity.startActivityForResult(i, 2);
+				resultFromAdapter.startActivityResultFromAdapter(i, 2);
+			
 			}
 		});
 		
@@ -182,6 +222,5 @@ public class StatusItemAdapter extends ArrayAdapter<StatusInfo>{
         
 		return convertView;
 	}
-
 
 }
