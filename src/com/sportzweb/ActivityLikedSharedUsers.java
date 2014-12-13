@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.view.View.OnClickListener;
 import android.widget.TextView;
 
 public class ActivityLikedSharedUsers extends Activity {
@@ -27,6 +28,15 @@ public class ActivityLikedSharedUsers extends Activity {
 
 		setContentView(R.layout.activity_liked_shared_users);
 		ListView listViewLikedUser = (ListView) findViewById(R.id.listViewLikedUser);
+		TextView textViewBack = (TextView) findViewById(R.id.textViewBack);
+		textViewBack.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				finish();
+			}
+		});
 		
 		String jsonContent = JSONFileReader.getContent(getApplicationContext(), R.raw.like_json);
 		try {

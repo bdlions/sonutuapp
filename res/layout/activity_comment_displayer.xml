@@ -4,19 +4,18 @@
     android:layout_height="match_parent"
     android:padding="15dp"
     android:orientation="vertical" >
-    
+
     <TextView
-        android:id="@+id/textViewBack"
+        android:id="@+id/textViewLikeCounter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="0dp"
         android:background="@drawable/link_comments_counter"
         android:textColor="@color/ash"
-        android:text="Back"
         android:textSize="16sp" />
-    
+
     <ListView
-        android:id="@+id/listViewLikedUser"
+        android:id="@+id/listComments"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" >
     </ListView>

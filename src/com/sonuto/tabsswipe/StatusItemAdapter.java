@@ -17,6 +17,7 @@ import com.sonuto.utils.IActivityResultFromAdapter;
 import com.sonutu.constants.SHARE_TYPE;
 import com.sonutu.constants.STATUS_CATEGORY;
 import com.sonutu.constants.STATUS_TYPE;
+import com.sportzweb.ActivityCommentsDisplayer;
 import com.sportzweb.ActivityLikedSharedUsers;
 import com.sportzweb.R;
 import com.sportzweb.StatusCommentsActivity;
@@ -185,9 +186,9 @@ public class StatusItemAdapter extends ArrayAdapter<StatusInfo>{
 			
 			@Override
 			public void onClick(View v) {
-				Intent activityLikedSharedUsers = new Intent(context, ActivityLikedSharedUsers.class);
-				activityLikedSharedUsers.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-				context.startActivity(activityLikedSharedUsers);
+				Intent activityComments = new Intent(context, ActivityCommentsDisplayer.class);
+				activityComments.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				context.startActivity(activityComments);
 			}
 		});
 

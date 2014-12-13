@@ -274,10 +274,19 @@
             android:label="@string/status_share" >
         </activity>
 
-        <activity android:name="com.sportzweb.ActivityLikedSharedUsers"
+        <activity
+            android:theme="@style/NoTitleBarTheme"  
+            android:name="com.sportzweb.ActivityLikedSharedUsers"
             android:label="@string/title_liked_shared_users" >
-
         </activity>
+        
+        <activity
+            android:theme="@style/NoTitleBarTheme"  
+            android:name="com.sportzweb.ActivityCommentsDisplayer"
+            android:label="@string/title_liked_shared_users" >
+        </activity>
+        
+        
         
         <meta-data
             android:name="com.google.android.gms.version"
