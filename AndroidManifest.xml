@@ -268,9 +268,15 @@
             android:label="@string/title_post_status" >
         </activity>
         
+
         <activity
             android:name="com.sonuto.share.StatusShareActivity"
             android:label="@string/status_share" >
+        </activity>
+
+        <activity android:name="com.sportzweb.ActivityLikedSharedUsers"
+            android:label="@string/title_liked_shared_users" >
+
         </activity>
         
         <meta-data

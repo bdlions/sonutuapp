@@ -1,10 +1,11 @@
 package com.sonuto.tabsswipe;
-
 import java.util.ArrayList;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.bdlions.helper.JSONFileReader;
 import com.bdlions.load.image.ImageLoader;
 import com.google.gson.JsonArray;
 import com.sonuto.Config;
@@ -16,6 +17,7 @@ import com.sonuto.utils.IActivityResultFromAdapter;
 import com.sonutu.constants.SHARE_TYPE;
 import com.sonutu.constants.STATUS_CATEGORY;
 import com.sonutu.constants.STATUS_TYPE;
+import com.sportzweb.ActivityLikedSharedUsers;
 import com.sportzweb.R;
 import com.sportzweb.StatusCommentsActivity;
 import com.sportzweb.JSONObjectModel.StatusInfo;
@@ -25,6 +27,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.transition.Visibility;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -97,8 +100,8 @@ public class StatusItemAdapter extends ArrayAdapter<StatusInfo>{
 		int commentCounter = statusComments.size();
 		
 		TextView textViewNameOfUser = (TextView)convertView.findViewById(R.id.textViewNameOfUser);
-		TextView textViewTotalLike = (TextView)convertView.findViewById(R.id.textViewTotalLike);
-		TextView textViewTotalcomments = (TextView)convertView.findViewById(R.id.textViewTotalcomments);
+		TextView textViewLikeShareCounter = (TextView)convertView.findViewById(R.id.textViewLikeShareCounter);
+		//TextView textViewTotalcomments = (TextView)convertView.findViewById(R.id.textViewTotalcomments);
 		TextView textViewpostedStatusTime = (TextView)convertView.findViewById(R.id.textViewpostedStatusTime);
 		TextView textViewDescription = (TextView)convertView.findViewById(R.id.textViewDescription);
 		ImageView imgViewOfUsers = (ImageView) convertView.findViewById(R.id.imageOfUser);
@@ -146,6 +149,7 @@ public class StatusItemAdapter extends ArrayAdapter<StatusInfo>{
 			}
 		});
 		
+
 		shareStatusBtn.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -174,8 +178,19 @@ public class StatusItemAdapter extends ArrayAdapter<StatusInfo>{
 			}
 		});
 		
-		textViewTotalLike.setText(likeCounter + " Likes");
-		textViewTotalcomments.setText(commentCounter + " Comments");
+
+		textViewLikeShareCounter.setText(likeCounter + " Likes " + commentCounter + " Comments");
+		textViewLikeShareCounter.setMovementMethod(LinkMovementMethod.getInstance());
+		textViewLikeShareCounter.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent activityLikedSharedUsers = new Intent(context, ActivityLikedSharedUsers.class);
+				activityLikedSharedUsers.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				context.startActivity(activityLikedSharedUsers);
+			}
+		});
+
 		
 		textViewNameOfUser.setText(statusInfo.getFirst_name() + " " + statusInfo.getLast_name());
 		textViewDescription.setText(Html.fromHtml(statusInfo.getDescription()));

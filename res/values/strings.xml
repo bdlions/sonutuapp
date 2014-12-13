@@ -391,6 +391,7 @@
 	<string name="title_activity_message_chat">Message</string>
 	<string name="title_activity_search">Search</string>
 	<string name="title_post_status">Post Status</string>
+	<string name="title_liked_shared_users">Liked and shared users</string>
 	
 	<!--Start of Share -->
 	<string name="status_share_hint">Write something...</string>

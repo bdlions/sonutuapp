@@ -75,14 +75,18 @@
                 android:paddingTop="10dp" >
 
                 <TextView
-                    android:id="@+id/textViewTotalLike"
+                    android:id="@+id/textViewLikeShareCounter"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp" 
+                    android:textColor="@color/black"
+                    android:layout_marginTop="0dp"
+                    android:background="@drawable/link_comments_counter"/>
 
-                <TextView
-                    android:id="@+id/textViewTotalcomments"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+<!--                 <TextView -->
+<!--                     android:id="@+id/textViewTotalcomments" -->
+<!--                     android:layout_width="wrap_content" -->
+<!--                     android:layout_height="wrap_content" /> -->
             </LinearLayout>
         </LinearLayout>
 

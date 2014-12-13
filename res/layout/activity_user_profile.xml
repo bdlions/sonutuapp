@@ -81,6 +81,7 @@
             android:layout_weight="1"
             android:src="@drawable/myphotos_icon" />
 
+
         <ImageView
             android:id="@+id/myFollowingsImageView"
             android:layout_width="wrap_content"
