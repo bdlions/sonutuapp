@@ -1,11 +1,7 @@
 package com.sonuto.tabsswipe;
 import java.util.ArrayList;
-
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import com.bdlions.helper.JSONFileReader;
 import com.bdlions.load.image.ImageLoader;
 import com.google.gson.JsonArray;
 import com.sonuto.Config;
@@ -18,7 +14,6 @@ import com.sonutu.constants.SHARE_TYPE;
 import com.sonutu.constants.STATUS_CATEGORY;
 import com.sonutu.constants.STATUS_TYPE;
 import com.sportzweb.ActivityCommentsDisplayer;
-import com.sportzweb.ActivityLikedSharedUsers;
 import com.sportzweb.R;
 import com.sportzweb.StatusCommentsActivity;
 import com.sportzweb.JSONObjectModel.StatusInfo;
@@ -97,8 +92,6 @@ public class StatusItemAdapter extends ArrayAdapter<StatusInfo>{
 		
 		final JsonArray statusComments = statusInfo.getFeedbacks();
 		final JsonArray liked_user_list = statusInfo.getLiked_user_list();
-		int likeCounter = liked_user_list.size();
-		int commentCounter = statusComments.size();
 		
 		TextView textViewNameOfUser = (TextView)convertView.findViewById(R.id.textViewNameOfUser);
 		TextView textViewLikeShareCounter = (TextView)convertView.findViewById(R.id.textViewLikeShareCounter);
@@ -179,18 +172,23 @@ public class StatusItemAdapter extends ArrayAdapter<StatusInfo>{
 			}
 		});
 		
-
-		textViewLikeShareCounter.setText(likeCounter + " Likes " + commentCounter + " Comments");
-		textViewLikeShareCounter.setMovementMethod(LinkMovementMethod.getInstance());
-		textViewLikeShareCounter.setOnClickListener(new OnClickListener() {
+		
+		if(liked_user_list != null && statusComments != null){
+			int likeCounter = liked_user_list.size();
+			int commentCounter = statusComments.size();
 			
-			@Override
-			public void onClick(View v) {
-				Intent activityComments = new Intent(context, ActivityCommentsDisplayer.class);
-				activityComments.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-				context.startActivity(activityComments);
-			}
-		});
+			textViewLikeShareCounter.setText(likeCounter + " Likes " + commentCounter + " Comments");
+			textViewLikeShareCounter.setMovementMethod(LinkMovementMethod.getInstance());
+			textViewLikeShareCounter.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					Intent activityComments = new Intent(context, ActivityCommentsDisplayer.class);
+					activityComments.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+					context.startActivity(activityComments);
+				}
+			});
+		}
 
 		
 		textViewNameOfUser.setText(statusInfo.getFirst_name() + " " + statusInfo.getLast_name());

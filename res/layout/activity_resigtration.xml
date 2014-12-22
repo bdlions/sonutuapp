@@ -11,7 +11,7 @@
 <FrameLayout
     android:id="@+id/FrameLayout1"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="0dp" >
 
     <FrameLayout
         android:id="@+id/member_reg_box1"
@@ -20,18 +20,16 @@
         android:visibility="visible">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="10dip"
-             >
+            android:padding="10dip" >
 
             <TextView
                 android:id="@+id/txtViewRegStep1H1"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dip"
-                android:layout_marginTop="30dip"
+                android:layout_marginBottom="10dp"
                 android:gravity="center"
                 android:text="@string/member_reg_Title"
                 android:textAppearance="?android:attr/textAppearanceLarge"
@@ -41,8 +39,7 @@
                 android:id="@+id/txtViewRegStep1H2"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dip"
-                android:layout_marginTop="30dip"
+                android:layout_marginBottom="10dp"
                 android:gravity="center"
                 android:text="@string/reg_Title"
                 android:textAppearance="?android:attr/textAppearanceSmall"
@@ -52,8 +49,7 @@
                 android:id="@+id/regFnameInputEdtTxt"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dip"
-                android:layout_marginTop="5dip"
+                android:layout_marginBottom="12dp"
                 android:background="@drawable/backwithborder"
                 android:hint="@string/reg_first_name"
                 android:padding="10dp"
@@ -68,8 +64,7 @@
                 android:id="@+id/regLnameInputEdtTxt"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dip"
-                android:layout_marginTop="5dip"
+                android:layout_marginBottom="15dp"
                 android:background="@drawable/backwithborder"
                 android:hint="@string/reg_last_name"
                 android:padding="10dp"
@@ -82,24 +77,23 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dip"
-                android:layout_marginTop="60dip"
                 android:background="@drawable/button"
+                android:onClick="regStep1"
                 android:text="@string/button_text_member_reg"
                 android:textColor="#fff1ff"
-                android:onClick="regStep1"
                 android:textSize="15sp" />
+
             <Button
                 android:id="@+id/link_to_register"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dip"
-                android:layout_marginTop="20dip"
+                android:background="#ffffff"
                 android:gravity="center"
                 android:onClick="backLogin"
                 android:text="@string/sign_in_text"
                 android:textColor="#7f7f7f"
-                android:background="#ffffff"
                 android:textSize="15sp" />
+
         </LinearLayout>
 
     </FrameLayout>
@@ -121,8 +115,7 @@
                 android:id="@+id/txtViewRegStep2H1"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dip"
-                android:layout_marginTop="30dip"
+                android:layout_marginBottom="10dp"
                 android:gravity="center"
                 android:text="@string/member_reg_Title_for_password"
                 android:textAppearance="?android:attr/textAppearanceLarge"
@@ -132,8 +125,7 @@
                 android:id="@+id/txtViewRegStep2H2"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dip"
-                android:layout_marginTop="20dip"
+                android:layout_marginBottom="10dp"
                 android:gravity="center"
                 android:text="@string/reg_pass_text"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
@@ -142,14 +134,13 @@
                 android:id="@+id/regPassInputEdtTxt"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="60dip"
-                android:layout_marginTop="15dip"
+                android:layout_marginBottom="15dp"
                 android:background="@drawable/backwithborder"
                 android:hint="@string/reg_password"
+                android:inputType="textPassword"
                 android:padding="10dp"
                 android:singleLine="true"
                 android:textColorHint="#0a000a"
-                android:inputType="textPassword"
                 android:textSize="15sp" />
 
             <Button
@@ -157,25 +148,23 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dip"
-                android:layout_marginTop="40dip"
                 android:background="@drawable/button"
+                android:onClick="regStep2"
                 android:text="@string/button_text_member_reg"
                 android:textColor="#fff1ff"
-                android:onClick="regStep2"
                 android:textSize="15sp" />
             
             <Button
                 android:id="@+id/link_to_register1"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dip"
-                android:layout_marginTop="20dip"
+                android:background="#ffffff"
                 android:gravity="center"
+                android:onClick="backLogin"
                 android:text="@string/sign_in_text"
                 android:textColor="#7f7f7f"
-                android:background="#ffffff"
-                android:onClick="backLogin"
                 android:textSize="15sp" />
+
         </LinearLayout>
 
     </FrameLayout>
@@ -197,8 +186,7 @@
                     android:id="@+id/txtViewRegStep3H1"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dip"
-                    android:layout_marginTop="30dip"
+                    android:layout_marginBottom="10dp"
                     android:gravity="center"
                     android:text="@string/member_reg_Title_for_email"
                     android:textAppearance="?android:attr/textAppearanceLarge"
@@ -208,8 +196,7 @@
                     android:id="@+id/txtViewRegStep3H2"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dip"
-                    android:layout_marginTop="20dip"
+                    android:layout_marginBottom="15dp"
                     android:gravity="center"
                     android:text="@string/reg_email_text"
                     android:textAppearance="?android:attr/textAppearanceSmall" />
@@ -218,11 +205,10 @@
                     android:id="@+id/regEmailInputEdtTxt"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textEmailAddress"
-                    android:layout_marginBottom="40dip"
-                    android:layout_marginTop="5dip"
+                    android:layout_marginBottom="15dp"
                     android:background="@drawable/backwithborder"
                     android:hint="@string/reg_email"
+                    android:inputType="textEmailAddress"
                     android:padding="10dp"
                     android:singleLine="true"
                     android:textColorHint="#0a000a"
@@ -233,26 +219,23 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dip"
-                    android:layout_marginTop="60dip"
                     android:background="@drawable/button"
+                    android:onClick="regStep3"
                     android:text="@string/button_text_member_reg"
                     android:textColor="#fff1ff"
-                    android:onClick="regStep3"
                     android:textSize="15sp" />
 
             <Button
                 android:id="@+id/link_to_register2"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dip"
-                android:layout_marginTop="20dip"
+                android:background="#ffffff"
                 android:gravity="center"
+                android:onClick="backLogin"
                 android:text="@string/sign_in_text"
                 android:textColor="#7f7f7f"
-                android:onClick="backLogin"
-                android:textSize="15sp" 
-                android:background="#ffffff"
-                />
+                android:textSize="15sp" />
+
         </LinearLayout>
 
     </FrameLayout>

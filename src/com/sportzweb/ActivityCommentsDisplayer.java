@@ -48,6 +48,7 @@ public class ActivityCommentsDisplayer extends Activity {
 					Intent activityLikedSharedUsers = new Intent(ActivityCommentsDisplayer.this, ActivityLikedSharedUsers.class);
 					activityLikedSharedUsers.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 					startActivity(activityLikedSharedUsers);
+					overridePendingTransition  (R.anim.right_slide_in, R.anim.right_slide_out);
 				}
 			});
 

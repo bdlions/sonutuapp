@@ -104,7 +104,7 @@ public class HealthyRecipeAppActivity extends Fragment{
 							int total_recipe = recipesJsonList.size();
 							//recipes item
 							HListView hListView = new HListView(getActivity().getApplicationContext(), attributes);
-							hListView.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, 200));
+							hListView.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, 120));
 							//hListView.setDividerWidth(2);
 							
 							HealthyRecipes recipes = new HealthyRecipes();

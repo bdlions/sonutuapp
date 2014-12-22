@@ -25,6 +25,7 @@ public class ActivityLikedSharedUsers extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		overridePendingTransition  (R.anim.right_slide_in, R.anim.right_slide_out);
 
 		setContentView(R.layout.activity_liked_shared_users);
 		ListView listViewLikedUser = (ListView) findViewById(R.id.listViewLikedUser);
