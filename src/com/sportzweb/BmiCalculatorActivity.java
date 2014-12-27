@@ -249,12 +249,11 @@ public class BmiCalculatorActivity extends Fragment {
 			if (metricColor == selectedColor) {
 				// metric is selected
 				// calculate the bmi value
-				bmiValue = calculate(weight, height);
+				bmiValue = Math.round((weight / (height * height))* 100.0f)/100.0f;
 
 			} else {
 				// imperical is selected
-				bmiValue = Math
-						.round(((weight * 703) / (height * height)) * 100) / 100;
+				bmiValue = Math.round((weight / (height * height)) * 703 * 100.0f) / 100.0f;
 			}
 
 			// interpret the meaning of the bmi value
@@ -268,11 +267,6 @@ public class BmiCalculatorActivity extends Fragment {
 			resultBmiCategoryText.setTextColor(Color.parseColor("#FF0000"));
 		}
 
-	}
-
-	// the formula to calculate the BMI index
-	private float calculate(float weight, float height) {
-		return (float) Math.round((weight / (height * height) * 100)) / 100;
 	}
 
 	// interpret what BMI means
