@@ -264,6 +264,7 @@ public class BmiCalculatorActivity extends Fragment {
 			resultBmiText.setTextColor(Color.parseColor("#FF0000"));
 
 			resultBmiCategoryText.setText(" " + bmiInterpretation);
+			
 			resultBmiCategoryText.setTextColor(Color.parseColor("#FF0000"));
 		}
 
