@@ -285,6 +285,9 @@
             android:name="com.sportzweb.ActivityCommentsDisplayer"
             android:label="@string/title_liked_shared_users" >
         </activity>
+        <activity 
+            android:name="com.sportzweb.AccountSettingsInterest">
+        </activity>
         
         
         

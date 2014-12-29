@@ -11,6 +11,7 @@ import com.sonuto.rpc.ICallBack;
 import com.sonuto.rpc.register.User;
 import com.sonuto.session.ISessionManager;
 import com.sonuto.session.SessionManager;
+import com.sportzweb.AccountSettingsInterest;
 import com.sportzweb.R;
 import android.widget.AdapterView.OnItemClickListener;
 
@@ -119,7 +120,10 @@ public class AccountSettingsActivity extends Activity {
 					i.putExtra("profile_info", userObj.toString());
 					startActivity(i);
 				} else {
-					
+					Intent i = new Intent(getApplicationContext(), AccountSettingsInterest.class);
+					i.putExtra("user_id", userId);
+					i.putExtra("profile_info", userObj.toString());
+					startActivity(i);
 				}
 			}
 		});
