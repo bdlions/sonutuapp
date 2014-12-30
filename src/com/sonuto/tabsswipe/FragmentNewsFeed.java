@@ -18,6 +18,8 @@ import com.sportzweb.PostStatusActivity;
 import com.sportzweb.R;
 import com.sportzweb.JSONObjectModel.StatusInfo;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -28,6 +30,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class FragmentNewsFeed extends Fragment implements IActivityResultFromAdapter{
 	private int userId;
@@ -50,7 +53,6 @@ public class FragmentNewsFeed extends Fragment implements IActivityResultFromAda
 	    updateNewsFeedList(1);
 
 		listViewStatusItems.setOnScrollListener(new EndlessScroller() {
-			
 			@Override
 			public void onLoadMore(int page, int totalItemsCount) {
 				// TODO Auto-generated method stub
@@ -61,6 +63,42 @@ public class FragmentNewsFeed extends Fragment implements IActivityResultFromAda
 		
 		
 		return rootView;
+	}
+	
+	public void removeStatus(final StatusInfo statusInfo) {
+
+		AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+		builder.setTitle("Remove status").setMessage("Are you sure to remove the status?").setIcon(android.R.drawable.ic_dialog_alert).setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int which) {
+				new StatusFeed().deleteStatus(new ICallBack() {
+				
+				@Override
+				public void callBackResultHandler(Object object) {
+					JSONObject jsonObject = (JSONObject)object;
+					try
+					{
+						if(jsonObject.get("status").toString().equalsIgnoreCase("true"))
+						{
+							adapter.remove(statusInfo);
+							adapter.notifyDataSetChanged();
+						}
+					}
+					catch(JSONException e)
+					{
+						
+					}
+					
+				}
+				
+				@Override
+				public void callBackErrorHandler(Object object) {
+					// TODO Auto-generated method stub
+					
+				}
+			}, statusInfo.getStatus_id());
+			}
+		}).setNegativeButton("No", null).show();
+
 	}
 	
 	private void updateNewsFeedList(int page){

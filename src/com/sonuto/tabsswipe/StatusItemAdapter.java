@@ -19,7 +19,9 @@ import com.sportzweb.StatusCommentsActivity;
 import com.sportzweb.JSONObjectModel.StatusInfo;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
@@ -34,6 +36,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class StatusItemAdapter extends ArrayAdapter<StatusInfo>{
 	
@@ -204,33 +207,10 @@ public class StatusItemAdapter extends ArrayAdapter<StatusInfo>{
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				new StatusFeed().deleteStatus(new ICallBack() {
-					
-					@Override
-					public void callBackResultHandler(Object object) {
-						JSONObject jsonObject = (JSONObject)object;
-						try
-						{
-							if(jsonObject.get("status").toString().equalsIgnoreCase("true"))
-							{
-								remove(statusInfo);
-								notifyDataSetChanged();
-							}
-						}
-						catch(JSONException e)
-						{
-							
-						}
-						
-					}
-					
-					@Override
-					public void callBackErrorHandler(Object object) {
-						// TODO Auto-generated method stub
-						
-					}
-				}, statusInfo.getStatus_id());
+				if( resultFromAdapter instanceof FragmentNewsFeed){
+					FragmentNewsFeed newsFeed = (FragmentNewsFeed) resultFromAdapter;
+					newsFeed.removeStatus(statusInfo);
+				}
 			}
 		});
         
